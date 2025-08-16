@@ -1,0 +1,1297 @@
+fileFormatVersion: 2
+guid: 025fb55dcf73a4dbbb2ac2a80731cb71
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4164
+        width: 9750
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdce44d247adf4711952cef864af118d
+      internalID: 1478753184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_1
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 3708
+        width: 1062
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3729b9970771481a85909b46d21bb41
+      internalID: 2095819159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_2
+      rect:
+        serializedVersion: 2
+        x: 1940
+        y: 3708
+        width: 1066
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2064b20685c0947fca2b6207c003892a
+      internalID: -1565411726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_3
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 3708
+        width: 1066
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc005d2e7410b42088230bfbf53689ab
+      internalID: 1576261044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_4
+      rect:
+        serializedVersion: 2
+        x: 9438
+        y: 4031
+        width: 186
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b8d25a13fc8c4da0987ff2ade39bf4d
+      internalID: 91764867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_5
+      rect:
+        serializedVersion: 2
+        x: 4539
+        y: 3760
+        width: 1062
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30466ddd18b304f78a5269500ff541d9
+      internalID: 1161011070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_6
+      rect:
+        serializedVersion: 2
+        x: 5887
+        y: 3517
+        width: 2844
+        height: 504
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5813dd0685338487090683fd4985828a
+      internalID: -1319268027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_7
+      rect:
+        serializedVersion: 2
+        x: 9438
+        y: 3983
+        width: 186
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d2d3902a62743e3ab773880b7db1a1
+      internalID: 1518576982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_8
+      rect:
+        serializedVersion: 2
+        x: 9438
+        y: 3936
+        width: 186
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 167e200d7995542db9675cfd4f873c9f
+      internalID: 197017697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_9
+      rect:
+        serializedVersion: 2
+        x: 8843
+        y: 3831
+        width: 109
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb27fa3fd4134cea8a1b5bf5e0bbace
+      internalID: 1371403434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_10
+      rect:
+        serializedVersion: 2
+        x: 9438
+        y: 3803
+        width: 186
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 326fdc13413f941b8aac12e769ddca2e
+      internalID: 679547013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_11
+      rect:
+        serializedVersion: 2
+        x: 9438
+        y: 3760
+        width: 186
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d296d56f0a9943e3ba9bcd17e99dd6d
+      internalID: 429096383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_12
+      rect:
+        serializedVersion: 2
+        x: 8843
+        y: 3627
+        width: 109
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10b383796c5e54b8ba936200679460b5
+      internalID: -1168583454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_13
+      rect:
+        serializedVersion: 2
+        x: 9438
+        y: 3712
+        width: 186
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56ecf0d91af9460194d7130d7bc7462
+      internalID: -825118499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_14
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 3198
+        width: 1062
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d215692a6e2946debcf6e866872accb
+      internalID: 1416956287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_15
+      rect:
+        serializedVersion: 2
+        x: 1940
+        y: 3198
+        width: 1066
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0439f8b2ddb5443699a882a4b05729fb
+      internalID: -2135971733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_16
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 3198
+        width: 1066
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c19453324b2949e9a39863051e056bc
+      internalID: -1724340893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_17
+      rect:
+        serializedVersion: 2
+        x: 4539
+        y: 3250
+        width: 1062
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad9c29f41d6cc460dbf6d7977fe110b0
+      internalID: 1026246885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_18
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 2636
+        width: 1062
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71184d2ce1d142a880245a76ca21884
+      internalID: -990337757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_19
+      rect:
+        serializedVersion: 2
+        x: 1940
+        y: 2636
+        width: 1066
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41c6e0f15a74467ebfa18fcce50d043
+      internalID: -418754366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_20
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 2636
+        width: 1066
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e3effaa119134846b7b6c80f1feb5a6
+      internalID: 1866081288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_21
+      rect:
+        serializedVersion: 2
+        x: 6291
+        y: 2969
+        width: 253
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4de0d22b1e546be8a5db48a7fbb336
+      internalID: -1669015411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_22
+      rect:
+        serializedVersion: 2
+        x: 6806
+        y: 2969
+        width: 255
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee4c16debc86a47d9b2a25eca850d801
+      internalID: 1097383050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_23
+      rect:
+        serializedVersion: 2
+        x: 7710
+        y: 2917
+        width: 283
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbab69b6a1348411ea3d091831932bf0
+      internalID: 1363230572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_24
+      rect:
+        serializedVersion: 2
+        x: 8386
+        y: 2917
+        width: 285
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a766f896b2a7e4067a80fcf135b2cf5f
+      internalID: 1373408681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_25
+      rect:
+        serializedVersion: 2
+        x: 4539
+        y: 2688
+        width: 1062
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce3e09fd433df40d8aab9a9f0aed0112
+      internalID: 296717088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_26
+      rect:
+        serializedVersion: 2
+        x: 6291
+        y: 2602
+        width: 253
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e58a818b9e00431fb33831c95de688e
+      internalID: 11081648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_27
+      rect:
+        serializedVersion: 2
+        x: 6806
+        y: 2602
+        width: 255
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e62599e7b024045c7b022876a0691a1f
+      internalID: 1015491196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_28
+      rect:
+        serializedVersion: 2
+        x: 7710
+        y: 2531
+        width: 283
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f13691c370e4bda9701ff392dccb8a
+      internalID: 1457283790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_29
+      rect:
+        serializedVersion: 2
+        x: 8386
+        y: 2531
+        width: 285
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5090446876c426bbbb99afe9a10915
+      internalID: 2084737273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_30
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 2074
+        width: 1062
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4e36f22ffbe4c3b9c1f9cdbcdc834e
+      internalID: 1154194963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_31
+      rect:
+        serializedVersion: 2
+        x: 1940
+        y: 2074
+        width: 1066
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35518bbb6ea5c4956acfb248785f09a3
+      internalID: 2098216696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_32
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 2074
+        width: 1066
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40149a26328ac4f1fa8f0f5428d2af47
+      internalID: -1530825290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_33
+      rect:
+        serializedVersion: 2
+        x: 4539
+        y: 2126
+        width: 1062
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b53c66e4dd754960bd23fad2ab1455d
+      internalID: 253080866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_34
+      rect:
+        serializedVersion: 2
+        x: 6291
+        y: 2231
+        width: 253
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e5dc3699ab14b38865972579cc0416
+      internalID: -506984968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_35
+      rect:
+        serializedVersion: 2
+        x: 6806
+        y: 2231
+        width: 255
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4420567e02cb3449094e775f0804b9f6
+      internalID: -1413733052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_36
+      rect:
+        serializedVersion: 2
+        x: 7710
+        y: 2145
+        width: 283
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ed6f5cd4404e40c197e7ef9146cfb47
+      internalID: 146661770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_37
+      rect:
+        serializedVersion: 2
+        x: 8386
+        y: 2145
+        width: 285
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c6a1df15edb44659bca6d475d2b7106
+      internalID: 2015918738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_38
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 1026
+        width: 1766
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 153fbe49a39414c4e859aa2e79e7eec1
+      internalID: -576899610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_39
+      rect:
+        serializedVersion: 2
+        x: 2464
+        y: 1026
+        width: 1766
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc16145e574d45cbb4a34eece6a6b0b
+      internalID: -1772462798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_40
+      rect:
+        serializedVersion: 2
+        x: 4539
+        y: 1026
+        width: 1766
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27d14f6175534b00b498ca5b7dcabb5
+      internalID: -1433236300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_41
+      rect:
+        serializedVersion: 2
+        x: 7710
+        y: 1760
+        width: 283
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2129069ebd23e4c90b8e00bb16e65b6e
+      internalID: 970404616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_42
+      rect:
+        serializedVersion: 2
+        x: 8386
+        y: 1760
+        width: 285
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 626128f30fd164989907a84e7154a77c
+      internalID: 12895748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_43
+      rect:
+        serializedVersion: 2
+        x: 6721
+        y: 1426
+        width: 336
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b02beeacbf0a4946b1f05f50a91a41f
+      internalID: 1871119894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_44
+      rect:
+        serializedVersion: 2
+        x: 7862
+        y: 1383
+        width: 1005
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aadf7f8f16c24e5eb6d66614e290d3c
+      internalID: -258517824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_45
+      rect:
+        serializedVersion: 2
+        x: 6721
+        y: 1131
+        width: 746
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcfea9e71011945ad85b33a8499bd528
+      internalID: 660868799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_46
+      rect:
+        serializedVersion: 2
+        x: 7862
+        y: 1136
+        width: 505
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c4acf7c5cee4241bc891a4875b7a55
+      internalID: 330773145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_47
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 474
+        width: 1051
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd83dd74320e42f0883b296ed5f2505
+      internalID: 1296992217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_48
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 503
+        width: 376
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caed9c2d56ade49868a3381dd4f29db8
+      internalID: 452748266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_49
+      rect:
+        serializedVersion: 2
+        x: 2593
+        y: 503
+        width: 375
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596bf575b028e473bb578351af1ebb8c
+      internalID: 996026031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_50
+      rect:
+        serializedVersion: 2
+        x: 4544
+        y: 136
+        width: 1766
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f85e19e1ea124bd6a6ed2ba82e9f296
+      internalID: 240420883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator_Buttons_Boxes_51
+      rect:
+        serializedVersion: 2
+        x: 6715
+        y: 631
+        width: 1185
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1903c2f02a7554f6dbf0a0b93f54fe7e
+      internalID: 1903004933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Aviator_Buttons_Boxes_0: 1478753184
+      Aviator_Buttons_Boxes_1: 2095819159
+      Aviator_Buttons_Boxes_10: 679547013
+      Aviator_Buttons_Boxes_11: 429096383
+      Aviator_Buttons_Boxes_12: -1168583454
+      Aviator_Buttons_Boxes_13: -825118499
+      Aviator_Buttons_Boxes_14: 1416956287
+      Aviator_Buttons_Boxes_15: -2135971733
+      Aviator_Buttons_Boxes_16: -1724340893
+      Aviator_Buttons_Boxes_17: 1026246885
+      Aviator_Buttons_Boxes_18: -990337757
+      Aviator_Buttons_Boxes_19: -418754366
+      Aviator_Buttons_Boxes_2: -1565411726
+      Aviator_Buttons_Boxes_20: 1866081288
+      Aviator_Buttons_Boxes_21: -1669015411
+      Aviator_Buttons_Boxes_22: 1097383050
+      Aviator_Buttons_Boxes_23: 1363230572
+      Aviator_Buttons_Boxes_24: 1373408681
+      Aviator_Buttons_Boxes_25: 296717088
+      Aviator_Buttons_Boxes_26: 11081648
+      Aviator_Buttons_Boxes_27: 1015491196
+      Aviator_Buttons_Boxes_28: 1457283790
+      Aviator_Buttons_Boxes_29: 2084737273
+      Aviator_Buttons_Boxes_3: 1576261044
+      Aviator_Buttons_Boxes_30: 1154194963
+      Aviator_Buttons_Boxes_31: 2098216696
+      Aviator_Buttons_Boxes_32: -1530825290
+      Aviator_Buttons_Boxes_33: 253080866
+      Aviator_Buttons_Boxes_34: -506984968
+      Aviator_Buttons_Boxes_35: -1413733052
+      Aviator_Buttons_Boxes_36: 146661770
+      Aviator_Buttons_Boxes_37: 2015918738
+      Aviator_Buttons_Boxes_38: -576899610
+      Aviator_Buttons_Boxes_39: -1772462798
+      Aviator_Buttons_Boxes_4: 91764867
+      Aviator_Buttons_Boxes_40: -1433236300
+      Aviator_Buttons_Boxes_41: 970404616
+      Aviator_Buttons_Boxes_42: 12895748
+      Aviator_Buttons_Boxes_43: 1871119894
+      Aviator_Buttons_Boxes_44: -258517824
+      Aviator_Buttons_Boxes_45: 660868799
+      Aviator_Buttons_Boxes_46: 330773145
+      Aviator_Buttons_Boxes_47: 1296992217
+      Aviator_Buttons_Boxes_48: 452748266
+      Aviator_Buttons_Boxes_49: 996026031
+      Aviator_Buttons_Boxes_5: 1161011070
+      Aviator_Buttons_Boxes_50: 240420883
+      Aviator_Buttons_Boxes_51: 1903004933
+      Aviator_Buttons_Boxes_6: -1319268027
+      Aviator_Buttons_Boxes_7: 1518576982
+      Aviator_Buttons_Boxes_8: 197017697
+      Aviator_Buttons_Boxes_9: 1371403434
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
