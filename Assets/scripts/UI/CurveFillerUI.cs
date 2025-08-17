@@ -7,8 +7,8 @@ public class CurveFillerUI : MaskableGraphic
 {
     [Header("Curve Settings")]
     [SerializeField, Min(2)] private int points = 50;
-    [SerializeField] private float heightMultiplier = 0.7f;   // Relative to rect height
-    [SerializeField] private float widthMultiplier  = 0.5f;   // Relative to rect width
+    [SerializeField] internal float heightMultiplier = 0.7f;   // Relative to rect height
+    [SerializeField] internal float widthMultiplier  = 0.5f;   // Relative to rect width
 
     [Header("Border")]
     [SerializeField] private float borderThickness = 3f;      // UI units (pixels with CanvasScaler)
