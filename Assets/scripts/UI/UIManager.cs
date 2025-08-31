@@ -5,6 +5,28 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+  [Header("Other Options Menu")]
+  [SerializeField] private GameObject OtherOptionsMenu;
+  [SerializeField] private Button OtherOptionsMenuButton;
+  [SerializeField] private Button CloseOptionsMenuButton1;
+  [SerializeField] private Button CloseOptionsMenuButton2;
+  [SerializeField] private Button SoundToggleButton;
+  [SerializeField] private Button MusicToggleButton;
+  [SerializeField] private Button AnimationToggleButton;
+  [SerializeField] private GameObject OtherOptionsPanelParent;
+  //0: Bet History
+  //1: Game Limits 
+  //2: How To Play
+  //3: Game Rules
+  [SerializeField] private Button[] OtherOptionsButtons;
+  [SerializeField] private GameObject[] OtherOptionsPanels;
+  [SerializeField] private Button[] OtherOptionCloseButtons;
+
+  [Header("Local Variables to keep track")]
+  [SerializeField] private bool SoundToggle = true;
+  [SerializeField] private bool MusicToggle = true;
+  [SerializeField] private bool AnimationToggle = true;
+
   [Header("Left Bet UI")]
   //0: Bet Button
   //1: Auto Bet Button
@@ -48,13 +70,46 @@ public class UIManager : MonoBehaviour
   //1: Month Button
   //2: Year Button
   [SerializeField] private Button[] TopBetTimeButtons;
-  
+
   [Header("Local variable to keep track")]
   [SerializeField] private int currentTopBetFilterIndex;
   [SerializeField] private int currentTopBetTimeIndex;
 
   private void Awake()
   {
+    OtherOptionsMenuButton.onClick.AddListener(() => OtherOptionsMenu.SetActive(true));
+    CloseOptionsMenuButton1.onClick.AddListener(() => OtherOptionsMenu.SetActive(false));
+    CloseOptionsMenuButton2.onClick.AddListener(() => OtherOptionsMenu.SetActive(false));
+
+    CloseOptionsMenuButton1.onClick.Invoke(); //Close Other Options Menu By Default
+
+    SoundToggleButton.onClick.AddListener(() =>
+    {
+      SoundToggle = !SoundToggle;
+      ToggleButtonClicked(SoundToggleButton);
+    });
+    MusicToggleButton.onClick.AddListener(() =>
+    {
+      MusicToggle = !MusicToggle;
+      ToggleButtonClicked(MusicToggleButton);
+    });
+    AnimationToggleButton.onClick.AddListener(() =>
+    {
+      AnimationToggle = !AnimationToggle;
+      ToggleButtonClicked(AnimationToggleButton);
+    });
+
+    for (int i = 0; i < OtherOptionsButtons.Length; i++)
+    {
+      int index = i;
+      OtherOptionsButtons[i].onClick.AddListener(() => OtherOptionButtonClicked(index));
+    }
+    for (int i = 0; i < OtherOptionCloseButtons.Length; i++)
+    {
+      int index = i;
+      OtherOptionCloseButtons[i].onClick.AddListener(() => CloseOtherOptionMenu(index));
+    }
+
     InfoUIButtons[0].onClick.AddListener(() => StartCoroutine(ShowInfoUI(0)));
     InfoUIButtons[1].onClick.AddListener(() => StartCoroutine(ShowInfoUI(1)));
     InfoUIButtons[2].onClick.AddListener(() => StartCoroutine(ShowInfoUI(2)));
@@ -103,12 +158,28 @@ public class UIManager : MonoBehaviour
     });
   }
 
+  void OtherOptionButtonClicked(int index)
+  {
+    foreach (GameObject gameObject in OtherOptionsPanels)
+    {
+      gameObject.SetActive(false);
+    }
+    OtherOptionsPanelParent.SetActive(true);
+    OtherOptionsPanels[index].SetActive(true);
+  }
+
+  void CloseOtherOptionMenu(int index)
+  {
+    OtherOptionsPanels[index].SetActive(false);
+    OtherOptionsPanelParent.SetActive(false);
+  }
+
   void ToggleButtonClicked(Button button)
   {
     button.interactable = false;
     RectTransform KnobRect = button.transform.GetChild(0).GetComponent<RectTransform>();
     KnobRect.DOLocalMoveX(-KnobRect.localPosition.x, 0.2f).
-    OnComplete(()=> button.interactable = true);
+    OnComplete(() => button.interactable = true);
   }
 
   void BetTopBarButtonClicked(int index, bool isLeft)

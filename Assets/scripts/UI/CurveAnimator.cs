@@ -5,18 +5,19 @@ using DG.Tweening;
 public class CurveAnimator : MonoBehaviour
 {
   [Header("Curve Points")]
-  public float zeroHM = 0.01f;
-  public float zeroWM = 0.03f;
-  public float topHM = 0.85f;
-  public float topWM = 0.76f;
-  public float bottomHM = 0.64f;
-  public float bottomWM = 0.85f;
+  [SerializeField] private float zeroHM = 0.01f;
+  [SerializeField] private float zeroWM = 0.03f;
+  [SerializeField] private float topHM = 0.85f;
+  [SerializeField] private float topWM = 0.76f;
+  [SerializeField] private float bottomHM = 0.64f;
+  [SerializeField] private float bottomWM = 0.85f;
 
-  public float initialDuration = 1.3f;
-  public float loopDuration = 1.0f;
+  [SerializeField] private float initialDuration = 4f;
+  [SerializeField] private float loopDuration = 2f;
 
   private CurveFillerUI curve;
   private Sequence loopSequence;
+  private Sequence initialSequence;
   private bool started = false;
 
   void Awake()
@@ -39,7 +40,9 @@ public class CurveAnimator : MonoBehaviour
     // Plane Crash
     if (started && Input.GetKeyDown(KeyCode.K))
     {
-      loopSequence?.Kill();        // keeps the value where it is
+      loopSequence?.Kill();
+      initialSequence?.Kill();
+      started = false;
     }
   }
 
@@ -47,10 +50,11 @@ public class CurveAnimator : MonoBehaviour
   {
     started = true;
 
-    // First go to TOP (zero -> top)
-    DOTween.To(() => curve.heightMultiplier, v => { curve.heightMultiplier = v; curve.SetVerticesDirty(); }, topHM, initialDuration);
-    DOTween.To(() => curve.widthMultiplier, v => { curve.widthMultiplier = v; curve.SetVerticesDirty(); }, topWM, initialDuration)
-           .OnComplete(StartLoop);  // when it reaches the top, start the ping/pong loop
+    // Initial move (zero -> top)
+    initialSequence = DOTween.Sequence()
+      .Append(DOTween.To(() => curve.heightMultiplier, v => { curve.heightMultiplier = v; curve.SetVerticesDirty(); }, topHM, initialDuration))
+      .Join(DOTween.To(() => curve.widthMultiplier, v => { curve.widthMultiplier = v; curve.SetVerticesDirty(); }, topWM, initialDuration));
+    initialSequence.OnComplete(StartLoop);
   }
 
   void StartLoop()
