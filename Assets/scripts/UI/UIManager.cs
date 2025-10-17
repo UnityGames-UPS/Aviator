@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+  [SerializeField] private CurveAnimator curveAnimator;
+  
   [Header("Other Options Menu")]
   [SerializeField] private GameObject OtherOptionsMenu;
   [SerializeField] private Button OtherOptionsMenuButton;
