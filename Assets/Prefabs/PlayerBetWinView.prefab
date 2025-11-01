@@ -25,16 +25,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571633984089555336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2466721323757811409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 30.399994, y: -0.583}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -234.47998, y: -1.3555908}
   m_SizeDelta: {x: 28, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4395751773811548571
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -228655957, guid: cb910e29c41e44d98964910723d6a1b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 2466721323757811409}
   - component: {fileID: 5196939826364889525}
   - component: {fileID: 3685406536632060083}
+  - component: {fileID: -1558609801086862309}
   m_Layer: 5
   m_Name: PlayerBetWinView
   m_TagString: Untagged
@@ -246,9 +247,9 @@ RectTransform:
   - {fileID: 6766807877980359803}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 271, y: -21}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -899, y: 519}
   m_SizeDelta: {x: 529.76, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5196939826364889525
@@ -289,6 +290,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-1558609801086862309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074555919514044562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64637089f2ee547cc81d7119583c1a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatarImage: {fileID: 2308449114039131284}
+  usernameText: {fileID: 1365770683403566131}
+  betText: {fileID: 7206260092453240328}
+  cashoutMultText: {fileID: 3116966770420846313}
+  cashoutWinText: {fileID: 1772503380715197267}
+  cashoutBgImage: {fileID: 3685406536632060083}
+  blackColor: {r: 0.05882353, g: 0.05490196, b: 0.05882353, a: 1}
+  greenColor: {r: 0.1254902, g: 0.21568628, b: 0.023529412, a: 1}
+  ProfileImages:
+  - {fileID: -228655957, guid: cb910e29c41e44d98964910723d6a1b6, type: 3}
+  - {fileID: 433219862, guid: cb910e29c41e44d98964910723d6a1b6, type: 3}
+  - {fileID: -592804007, guid: cb910e29c41e44d98964910723d6a1b6, type: 3}
+  - {fileID: -54707584, guid: cb910e29c41e44d98964910723d6a1b6, type: 3}
+  - {fileID: -1712872755, guid: cb910e29c41e44d98964910723d6a1b6, type: 3}
 --- !u!1 &3144235079434843571
 GameObject:
   m_ObjectHideFlags: 0

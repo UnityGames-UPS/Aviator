@@ -15,13 +15,11 @@ public class CurveFillerUI : MaskableGraphic
   [SerializeField] private Color borderColor = Color.red;
 
   [Header("Plane Follow")]
+  [SerializeField] internal bool followCurve = true;
   [SerializeField] internal RectTransform PlaneParent;
 
   // Expose if you want to read it elsewhere
   private Vector2 LastTopPoint;
-
-  internal bool followCurve = true;
-
 
   protected override void OnPopulateMesh(VertexHelper vh)
   {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eda2c52cb75384c5b836421a37a702e3
+guid: cb910e29c41e44d98964910723d6a1b6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,19 +72,6 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -94,7 +81,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -119,207 +106,110 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Aviator_UI_BTN_1_0
+      name: avtar_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 285
-        width: 238
-        height: 90
+        x: 55
+        y: 2104
+        width: 401
+        height: 401
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d0fb977b8daf45ebbe5dbf2594ffb18
-      internalID: 1586428288
+      spriteID: 61107a3beb616499db42fa012d4e7fca
+      internalID: -228655957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Aviator_UI_BTN_1_1
+      name: avtar_6
       rect:
         serializedVersion: 2
-        x: 296
-        y: 285
-        width: 238
-        height: 90
+        x: 59
+        y: 1590
+        width: 401
+        height: 401
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 473372788d4344baa84e330785fc5086
-      internalID: -690027114
+      spriteID: 22dd23015788844368d7a183758087c6
+      internalID: 433219862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Aviator_UI_BTN_1_2
+      name: avtar_7
       rect:
         serializedVersion: 2
-        x: 587
-        y: 285
-        width: 238
-        height: 90
+        x: 55
+        y: 1081
+        width: 401
+        height: 401
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31f1a0083c6fa4da3875eec1b92b9c86
-      internalID: -660439456
+      spriteID: cf2a81afdab2645b78211fe8bb29998b
+      internalID: -592804007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Aviator_UI_BTN_1_3
+      name: avtar_8
       rect:
         serializedVersion: 2
-        x: 5
-        y: 147
-        width: 238
-        height: 91
+        x: 55
+        y: 568
+        width: 401
+        height: 401
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8ef006f5666c4105840aa3c82fc7781
-      internalID: -1725076856
+      spriteID: c9962db77d73447ea99594b01aa0d933
+      internalID: -54707584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Aviator_UI_BTN_1_4
+      name: avtar_9
       rect:
         serializedVersion: 2
-        x: 296
-        y: 147
-        width: 238
-        height: 91
+        x: 55
+        y: 54
+        width: 401
+        height: 401
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82757787e9f0041c1a224b7a8a395784
-      internalID: 1172461083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Aviator_UI_BTN_1_5
-      rect:
-        serializedVersion: 2
-        x: 587
-        y: 147
-        width: 238
-        height: 91
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d59188fe1b734ca2b05ea9fac5e3c92
-      internalID: 655356160
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Aviator_UI_BTN_1_6
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 5
-        width: 238
-        height: 91
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 373d1fe2119ab4a21a4b288bb5f4cf19
-      internalID: 1439027128
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Aviator_UI_BTN_1_7
-      rect:
-        serializedVersion: 2
-        x: 296
-        y: 6
-        width: 238
-        height: 91
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a01ee2b740748425ab2e4daee5b6cfc2
-      internalID: 532186298
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Aviator_UI_BTN_1_8
-      rect:
-        serializedVersion: 2
-        x: 587
-        y: 5
-        width: 238
-        height: 91
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f87f0d4bb69e24d5f947d129928466aa
-      internalID: 461954
+      spriteID: 1fc418081ff74480e8ce338a7e85703b
+      internalID: -1712872755
       vertices: []
       indices: 
       edges: []
@@ -335,15 +225,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Aviator_UI_BTN_1_0: 1586428288
-      Aviator_UI_BTN_1_1: -690027114
-      Aviator_UI_BTN_1_2: -660439456
-      Aviator_UI_BTN_1_3: -1725076856
-      Aviator_UI_BTN_1_4: 1172461083
-      Aviator_UI_BTN_1_5: 655356160
-      Aviator_UI_BTN_1_6: 1439027128
-      Aviator_UI_BTN_1_7: 532186298
-      Aviator_UI_BTN_1_8: 461954
+      avtar_0: -228655957
+      avtar_1: -1811937251
+      avtar_2: 294400099
+      avtar_3: -791753447
+      avtar_4: 1138780006
+      avtar_5: -1868538007
+      avtar_6: 433219862
+      avtar_7: -592804007
+      avtar_8: -54707584
+      avtar_9: -1712872755
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

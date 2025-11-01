@@ -5,24 +5,26 @@ using System;
 using Best.SocketIO;
 using Best.SocketIO.Events;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 public class SocketIOManager : MonoBehaviour
 {
-  [SerializeField] private CurveAnimator curveAnimator;
+  [SerializeField] private GameObject blocker;
   [SerializeField] private UIManager uiManager;
-  internal List<List<int>> LineData = null;
-  internal List<int> BonusData = null;
-  internal double GambleLimit = 0;
-  internal bool isResultdone = false;
-  private SocketManager manager;
-  private Socket gameSocket;
+  [SerializeField] private ParticipantUI participantUI;
+  [SerializeField] private ChatUI chatUI;
+  [SerializeField] private CrashHistoryManager crashHistoryManager;
+  private SocketOptions socketOptions;
+  private SocketManager MainSocketManager;
+  private SocketManager ChatSocketManager;
+  private Socket MainGameSocket;
+  private Socket ChatSocket;
   [SerializeField] internal JSFunctCalls JSManager;
   [SerializeField] protected string TestSocketURI = "https://sl3l5zz3-5000.inc1.devtunnels.ms/";
-  //protected string SocketURI = "https://6f01c04j-5000.inc1.devtunnels.ms/";
   protected string SocketURI = null;
   [SerializeField] private string testToken;
-  protected string nameSpace = "playground-multiplayer"; //BackendChanges
-  private bool isConnected = false; //Back2 Start
+  protected string gameNamespace = "playground-multiplayer"; //BackendChanges
+  protected string chatNamespace = "chat";
   private bool hasEverConnected = false;
   private float lastPongTime = 0f;
   private float pingInterval = 2f;
@@ -31,9 +33,31 @@ public class SocketIOManager : MonoBehaviour
   private const int MaxMissedPongs = 5;
   private Coroutine PingRoutine;
   private string myAuth = null;
-  internal bool crashed;
   internal bool isLoaded = false;
-  internal float tickInterval;
+  internal bool PrevRoundAck = false;
+  internal bool ReceivedRecordAck = false;
+  [SerializeField] internal List<float> bets = new();
+  [SerializeField] internal float tickInterval;
+  [SerializeField] internal float takeoffEnd;
+  [SerializeField] internal float crashDuration;
+  [SerializeField] internal float roundDuration;
+  [SerializeField] internal int chatCharCap;
+  [SerializeField] internal int chatMessagesCap;
+  [SerializeField] internal int maxHistoryCount = 17;
+  [SerializeField] internal float MaxMult = 3;
+  [SerializeField] internal float multFreq;
+  [SerializeField] internal float balance = 0;
+  [SerializeField] internal RoundStartData roundData;
+  [SerializeField] internal AviatorState CurrentState = AviatorState.None;
+  [SerializeField] internal KeyValuePair<bool, string> leftAck = new KeyValuePair<bool, string>(false, "");
+  [SerializeField] internal KeyValuePair<bool, string> rightAck = new KeyValuePair<bool, string>(false, "");
+  internal enum AviatorState
+  {
+    None,
+    RoundStart,            // betting open
+    TickerStart,           // plane flying
+    Crashed                // plane crashed
+  }
 
   private void Start()
   {
@@ -47,12 +71,13 @@ public class SocketIOManager : MonoBehaviour
     var data = JsonUtility.FromJson<AuthTokenData>(jsonData);
     SocketURI = data.socketURL;
     myAuth = data.cookie;
-    nameSpace = data.nameSpace;
   }
 
   private void Awake()
   {
+    Application.runInBackground = true;
     isLoaded = false;
+    blocker.SetActive(true);
   }
 
   private void OpenSocket()
@@ -75,8 +100,9 @@ public class SocketIOManager : MonoBehaviour
       };
     };
     options.Auth = authFunction;
+    socketOptions = options;
     // Proceed with connecting to the server
-    SetupSocketManager(options);
+    SetupGameSocketManager(options);
 #endif
   }
 
@@ -93,7 +119,7 @@ public class SocketIOManager : MonoBehaviour
       Debug.Log("My Socket is null");
       yield return null;
     }
-
+    socketOptions = options;
     Debug.Log("My Auth is not null");
     // Once myAuth is set, configure the authFunction
     Func<SocketManager, Socket, object> authFunction = (manager, socket) =>
@@ -108,41 +134,91 @@ public class SocketIOManager : MonoBehaviour
     Debug.Log("Auth function configured with token: " + myAuth);
 
     // Proceed with connecting to the server
-    SetupSocketManager(options);
+    SetupGameSocketManager(options);
   }
 
-  private void SetupSocketManager(SocketOptions options)
+  private void SetupGameSocketManager(SocketOptions options)
   {
 #if UNITY_EDITOR
     // Create and setup SocketManager for Testing
-    this.manager = new SocketManager(new Uri(TestSocketURI), options);
+    this.MainSocketManager = new SocketManager(new Uri(TestSocketURI), options);
 #else
     // Create and setup SocketManager
-    this.manager = new SocketManager(new Uri(SocketURI), options);
+    this.MainSocketManager = new SocketManager(new Uri(SocketURI), options);
 #endif
-    if (string.IsNullOrEmpty(nameSpace) | string.IsNullOrWhiteSpace(nameSpace))
+
+    if (string.IsNullOrEmpty(gameNamespace) | string.IsNullOrWhiteSpace(gameNamespace))
     {
-      gameSocket = this.manager.Socket;
+      MainGameSocket = this.MainSocketManager.Socket;
     }
     else
     {
-      Debug.Log("Namespace used :" + nameSpace);
-      gameSocket = this.manager.GetSocket("/" + nameSpace);
+      Debug.Log("Namespace used :" + gameNamespace);
+      MainGameSocket = this.MainSocketManager.GetSocket("/" + gameNamespace);
     }
     // Set subscriptions
-    gameSocket.On<ConnectResponse>(SocketIOEventTypes.Connect, OnConnected);
-    gameSocket.On(SocketIOEventTypes.Disconnect, OnDisconnected); //Back2 Start
-    gameSocket.On<Error>(SocketIOEventTypes.Error, OnError);
-    gameSocket.On<string>("game:init", HandleGameInit);
-    gameSocket.On<string>("game:crash", HandleGameCrash);
-    gameSocket.On<string>("game:tick", HandleGameTick);
-    gameSocket.On<string>("game:ticker_start", HandleTickerStart);
-    gameSocket.On<string>("game:round_start", HandleRoundStart);
-    manager.Open();
+    MainGameSocket.On<ConnectResponse>(SocketIOEventTypes.Connect, OnConnected);
+    MainGameSocket.On(SocketIOEventTypes.Disconnect, OnDisconnected); //Back2 Start
+    MainGameSocket.On<Error>(SocketIOEventTypes.Error, OnError);
+    MainGameSocket.On<string>("game:init", HandleGameInit);
+    MainGameSocket.On<string>("game:crash", HandleGameCrash);
+    MainGameSocket.On<string>("game:tick", HandleGameTick);
+    MainGameSocket.On<string>("game:ticker_start", HandleTickerStart);
+    MainGameSocket.On<string>("game:round_start", HandleRoundStart);
+    // MainGameSocket.On<string>("game:crash_history", HandleCrashHistory);
+    MainGameSocket.On<string>("leaderboard:addbet", HandleLeaderboardAddBet);
+    MainGameSocket.On<string>("leaderboard:removebet", HandleLeaderboardRemoveBet);
+    MainGameSocket.On<string>("leaderboard:usercashout", HandleLeaderboardUserCashout);
+
+    MainSocketManager.Open();
+  }
+
+  void SetupChatSocketManager()
+  {
+#if UNITY_EDITOR
+    // Create and setup SocketManager for Testing
+    this.ChatSocketManager = new SocketManager(new Uri(TestSocketURI), socketOptions);
+#else
+    // Create and setup SocketManager
+    this.ChatSocketManager = new SocketManager(new Uri(SocketURI), socketOptions);
+#endif 
+
+    if (string.IsNullOrEmpty(chatNamespace) | string.IsNullOrWhiteSpace(chatNamespace))
+    {
+      ChatSocket = this.ChatSocketManager.Socket;
+    }
+    else
+    {
+      Debug.Log("Namespace used :" + chatNamespace);
+      ChatSocket = this.ChatSocketManager.GetSocket("/" + chatNamespace);
+    }
+
+    ChatSocket.On<ConnectResponse>(SocketIOEventTypes.Connect, ChatOnConnected);
+    ChatSocket.On(SocketIOEventTypes.Disconnect, ChatOnDisconnected);
+    ChatSocket.On<Error>(SocketIOEventTypes.Error, OnError);
+    ChatSocket.On<string>("chat:init", HandleChatInit);
+    ChatSocket.On<string>("chat:result", HandleChatResult);
+
+    ChatSocketManager.Open();
+  }
+
+  void ChatOnConnected(ConnectResponse resp)
+  {
+    Debug.Log("✅ Connected to chat server.");
+  }
+
+  void ChatOnDisconnected()
+  {
+    Debug.LogWarning("⚠️ Disconnected from chat server.");
+  }
+
+  void ChatOnError(Error err)
+  {
+    Debug.LogError("Chat Socket Error Message: " + err);
   }
 
   // Connected event handler implementation
-  void OnConnected(ConnectResponse resp) //Back2 Start
+  void OnConnected(ConnectResponse resp)
   {
     Debug.Log("✅ Connected to server.");
 
@@ -151,7 +227,6 @@ public class SocketIOManager : MonoBehaviour
       // uiManager.CheckAndClosePopups();
     }
 
-    isConnected = true;
     hasEverConnected = true;
     waitingForPong = false;
     missedPongs = 0;
@@ -165,14 +240,13 @@ public class SocketIOManager : MonoBehaviour
     JSManager.SendCustomMessage("error");
 #endif
   }
-  private void OnDisconnected() //Back2 Start
+  private void OnDisconnected()
   {
     Debug.LogWarning("⚠️ Disconnected from server.");
     // uiManager.DisconnectionPopup();
-    isConnected = false;
     ResetPingRoutine();
   }
-  private void OnPongReceived(string data) //Back2 Start
+  private void OnPongReceived(string data)
   {
     // Debug.Log("✅ Received pong from server.");
     waitingForPong = false;
@@ -185,44 +259,140 @@ public class SocketIOManager : MonoBehaviour
   private void HandleGameInit(string data)
   {
     Debug.Log("INIT: " + data);
+
     JObject obj = JObject.Parse(data);
+    JObject gameData = (JObject)obj["gameData"];
 
-    tickInterval = (float)obj["gameData"]["tickInterval"] / 1000;
-    Debug.Log("TICK INTERVAL SET TO: " + tickInterval);
+    if (gameData == null)
+    {
+      Debug.LogError("Game data missing from init message!");
+      return;
+    }
 
-    crashed = false;
+    // Safely read and convert numeric values
+    tickInterval = (float?)gameData["tickInterval"] / 1000f ?? 0f;
+    takeoffEnd = (float?)gameData["planeMotionVariable"] ?? 0f;
+    crashDuration = (float?)gameData["crashInterval"] / 1000f ?? 0f;
+    roundDuration = (float?)gameData["roundInterval"] / 1000f ?? 0f;
+    maxHistoryCount = (int?)gameData["crashHistoryLimit"] ?? 17;
+    MaxMult = (float?)gameData["maxMultiplier"] ?? 10;
+    chatCharCap = (int?)gameData["chatMessageCharacterLimit"] ?? 0;
+    chatMessagesCap = (int?)gameData["chatRoomMessagesLimit"] ?? 0;
+    multFreq = (float?)gameData["multiplierFrequency"] ?? 0.02f;
+    balance = (float)obj["player"]["balance"];
+
+    // Handle bets array safely
+    JArray betsArray = (JArray)gameData["bets"];
+    if (betsArray != null)
+    {
+      bets = betsArray.Select(b => (float)b).ToList();
+      uiManager.SetInit(bets, balance);
+    }
+    else
+    {
+      Debug.LogWarning("Bets array missing in game data.");
+    }
+
+    JArray crashHistory = (JArray)gameData["crashHistory"];
+    if (crashHistory == null)
+    {
+      List<float> emptyList = new();
+      crashHistoryManager.InitHistory(emptyList);
+    }
+    else
+    {
+      List<float> initCrashPoints = ((JArray)gameData["crashHistory"])
+        .Select(x => (float)JObject.Parse(x.ToString())["crashPoint"])
+        .ToList();
+      crashHistoryManager.InitHistory(initCrashPoints); //Dummy, change append to last of the list if needed
+    }
+
+    Debug.Log($"TICK INTERVAL SET TO: {tickInterval}");
+    SetupChatSocketManager();
   }
 
   private void HandleTickerStart(string data)
   {
+    CurrentState = AviatorState.TickerStart;
     Debug.Log("TICKER_START: " + data);
-    crashed = false;
-    curveAnimator.ResetVisual();
+    uiManager.OnTickerStart();
   }
   private void HandleRoundStart(string data)
   {
+    CurrentState = AviatorState.RoundStart;
     Debug.Log("ROUND_START: " + data);
-    crashed = false;
+    roundData = JsonUtility.FromJson<RoundStartData>(data);
+    uiManager.OnRoundStart(roundDuration, roundData);
+    participantUI.PopulateFromRoundStart(roundData);
   }
 
   private void HandleGameTick(string data)
   {
-    Debug.Log("TICK: " + data);
+    CurrentState = AviatorState.TickerStart;
+    // Debug.Log("TICK: " + data);
     JObject obj = JObject.Parse(data);
     float mult = (float)obj["multiplier"];
-
-    if (!crashed)
-    {
-      curveAnimator.OnMultiplierUpdate(mult, tickInterval);
-    }
+    // Debug.Log("TICK: mult:" + mult);
+    uiManager.OnMultiplierUpdate(mult, tickInterval);
   }
 
   private void HandleGameCrash(string data)
   {
+    CurrentState = AviatorState.Crashed;
     Debug.Log("CRASH: " + data);
     JObject obj = JObject.Parse(data);
-    crashed = true;
-    curveAnimator.OnCrash((float)obj["crashPoint"]);
+    float crashPoint = (float)obj["crashPoint"];
+    uiManager.OnCrash(crashPoint, crashDuration);
+    StartCoroutine(crashHistoryManager.AddCrash(crashPoint));
+  }
+
+  void HandleLeaderboardAddBet(string data)
+  {
+    Debug.Log("LEADERBOARD_ADDBET: " + data);
+    participantUI.OnAddBet(JObject.Parse(data));
+  }
+
+  void HandleLeaderboardRemoveBet(string data)
+  {
+    Debug.Log("LEADERBOARD_REMOVEBET: " + data);
+    participantUI.OnRemoveBet(JObject.Parse(data));
+  }
+
+  void HandleLeaderboardUserCashout(string data)
+  {
+    Debug.Log("LEADERBOARD_USERCASHOUT: " + data);
+    participantUI.OnUserCashout(JObject.Parse(data));
+  }
+
+  void HandleChatInit(string data)
+  {
+    Debug.Log("CHAT INIT: " + data);
+    JObject crashHistoryObj = JObject.Parse(data);
+    JArray arr = (JArray)crashHistoryObj["chatHistory"];
+
+    List<string> usernames = new();
+    List<string> messages = new();
+    foreach (var item in arr)
+    {
+      JObject obj = JObject.Parse(item.ToString());
+      string username = obj["username"].ToString();
+      string message = obj["message"].ToString();
+      // Debug.Log(message);
+      usernames.Add(username);
+      messages.Add(message);
+    }
+    chatUI.InitChat(usernames, messages);
+    blocker.SetActive(false);
+#if UNITY_WEBGL && !UNITY_EDITOR
+    JSManager.SendCustomMessage("OnEnter");
+#endif
+  }
+
+  void HandleChatResult(string data)
+  {
+    Debug.Log("CHAT RESULT: " + data);
+    JObject obj = JObject.Parse(data);
+    chatUI.OnChatResult(obj["username"].ToString(), obj["message"].ToString());
   }
 
   private void SendPing()
@@ -264,7 +434,6 @@ public class SocketIOManager : MonoBehaviour
         if (missedPongs >= MaxMissedPongs)
         {
           Debug.LogError("❌ Unable to connect to server — 5 consecutive pongs missed.");
-          isConnected = false;
           // uiManager.DisconnectionPopup();
           yield break;
         }
@@ -282,16 +451,16 @@ public class SocketIOManager : MonoBehaviour
   private void SendDataWithNamespace(string eventName, string json = null)
   {
     // Send the message
-    if (gameSocket != null && gameSocket.IsOpen)
+    if (MainGameSocket != null && MainGameSocket.IsOpen)
     {
       if (json != null)
       {
-        gameSocket.Emit(eventName, json);
+        MainGameSocket.Emit(eventName, json);
         Debug.Log("JSON data sent: " + json);
       }
       else
       {
-        gameSocket.Emit(eventName);
+        MainGameSocket.Emit(eventName);
       }
     }
     else
@@ -300,7 +469,7 @@ public class SocketIOManager : MonoBehaviour
     }
   }
 
-  void CloseGame()
+  internal void CloseGame()
   {
     Debug.Log("Unity: Closing Game");
     StartCoroutine(CloseSocket());
@@ -313,8 +482,10 @@ public class SocketIOManager : MonoBehaviour
 
     Debug.Log("Closing Socket");
 
-    manager?.Close();
-    manager = null;
+    MainSocketManager?.Close();
+    ChatSocketManager?.Close();
+    MainSocketManager = null;
+    ChatSocketManager = null;
 
     Debug.Log("Waiting for socket to close");
 
@@ -326,12 +497,252 @@ public class SocketIOManager : MonoBehaviour
     JSManager.SendCustomMessage("OnExit"); //Telling the react platform user wants to quit and go back to homepage
 #endif
   }
+
+  internal void CashoutBet(CashoutData cashoutData)
+  {
+    Debug.Log("Cashing out bet: " + JsonUtility.ToJson(cashoutData));
+    string jsonData = JsonUtility.ToJson(cashoutData);
+    MainGameSocket.ExpectAcknowledgement<string>(OnBetAcknowledgementReceived).Emit("request", jsonData);
+  }
+
+  internal void CancelBet(CancelData cancelData)
+  {
+    Debug.Log("Cancelling bet: " + JsonUtility.ToJson(cancelData));
+    string jsonData = JsonUtility.ToJson(cancelData);
+    MainGameSocket.ExpectAcknowledgement<string>(OnBetAcknowledgementReceived).Emit("request", jsonData);
+  }
+
+  internal void PlaceBet(BetData betData)
+  {
+    Debug.Log("Placing bet: " + JsonUtility.ToJson(betData));
+    string jsonData = JsonUtility.ToJson(betData);
+    MainGameSocket.ExpectAcknowledgement<string>(OnBetAcknowledgementReceived).Emit("request", jsonData);
+  }
+
+  internal void RequestRecordsData(int Range, int By)
+  {
+    ReceivedRecordAck = false;
+    string sortBy = "";
+    string sortRange = "";
+
+    switch (By)
+    {
+      case 0:
+        sortBy = "x";
+        break;
+      case 1:
+        sortBy = "wins";
+        break;
+      case 2:
+        sortBy = "round";
+        break;
+    }
+
+    switch (Range)
+    {
+      case 0:
+        sortRange = "day";
+        break;
+      case 1:
+        sortRange = "month";
+        break;
+      case 2:
+        sortRange = "year";
+        break;
+    }
+
+    RecordsData recordsData = new()
+    {
+      payload = new()
+      {
+        options = new()
+        {
+          sortBy = sortBy,
+          sortRage = sortRange
+        }
+      }
+    };
+    string jsonData = JsonUtility.ToJson(recordsData);
+    Debug.Log("Req records: " + jsonData);
+    MainGameSocket.ExpectAcknowledgement<string>(RecordsAck).Emit("request", jsonData);
+  }
+  
+  void RecordsAck(string data)
+  {
+    ReceivedRecordAck = true;
+    Debug.Log("Records Ack: " + data);
+  }
+
+  internal void SendChatMessage(string message)
+  {
+    Debug.Log("Sending message: " + message);
+    Message msg = new();
+    msg.payload.message = message;
+    string jsonData = JsonUtility.ToJson(msg);
+    ChatSocket.Emit("request", jsonData);
+  }
+
+  void OnBetAcknowledgementReceived(string data)
+  {
+    Debug.Log("ack: " + data);
+    if (leftAck.Key == false && leftAck.Value == "wait")
+    {
+      leftAck = new KeyValuePair<bool, string>(true, data);
+    }
+    if (rightAck.Key == false && rightAck.Value == "wait")
+    {
+      rightAck = new KeyValuePair<bool, string>(true, data);
+    }
+  }
+
+  internal void SendPreviousRoundReq()
+  {
+    Debug.Log("Send Prev Round");
+    PrevRoundAck = false;
+    PrevRoundReqData reqData = new();
+    MainGameSocket.ExpectAcknowledgement<string>(OnPrevRoundAck).Emit("request", JsonUtility.ToJson(reqData));
+  }
+
+  void OnPrevRoundAck(string data)
+  {
+    Debug.Log("PREV ROUND: " + data);
+    PrevRoundAck = true;
+  }
+}
+
+[Serializable]
+public class RecordsData
+{
+  public string type = "GET_RECORDS";
+  public RecordsDataPayload payload = new();
+}
+
+[Serializable]
+public class RecordsDataPayload
+{
+  public Recordsoptions options = new();
+}
+
+[Serializable]
+public class Recordsoptions
+{
+  public string sortRage;
+  public string sortBy;
+}
+
+[Serializable]
+public class PrevRoundReqData
+{
+  public string type = "PREVIOUS_ROUND";
+}
+
+[Serializable]
+public class RoundStartData
+{
+  public string serverHash;
+  public List<Participant> participants;
+  public int totalBetAmount;
+  public int totalWinAmount;
+}
+
+[Serializable]
+public class Participant
+{
+  public string betId;
+  public string userId;
+  public string username;
+  public int betAmount;
+  public int multiplier;
+  public int winAmount;
+  public bool cashedOut;
+  public string clientSeed;
 }
 
 [Serializable]
 public class AuthTokenData
 {
   public string socketURL;
-  public string nameSpace;
   public string cookie;
+}
+
+[Serializable]
+public class BetData
+{
+  public string type;
+  public string roomId;
+  public string serverHash;
+  public BetAmountData payload;
+}
+
+[Serializable]
+public class BetAmountData
+{
+  public int betIndex;
+  public string clientSeed;
+  public string betId;
+}
+
+[Serializable]
+public class CashoutData
+{
+  public string type;
+  public string roomId;
+  public CashoutPayload payload;
+}
+
+[Serializable]
+public class CashoutPayload
+{
+  public int betIndex;
+  public string betId;
+}
+
+[Serializable]
+public class CancelData
+{
+  public string type;
+  public string roomId;
+  public CancelPayload payload;
+}
+
+[Serializable]
+public class CancelPayload
+{
+  public int betIndex;
+  public string betId;
+}
+
+[Serializable]
+public class AckData
+{
+  public bool success;
+  public AckPayload payload;
+  public Player player;
+}
+
+[Serializable]
+public class Player
+{
+  public float balance;
+}
+
+[Serializable]
+public class AckPayload
+{
+  public bool isUserInQueue;
+  public string message;
+  public string betId;
+}
+
+[Serializable]
+public class Message
+{
+  public string type = "MESSAGE";
+  public ChatMessageData payload = new();
+}
+
+[Serializable]
+public class ChatMessageData
+{
+  public string message;
 }
