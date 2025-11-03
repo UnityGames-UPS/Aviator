@@ -38,7 +38,7 @@ public class SocketIOManager : MonoBehaviour
   internal bool ReceivedRecordAck = false;
   [SerializeField] internal List<float> bets = new();
   [SerializeField] internal float tickInterval;
-  [SerializeField] internal float takeoffEnd;
+  [SerializeField] internal float takeOffDuration;
   [SerializeField] internal float crashDuration;
   [SerializeField] internal float roundDuration;
   [SerializeField] internal int chatCharCap;
@@ -47,7 +47,9 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] internal float MaxMult = 3;
   [SerializeField] internal float multFreq;
   [SerializeField] internal float balance = 0;
+  [SerializeField] internal LastRoundResult lastRoundResult;
   [SerializeField] internal RoundStartData roundData;
+  [SerializeField] internal AnalyticsRoot analyticsData;
   [SerializeField] internal AviatorState CurrentState = AviatorState.None;
   [SerializeField] internal KeyValuePair<bool, string> leftAck = new KeyValuePair<bool, string>(false, "");
   [SerializeField] internal KeyValuePair<bool, string> rightAck = new KeyValuePair<bool, string>(false, "");
@@ -271,14 +273,14 @@ public class SocketIOManager : MonoBehaviour
 
     // Safely read and convert numeric values
     tickInterval = (float?)gameData["tickInterval"] / 1000f ?? 0f;
-    takeoffEnd = (float?)gameData["planeMotionVariable"] ?? 0f;
+    takeOffDuration = (float?)gameData["planeMotionVariable"] ?? 0f;
     crashDuration = (float?)gameData["crashInterval"] / 1000f ?? 0f;
     roundDuration = (float?)gameData["roundInterval"] / 1000f ?? 0f;
     maxHistoryCount = (int?)gameData["crashHistoryLimit"] ?? 17;
     MaxMult = (float?)gameData["maxMultiplier"] ?? 10;
     chatCharCap = (int?)gameData["chatMessageCharacterLimit"] ?? 0;
     chatMessagesCap = (int?)gameData["chatRoomMessagesLimit"] ?? 0;
-    multFreq = (float?)gameData["multiplierFrequency"] ?? 0.02f;
+    multFreq = (float?)gameData["minMultiplierFrequency"] ?? 0.02f;
     balance = (float)obj["player"]["balance"];
 
     // Handle bets array safely
@@ -304,11 +306,40 @@ public class SocketIOManager : MonoBehaviour
       List<float> initCrashPoints = ((JArray)gameData["crashHistory"])
         .Select(x => (float)JObject.Parse(x.ToString())["crashPoint"])
         .ToList();
-      crashHistoryManager.InitHistory(initCrashPoints); //Dummy, change append to last of the list if needed
+      crashHistoryManager.InitHistory(initCrashPoints);
+    }
+
+    List<Participant> participants = new();
+    float totalBet = 0;
+    float totalWin = 0;
+    RoundStartData roundData = null;
+    JObject leaderboardInfoObj = JObject.Parse(data);
+    JToken leaderboardToken = obj.SelectToken("gameData.leaderboardInfo");
+    if (leaderboardToken == null || leaderboardToken.Type == JTokenType.Null)
+    {
+      Debug.LogWarning("ℹ️ No leaderboard data available yet (likely first round or no bets).");
+    }
+    else
+    {
+      JObject leaderboard = (JObject)obj["gameData"]?["leaderboardInfo"];
+      JArray participantsArray = (JArray)leaderboard["participants"];
+      participants = participantsArray.ToObject<List<Participant>>();
+
+      totalBet = leaderboard.Value<float>("totalBetAmount");
+      totalWin = leaderboard.Value<float>("totalWinAmount");
+
+      roundData = new()
+      {
+        participants = participants,
+        totalBetAmount = totalBet,
+        totalWinAmount = totalWin
+      };
     }
 
     Debug.Log($"TICK INTERVAL SET TO: {tickInterval}");
     SetupChatSocketManager();
+    if (roundData != null)
+      participantUI.PopulateFromRoundStart(roundData);
   }
 
   private void HandleTickerStart(string data)
@@ -566,11 +597,12 @@ public class SocketIOManager : MonoBehaviour
     Debug.Log("Req records: " + jsonData);
     MainGameSocket.ExpectAcknowledgement<string>(RecordsAck).Emit("request", jsonData);
   }
-  
+
   void RecordsAck(string data)
   {
-    ReceivedRecordAck = true;
     Debug.Log("Records Ack: " + data);
+    analyticsData = JsonUtility.FromJson<AnalyticsRoot>(data);
+    ReceivedRecordAck = true;
   }
 
   internal void SendChatMessage(string message)
@@ -597,7 +629,6 @@ public class SocketIOManager : MonoBehaviour
 
   internal void SendPreviousRoundReq()
   {
-    Debug.Log("Send Prev Round");
     PrevRoundAck = false;
     PrevRoundReqData reqData = new();
     MainGameSocket.ExpectAcknowledgement<string>(OnPrevRoundAck).Emit("request", JsonUtility.ToJson(reqData));
@@ -606,8 +637,41 @@ public class SocketIOManager : MonoBehaviour
   void OnPrevRoundAck(string data)
   {
     Debug.Log("PREV ROUND: " + data);
+    PrevRoundRoot prevRound = JsonUtility.FromJson<PrevRoundRoot>(data);
+    if (prevRound.payload.lastRoundResult != null)
+    {
+      lastRoundResult = prevRound.payload.lastRoundResult;
+    }
+    else
+    {
+      lastRoundResult = new()
+      {
+        crashPoint = 0.00f
+      };
+    }
     PrevRoundAck = true;
   }
+}
+
+[Serializable]
+public class LastRoundResult
+{
+  public float crashPoint;
+  public List<Participant> participants;
+}
+
+[Serializable]
+public class PrevRoundPayload
+{
+  public LastRoundResult lastRoundResult;
+}
+
+[Serializable]
+public class PrevRoundRoot
+{
+  public bool success;
+  public string id;
+  public PrevRoundPayload payload;
 }
 
 [Serializable]
@@ -641,8 +705,8 @@ public class RoundStartData
 {
   public string serverHash;
   public List<Participant> participants;
-  public int totalBetAmount;
-  public int totalWinAmount;
+  public double totalBetAmount;
+  public double totalWinAmount;
 }
 
 [Serializable]
@@ -745,4 +809,38 @@ public class Message
 public class ChatMessageData
 {
   public string message;
+}
+
+[Serializable]
+public class AnalyticsRecord
+{
+  public string round_id;
+  public string created_at;
+  public string user_id;
+  public int bet_amount;
+  public int win_amount;
+  public int multiplier;
+  public RoundDetails round_details;
+}
+
+[Serializable]
+public class AnalyticsPayload
+{
+  public List<AnalyticsRecord> analyticsRecords;
+}
+
+[Serializable]
+public class AnalyticsRoot
+{
+  public bool success;
+  public string id;
+  public AnalyticsPayload payload;
+}
+
+[Serializable]
+public class RoundDetails
+{
+  public float crashPoint { get; set; }
+  public string server_seed { get; set; }
+  public List<string> client_seeds { get; set; }
 }

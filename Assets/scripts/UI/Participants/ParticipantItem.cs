@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public class ParticipantItem : MonoBehaviour
 {
   [Header("UI")]
-  [SerializeField] private Image  avatarImage;
+  [SerializeField] private Image avatarImage;
   [SerializeField] private TMP_Text usernameText;
   [SerializeField] private TMP_Text betText;
   [SerializeField] private TMP_Text cashoutMultText;
   [SerializeField] private TMP_Text cashoutWinText;
-  [SerializeField] private Image cashoutBgImage;      // optional, for user, etc.
+  [SerializeField] private Image cashoutBgImage;
   [SerializeField] private Color blackColor;
   [SerializeField] private Color greenColor;
   [SerializeField] private Sprite[] ProfileImages;
@@ -23,7 +23,9 @@ public class ParticipantItem : MonoBehaviour
     BetId = p.betId;
     UserId = p.userId;
     cashoutBgImage.color = blackColor;
-    usernameText.text = string.IsNullOrEmpty(p.username) ? "—" : p.username;
+    string userId = p.userId;
+    string username = userId.Length > 2 ? $"{userId[0]}****{userId[^1]}" : userId;
+    usernameText.text = username;
     betText.text = p.betAmount.ToString("F2");
     cashoutMultText.text = "";
     cashoutWinText.text = "";

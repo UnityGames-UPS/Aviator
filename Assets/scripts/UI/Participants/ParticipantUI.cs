@@ -100,8 +100,8 @@ public class ParticipantUI : GenericObjectPool<ParticipantItem>
       float targetFill = 0f;
       if (totalBetsCount > 0)
         targetFill = (float)cashedOutCount / totalBetsCount;
-      
-      DOTween.Kill(GreenFillerImage); 
+
+      DOTween.Kill(GreenFillerImage);
       GreenFillerImage
           .DOFillAmount(targetFill, 0.3f)
           .SetEase(Ease.OutQuad)
@@ -122,7 +122,8 @@ public class ParticipantUI : GenericObjectPool<ParticipantItem>
 
     var item = base.GetFromPool();
     item.Set(p);
-
+    item.transform.localScale = Vector3.one * 0.95f;
+    item.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
     _rowsByBetId[p.betId] = item;
 
     // Optional custom sorting can be done here by reordering item.transform.SetSiblingIndex(...)

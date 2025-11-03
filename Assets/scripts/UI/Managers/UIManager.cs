@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
 {
   [SerializeField] private CurveAnimator curveAnimator;
   [SerializeField] private SocketIOManager socket;
+  [SerializeField] private AnalyticsUIManager analyticsUIManager;
+  [SerializeField] private PrevRoundManager prevRoundManager;
 
   [Header("Multiplier Objects and Values")]
   [SerializeField] private TMP_Text multiplierText;
@@ -115,6 +117,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private int currentTopBetTimeIndex;
   [SerializeField] private string clientSeed;
   [SerializeField] private string roundIdentifier = "";
+
   private bool blueColTime = false;
   private bool purpleColTime = false;
   private bool pinkColTime = false;
@@ -188,6 +191,9 @@ public class UIManager : MonoBehaviour
     TopBetTimeButtons[0].onClick.AddListener(() => TopBetsButtonClicked(0, false));
     TopBetTimeButtons[1].onClick.AddListener(() => TopBetsButtonClicked(1, false));
     TopBetTimeButtons[2].onClick.AddListener(() => TopBetsButtonClicked(2, false));
+
+    TopBetsButtonClicked(0, true, false);
+    TopBetsButtonClicked(0, false, false);
 
     LeftTopBarButtons[0].onClick.AddListener(() => BetTopBarButtonClicked(0, true));
     LeftTopBarButtons[1].onClick.AddListener(() => BetTopBarButtonClicked(1, true));
@@ -582,6 +588,7 @@ public class UIManager : MonoBehaviour
 
   internal void OnTickerStart()
   {
+    curveAnimator.StartFlyingAnimation();
     multColorTween?.Kill();
     multiplierText.DOFade(1f, 0.3f).SetEase(Ease.OutSine);
 
@@ -705,8 +712,6 @@ public class UIManager : MonoBehaviour
 
   internal void OnMultiplierUpdate(float newMult, float tick)
   {
-    curveAnimator.OnMultiplierUpdate(newMult, tick);
-
     float startVal = displayedMult;
     targetMult = newMult;
 
@@ -742,14 +747,14 @@ public class UIManager : MonoBehaviour
       multColorTween2 = multiplierText.DOColor(Color.white, 0.3f).SetEase(Ease.OutSine);
     }
 
-    if (mult < socket.takeoffEnd && !blueColTime)
+    if (mult < 2 && !blueColTime)
     {
       // Debug.Log("blur color blue");
       blueColTime = true;
       blurTween?.Kill();
       blurTween = blurImage.DOColor(blueColor, 0.3f).SetEase(Ease.InSine);
     }
-    else if (mult > socket.takeoffEnd && !purpleColTime)
+    else if (mult > 2 && !purpleColTime)
     {
       // Debug.Log("blur color purple, mult: " + mult);
       purpleColTime = true;
@@ -816,7 +821,7 @@ public class UIManager : MonoBehaviour
     }
   }
 
-  void TopBetsButtonClicked(int index, bool isFilter)
+  void TopBetsButtonClicked(int index, bool isFilter, bool reqData = true)
   {
     ButtonAnimation(index, isFilter ? TopBetFilterButtons : TopBetTimeButtons);
 
@@ -824,7 +829,8 @@ public class UIManager : MonoBehaviour
     currentTopBetTimeIndex = isFilter ? currentTopBetTimeIndex : index;
 
     ShowTopBetsUI();
-    StartCoroutine(ShowInfoUI(2));
+    if (reqData)
+      StartCoroutine(ShowInfoUI(2));
   }
 
   void ShowTopBetsUI()
@@ -860,6 +866,7 @@ public class UIManager : MonoBehaviour
       InfoUIPanels[^1].SetActive(true);
       socket.SendPreviousRoundReq();
       yield return new WaitUntil(() => socket.PrevRoundAck);
+      prevRoundManager.PopulatePreviousRounds();
       InfoUIPanels[^1].SetActive(false);
     }
     if (index == 2)
@@ -867,6 +874,7 @@ public class UIManager : MonoBehaviour
       InfoUIPanels[^1].SetActive(true);
       socket.RequestRecordsData(currentTopBetTimeIndex, currentTopBetFilterIndex);
       yield return new WaitUntil(() => socket.ReceivedRecordAck);
+      analyticsUIManager.PopulateAnalyticsUI();
       InfoUIPanels[^1].SetActive(false);
     }
 

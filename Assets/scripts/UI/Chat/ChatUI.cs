@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,8 +16,8 @@ public class ChatUI : GenericObjectPool<ChatView>
   protected override void Awake()
   {
     base.Awake();
-    sendButton.onClick.AddListener(() => SendChatMessage());
-    inputField.onSubmit.AddListener((s) => SendChatMessage());
+    sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage()));
+    inputField.onEndEdit.AddListener((s) => OnEndEdit());
   }
   internal void InitChat(List<string> usernames, List<string> messages)
   {
@@ -45,6 +46,8 @@ public class ChatUI : GenericObjectPool<ChatView>
     item.SetMessage(username, message);
     item.transform.SetAsLastSibling();
     activeMessages.Enqueue(item);
+    item.transform.localScale = Vector3.one * 0.95f;
+    item.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
   }
 
   private IEnumerator ScrollToBottomNextFrame()
@@ -56,28 +59,67 @@ public class ChatUI : GenericObjectPool<ChatView>
       ScrollRect.verticalNormalizedPosition = 0f;
   }
 
-  private void SendChatMessage()
+  void OnEndEdit()
   {
+    bool enterPressed = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter);
+    bool escapePressed = Input.GetKeyDown(KeyCode.Escape);
+    if (enterPressed)
+    {
+      StartCoroutine(SendChatMessage());
+    }
+    else if (escapePressed)
+    {
+      DOVirtual.DelayedCall(0.001f, () =>
+      {
+        inputField.text = "";
+      });
+    }
+  }
+
+  private IEnumerator SendChatMessage()
+  {
+    ToggleUI(false);
     string msg = inputField.text.Trim();
 
     if (string.IsNullOrEmpty(msg))
     {
-      return;
+      ToggleUI(true);
+      yield break;
     }
-
-    inputField.text = "";
 
     if (msg.Contains("Char Limit Exceeded"))
     {
-      return;
+      ToggleUI(true);
+      yield break;
     }
 
     if (msg.Length > socketIOManager.chatCharCap)
     {
       inputField.text = "<color=red>Char Limit Exceeded!!!</color>";
-      return;
+      ToggleUI(true);
+      yield break;
     }
-    
+
+    inputField.text = "";
     socketIOManager.SendChatMessage(msg);
+
+    yield return new WaitForSeconds(1f);
+
+    ToggleUI(true);
   }
+
+  void ToggleUI(bool toggle)
+  {
+    inputField.interactable = toggle;
+    if (toggle)
+    {
+      inputField.ActivateInputField();
+    }
+    else
+    {
+      inputField.DeactivateInputField();
+    }
+    sendButton.interactable = toggle;
+  }
+
 }

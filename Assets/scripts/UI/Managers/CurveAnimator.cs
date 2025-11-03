@@ -3,15 +3,11 @@ using DG.Tweening;
 
 public class CurveAnimator : MonoBehaviour
 {
+
   [SerializeField] private SocketIOManager socket;
   [SerializeField] private CurveFillerUI curve;
 
-  [Header("Crash Settings")]
-  [SerializeField] private float crashXoffset = 2000;
-  [SerializeField] private float crashYoffset;
-  [SerializeField] private float slowCrashDuration = 4f;
-  [SerializeField] private float fastCrashDuration = 2f;
-  [SerializeField] private float fastCrashTakeoffOffset = 0.3f;
+  [SerializeField] private float loopDuration = 2f;
 
   [Header("Curve Points")]
   [SerializeField] private float zeroHM = 0.01f;
@@ -23,28 +19,18 @@ public class CurveAnimator : MonoBehaviour
   [SerializeField] private float bottomHM = 0.64f;
   [SerializeField] private float bottomWM = 0.85f;
 
-  [Header("Flight Settings")]
-  [Tooltip("How many multiplier units equal one full oscillation")]
-  [SerializeField] private float loopMultPerCycle = 4f;
+  [SerializeField] private float crashXoffset = 2000;
+  [SerializeField] private float crashYoffset;
+  [SerializeField] private float slowCrashDuration = 4f;
+  [SerializeField] private float fastCrashDuration = 2f;
+  [SerializeField] private float fastCrashTakeoffOffset = 0.3f;
 
-  [Tooltip("Maximum multiplier cap (for damping calculations)")]
-  [SerializeField] private float crashLimit = 100f;
 
-  [Tooltip("Initial oscillation amplitude (1 = full range)")]
-  [SerializeField] private float loopAmplitude = 1f;
-
-  [Tooltip("Amplitude decay rate per multiplier unit (0 = no decay)")]
-  [SerializeField] private float amplitudeDecay = 0.009f;
-
-  private bool inLoop = false;
-  private float lastMult = 1f;
-  private float targetMult = 1f;
-  private float lastPacketTime;
-  private float nextPacketTime;
-  private float tickInterval = 0.1f;
+  private Sequence loopSequence;
+  private Sequence initialSequence;
   private float predictedFlightMult;
-  private float loopPhase;
-  private bool loopJustStarted = false;
+  private Tween takeOffTween;
+  private Tween loopTween;
 
   void Awake()
   {
@@ -53,10 +39,8 @@ public class CurveAnimator : MonoBehaviour
 
   internal void ResetVisual()
   {
-    inLoop = false;
-    loopJustStarted = false;
-    loopPhase = 0f;
-    lastMult = targetMult = 1f;
+    takeOffTween?.Kill();
+    loopTween?.Kill();
     curve.enabled = true;
     curve.followCurve = true;
     curve.heightMultiplier = zeroHM;
@@ -64,80 +48,49 @@ public class CurveAnimator : MonoBehaviour
     curve.SetVerticesDirty();
   }
 
-  internal void OnMultiplierUpdate(float newMult, float serverTickInterval)
+  internal void StartTakeoff()
   {
-    tickInterval = serverTickInterval;
-    lastMult = targetMult;
-    targetMult = Mathf.Clamp(newMult, 1f, crashLimit);
-
-    lastPacketTime = Time.time;
-    nextPacketTime = Time.time + tickInterval;
+    ResetVisual();
   }
 
-  void Update()
+  internal void StartFlyingAnimation()
   {
-    if (socket.CurrentState != SocketIOManager.AviatorState.TickerStart) return;
-
-    float t = 0f;
-    if (nextPacketTime > lastPacketTime)
-      t = Mathf.InverseLerp(lastPacketTime, nextPacketTime, Time.time);
-    t = Mathf.Clamp01(t);
-
-    predictedFlightMult = Mathf.Lerp(lastMult, targetMult, t);
-    ApplyMultiplier(predictedFlightMult);
-  }
-
-  private void ApplyMultiplier(float mult)
-  {
-    if (mult <= socket.takeoffEnd)
-    {
-      // --- TAKEOFF ---
-      float t = Mathf.InverseLerp(1f, socket.takeoffEnd, mult);
-      float ease = Mathf.SmoothStep(0f, 1f, t);
-
-      curve.heightMultiplier = Mathf.Lerp(zeroHM, topHM, ease);
-      curve.widthMultiplier = Mathf.Lerp(zeroWM, topWM, ease);
-
-      inLoop = false;
-      loopJustStarted = true;
-    }
-    else
-    {
-      // --- LOOP ---
-      if (!inLoop)
+    ResetVisual();
+    // Initial move (zero -> top)
+    initialSequence = DOTween.Sequence()
+      .Append(DOTween.To(() => curve.heightMultiplier,
+        v => { curve.heightMultiplier = v; curve.SetVerticesDirty(); },
+        topHM, socket.takeOffDuration)
+        .SetEase(Ease.OutSine))
+      .Join(DOTween.To(() => curve.widthMultiplier,
+        v => { curve.widthMultiplier = v; curve.SetVerticesDirty(); },
+        topWM, socket.takeOffDuration)
+        .SetEase(Ease.OutSine))
+      .OnComplete(() =>
       {
-        inLoop = true;
+        // small blend delay before loop
+        DOVirtual.DelayedCall(0.1f, StartLoop);
+      });
+  }
 
-        if (loopJustStarted)
-        {
-          // start perfectly at top
-          loopPhase = Mathf.PI / 2f; // sin(π/2) = +1 → top
-          loopJustStarted = false;
-        }
-      }
-
-      // Advance phase continuously
-      float loopSpeed = (1f / loopMultPerCycle) * Mathf.PI * 2f;
-      loopPhase += Time.deltaTime * loopSpeed;
-      if (loopPhase > Mathf.PI * 2f) loopPhase -= Mathf.PI * 2f;
-
-      // Amplitude shrinks over multiplier
-      float amplitudeFactor = Mathf.Clamp01(1f - ((mult - socket.takeoffEnd) * amplitudeDecay));
-      float currentAmplitude = loopAmplitude * amplitudeFactor;
-
-      // Map sine: +1 = top, -1 = bottom ✅
-      float sine = Mathf.Sin(loopPhase);
-      float osc = (-(sine * 0.5f) + 0.5f) * currentAmplitude;
-
-      curve.heightMultiplier = Mathf.Lerp(topHM, bottomHM, osc);
-      curve.widthMultiplier = Mathf.Lerp(topWM, bottomWM, osc);
-    }
-
-    curve.SetVerticesDirty();
+  void StartLoop()
+  {
+    loopSequence = DOTween.Sequence()
+      .Append(DOTween.To(() => curve.heightMultiplier,
+        v => { curve.heightMultiplier = v; curve.SetVerticesDirty(); },
+        bottomHM, loopDuration)
+        .SetEase(Ease.InOutSine))
+      .Join(DOTween.To(() => curve.widthMultiplier,
+        v => { curve.widthMultiplier = v; curve.SetVerticesDirty(); },
+        bottomWM, loopDuration)
+        .SetEase(Ease.InOutSine))
+      .SetLoops(-1, LoopType.Yoyo);
   }
 
   internal void OnCrash()
   {
+    initialSequence?.Kill();
+    loopSequence?.Kill();
     curve.followCurve = false;
     curve.heightMultiplier = 0;
     curve.widthMultiplier = 0;
@@ -157,8 +110,9 @@ public class CurveAnimator : MonoBehaviour
     float crashX = Plane.anchoredPosition.x + crashXoffset;
     float crashY = Plane.anchoredPosition.y + crashYoffset;
 
-    float CrashDuration = predictedFlightMult > socket.takeoffEnd - fastCrashTakeoffOffset ? slowCrashDuration : fastCrashDuration;
+    float CrashDuration = predictedFlightMult > socket.takeOffDuration - fastCrashTakeoffOffset ? slowCrashDuration : fastCrashDuration;
 
     Plane.DOAnchorPos(new Vector2(crashX, crashY), CrashDuration);
   }
 }
+
