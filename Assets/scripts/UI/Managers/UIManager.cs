@@ -9,9 +9,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-  [SerializeField] private CurveAnimator curveAnimator;
+  [SerializeField] private CurveManager curveAnimator;
   [SerializeField] private SocketIOManager socket;
   [SerializeField] private AnalyticsUIManager analyticsUIManager;
+  [SerializeField] private RoundAnalyticsManager roundAnalyticsManager;
   [SerializeField] private PrevRoundManager prevRoundManager;
 
   [Header("Multiplier Objects and Values")]
@@ -588,6 +589,8 @@ public class UIManager : MonoBehaviour
 
   internal void OnTickerStart()
   {
+    blurImage.enabled = true;
+    blurImage.color = new Color(blueColor.r, blueColor.g, blueColor.b, 0f);
     curveAnimator.StartFlyingAnimation();
     multColorTween?.Kill();
     multiplierText.DOFade(1f, 0.3f).SetEase(Ease.OutSine);
@@ -650,8 +653,10 @@ public class UIManager : MonoBehaviour
     multiplierText.text = crashMult.ToString("F2") + "x";
 
     multiplierText.DOFade(0, CrashDuration / 3).SetDelay(CrashDuration / 2);
-    blurTween?.Kill();
-    blurImage.color = new Color(blueColor.r, blueColor.g, blueColor.b, 0f);
+
+    blurImage.DOKill();
+    blurImage.color = new Color(blurImage.color.r, blurImage.color.g, blurImage.color.b, 0f);
+    blurImage.enabled = false;
   }
 
   internal void OnRoundStart(float roundDuration, RoundStartData roundStartData)
@@ -874,7 +879,14 @@ public class UIManager : MonoBehaviour
       InfoUIPanels[^1].SetActive(true);
       socket.RequestRecordsData(currentTopBetTimeIndex, currentTopBetFilterIndex);
       yield return new WaitUntil(() => socket.ReceivedRecordAck);
-      analyticsUIManager.PopulateAnalyticsUI();
+      if (currentTopBetFilterIndex == 2)
+      {
+        roundAnalyticsManager.PopulateRoundAnalytics();
+      }
+      else
+      {
+        analyticsUIManager.PopulateAnalyticsUI();
+      }
       InfoUIPanels[^1].SetActive(false);
     }
 

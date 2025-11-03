@@ -11,7 +11,7 @@ public class SocketIOManager : MonoBehaviour
 {
   [SerializeField] private GameObject blocker;
   [SerializeField] private UIManager uiManager;
-  [SerializeField] private ParticipantUI participantUI;
+  [SerializeField] private ParticipantManager participantUI;
   [SerializeField] private ChatUI chatUI;
   [SerializeField] private CrashHistoryManager crashHistoryManager;
   private SocketOptions socketOptions;
@@ -380,20 +380,76 @@ public class SocketIOManager : MonoBehaviour
   void HandleLeaderboardAddBet(string data)
   {
     Debug.Log("LEADERBOARD_ADDBET: " + data);
-    participantUI.OnAddBet(JObject.Parse(data));
+    try
+    {
+      var obj = JObject.Parse(data);
+      var pToken = obj["participant"];
+      if (pToken == null)
+      {
+        Debug.LogError("leaderboard:addbet payload missing 'participant'");
+        return;
+      }
+
+      Participant p = pToken.ToObject<Participant>();
+      if (p == null || string.IsNullOrEmpty(p.betId))
+      {
+        Debug.LogError("Failed to deserialize participant or missing betId");
+        return;
+      }
+
+      participantUI.OnAddBet(p);
+    }
+    catch (Exception ex)
+    {
+      Debug.LogError($"Error parsing leaderboard:addbet: {ex.Message}\n{data}");
+    }
   }
 
   void HandleLeaderboardRemoveBet(string data)
   {
     Debug.Log("LEADERBOARD_REMOVEBET: " + data);
-    participantUI.OnRemoveBet(JObject.Parse(data));
+    try
+    {
+      var obj = JObject.Parse(data);
+      string betId = obj.Value<string>("betId");
+      if (string.IsNullOrEmpty(betId))
+      {
+        Debug.LogWarning("leaderboard:removebet missing betId");
+        return;
+      }
+
+      participantUI.OnRemoveBet(betId);
+    }
+    catch (Exception ex)
+    {
+      Debug.LogError($"Error parsing leaderboard:removebet: {ex.Message}\n{data}");
+    }
   }
 
   void HandleLeaderboardUserCashout(string data)
   {
     Debug.Log("LEADERBOARD_USERCASHOUT: " + data);
-    participantUI.OnUserCashout(JObject.Parse(data));
+    try
+    {
+      var obj = JObject.Parse(data);
+      string betId = obj.Value<string>("betId");
+      if (string.IsNullOrEmpty(betId))
+      {
+        Debug.LogWarning("leaderboard:usercashout missing betId");
+        return;
+      }
+
+      float win = obj.Value<float?>("winAmount") ?? 0f;
+      float mult = obj.Value<float?>("multiplier") ?? 0f;
+
+      participantUI.OnUserCashout(betId, win, mult);
+    }
+    catch (Exception ex)
+    {
+      Debug.LogError($"Error parsing leaderboard:usercashout: {ex.Message}\n{data}");
+    }
   }
+
 
   void HandleChatInit(string data)
   {
@@ -715,9 +771,9 @@ public class Participant
   public string betId;
   public string userId;
   public string username;
-  public int betAmount;
-  public int multiplier;
-  public int winAmount;
+  public float betAmount;
+  public float multiplier;
+  public float winAmount;
   public bool cashedOut;
   public string clientSeed;
 }
@@ -840,7 +896,7 @@ public class AnalyticsRoot
 [Serializable]
 public class RoundDetails
 {
-  public float crashPoint { get; set; }
-  public string server_seed { get; set; }
-  public List<string> client_seeds { get; set; }
+  public float crashPoint;
+  public string server_seed;
+  public List<string> client_seeds;
 }

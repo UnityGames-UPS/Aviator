@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class CurveAnimator : MonoBehaviour
+public class CurveManager : MonoBehaviour
 {
 
   [SerializeField] private SocketIOManager socket;

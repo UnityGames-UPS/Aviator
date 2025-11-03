@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ParticipantItem : MonoBehaviour
+public class ParticipantView : MonoBehaviour
 {
   [Header("UI")]
   [SerializeField] private Image avatarImage;
@@ -23,10 +23,16 @@ public class ParticipantItem : MonoBehaviour
     BetId = p.betId;
     UserId = p.userId;
     cashoutBgImage.color = blackColor;
-    string userId = p.userId;
-    string username = userId.Length > 2 ? $"{userId[0]}****{userId[^1]}" : userId;
-    usernameText.text = username;
-    betText.text = p.betAmount.ToString("F2");
+    if (UserId != "" && p.userId != null)
+    {
+      string userId = p.userId;
+      string username = userId.Length > 2 ? $"{userId[0]}****{userId[^1]}" : userId;
+      usernameText.text = username;
+    }
+    if (p.betAmount > 0)
+    {
+      betText.text = p.betAmount.ToString("F2");
+    }
     cashoutMultText.text = "";
     cashoutWinText.text = "";
     avatarImage.sprite = ProfileImages[Random.Range(0, ProfileImages.Length)];

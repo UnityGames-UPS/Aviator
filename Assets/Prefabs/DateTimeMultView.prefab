@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 5465855721899077520}
   - component: {fileID: 6500839609639807877}
   - component: {fileID: 427140516878583051}
+  - component: {fileID: 4055155313019454323}
   m_Layer: 5
   m_Name: DateTimeMultView
   m_TagString: Untagged
@@ -466,3 +467,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4055155313019454323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574488513919999723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a7febaffd11478e9114d1026dcf290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatarImage: {fileID: 0}
+  usernameText: {fileID: 0}
+  dateText: {fileID: 8539483192669360889}
+  betText: {fileID: 0}
+  winText: {fileID: 0}
+  multText: {fileID: 255801789754751408}
+  crashText: {fileID: 0}
+  ProfileImages: []

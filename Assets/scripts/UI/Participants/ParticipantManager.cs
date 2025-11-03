@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using DG.Tweening;
-using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ParticipantUI : GenericObjectPool<ParticipantItem>
+public class ParticipantManager : GenericObjectPool<ParticipantView>
 {
   [SerializeField] private TMP_Text TotalBetsText;
   [SerializeField] private TMP_Text TotalWinText;
@@ -15,7 +14,7 @@ public class ParticipantUI : GenericObjectPool<ParticipantItem>
   [SerializeField] private float totalWinAmount;
 
   // Lookups
-  private Dictionary<string, ParticipantItem> _rowsByBetId = new();
+  private Dictionary<string, ParticipantView> _rowsByBetId = new();
   private Dictionary<string, Participant> _participantByBetId = new();
 
   protected override void Awake()
@@ -33,6 +32,7 @@ public class ParticipantUI : GenericObjectPool<ParticipantItem>
     totalBetsCount = 0;
     cashedOutCount = 0;
     totalWinAmount = 0;
+    GreenFillerImage.fillAmount = 0f;
     TotalWinText.text = totalWinAmount.ToString("F2");
 
     if (data?.participants == null || data?.participants.Count == 0) return;
@@ -45,53 +45,46 @@ public class ParticipantUI : GenericObjectPool<ParticipantItem>
       TotalBetsText.text = totalBetsCount.ToString() + "/" + totalBetsCount.ToString();
       AddOrUpdateRow(p);
     }
-
-    GreenFillerImage.fillAmount = 0f;
   }
 
   // ---- ADD BET ----
-  internal void OnAddBet(JObject obj)
+  internal void OnAddBet(Participant p)
   {
-    // Payload shape you showed:
-    var pToken = obj["participant"];
-    if (pToken == null) return;
-
-    var p = pToken.ToObject<Participant>();
-    if (p == null || string.IsNullOrEmpty(p.betId)) return;
+    if (p == null || string.IsNullOrEmpty(p.betId))
+    {
+      Debug.LogError("Participant invalid in OnAddBet");
+      return;
+    }
 
     totalBetsCount++;
     TotalBetsText.text = totalBetsCount.ToString() + "/" + totalBetsCount.ToString();
-
     AddOrUpdateRow(p);
   }
 
+
   // ---- REMOVE BET ----
-  internal void OnRemoveBet(JObject obj)
+  internal void OnRemoveBet(string betId)
   {
-    // {"roomId":"...","userId":"...","betId":"..."}
-    string betId = obj.Value<string>("betId");
     if (string.IsNullOrEmpty(betId)) return;
 
-    totalBetsCount--;
+    totalBetsCount = Mathf.Max(0, totalBetsCount - 1);
     TotalBetsText.text = totalBetsCount.ToString() + "/" + totalBetsCount.ToString();
 
     RemoveRow(betId);
   }
 
+
   // ---- USER CASHOUT ----
-  internal void OnUserCashout(JObject obj)
+  // betId, winAmount, multiplier
+  internal void OnUserCashout(string betId, float winAmount, float multiplier)
   {
-    // {"roomId":"...","userId":"...","betId":"...","winAmount":8.5,"multiplier":1.7}
-    string betId = obj.Value<string>("betId");
     if (string.IsNullOrEmpty(betId)) return;
 
     if (_rowsByBetId.TryGetValue(betId, out var row))
     {
-      float mult = obj.Value<float?>("multiplier") ?? 0;
-      float win = obj.Value<float?>("winAmount") ?? 0;
-      row.MarkCashedOut(mult, win);
+      row.MarkCashedOut(multiplier, winAmount);
 
-      totalWinAmount += win;
+      totalWinAmount += winAmount;
       TotalWinText.text = totalWinAmount.ToString("F2");
 
       cashedOutCount++;
@@ -108,6 +101,7 @@ public class ParticipantUI : GenericObjectPool<ParticipantItem>
           .SetId(GreenFillerImage);
     }
   }
+
 
   // ---- Helpers ----
   private void AddOrUpdateRow(Participant p)
