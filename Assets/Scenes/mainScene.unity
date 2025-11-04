@@ -4873,7 +4873,7 @@ MonoBehaviour:
   crashHistoryManager: {fileID: 1727863909}
   JSManager: {fileID: 284092192}
   TestSocketURI: http://localhost:5000/
-  testToken: 8ea85a30cb044491a7b84dcde84383d5
+  testToken: e870fdd7239d4302ba2fe3ee9d5d0f99
   bets: []
   tickInterval: 0
   takeOffDuration: 0

@@ -12,7 +12,7 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] private GameObject blocker;
   [SerializeField] private UIManager uiManager;
   [SerializeField] private ParticipantManager participantUI;
-  [SerializeField] private ChatUI chatUI;
+  [SerializeField] private ChatManager chatUI;
   [SerializeField] private CrashHistoryManager crashHistoryManager;
   private SocketOptions socketOptions;
   private SocketManager MainSocketManager;

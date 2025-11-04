@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChatUI : GenericObjectPool<ChatView>
+public class ChatManager : GenericObjectPool<ChatView>
 {
   [SerializeField] private SocketIOManager socketIOManager;
   [SerializeField] private ScrollRect ScrollRect;
