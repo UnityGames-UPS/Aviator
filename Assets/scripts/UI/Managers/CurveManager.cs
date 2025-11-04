@@ -114,5 +114,11 @@ public class CurveManager : MonoBehaviour
 
     Plane.DOAnchorPos(new Vector2(crashX, crashY), CrashDuration);
   }
+
+  internal void AnimationToggle(bool toggle)
+  {
+    curve.enabled = toggle;
+    curve.PlaneParent.gameObject.SetActive(toggle);
+  }
 }
 

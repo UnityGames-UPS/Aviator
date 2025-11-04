@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -23,7 +21,7 @@ public class PrevRoundManager : GenericObjectPool<ParticipantView>
     {
       crashPointText.color = PurpleColor;
     }
-    crashPointText.text = roundResult.crashPoint.ToString("F2");
+    crashPointText.text = roundResult.crashPoint.ToString("F2") + "x";
     if (roundResult.participants.Count > 0)
     {
       foreach (var p in roundResult.participants)

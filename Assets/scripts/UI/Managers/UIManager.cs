@@ -14,9 +14,14 @@ public class UIManager : MonoBehaviour
   [SerializeField] private AnalyticsUIManager analyticsUIManager;
   [SerializeField] private RoundAnalyticsManager roundAnalyticsManager;
   [SerializeField] private PrevRoundManager prevRoundManager;
+  [SerializeField] private AudioManager Audio;
+
+  [SerializeField] private Image profilePicImage;
+  [SerializeField] private Sprite[] profilePicSprites;
 
   [Header("Multiplier Objects and Values")]
   [SerializeField] private TMP_Text multiplierText;
+  [SerializeField] private TMP_Text flewAwayText;
   [SerializeField] private Image blurImage;
   [SerializeField] private float displayedMult;
   [SerializeField] private float targetMult;
@@ -130,6 +135,7 @@ public class UIManager : MonoBehaviour
 
   private void Awake()
   {
+    profilePicImage.sprite = profilePicSprites[Random.Range(0, profilePicSprites.Length)];
     lowBalanceCloseButton.onClick.AddListener(() => ClosePopup(lowBalancePopup));
 
     LeftBetButton.onClick.AddListener(() => StartCoroutine(OnBet(true)));
@@ -155,16 +161,19 @@ public class UIManager : MonoBehaviour
     SoundToggleButton.onClick.AddListener(() =>
     {
       SoundToggle = !SoundToggle;
+      Audio.ToggleSoundsAudio(SoundToggle);
       ToggleButtonClicked(SoundToggleButton);
     });
     MusicToggleButton.onClick.AddListener(() =>
     {
       MusicToggle = !MusicToggle;
+      Audio.ToggleBGAudio(MusicToggle);
       ToggleButtonClicked(MusicToggleButton);
     });
     AnimationToggleButton.onClick.AddListener(() =>
     {
       AnimationToggle = !AnimationToggle;
+      curveAnimator.AnimationToggle(AnimationToggle);
       ToggleButtonClicked(AnimationToggleButton);
     });
 
@@ -264,6 +273,7 @@ public class UIManager : MonoBehaviour
 
   IEnumerator OnCancel(bool isLeft)
   {
+    Audio.PlayButtonAudio();
     CancelData data;
     if (isLeft)
     {
@@ -334,6 +344,7 @@ public class UIManager : MonoBehaviour
 
   IEnumerator OnCashout(bool isLeft)
   {
+    Audio.PlayButtonAudio();
     Debug.Log("OnCashout at: " + displayedMult);
     CashoutData data;
     if (isLeft)
@@ -403,6 +414,7 @@ public class UIManager : MonoBehaviour
 
   IEnumerator OnBet(bool isLeft)
   {
+    Audio.PlayButtonAudio();
     BetData data;
     if (isLeft)
     {
@@ -589,6 +601,11 @@ public class UIManager : MonoBehaviour
 
   internal void OnTickerStart()
   {
+    Audio.PlayTakeOffAudio();
+    if (flewAwayText.gameObject.activeInHierarchy)
+    {
+      flewAwayText.gameObject.SetActive(false);
+    }
     blurImage.enabled = true;
     blurImage.color = new Color(blueColor.r, blueColor.g, blueColor.b, 0f);
     curveAnimator.StartFlyingAnimation();
@@ -621,6 +638,7 @@ public class UIManager : MonoBehaviour
 
   internal void OnCrash(float crashMult, float CrashDuration)
   {
+    Audio.PlayCrashAudio();
     // Debug.Log("OnCrash");
     if (LeftCashoutButton.gameObject.activeInHierarchy)
     {
@@ -652,6 +670,10 @@ public class UIManager : MonoBehaviour
     multiplierText.color = Color.red;
     multiplierText.text = crashMult.ToString("F2") + "x";
 
+    flewAwayText.color = new Color(flewAwayText.color.r, flewAwayText.color.g, flewAwayText.color.b, 1f);
+    flewAwayText.gameObject.SetActive(true);
+
+    flewAwayText.DOFade(0, CrashDuration / 3).SetDelay(CrashDuration / 2).OnComplete(() => { flewAwayText.gameObject.SetActive(false); });
     multiplierText.DOFade(0, CrashDuration / 3).SetDelay(CrashDuration / 2);
 
     blurImage.DOKill();
@@ -691,6 +713,7 @@ public class UIManager : MonoBehaviour
     LeftBlocker.SetActive(false);
     RightBlocker.SetActive(false);
 
+    flewAwayText.gameObject.SetActive(false);
     multiplierText.text = "1.00x";
     multiplierText.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0f);
     blurImage.color = new Color(blueColor.r, blueColor.g, blueColor.b, 0f);
@@ -752,14 +775,14 @@ public class UIManager : MonoBehaviour
       multColorTween2 = multiplierText.DOColor(Color.white, 0.3f).SetEase(Ease.OutSine);
     }
 
-    if (mult < 2 && !blueColTime)
+    if (mult < 3.8f && !blueColTime)
     {
       // Debug.Log("blur color blue");
       blueColTime = true;
       blurTween?.Kill();
       blurTween = blurImage.DOColor(blueColor, 0.3f).SetEase(Ease.InSine);
     }
-    else if (mult > 2 && !purpleColTime)
+    else if (mult > 3.8f && !purpleColTime)
     {
       // Debug.Log("blur color purple, mult: " + mult);
       purpleColTime = true;

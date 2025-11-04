@@ -479,7 +479,7 @@ public class SocketIOManager : MonoBehaviour
   {
     Debug.Log("CHAT RESULT: " + data);
     JObject obj = JObject.Parse(data);
-    chatUI.OnChatResult(obj["username"].ToString(), obj["message"].ToString());
+    chatUI.OnChatResult(obj["userId"].ToString(), obj["message"].ToString());
   }
 
   private void SendPing()
