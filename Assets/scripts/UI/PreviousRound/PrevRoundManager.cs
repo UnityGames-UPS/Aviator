@@ -34,6 +34,7 @@ public class PrevRoundManager : GenericObjectPool<ParticipantView>
         {
           item.MarkCashedOut(p.multiplier, p.winAmount); 
         }
+        item.transform.SetAsLastSibling();
         item.transform.localScale = Vector3.one * 0.95f;
         item.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
       }

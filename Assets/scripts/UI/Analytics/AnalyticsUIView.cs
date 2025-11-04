@@ -14,7 +14,7 @@ public class AnalyticsUIView : MonoBehaviour
   [SerializeField] private TMP_Text crashText;
   [SerializeField] private Sprite[] ProfileImages;
 
-  public void Setup(string username = "", string date = "", int bet = 0, float mult = 0, float win = 0, float crash = 0f)
+  public void Setup(string username = "", string date = "", float bet = 0, float mult = 0, float win = 0, float crash = 0f)
   {
     if (usernameText && username != "") usernameText.text = username;
     string formattedDate = "";
@@ -23,9 +23,9 @@ public class AnalyticsUIView : MonoBehaviour
       formattedDate = dateTime.ToString("dd.MM.yy");
       dateText.text = formattedDate;
     }
-    if (betText && bet != 0) betText.text = bet.ToString("N0");
+    if (betText && bet != 0) betText.text = bet.ToString("N2");
     if (multText && mult != 0) multText.text = mult.ToString("0.00") + "x";
-    if (winText && win != 0) winText.text = win.ToString("N0");
+    if (winText && win != 0) winText.text = win.ToString("N2");
     if (crashText && crash != 0) crashText.text = crash.ToString("0.00") + "x";
     if (avatarImage) avatarImage.sprite = ProfileImages[UnityEngine.Random.Range(0, ProfileImages.Length)];
   }

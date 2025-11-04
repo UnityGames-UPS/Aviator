@@ -761,8 +761,8 @@ public class RoundStartData
 {
   public string serverHash;
   public List<Participant> participants;
-  public double totalBetAmount;
-  public double totalWinAmount;
+  public float totalBetAmount;
+  public float totalWinAmount;
 }
 
 [Serializable]
@@ -873,9 +873,9 @@ public class AnalyticsRecord
   public string round_id;
   public string created_at;
   public string user_id;
-  public int bet_amount;
-  public int win_amount;
-  public int multiplier;
+  public float bet_amount;
+  public float win_amount;
+  public float multiplier;
   public RoundDetails round_details;
 }
 
