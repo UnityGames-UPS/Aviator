@@ -47,6 +47,7 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] internal float MaxMult = 3;
   [SerializeField] internal float multFreq;
   [SerializeField] internal float balance = 0;
+  [SerializeField] internal string username = "";
   [SerializeField] internal LastRoundResult lastRoundResult;
   [SerializeField] internal RoundStartData roundData;
   [SerializeField] internal AnalyticsRoot analyticsData;
@@ -167,10 +168,11 @@ public class SocketIOManager : MonoBehaviour
     MainGameSocket.On<string>("game:tick", HandleGameTick);
     MainGameSocket.On<string>("game:ticker_start", HandleTickerStart);
     MainGameSocket.On<string>("game:round_start", HandleRoundStart);
-    // MainGameSocket.On<string>("game:crash_history", HandleCrashHistory);
     MainGameSocket.On<string>("leaderboard:addbet", HandleLeaderboardAddBet);
     MainGameSocket.On<string>("leaderboard:removebet", HandleLeaderboardRemoveBet);
     MainGameSocket.On<string>("leaderboard:usercashout", HandleLeaderboardUserCashout);
+
+    MainGameSocket.On<string>("pong", OnPongReceived);
 
     MainSocketManager.Open();
   }
@@ -226,14 +228,14 @@ public class SocketIOManager : MonoBehaviour
 
     if (hasEverConnected)
     {
-      // uiManager.CheckAndClosePopups();
+      uiManager.CheckAndClosePopups();
     }
 
     hasEverConnected = true;
     waitingForPong = false;
     missedPongs = 0;
     lastPongTime = Time.time;
-    // SendPing();
+    SendPing();
   }
   private void OnError(Error err)
   {
@@ -245,7 +247,7 @@ public class SocketIOManager : MonoBehaviour
   private void OnDisconnected()
   {
     Debug.LogWarning("⚠️ Disconnected from server.");
-    // uiManager.DisconnectionPopup();
+    uiManager.DisconnectionPopup();
     ResetPingRoutine();
   }
   private void OnPongReceived(string data)
@@ -281,14 +283,15 @@ public class SocketIOManager : MonoBehaviour
     chatCharCap = (int?)gameData["chatMessageCharacterLimit"] ?? 0;
     chatMessagesCap = (int?)gameData["chatRoomMessagesLimit"] ?? 0;
     multFreq = (float?)gameData["minMultiplierFrequency"] ?? 0.02f;
-    balance = (float)obj["player"]["balance"];
+    balance = (float?)obj["player"]["balance"] ?? 0.00f;
+    username = (string)gameData["userId"];
 
     // Handle bets array safely
     JArray betsArray = (JArray)gameData["bets"];
     if (betsArray != null)
     {
       bets = betsArray.Select(b => (float)b).ToList();
-      uiManager.SetInit(bets, balance);
+      uiManager.SetInit(bets, balance, username);
     }
     else
     {
@@ -505,7 +508,7 @@ public class SocketIOManager : MonoBehaviour
 
       if (missedPongs == 0)
       {
-        // uiManager.CheckAndClosePopups();
+        uiManager.CheckAndClosePopups();
       }
 
       // If waiting for pong, and timeout passed
@@ -513,7 +516,7 @@ public class SocketIOManager : MonoBehaviour
       {
         if (missedPongs == 2)
         {
-          // uiManager.ReconnectionPopup();
+          uiManager.ReconnectionPopup();
         }
         missedPongs++;
         Debug.LogWarning($"⚠️ Pong missed #{missedPongs}/{MaxMissedPongs}");
@@ -521,7 +524,7 @@ public class SocketIOManager : MonoBehaviour
         if (missedPongs >= MaxMissedPongs)
         {
           Debug.LogError("❌ Unable to connect to server — 5 consecutive pongs missed.");
-          // uiManager.DisconnectionPopup();
+          uiManager.DisconnectionPopup();
           yield break;
         }
       }
@@ -564,7 +567,7 @@ public class SocketIOManager : MonoBehaviour
 
   internal IEnumerator CloseSocket() //Back2 Start
   {
-    // uiManager.RaycastBlocker.SetActive(true);
+    blocker.SetActive(true);
     ResetPingRoutine();
 
     Debug.Log("Closing Socket");

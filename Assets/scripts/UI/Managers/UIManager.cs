@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private Button AnimationToggleButton;
   [SerializeField] private GameObject OtherOptionsPanelParent;
   [SerializeField] private TMP_Text BalanceText;
+  [SerializeField] private TMP_Text PlayerNameText;
   //0: Bet History
   //1: Game Limits 
   //2: How To Play
@@ -51,8 +52,11 @@ public class UIManager : MonoBehaviour
 
   [Header("Popups")]
   [SerializeField] private GameObject blocker;
-  [SerializeField] private GameObject lowBalancePopup;
+  [SerializeField] private GameObject lowBalancePopupGO;
+  [SerializeField] private GameObject ReconnectionPopupGO;
+  [SerializeField] private GameObject DisconnectionPopupGO;
   [SerializeField] private Button lowBalanceCloseButton;
+  [SerializeField] private Button OnDiscQuitButton;
 
   [Header("Local Variables to keep track")]
   [SerializeField] private bool SoundToggle = true;
@@ -136,7 +140,7 @@ public class UIManager : MonoBehaviour
   private void Awake()
   {
     profilePicImage.sprite = profilePicSprites[Random.Range(0, profilePicSprites.Length)];
-    lowBalanceCloseButton.onClick.AddListener(() => ClosePopup(lowBalancePopup));
+    lowBalanceCloseButton.onClick.AddListener(() => ClosePopup(lowBalancePopupGO));
 
     LeftBetButton.onClick.AddListener(() => StartCoroutine(OnBet(true)));
     RightBetButton.onClick.AddListener(() => StartCoroutine(OnBet(false)));
@@ -155,6 +159,7 @@ public class UIManager : MonoBehaviour
     OtherOptionsMenuButton.onClick.AddListener(() => OtherOptionsMenu.SetActive(true));
     CloseOptionsMenuButton1.onClick.AddListener(() => OtherOptionsMenu.SetActive(false));
     HomeButton.onClick.AddListener(() => socket.CloseGame());
+    OnDiscQuitButton.onClick.AddListener(() => socket.CloseGame());
 
     CloseOptionsMenuButton1.onClick.Invoke(); //Close Other Options Menu By Default
 
@@ -238,7 +243,7 @@ public class UIManager : MonoBehaviour
     clientSeed = ClientSeedGenerator();
   }
 
-  internal void SetInit(List<float> bets, float bal)
+  internal void SetInit(List<float> bets, float bal, string username)
   {
     if (bets.Count <= 0)
     {
@@ -269,6 +274,14 @@ public class UIManager : MonoBehaviour
     RightBetText.text = staticBets[0].value.ToString("F2");
     RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("F2");
     BalanceText.text = bal.ToString("F2");
+    if (username.Length > 0 && username.Length > 2)
+    {
+      PlayerNameText.text = username[0] + "****" + username[^1];
+    }
+    else
+    {
+      PlayerNameText.text = "Demo User";
+    }
   }
 
   IEnumerator OnCancel(bool isLeft)
@@ -515,7 +528,7 @@ public class UIManager : MonoBehaviour
   {
     if (socket.balance < bet)
     {
-      OpenPopup(lowBalancePopup);
+      OpenPopup(lowBalancePopupGO);
       return false;
     }
 
@@ -1035,6 +1048,28 @@ public class UIManager : MonoBehaviour
     string clientSeed = new string(seedChars);
     Debug.Log("Generated Client Seed: " + clientSeed);
     return clientSeed;
+  }
+
+  internal void CheckAndClosePopups()
+  {
+    if (ReconnectionPopupGO.activeInHierarchy)
+    {
+      ClosePopup(ReconnectionPopupGO);
+    }
+    else if (DisconnectionPopupGO.activeInHierarchy)
+    {
+      ClosePopup(DisconnectionPopupGO); 
+    }
+  }
+
+  internal void ReconnectionPopup()
+  {
+    OpenPopup(ReconnectionPopupGO);
+  }
+  
+  internal void DisconnectionPopup()
+  {
+    OpenPopup(DisconnectionPopupGO);
   }
 
   void ClosePopup(GameObject popup)
