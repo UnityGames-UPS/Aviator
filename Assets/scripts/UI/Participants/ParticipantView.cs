@@ -18,7 +18,7 @@ public class ParticipantView : MonoBehaviour
   internal string BetId;
   internal string UserId;
 
-  public void Set(Participant p)
+  internal void Set(Participant p)
   {
     BetId = p.betId;
     UserId = p.userId;

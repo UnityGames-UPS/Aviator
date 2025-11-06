@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private AnalyticsUIManager analyticsUIManager;
   [SerializeField] private RoundAnalyticsManager roundAnalyticsManager;
   [SerializeField] private PrevRoundManager prevRoundManager;
+  [SerializeField] private BetHistoryManager betHistoryManager;
   [SerializeField] private AudioManager Audio;
 
   [SerializeField] private Image profilePicImage;
@@ -49,7 +50,10 @@ public class UIManager : MonoBehaviour
   [SerializeField] private Button[] OtherOptionsButtons;
   [SerializeField] private GameObject[] OtherOptionsPanels;
   [SerializeField] private Button[] OtherOptionCloseButtons;
-
+  [SerializeField] private GameObject BetHistoryLoader;
+  [SerializeField] private TMP_Text MinBetText;
+  [SerializeField] private TMP_Text MaxBetText;
+  [SerializeField] private TMP_Text MaxCashoutText;
   [Header("Popups")]
   [SerializeField] private GameObject blocker;
   [SerializeField] private GameObject lowBalancePopupGO;
@@ -185,7 +189,7 @@ public class UIManager : MonoBehaviour
     for (int i = 0; i < OtherOptionsButtons.Length; i++)
     {
       int index = i;
-      OtherOptionsButtons[i].onClick.AddListener(() => OtherOptionButtonClicked(index));
+      OtherOptionsButtons[i].onClick.AddListener(() => StartCoroutine(OtherOptionButtonClicked(index)));
     }
     for (int i = 0; i < OtherOptionCloseButtons.Length; i++)
     {
@@ -274,6 +278,9 @@ public class UIManager : MonoBehaviour
     RightBetText.text = staticBets[0].value.ToString("F2");
     RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("F2");
     BalanceText.text = bal.ToString("F2");
+    MinBetText.text = bets[0].ToString("N2");
+    MaxBetText.text = bets[^1].ToString("N2");
+    MaxCashoutText.text = (bets[^1] * socket.MaxMult).ToString("N2");
     if (username.Length > 0 && username.Length > 2)
     {
       PlayerNameText.text = username[0] + "****" + username[^1];
@@ -327,7 +334,6 @@ public class UIManager : MonoBehaviour
       if (!ackData.success)
       {
         Debug.LogError("Left Cancel failed: " + ackData.payload.message);
-        yield break;
       }
       ToggleBetButtons(state: true, isLeft: true);
       leftBetData = null;
@@ -343,7 +349,6 @@ public class UIManager : MonoBehaviour
       if (!ackData.success)
       {
         Debug.LogError("Right Cancel failed: " + ackData.payload.message);
-        yield break;
       }
       ToggleBetButtons(state: true, isLeft: false);
       rightBetData = null;
@@ -399,7 +404,6 @@ public class UIManager : MonoBehaviour
       if (!ackData.success)
       {
         Debug.LogError("Left Cashout failed: " + ackData.payload.message);
-        yield break;
       }
       ToggleBetButtons(state: true, isLeft: true);
       SetBalance(ackData.player.balance);
@@ -414,7 +418,6 @@ public class UIManager : MonoBehaviour
       if (!ackData.success)
       {
         Debug.LogError("Right Cashout failed: " + ackData.payload.message);
-        yield break;
       }
       ToggleBetButtons(state: true, isLeft: false);
       SetBalance(ackData.player.balance);
@@ -433,7 +436,6 @@ public class UIManager : MonoBehaviour
     {
       if (!CompareBalance(socket.bets[LeftBetCounter]))
       {
-
         yield break;
       }
       socket.leftAck = new KeyValuePair<bool, string>(false, "wait");
@@ -451,6 +453,10 @@ public class UIManager : MonoBehaviour
     }
     else
     {
+      if (!CompareBalance(socket.bets[LeftBetCounter]))
+      {
+        yield break;
+      }
       socket.rightAck = new KeyValuePair<bool, string>(false, "wait");
       RightBlocker.SetActive(true);
       data = new BetData
@@ -474,20 +480,22 @@ public class UIManager : MonoBehaviour
       if (!ackData.success)
       {
         Debug.LogError("Left Bet failed: " + ackData.payload.message);
-        yield break;
       }
-      leftBetData = data;
-      if (!ackData.payload.isUserInQueue)
+      else
       {
-        LeftCancelBetButton.transform.GetChild(0).gameObject.SetActive(false);
-        LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
-        LeftCancelBetButton.gameObject.SetActive(true);
-      }
-      else if (ackData.payload.isUserInQueue)
-      {
-        LeftCancelBetButton.transform.GetChild(0).gameObject.SetActive(true);
-        LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
-        LeftCancelBetButton.gameObject.SetActive(true);
+        leftBetData = data;
+        if (!ackData.payload.isUserInQueue)
+        {
+          LeftCancelBetButton.transform.GetChild(0).gameObject.SetActive(false);
+          LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
+          LeftCancelBetButton.gameObject.SetActive(true);
+        }
+        else if (ackData.payload.isUserInQueue)
+        {
+          LeftCancelBetButton.transform.GetChild(0).gameObject.SetActive(true);
+          LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
+          LeftCancelBetButton.gameObject.SetActive(true);
+        }
       }
       ToggleBetButtons(state: false, isLeft: true);
       SetBalance(ackData.player.balance);
@@ -501,20 +509,22 @@ public class UIManager : MonoBehaviour
       if (!ackData.success)
       {
         Debug.LogError("Right Bet failed: " + ackData.payload.message);
-        yield break;
       }
-      rightBetData = data;
-      if (!ackData.payload.isUserInQueue)
+      else
       {
-        RightCancelBetButton.transform.GetChild(0).gameObject.SetActive(false);
-        RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
-        RightCancelBetButton.gameObject.SetActive(true);
-      }
-      else if (ackData.payload.isUserInQueue)
-      {
-        RightCancelBetButton.transform.GetChild(0).gameObject.SetActive(true);
-        RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
-        RightCancelBetButton.gameObject.SetActive(true);
+        rightBetData = data;
+        if (!ackData.payload.isUserInQueue)
+        {
+          RightCancelBetButton.transform.GetChild(0).gameObject.SetActive(false);
+          RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
+          RightCancelBetButton.gameObject.SetActive(true);
+        }
+        else if (ackData.payload.isUserInQueue)
+        {
+          RightCancelBetButton.transform.GetChild(0).gameObject.SetActive(true);
+          RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
+          RightCancelBetButton.gameObject.SetActive(true);
+        }
       }
       ToggleBetButtons(state: false, isLeft: false);
       SetBalance(ackData.player.balance);
@@ -811,14 +821,24 @@ public class UIManager : MonoBehaviour
     }
   }
 
-  void OtherOptionButtonClicked(int index)
+  IEnumerator OtherOptionButtonClicked(int index)
   {
     foreach (GameObject gameObject in OtherOptionsPanels)
     {
       gameObject.SetActive(false);
     }
+
     OtherOptionsPanelParent.SetActive(true);
     OtherOptionsPanels[index].SetActive(true);
+
+    if (index == 0)
+    {
+      BetHistoryLoader.SetActive(true);
+      socket.OnRequestBetHistory();
+      yield return new WaitUntil(() => socket.BetHistAck);
+      betHistoryManager.PopulateBetHistory();
+      BetHistoryLoader.SetActive(false);
+    }
   }
 
   void CloseOtherOptionMenu(int index)
@@ -1058,7 +1078,7 @@ public class UIManager : MonoBehaviour
     }
     else if (DisconnectionPopupGO.activeInHierarchy)
     {
-      ClosePopup(DisconnectionPopupGO); 
+      ClosePopup(DisconnectionPopupGO);
     }
   }
 
@@ -1066,7 +1086,7 @@ public class UIManager : MonoBehaviour
   {
     OpenPopup(ReconnectionPopupGO);
   }
-  
+
   internal void DisconnectionPopup()
   {
     OpenPopup(DisconnectionPopupGO);

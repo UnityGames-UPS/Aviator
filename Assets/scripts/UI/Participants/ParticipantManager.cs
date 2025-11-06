@@ -35,9 +35,9 @@ public class ParticipantManager : GenericObjectPool<ParticipantView>
     GreenFillerImage.fillAmount = 0f;
     TotalWinText.text = totalWinAmount.ToString("F2");
 
-    if (data?.participants == null || data?.participants.Count == 0) return;
-
     TotalBetsText.text = totalBetsCount.ToString() + "/" + totalBetsCount.ToString();
+
+    if (data?.participants == null || data?.participants.Count == 0) return;
 
     foreach (var p in data.participants)
     {

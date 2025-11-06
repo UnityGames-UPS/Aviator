@@ -35,6 +35,7 @@ public class SocketIOManager : MonoBehaviour
   private string myAuth = null;
   internal bool isLoaded = false;
   internal bool PrevRoundAck = false;
+  internal bool BetHistAck = false;
   internal bool ReceivedRecordAck = false;
   [SerializeField] internal List<float> bets = new();
   [SerializeField] internal float tickInterval;
@@ -48,12 +49,13 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] internal float multFreq;
   [SerializeField] internal float balance = 0;
   [SerializeField] internal string username = "";
-  [SerializeField] internal LastRoundResult lastRoundResult;
-  [SerializeField] internal RoundStartData roundData;
-  [SerializeField] internal AnalyticsRoot analyticsData;
+  [SerializeField] internal BetHistoryData BetHistoryData = new();
+  [SerializeField] internal LastRoundResult lastRoundResult = new();
+  [SerializeField] internal RoundStartData roundData = new();
+  [SerializeField] internal AnalyticsRoot analyticsData = new();
   [SerializeField] internal AviatorState CurrentState = AviatorState.None;
-  [SerializeField] internal KeyValuePair<bool, string> leftAck = new KeyValuePair<bool, string>(false, "");
-  [SerializeField] internal KeyValuePair<bool, string> rightAck = new KeyValuePair<bool, string>(false, "");
+  [SerializeField] internal KeyValuePair<bool, string> leftAck = new(false, "");
+  [SerializeField] internal KeyValuePair<bool, string> rightAck = new(false, "");
   internal enum AviatorState
   {
     None,
@@ -244,6 +246,7 @@ public class SocketIOManager : MonoBehaviour
     JSManager.SendCustomMessage("error");
 #endif
   }
+  
   private void OnDisconnected()
   {
     Debug.LogWarning("⚠️ Disconnected from server.");
@@ -465,7 +468,7 @@ public class SocketIOManager : MonoBehaviour
     foreach (var item in arr)
     {
       JObject obj = JObject.Parse(item.ToString());
-      string username = obj["username"].ToString();
+      string username = obj["userId"].ToString();
       string message = obj["message"].ToString();
       // Debug.Log(message);
       usernames.Add(username);
@@ -710,6 +713,50 @@ public class SocketIOManager : MonoBehaviour
     }
     PrevRoundAck = true;
   }
+
+  internal void OnRequestBetHistory()
+  {
+    Debug.Log("Requesting Bet History");
+    BetHistAck = false;
+    BetHistoryReqData data = new();
+    string json = JsonUtility.ToJson(data);
+    MainGameSocket.ExpectAcknowledgement<string>(OnBetHistoryAck).Emit("request", json);
+  }
+
+  void OnBetHistoryAck(string data)
+  {
+    Debug.Log("BET_HIST: " + data);
+    BetHistoryData = JsonUtility.FromJson<BetHistoryData>(data);
+    BetHistAck = true;
+  }
+}
+
+[Serializable]
+public class BetHistoryData
+{
+  public BetHistoryDataPayload payload;
+}
+
+[Serializable]
+public class BetHistoryDataPayload
+{
+  public List<BetHistory> betHistory;
+}
+
+[Serializable]
+public class BetHistory
+{
+  public string user_id;
+  public float bet_amount = -1;
+  public float win_amount = -1;
+  public string created_at;
+  public float multiplier = -1;
+}
+
+[Serializable]
+public class BetHistoryReqData
+{
+  public string type = "BET_HISTORY";
 }
 
 [Serializable]
