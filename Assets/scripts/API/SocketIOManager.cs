@@ -6,6 +6,7 @@ using Best.SocketIO;
 using Best.SocketIO.Events;
 using Newtonsoft.Json.Linq;
 using System.Linq;
+using DG.Tweening;
 
 public class SocketIOManager : MonoBehaviour
 {
@@ -81,8 +82,10 @@ public class SocketIOManager : MonoBehaviour
   private void Awake()
   {
     Application.runInBackground = true;
-    isLoaded = false;
+    DOTween.Init();
+    DOTween.defaultTimeScaleIndependent = true;
     blocker.SetActive(true);
+    isLoaded = false;
   }
 
   private void OpenSocket()

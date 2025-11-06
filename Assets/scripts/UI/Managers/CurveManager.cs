@@ -25,7 +25,13 @@ public class CurveManager : MonoBehaviour
   [SerializeField] private float fastCrashDuration = 2f;
   [SerializeField] private float fastCrashTakeoffOffset = 0.3f;
 
+  internal bool isFlying =>
+      (loopSequence != null && loopSequence.IsPlaying()) ||
+      (initialSequence != null && initialSequence.IsPlaying()) ||
+      Flying;
 
+
+  private bool Flying;
   private Sequence loopSequence;
   private Sequence initialSequence;
   private float predictedFlightMult;
@@ -55,7 +61,10 @@ public class CurveManager : MonoBehaviour
 
   internal void StartFlyingAnimation()
   {
+    Debug.Log("Starting flying animation");
     ResetVisual();
+
+    Flying = true;
     // Initial move (zero -> top)
     initialSequence = DOTween.Sequence()
       .Append(DOTween.To(() => curve.heightMultiplier,
@@ -89,6 +98,7 @@ public class CurveManager : MonoBehaviour
 
   internal void OnCrash()
   {
+    Flying = false;
     initialSequence?.Kill();
     loopSequence?.Kill();
     curve.followCurve = false;

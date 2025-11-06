@@ -775,6 +775,11 @@ public class UIManager : MonoBehaviour
     }, newMult, tick)
     .SetId("multTween")
     .SetEase(Ease.Linear);
+
+    if (!curveAnimator.isFlying)
+    {
+      curveAnimator.StartFlyingAnimation();
+    }
   }
 
   private void UpdateMultiplierDisplay(float mult)
