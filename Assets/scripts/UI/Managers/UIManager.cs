@@ -802,6 +802,7 @@ public class UIManager : MonoBehaviour
       multColorTween2?.Kill();
       multColorTween2 = multiplierText.DOColor(Color.white, 0.3f).SetEase(Ease.OutSine);
     }
+    
 
     if (mult < 3.8f && !blueColTime)
     {
