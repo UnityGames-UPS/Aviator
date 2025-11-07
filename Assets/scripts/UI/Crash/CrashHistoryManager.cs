@@ -34,9 +34,13 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
     // ensure fixed count
     var list = new List<float>(multipliers);
     if (list.Count < socket.maxHistoryCount)
+    {
       list.AddRange(GenerateRandomCrashes(socket.maxHistoryCount - list.Count));
+    }
     else if (list.Count > socket.maxHistoryCount)
-      list = list.GetRange(list.Count - socket.maxHistoryCount, socket.maxHistoryCount); // keep latest N
+    {
+      list = list.GetRange(list.Count - socket.maxHistoryCount, socket.maxHistoryCount); // keep latest N 
+    }
 
     // create exactly maxHistoryCount slots
     for (int i = 0; i < socket.maxHistoryCount; i++)
