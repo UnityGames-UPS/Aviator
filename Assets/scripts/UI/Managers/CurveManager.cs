@@ -25,13 +25,7 @@ public class CurveManager : MonoBehaviour
   [SerializeField] private float fastCrashDuration = 2f;
   [SerializeField] private float fastCrashTakeoffOffset = 0.3f;
 
-  internal bool isFlying =>
-      (loopSequence != null && loopSequence.IsPlaying()) ||
-      (initialSequence != null && initialSequence.IsPlaying()) ||
-      Flying;
-
-
-  private bool Flying;
+  internal bool Flying;
   private Sequence loopSequence;
   private Sequence initialSequence;
   private float predictedFlightMult;
@@ -52,11 +46,6 @@ public class CurveManager : MonoBehaviour
     curve.heightMultiplier = zeroHM;
     curve.widthMultiplier = zeroWM;
     curve.SetVerticesDirty();
-  }
-
-  internal void StartTakeoff()
-  {
-    ResetVisual();
   }
 
   internal void StartFlyingAnimation()

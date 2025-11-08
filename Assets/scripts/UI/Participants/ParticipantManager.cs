@@ -33,7 +33,7 @@ public class ParticipantManager : GenericObjectPool<ParticipantView>
     cashedOutCount = 0;
     totalWinAmount = 0;
     GreenFillerImage.fillAmount = 0f;
-    TotalWinText.text = totalWinAmount.ToString("F2");
+    TotalWinText.text = totalWinAmount.ToString("N2");
 
     TotalBetsText.text = totalBetsCount.ToString() + "/" + totalBetsCount.ToString();
 
@@ -85,7 +85,7 @@ public class ParticipantManager : GenericObjectPool<ParticipantView>
       row.MarkCashedOut(multiplier, winAmount);
 
       totalWinAmount += winAmount;
-      TotalWinText.text = totalWinAmount.ToString("F2");
+      TotalWinText.text = totalWinAmount.ToString("N2");
 
       cashedOutCount++;
       TotalBetsText.text = (totalBetsCount - cashedOutCount).ToString() + "/" + totalBetsCount.ToString();

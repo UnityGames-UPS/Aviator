@@ -265,19 +265,19 @@ public class UIManager : MonoBehaviour
     for (int i = 0; i < 4; i++)
     {
       int indexcopy = i;
-      LeftStaticBetButtons[indexcopy].GetComponentInChildren<TMP_Text>().text = staticBets[indexcopy].value.ToString("F2");
+      LeftStaticBetButtons[indexcopy].GetComponentInChildren<TMP_Text>().text = staticBets[indexcopy].value.ToString("N2");
       LeftStaticBetButtons[indexcopy].onClick.AddListener(() => ChangeBet(staticBets[indexcopy].index, true));
-      RightStaticBetButtons[indexcopy].GetComponentInChildren<TMP_Text>().text = staticBets[indexcopy].value.ToString("F2");
+      RightStaticBetButtons[indexcopy].GetComponentInChildren<TMP_Text>().text = staticBets[indexcopy].value.ToString("N2");
       RightStaticBetButtons[indexcopy].onClick.AddListener(() => ChangeBet(staticBets[indexcopy].index, false));
     }
 
     LeftBetCounter = staticBets[0].index;
-    LeftBetText.text = staticBets[0].value.ToString("F2");
-    LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("F2");
+    LeftBetText.text = staticBets[0].value.ToString("N2");
+    LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2");
     RightBetCounter = staticBets[0].index;
-    RightBetText.text = staticBets[0].value.ToString("F2");
-    RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("F2");
-    BalanceText.text = bal.ToString("F2");
+    RightBetText.text = staticBets[0].value.ToString("N2");
+    RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2");
+    BalanceText.text = bal.ToString("N2");
     MinBetText.text = bets[0].ToString("N2");
     MaxBetText.text = bets[^1].ToString("N2");
     MaxCashoutText.text = (bets[^1] * socket.MaxMult).ToString("N2");
@@ -571,8 +571,8 @@ public class UIManager : MonoBehaviour
           LeftBetCounter--;
         }
       }
-      LeftBetText.text = socket.bets[LeftBetCounter].ToString("F2");
-      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[LeftBetCounter].ToString("F2");
+      LeftBetText.text = socket.bets[LeftBetCounter].ToString("N2");
+      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[LeftBetCounter].ToString("N2");
     }
     else
     {
@@ -598,8 +598,8 @@ public class UIManager : MonoBehaviour
           RightBetCounter--;
         }
       }
-      RightBetText.text = socket.bets[RightBetCounter].ToString("F2");
-      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[RightBetCounter].ToString("F2");
+      RightBetText.text = socket.bets[RightBetCounter].ToString("N2");
+      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[RightBetCounter].ToString("N2");
     }
   }
 
@@ -609,16 +609,16 @@ public class UIManager : MonoBehaviour
     {
       LeftBetCounter = index;
       float bet = socket.bets[LeftBetCounter];
-      LeftBetText.text = bet.ToString("F2");
-      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("F2");
+      LeftBetText.text = bet.ToString("N2");
+      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2");
       Debug.Log(index + " " + bet);
     }
     else
     {
       RightBetCounter = index;
       float bet = socket.bets[RightBetCounter];
-      RightBetText.text = bet.ToString("F2");
-      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("F2");
+      RightBetText.text = bet.ToString("N2");
+      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2");
     }
   }
 
@@ -641,7 +641,7 @@ public class UIManager : MonoBehaviour
       {
         Debug.LogError("roundID not similar left bet data: " + leftBetData.serverHash + " roundIdentifier: " + roundIdentifier);
       }
-      LeftCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("F2");
+      LeftCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("N2");
       LeftCashoutButton.gameObject.SetActive(true);
       LeftCancelBetButton.gameObject.SetActive(false);
       LeftBetButton.gameObject.SetActive(false);
@@ -652,7 +652,7 @@ public class UIManager : MonoBehaviour
       {
         Debug.LogError("roundID not similar right bet data: " + leftBetData.serverHash + " roundIdentifier: " + roundIdentifier);
       }
-      RightCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("F2");
+      RightCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("N2");
       RightCashoutButton.gameObject.SetActive(true);
       RightCancelBetButton.gameObject.SetActive(false);
       RightBetButton.gameObject.SetActive(false);
@@ -691,7 +691,7 @@ public class UIManager : MonoBehaviour
 
     displayedMult = crashMult;
     multiplierText.color = Color.red;
-    multiplierText.text = crashMult.ToString("F2") + "x";
+    multiplierText.text = crashMult.ToString("N2") + "x";
 
     flewAwayText.color = new Color(flewAwayText.color.r, flewAwayText.color.g, flewAwayText.color.b, 1f);
     flewAwayText.gameObject.SetActive(true);
@@ -758,7 +758,7 @@ public class UIManager : MonoBehaviour
     multColorTween = multiplierText.DOFade(1f, tweenDuration)
         .SetDelay(startDelay);
 
-    // Debug.Log($"🎬 OnRoundStart - delay={startDelay:F2}s, duration={tweenDuration:F2}s");
+    // Debug.Log($"🎬 OnRoundStart - delay={startDelay:N2}s, duration={tweenDuration:N2}s");
   }
 
   internal void OnMultiplierUpdate(float newMult, float tick)
@@ -776,7 +776,7 @@ public class UIManager : MonoBehaviour
     .SetId("multTween")
     .SetEase(Ease.Linear);
 
-    if (!curveAnimator.isFlying)
+    if (!curveAnimator.Flying)
     {
       curveAnimator.StartFlyingAnimation();
     }
@@ -784,15 +784,15 @@ public class UIManager : MonoBehaviour
 
   private void UpdateMultiplierDisplay(float mult)
   {
-    multiplierText.text = mult.ToString("F2") + "x";
+    multiplierText.text = mult.ToString("N2") + "x";
 
     if (LeftCashoutButton.gameObject.activeInHierarchy)
     {
-      LeftCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("F2");
+      LeftCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("N2");
     }
     if (RightCashoutButton.gameObject.activeInHierarchy)
     {
-      RightCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("F2");
+      RightCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("N2");
     }
 
     if (multiplierText.color.a <= 0.3f && multColorTween2 == null)
@@ -802,7 +802,6 @@ public class UIManager : MonoBehaviour
       multColorTween2?.Kill();
       multColorTween2 = multiplierText.DOColor(Color.white, 0.3f).SetEase(Ease.OutSine);
     }
-    
 
     if (mult < 3.8f && !blueColTime)
     {

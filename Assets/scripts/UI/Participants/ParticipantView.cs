@@ -31,7 +31,7 @@ public class ParticipantView : MonoBehaviour
     }
     if (p.betAmount > 0)
     {
-      betText.text = p.betAmount.ToString("F2");
+      betText.text = p.betAmount.ToString("N2");
     }
     cashoutMultText.text = "";
     cashoutWinText.text = "";
@@ -40,8 +40,8 @@ public class ParticipantView : MonoBehaviour
 
   internal void MarkCashedOut(double multiplier, double winAmount)
   {
-    cashoutMultText.text = multiplier.ToString("F2") + "x";
-    cashoutWinText.text = winAmount.ToString("F2");
+    cashoutMultText.text = multiplier.ToString("N2") + "x";
+    cashoutWinText.text = winAmount.ToString("N2");
     cashoutBgImage.color = greenColor;
   }
 }

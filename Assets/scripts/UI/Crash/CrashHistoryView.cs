@@ -25,7 +25,7 @@ public class CrashHistoryView : MonoBehaviour
 
   internal void SetValue(float multiplier, bool resetTransforms = false)
   {
-    multiplierText.text = multiplier.ToString("F2") + "x";
+    multiplierText.text = multiplier.ToString("N2") + "x";
 
     // colors (optional)
   if (multiplier < 2f) multiplierText.color = new(Color.blue.r, Color.blue.g, Color.blue.b, 0);
