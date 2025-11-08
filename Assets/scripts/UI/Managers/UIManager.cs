@@ -1105,7 +1105,7 @@ public class UIManager : MonoBehaviour
 
   void OpenPopup(GameObject popup)
   {
-    blocker.SetActive(false);
-    popup.SetActive(false);
+    blocker.SetActive(true);
+    popup.SetActive(true);
   }
 }
