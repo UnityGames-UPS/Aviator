@@ -5289,7 +5289,7 @@ MonoBehaviour:
   crashHistoryManager: {fileID: 1727863909}
   JSManager: {fileID: 284092192}
   TestSocketURI: http://localhost:5000/
-  testToken: 502a65a7d5c848e0ad425156a2136c80
+  testToken: 2e712d287e4e4a0a8692b687b85f62af
   bets: []
   tickInterval: 0
   takeOffDuration: 0
@@ -5328,7 +5328,7 @@ Transform:
   m_GameObject: {fileID: 336640677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9790013, y: -0.13477515, z: -6.6682997}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

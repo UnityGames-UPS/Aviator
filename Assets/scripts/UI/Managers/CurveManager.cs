@@ -54,6 +54,7 @@ public class CurveManager : MonoBehaviour
     ResetVisual();
 
     Flying = true;
+    initialSequence?.Kill();
     // Initial move (zero -> top)
     initialSequence = DOTween.Sequence()
       .Append(DOTween.To(() => curve.heightMultiplier,
@@ -73,6 +74,7 @@ public class CurveManager : MonoBehaviour
 
   void StartLoop()
   {
+    loopSequence?.Kill();
     loopSequence = DOTween.Sequence()
       .Append(DOTween.To(() => curve.heightMultiplier,
         v => { curve.heightMultiplier = v; curve.SetVerticesDirty(); },
