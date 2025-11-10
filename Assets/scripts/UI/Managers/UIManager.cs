@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private Button[] OtherOptionsButtons;
   [SerializeField] private GameObject[] OtherOptionsPanels;
   [SerializeField] private Button[] OtherOptionCloseButtons;
+  [SerializeField] private Button CloseOtherOptionButton;
   [SerializeField] private GameObject BetHistoryLoader;
   [SerializeField] private TMP_Text MinBetText;
   [SerializeField] private TMP_Text MaxBetText;
@@ -164,6 +165,8 @@ public class UIManager : MonoBehaviour
     CloseOptionsMenuButton1.onClick.AddListener(() => OtherOptionsMenu.SetActive(false));
     HomeButton.onClick.AddListener(() => socket.CloseGame());
     OnDiscQuitButton.onClick.AddListener(() => socket.CloseGame());
+
+    CloseOtherOptionButton.onClick.AddListener(() => CloseAllOtherOptionsMenu());
 
     CloseOptionsMenuButton1.onClick.Invoke(); //Close Other Options Menu By Default
 
@@ -849,6 +852,15 @@ public class UIManager : MonoBehaviour
   void CloseOtherOptionMenu(int index)
   {
     OtherOptionsPanels[index].SetActive(false);
+    OtherOptionsPanelParent.SetActive(false);
+  }
+
+  void CloseAllOtherOptionsMenu()
+  {
+    foreach (var panel in OtherOptionsPanels)
+    {
+      panel.SetActive(false);
+    }
     OtherOptionsPanelParent.SetActive(false);
   }
 

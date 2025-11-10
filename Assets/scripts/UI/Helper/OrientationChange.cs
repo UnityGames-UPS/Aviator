@@ -13,6 +13,12 @@ public class OrientationChange : MonoBehaviour
   [SerializeField] private float transitionDuration = 0.2f;
   [SerializeField] private float waitForRotation = 0.2f;
 
+  [Header("Mobile GO Ref")]
+  [SerializeField] private bool simulateMobile = false;
+  [SerializeField] private GameObject chatObject;
+
+  [SerializeField] private RectTransform tobBarRect;
+
   private Vector2 ReferenceAspect;
   private Tween matchTween;
   private Tween rotationTween;
@@ -21,6 +27,15 @@ public class OrientationChange : MonoBehaviour
   private void Awake()
   {
     ReferenceAspect = CanvasScaler.referenceResolution;
+  }
+
+  void ChangeToMobileUI()
+  {
+    if (!simulateMobile)
+      return;
+
+    chatObject.SetActive(false);
+
   }
 
   void SwitchDisplay(string dimensions)
