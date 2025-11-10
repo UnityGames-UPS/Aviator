@@ -5634,10 +5634,11 @@ MonoBehaviour:
   CanvasScaler: {fileID: 252407660}
   MatchWidth: 0
   MatchHeight: 1
-  PortraitMatchWandH: 0.5
+  PortraitMatchCenter: 0.5
+  PortraitMatchWidth: 0.42
+  PortraitMatchHeight: 0.45
   transitionDuration: 0.2
   waitForRotation: 0.2
-  simulateMobile: 1
   chatObject: {fileID: 1671595240}
   topBarRect: {fileID: 1677631116}
   crashHistRect: {fileID: 1307912429}
