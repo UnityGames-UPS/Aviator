@@ -598,21 +598,21 @@ public class SocketIOManager : MonoBehaviour
   {
     Debug.Log("Cashing out bet: " + JsonUtility.ToJson(cashoutData));
     string jsonData = JsonUtility.ToJson(cashoutData);
-    MainGameSocket.ExpectAcknowledgement<string>(OnBetAcknowledgementReceived).Emit("request", jsonData);
+    MainGameSocket.ExpectAcknowledgement<string>(BetAcks).Emit("request", jsonData);
   }
 
   internal void CancelBet(CancelData cancelData)
   {
     Debug.Log("Cancelling bet: " + JsonUtility.ToJson(cancelData));
     string jsonData = JsonUtility.ToJson(cancelData);
-    MainGameSocket.ExpectAcknowledgement<string>(OnBetAcknowledgementReceived).Emit("request", jsonData);
+    MainGameSocket.ExpectAcknowledgement<string>(BetAcks).Emit("request", jsonData);
   }
 
   internal void PlaceBet(BetData betData)
   {
     Debug.Log("Placing bet: " + JsonUtility.ToJson(betData));
     string jsonData = JsonUtility.ToJson(betData);
-    MainGameSocket.ExpectAcknowledgement<string>(OnBetAcknowledgementReceived).Emit("request", jsonData);
+    MainGameSocket.ExpectAcknowledgement<string>(BetAcks).Emit("request", jsonData);
   }
 
   internal void RequestRecordsData(int Range, int By)
@@ -679,7 +679,7 @@ public class SocketIOManager : MonoBehaviour
     ChatSocket.Emit("request", jsonData);
   }
 
-  void OnBetAcknowledgementReceived(string data)
+  void BetAcks(string data)
   {
     Debug.Log("ack: " + data);
     if (leftAck.Key == false && leftAck.Value == "wait")

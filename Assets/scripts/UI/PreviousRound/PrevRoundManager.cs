@@ -13,7 +13,7 @@ public class PrevRoundManager : GenericObjectPool<ParticipantView>
     base.ReturnAllItemsToPool();
 
     LastRoundResult roundResult = socket.lastRoundResult;
-    if (roundResult.crashPoint < 2)
+    if (roundResult.crashPoint <= 3.8f)
     {
       crashPointText.color = Color.blue;
     }

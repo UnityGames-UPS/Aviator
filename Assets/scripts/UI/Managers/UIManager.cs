@@ -136,6 +136,7 @@ public class UIManager : MonoBehaviour
   private bool blueColTime = false;
   private bool purpleColTime = false;
   private bool pinkColTime = false;
+  internal bool isUserExit = false;
   private Tween multColorTween;
   private Tween multColorTween2;
   private Tween blurTween;
@@ -163,8 +164,8 @@ public class UIManager : MonoBehaviour
 
     OtherOptionsMenuButton.onClick.AddListener(() => OtherOptionsMenu.SetActive(true));
     CloseOptionsMenuButton1.onClick.AddListener(() => OtherOptionsMenu.SetActive(false));
-    HomeButton.onClick.AddListener(() => socket.CloseGame());
-    OnDiscQuitButton.onClick.AddListener(() => socket.CloseGame());
+    HomeButton.onClick.AddListener(() => { isUserExit = true; socket.CloseGame(); } );
+    OnDiscQuitButton.onClick.AddListener(() => { isUserExit = true; socket.CloseGame(); });
 
     CloseOtherOptionButton.onClick.AddListener(() => CloseAllOtherOptionsMenu());
 
@@ -1101,12 +1102,14 @@ public class UIManager : MonoBehaviour
 
   internal void ReconnectionPopup()
   {
-    OpenPopup(ReconnectionPopupGO);
+    if(isUserExit)
+      OpenPopup(ReconnectionPopupGO);
   }
 
   internal void DisconnectionPopup()
   {
-    OpenPopup(DisconnectionPopupGO);
+    if(!isUserExit)
+      OpenPopup(DisconnectionPopupGO);
   }
 
   void ClosePopup(GameObject popup)
