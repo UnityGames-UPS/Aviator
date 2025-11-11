@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
+using TMPro;
 
 public class OrientationChange : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class OrientationChange : MonoBehaviour
   [SerializeField] private float PortraitMatchHeight = 1f;
   [SerializeField] private float transitionDuration = 0.2f;
   [SerializeField] private float waitForRotation = 0.2f;
+
+  [SerializeField] private TMP_InputField inputField;
 
   [Header("Mobile GO Ref")]
   [SerializeField] private GameObject chatObject;
@@ -121,7 +124,6 @@ public class OrientationChange : MonoBehaviour
       Debug.LogWarning("Unity: Invalid format received in SwitchDisplay");
     }
   }
-
 
 #if UNITY_EDITOR
   private void Update()

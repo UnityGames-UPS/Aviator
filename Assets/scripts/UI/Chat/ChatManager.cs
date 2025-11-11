@@ -19,11 +19,11 @@ public class ChatManager : GenericObjectPool<ChatView>
     base.Awake();
     sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage()));
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-    inputField.onSelect.AddListener(_ => jsBridge.OpenKeyboard());
-#else
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//     inputField.onSelect.AddListener(_ => jsBridge.OpenKeyboard());
+// #else
     inputField.onEndEdit.AddListener((s) => OnEndEdit());
-#endif
+// #endif
   }
 
   internal void OnKeyboardSubmit(string message)
