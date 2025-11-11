@@ -9,16 +9,32 @@ public class ChatManager : GenericObjectPool<ChatView>
 {
   [SerializeField] private SocketIOManager socketIOManager;
   [SerializeField] private ScrollRect ScrollRect;
-  [SerializeField] private TMP_InputField inputField;
+  [SerializeField] internal TMP_InputField inputField;
   [SerializeField] private Button sendButton;
+  [SerializeField] private JSFunctCalls jsBridge;
   private Queue<ChatView> activeMessages = new();
 
   protected override void Awake()
   {
     base.Awake();
     sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage()));
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+    inputField.onSelect.AddListener(_ => jsBridge.OpenKeyboard());
+#else
     inputField.onEndEdit.AddListener((s) => OnEndEdit());
+#endif
   }
+
+  internal void OnKeyboardSubmit(string message)
+  {
+    if (string.IsNullOrEmpty(message))
+      return;
+
+    inputField.text = message;
+    StartCoroutine(SendChatMessage());
+  }
+
   internal void InitChat(List<string> usernames, List<string> messages)
   {
     for (int i = usernames.Count - 1; i >= 0; i--)

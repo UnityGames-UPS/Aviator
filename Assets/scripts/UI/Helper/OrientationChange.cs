@@ -33,19 +33,20 @@ public class OrientationChange : MonoBehaviour
     ReferenceAspect = CanvasScaler.referenceResolution;
   }
 
-  void DiviceCheck(string device)
-  {
-    if (string.IsNullOrEmpty(device))
-    {
-      Debug.LogError("device received empty");
-      return;
-    }
+  // void DiviceCheck(string device)
+  // {
+  //   if (string.IsNullOrEmpty(device))
+  //   {
+  //     Debug.LogError("device received empty");
+  //     return;
+  //   }
 
-    if (device.ToLower() != "pc")
-    {
-      ChangeToMobileUI();
-    }
-  }
+  //   Debug.Log("Unity recieved device: " + device);
+  //   if (device.ToLower() != "pc")
+  //   {
+  //     ChangeToMobileUI();
+  //   }
+  // }
 
   void ChangeToMobileUI()
   {

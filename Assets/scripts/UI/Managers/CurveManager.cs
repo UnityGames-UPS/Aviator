@@ -31,6 +31,7 @@ public class CurveManager : MonoBehaviour
   private float predictedFlightMult;
   private Tween takeOffTween;
   private Tween loopTween;
+  private bool animationToggle = true;
 
   void Awake()
   {
@@ -41,7 +42,8 @@ public class CurveManager : MonoBehaviour
   {
     takeOffTween?.Kill();
     loopTween?.Kill();
-    curve.enabled = true;
+    if(animationToggle)
+      curve.enabled = true;
     curve.followCurve = true;
     curve.heightMultiplier = zeroHM;
     curve.widthMultiplier = zeroWM;
@@ -118,6 +120,7 @@ public class CurveManager : MonoBehaviour
 
   internal void AnimationToggle(bool toggle)
   {
+    animationToggle = toggle;
     curve.enabled = toggle;
     curve.PlaneParent.gameObject.SetActive(toggle);
   }

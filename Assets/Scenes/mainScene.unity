@@ -4856,6 +4856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46bea4efaac04823b59f9c1e77e76a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chatManager: {fileID: 1954901353}
 --- !u!4 &284092193
 Transform:
   m_ObjectHideFlags: 0
@@ -5273,7 +5274,7 @@ MonoBehaviour:
   crashHistoryManager: {fileID: 1727863909}
   JSManager: {fileID: 284092192}
   TestSocketURI: http://localhost:5000/
-  testToken: 627c07e073c1405bac22ed7003702d7f
+  testToken: 41d3891aabab457dbcd888e264838d10
   bets: []
   tickInterval: 0
   takeOffDuration: 0
@@ -33984,6 +33985,7 @@ MonoBehaviour:
   ScrollRect: {fileID: 1339920790}
   inputField: {fileID: 1586027746}
   sendButton: {fileID: 1958187260}
+  jsBridge: {fileID: 284092192}
 --- !u!4 &1954901354
 Transform:
   m_ObjectHideFlags: 0
