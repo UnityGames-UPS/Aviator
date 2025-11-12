@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Best.HTTP.Cookies;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -11,19 +12,93 @@ public class ChatManager : GenericObjectPool<ChatView>
   [SerializeField] private ScrollRect ScrollRect;
   [SerializeField] internal TMP_InputField inputField;
   [SerializeField] private Button sendButton;
+  [SerializeField] private Button chatToggle;
   [SerializeField] private JSFunctCalls jsBridge;
   private Queue<ChatView> activeMessages = new();
+
+  [Header("Mobile GO Ref")]
+  [SerializeField] private RectTransform topBarRect;
+  [SerializeField] private RectTransform crashHistRect;
+  [SerializeField] private RectTransform gamePlayRect;
+  [SerializeField] private RectTransform betPanelRect;
+  [SerializeField] private RectTransform chatRect;
+  private bool isChatToggle = true;
+  private float topBarXPosi;
+  private float topBarXSD;
+  private float crashHistXPosi;
+  private float crashHistXSD;
+  private float gamePlayXPosi;
+  private float gamePlayXSD;
+  private float betPanelXPosi;
+  private float betPanelXSD;
+  private float chatPanelXPosi;
 
   protected override void Awake()
   {
     base.Awake();
     sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage()));
+    chatToggle.onClick.AddListener(() =>
+    {
+      isChatToggle = !isChatToggle;
+      ToggleChat(isChatToggle);
+    });
 
-// #if UNITY_WEBGL && !UNITY_EDITOR
-//     inputField.onSelect.AddListener(_ => jsBridge.OpenKeyboard());
-// #else
+    topBarXPosi = topBarRect.localPosition.x;
+    topBarXSD = topBarRect.sizeDelta.x;
+    crashHistXPosi = crashHistRect.localPosition.x;
+    crashHistXSD = crashHistRect.sizeDelta.x;
+    gamePlayXPosi = gamePlayRect.localPosition.x;
+    gamePlayXSD = gamePlayRect.sizeDelta.x;
+    betPanelXPosi = betPanelRect.localPosition.x;
+    betPanelXSD = betPanelRect.sizeDelta.x;
+    chatPanelXPosi = chatRect.localPosition.x;
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+    inputField.onSelect.AddListener(_ => jsBridge.OpenKeyboard());
+#else
     inputField.onEndEdit.AddListener((s) => OnEndEdit());
-// #endif
+#endif
+  }
+
+  void ToggleChat(bool toggle)
+  {
+    Debug.Log("Toggling chat");
+
+    float duration = 0.35f;
+    Ease easing = Ease.OutCubic;
+
+    if (toggle)
+    {
+      chatRect.DOLocalMoveX(chatPanelXPosi, duration).SetEase(easing);
+      // Chat ON → Restore original saved positions and widths
+      topBarRect.DOLocalMoveX(topBarXPosi, duration).SetEase(easing);
+      topBarRect.DOSizeDelta(new Vector2(topBarXSD, topBarRect.sizeDelta.y), duration).SetEase(easing);
+
+      crashHistRect.DOLocalMoveX(crashHistXPosi, duration).SetEase(easing);
+      crashHistRect.DOSizeDelta(new Vector2(crashHistXSD, crashHistRect.sizeDelta.y), duration).SetEase(easing);
+
+      gamePlayRect.DOLocalMoveX(gamePlayXPosi, duration).SetEase(easing);
+      gamePlayRect.DOSizeDelta(new Vector2(gamePlayXSD, gamePlayRect.sizeDelta.y), duration).SetEase(easing);
+
+      betPanelRect.DOLocalMoveX(betPanelXPosi, duration).SetEase(easing);
+      betPanelRect.DOSizeDelta(new Vector2(betPanelXSD, betPanelRect.sizeDelta.y), duration).SetEase(easing);
+    }
+    else
+    {
+      chatRect.DOLocalMoveX(chatPanelXPosi + (243*2), duration).SetEase(easing);
+      // Chat OFF → Shift all elements to the right and widen appropriately
+      topBarRect.DOLocalMoveX(topBarXPosi + 243f, duration).SetEase(easing);
+      topBarRect.DOSizeDelta(new Vector2(2340f, topBarRect.sizeDelta.y), duration).SetEase(easing);
+
+      crashHistRect.DOLocalMoveX(crashHistXPosi + 243f, duration).SetEase(easing);
+      crashHistRect.DOSizeDelta(new Vector2(1746f, crashHistRect.sizeDelta.y), duration).SetEase(easing);
+
+      gamePlayRect.DOLocalMoveX(gamePlayXPosi + 243f, duration).SetEase(easing);
+      gamePlayRect.DOSizeDelta(new Vector2(1750f, gamePlayRect.sizeDelta.y), duration).SetEase(easing);
+
+      betPanelRect.DOLocalMoveX(betPanelXPosi + 243f, duration).SetEase(easing);
+      betPanelRect.DOSizeDelta(new Vector2(1747f, betPanelRect.sizeDelta.y), duration).SetEase(easing);
+    }
   }
 
   internal void OnKeyboardSubmit(string message)

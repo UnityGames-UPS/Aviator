@@ -18,13 +18,7 @@ public class OrientationChange : MonoBehaviour
 
   [SerializeField] private TMP_InputField inputField;
 
-  [Header("Mobile GO Ref")]
-  [SerializeField] private GameObject chatObject;
 
-  [SerializeField] private RectTransform topBarRect;
-  [SerializeField] private RectTransform crashHistRect;
-  [SerializeField] private RectTransform gamePlayRect;
-  [SerializeField] private RectTransform betPanelRect;
 
   private Vector2 ReferenceAspect;
   private Tween matchTween;
@@ -50,24 +44,6 @@ public class OrientationChange : MonoBehaviour
   //     ChangeToMobileUI();
   //   }
   // }
-
-  void ChangeToMobileUI()
-  {
-    Debug.Log("Changing to Mobile UI");
-    chatObject.SetActive(false);
-
-    topBarRect.localPosition = new(243f, topBarRect.localPosition.y, topBarRect.localPosition.z);
-    topBarRect.sizeDelta = new(2340f, topBarRect.sizeDelta.y);
-
-    crashHistRect.localPosition = new(243f, crashHistRect.localPosition.y, crashHistRect.localPosition.z);
-    crashHistRect.sizeDelta = new(1746f, crashHistRect.sizeDelta.y);
-
-    gamePlayRect.localPosition = new(243.5f, gamePlayRect.localPosition.y, gamePlayRect.localPosition.z);
-    gamePlayRect.sizeDelta = new(1750f, gamePlayRect.sizeDelta.y);
-
-    betPanelRect.localPosition = new(243f, betPanelRect.localPosition.y, betPanelRect.localPosition.z);
-    betPanelRect.sizeDelta = new(1747f, betPanelRect.sizeDelta.y);
-  }
 
   void SwitchDisplay(string dimensions)
   {
