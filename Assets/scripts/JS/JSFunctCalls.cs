@@ -20,6 +20,7 @@ public class JSFunctCalls : MonoBehaviour
 
   internal void OpenKeyboard()
   {
+    chatManager.consoleText.text = "OpenKeyboard";
 #if UNITY_WEBGL && !UNITY_EDITOR
     FocusInvisibleInput();
 #endif
@@ -27,27 +28,23 @@ public class JSFunctCalls : MonoBehaviour
 
   internal void CloseKeyboard()
   {
+    chatManager.consoleText.text = "CloseKeyboard";
 #if UNITY_WEBGL && !UNITY_EDITOR
     BlurInvisibleInput();
 #endif
   }
 
-  // Called from JS
   internal void OnKeyboardInput(string text)
   {
-    Debug.Log($"Keyboard Input: {text}");
+    chatManager.consoleText.text = text;
     if (chatManager && chatManager.inputField)
       chatManager.inputField.text = text;
   }
 
-  // Called from JS when Enter is pressed
-  internal void OnKeyboardSubmit(string message)
+  internal void OnKeyboardSubmit()
   {
-    Debug.Log($"Keyboard Submit: {message}");
-    if (chatManager && !string.IsNullOrWhiteSpace(message))
-    {
-      chatManager.OnKeyboardSubmit(message);
-    }
+    chatManager.consoleText.text = "OnKeyBoardSubmit";
+    StartCoroutine(chatManager.SendChatMessage(chatManager.inputField.text));
   }
 
   void OnEnable()

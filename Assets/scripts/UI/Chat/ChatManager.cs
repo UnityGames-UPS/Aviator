@@ -32,11 +32,12 @@ public class ChatManager : GenericObjectPool<ChatView>
   private float betPanelXPosi;
   private float betPanelXSD;
   private float chatPanelXPosi;
+  [SerializeField] internal TMP_Text consoleText;
 
   protected override void Awake()
   {
     base.Awake();
-    sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage()));
+    sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage(inputField.text)));
     chatToggle.onClick.AddListener(() =>
     {
       isChatToggle = !isChatToggle;
@@ -55,6 +56,8 @@ public class ChatManager : GenericObjectPool<ChatView>
 
 #if UNITY_WEBGL && !UNITY_EDITOR
     inputField.onSelect.AddListener(_ => jsBridge.OpenKeyboard());
+    inputField.onDeselect.AddListener(_ => jsBridge.CloseKeyboard());
+    inputField.onEndEdit.AddListener((s) => OnEndEdit());
 #else
     inputField.onEndEdit.AddListener((s) => OnEndEdit());
 #endif
@@ -70,7 +73,6 @@ public class ChatManager : GenericObjectPool<ChatView>
     if (toggle)
     {
       chatRect.DOLocalMoveX(chatPanelXPosi, duration).SetEase(easing);
-      // Chat ON → Restore original saved positions and widths
       topBarRect.DOLocalMoveX(topBarXPosi, duration).SetEase(easing);
       topBarRect.DOSizeDelta(new Vector2(topBarXSD, topBarRect.sizeDelta.y), duration).SetEase(easing);
 
@@ -85,8 +87,7 @@ public class ChatManager : GenericObjectPool<ChatView>
     }
     else
     {
-      chatRect.DOLocalMoveX(chatPanelXPosi + (243*2), duration).SetEase(easing);
-      // Chat OFF → Shift all elements to the right and widen appropriately
+      chatRect.DOLocalMoveX(chatPanelXPosi + (243*5), duration).SetEase(easing);
       topBarRect.DOLocalMoveX(topBarXPosi + 243f, duration).SetEase(easing);
       topBarRect.DOSizeDelta(new Vector2(2340f, topBarRect.sizeDelta.y), duration).SetEase(easing);
 
@@ -99,15 +100,6 @@ public class ChatManager : GenericObjectPool<ChatView>
       betPanelRect.DOLocalMoveX(betPanelXPosi + 243f, duration).SetEase(easing);
       betPanelRect.DOSizeDelta(new Vector2(1747f, betPanelRect.sizeDelta.y), duration).SetEase(easing);
     }
-  }
-
-  internal void OnKeyboardSubmit(string message)
-  {
-    if (string.IsNullOrEmpty(message))
-      return;
-
-    inputField.text = message;
-    StartCoroutine(SendChatMessage());
   }
 
   internal void InitChat(List<string> usernames, List<string> messages)
@@ -156,7 +148,8 @@ public class ChatManager : GenericObjectPool<ChatView>
     bool escapePressed = Input.GetKeyDown(KeyCode.Escape);
     if (enterPressed)
     {
-      StartCoroutine(SendChatMessage());
+      string msg = inputField.text = inputField.text.Replace("\n", "").Replace("\r", "").Trim();
+      StartCoroutine(SendChatMessage(msg));
     }
     else if (escapePressed)
     {
@@ -167,10 +160,9 @@ public class ChatManager : GenericObjectPool<ChatView>
     }
   }
 
-  private IEnumerator SendChatMessage()
+  internal IEnumerator SendChatMessage(string msg)
   {
     ToggleUI(false);
-    string msg = inputField.text.Trim();
 
     if (string.IsNullOrEmpty(msg))
     {
@@ -202,15 +194,14 @@ public class ChatManager : GenericObjectPool<ChatView>
   void ToggleUI(bool toggle)
   {
     inputField.interactable = toggle;
-    if (toggle)
-    {
-      inputField.ActivateInputField();
-    }
-    else
-    {
-      inputField.DeactivateInputField();
-    }
+    // if (toggle)
+    // {
+    //   inputField.ActivateInputField();
+    // }
+    // else
+    // {
+    //   inputField.DeactivateInputField();
+    // }
     sendButton.interactable = toggle;
   }
-
 }

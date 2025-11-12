@@ -24,19 +24,14 @@ mergeInto(LibraryManager.library, {
     // Listen for input and send back to Unity
     input.addEventListener('input', function () {
       const value = input.value;
-      if (typeof unityInstance !== 'undefined' && unityInstance.SendMessage) {
-        unityInstance.SendMessage('JSFunctCalls', 'OnKeyboardInput', value);
-      }
+      SendMessage('JS', 'OnKeyboardInput', value);
     });
 
     // When user hits Enter
     input.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') {
-        if (typeof unityInstance !== 'undefined' && unityInstance.SendMessage) {
-          unityInstance.SendMessage('JSFunctCalls', 'OnKeyboardSubmit', input.value);
-        }
-        input.value = '';
-        input.blur();
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        e.preventDefault();
+        SendMessage('JS', 'OnKeyboardSubmit');
       }
     });
   },
