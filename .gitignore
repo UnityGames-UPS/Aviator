@@ -29,6 +29,8 @@
 .vs/
 .vscode/
 
+GEMINI.md
+
 # Gradle cache directory
 .gradle/
 

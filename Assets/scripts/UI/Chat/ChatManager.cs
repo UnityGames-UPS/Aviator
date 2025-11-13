@@ -32,7 +32,6 @@ public class ChatManager : GenericObjectPool<ChatView>
   private float betPanelXPosi;
   private float betPanelXSD;
   private float chatPanelXPosi;
-  [SerializeField] internal TMP_Text consoleText;
 
   protected override void Awake()
   {
@@ -54,13 +53,7 @@ public class ChatManager : GenericObjectPool<ChatView>
     betPanelXSD = betPanelRect.sizeDelta.x;
     chatPanelXPosi = chatRect.localPosition.x;
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-    inputField.onSelect.AddListener(_ => jsBridge.OpenKeyboard());
-    inputField.onDeselect.AddListener(_ => jsBridge.CloseKeyboard());
     inputField.onEndEdit.AddListener((s) => OnEndEdit());
-#else
-    inputField.onEndEdit.AddListener((s) => OnEndEdit());
-#endif
   }
 
   void ToggleChat(bool toggle)
@@ -102,22 +95,22 @@ public class ChatManager : GenericObjectPool<ChatView>
     }
   }
 
-  internal void InitChat(List<string> usernames, List<string> messages)
+  internal void InitChat(List<string> userIds, List<string> messages)
   {
-    for (int i = usernames.Count - 1; i >= 0; i--)
+    for (int i = userIds.Count - 1; i >= 0; i--)
     {
-      AddMessage(usernames[i], messages[i]);
+      AddMessage(userIds[i], messages[i]);
     }
     StartCoroutine(ScrollToBottomNextFrame());
   }
 
-  internal void OnChatResult(string username, string message)
+  internal void OnChatResult(string userIds, string message)
   {
-    AddMessage(username, message);
+    AddMessage(userIds, message);
     StartCoroutine(ScrollToBottomNextFrame());
   }
 
-  void AddMessage(string username, string message)
+  void AddMessage(string userId, string message)
   {
     if (base.ItemsInUse.Count >= socketIOManager.chatMessagesCap)
     {
@@ -126,7 +119,7 @@ public class ChatManager : GenericObjectPool<ChatView>
     }
 
     var item = base.GetFromPool();
-    item.SetMessage(username, message);
+    item.SetMessage(userId, message, socketIOManager.userId);
     item.transform.SetAsLastSibling();
     activeMessages.Enqueue(item);
     item.transform.localScale = Vector3.one * 0.95f;
@@ -144,6 +137,10 @@ public class ChatManager : GenericObjectPool<ChatView>
 
   void OnEndEdit()
   {
+    if(inputField.textComponent.color == Color.red)
+    {
+      inputField.textComponent.color = Color.white;
+    }
     bool enterPressed = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter);
     bool escapePressed = Input.GetKeyDown(KeyCode.Escape);
     if (enterPressed)
@@ -163,6 +160,7 @@ public class ChatManager : GenericObjectPool<ChatView>
   internal IEnumerator SendChatMessage(string msg)
   {
     ToggleUI(false);
+    inputField.text = "";
 
     if (string.IsNullOrEmpty(msg))
     {
@@ -178,12 +176,12 @@ public class ChatManager : GenericObjectPool<ChatView>
 
     if (msg.Length > socketIOManager.chatCharCap)
     {
-      inputField.text = "<color=red>Char Limit Exceeded!!!</color>";
+      inputField.textComponent.color = Color.red;
+      inputField.text = "Char Limit Exceeded!!!";
       ToggleUI(true);
       yield break;
     }
 
-    inputField.text = "";
     socketIOManager.SendChatMessage(msg);
 
     yield return new WaitForSeconds(1f);

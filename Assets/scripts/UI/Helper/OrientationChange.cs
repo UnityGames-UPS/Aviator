@@ -10,8 +10,6 @@ public class OrientationChange : MonoBehaviour
   [SerializeField] private CanvasScaler CanvasScaler;
   [SerializeField] private float MatchWidth = 0f;
   [SerializeField] private float MatchHeight = 1f;
-  [SerializeField] private float PortraitMatchCenter = 0.5f;
-  [SerializeField] private float PortraitMatchWidth = 0.45f;
   [SerializeField] private float PortraitMatchHeight = 1f;
   [SerializeField] private float transitionDuration = 0.2f;
   [SerializeField] private float waitForRotation = 0.2f;
@@ -29,21 +27,6 @@ public class OrientationChange : MonoBehaviour
   {
     ReferenceAspect = CanvasScaler.referenceResolution;
   }
-
-  // void DiviceCheck(string device)
-  // {
-  //   if (string.IsNullOrEmpty(device))
-  //   {
-  //     Debug.LogError("device received empty");
-  //     return;
-  //   }
-
-  //   Debug.Log("Unity recieved device: " + device);
-  //   if (device.ToLower() != "pc")
-  //   {
-  //     ChangeToMobileUI();
-  //   }
-  // }
 
   void SwitchDisplay(string dimensions)
   {

@@ -49,7 +49,7 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] internal float MaxMult = 3;
   [SerializeField] internal float multFreq;
   [SerializeField] internal float balance = 0;
-  [SerializeField] internal string username = "";
+  [SerializeField] internal string userId = "";
   [SerializeField] internal BetHistoryData BetHistoryData = new();
   [SerializeField] internal LastRoundResult lastRoundResult = new();
   [SerializeField] internal RoundStartData roundData = new();
@@ -290,14 +290,14 @@ public class SocketIOManager : MonoBehaviour
     chatMessagesCap = (int?)gameData["chatRoomMessagesLimit"] ?? 0;
     multFreq = (float?)gameData["minMultiplierFrequency"] ?? 0.02f;
     balance = (float?)obj["player"]["balance"] ?? 0.00f;
-    username = (string)gameData["userId"];
+    userId = (string)gameData["userId"];
 
     // Handle bets array safely
     JArray betsArray = (JArray)gameData["bets"];
     if (betsArray != null)
     {
       bets = betsArray.Select(b => (float)b).ToList();
-      uiManager.SetInit(bets, balance, username);
+      uiManager.SetInit(bets, balance, userId);
     }
     else
     {
