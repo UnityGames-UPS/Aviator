@@ -54,6 +54,7 @@ public class ChatManager : GenericObjectPool<ChatView>
     chatPanelXPosi = chatRect.localPosition.x;
 
     inputField.onEndEdit.AddListener((s) => OnEndEdit());
+    inputField.onValueChanged.AddListener((s) => OnValueChange());
   }
 
   void ToggleChat(bool toggle)
@@ -80,7 +81,7 @@ public class ChatManager : GenericObjectPool<ChatView>
     }
     else
     {
-      chatRect.DOLocalMoveX(chatPanelXPosi + (243*5), duration).SetEase(easing);
+      chatRect.DOLocalMoveX(chatPanelXPosi + (243 * 5), duration).SetEase(easing);
       topBarRect.DOLocalMoveX(topBarXPosi + 243f, duration).SetEase(easing);
       topBarRect.DOSizeDelta(new Vector2(2340f, topBarRect.sizeDelta.y), duration).SetEase(easing);
 
@@ -137,10 +138,6 @@ public class ChatManager : GenericObjectPool<ChatView>
 
   void OnEndEdit()
   {
-    if(inputField.textComponent.color == Color.red)
-    {
-      inputField.textComponent.color = Color.white;
-    }
     bool enterPressed = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter);
     bool escapePressed = Input.GetKeyDown(KeyCode.Escape);
     if (enterPressed)
@@ -154,6 +151,14 @@ public class ChatManager : GenericObjectPool<ChatView>
       {
         inputField.text = "";
       });
+    }
+  }
+
+  void OnValueChange()
+  {
+    if (inputField.textComponent.color == Color.red && !inputField.text.Contains("Char Limit Exceeded"))
+    {
+      inputField.textComponent.color = Color.white;
     }
   }
 
@@ -192,14 +197,10 @@ public class ChatManager : GenericObjectPool<ChatView>
   void ToggleUI(bool toggle)
   {
     inputField.interactable = toggle;
-    // if (toggle)
-    // {
-    //   inputField.ActivateInputField();
-    // }
-    // else
-    // {
-    //   inputField.DeactivateInputField();
-    // }
+    if(toggle)
+      inputField.ActivateInputField();
+    else
+      inputField.DeactivateInputField();
     sendButton.interactable = toggle;
   }
 }

@@ -807,7 +807,7 @@ public class UIManager : MonoBehaviour
       multColorTween2 = multiplierText.DOColor(Color.white, 0.3f).SetEase(Ease.OutSine);
     }
 
-    if (mult < 3.8f && !blueColTime)
+    if (mult <= 3.8f && !blueColTime)
     {
       // Debug.Log("blur color blue");
       blueColTime = true;
@@ -1123,4 +1123,43 @@ public class UIManager : MonoBehaviour
     blocker.SetActive(true);
     popup.SetActive(true);
   }
+
+  internal void ResetGame()
+    {
+        // Reset Multiplier
+        multiplierText.text = "1.00x";
+        multiplierText.color = Color.white;
+        flewAwayText.gameObject.SetActive(false);
+        blurImage.enabled = false;
+
+        // Reset Loading Bar
+        loadingBar.SetActive(false);
+        loadingBarFillerImage.fillAmount = 0f;
+
+        // Reset Bet Buttons
+        ToggleBetButtons(true, true);
+        LeftBetButton.gameObject.SetActive(true);
+        LeftCancelBetButton.gameObject.SetActive(false);
+        LeftCashoutButton.gameObject.SetActive(false);
+        LeftBlocker.SetActive(false);
+
+        ToggleBetButtons(true, false);
+        RightBetButton.gameObject.SetActive(true);
+        RightCancelBetButton.gameObject.SetActive(false);
+        RightCashoutButton.gameObject.SetActive(false);
+        RightBlocker.SetActive(false);
+
+        // Reset Bet Data
+        leftBetData = null;
+        rightBetData = null;
+
+        curveAnimator.ResetVisual();
+
+        // Kill any running tweens
+        DOTween.Kill("multTween");
+        DOTween.Kill("multColorTween");
+        DOTween.Kill("multColorTween2");
+        DOTween.Kill("blurTween");
+        DOTween.Kill("RoundLoadingTween");
+    }
 }

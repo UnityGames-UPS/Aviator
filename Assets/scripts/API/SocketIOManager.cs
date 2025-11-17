@@ -15,6 +15,7 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] private ParticipantManager participantUI;
   [SerializeField] private ChatManager chatUI;
   [SerializeField] private CrashHistoryManager crashHistoryManager;
+  [SerializeField] private PlayerCountManager playerCountManager;
   private SocketOptions socketOptions;
   private SocketManager MainSocketManager;
   private SocketManager ChatSocketManager;
@@ -50,6 +51,7 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] internal float multFreq;
   [SerializeField] internal float balance = 0;
   [SerializeField] internal string userId = "";
+  [SerializeField] internal int playerCount = 0;
   [SerializeField] internal BetHistoryData BetHistoryData = new();
   [SerializeField] internal LastRoundResult lastRoundResult = new();
   [SerializeField] internal RoundStartData roundData = new();
@@ -177,6 +179,9 @@ public class SocketIOManager : MonoBehaviour
     MainGameSocket.On<string>("leaderboard:removebet", HandleLeaderboardRemoveBet);
     MainGameSocket.On<string>("leaderboard:usercashout", HandleLeaderboardUserCashout);
 
+    MainGameSocket.On<string>("room:joined", HandlePlayerJoined);
+    MainGameSocket.On<string>("room:left", HandlePlayerLeft);
+
     MainGameSocket.On<string>("pong", OnPongReceived);
 
     MainSocketManager.Open();
@@ -254,6 +259,7 @@ public class SocketIOManager : MonoBehaviour
   {
     Debug.LogWarning("⚠️ Disconnected from server.");
     uiManager.DisconnectionPopup();
+    uiManager.ResetGame();
     ResetPingRoutine();
   }
   private void OnPongReceived(string data)
@@ -290,7 +296,9 @@ public class SocketIOManager : MonoBehaviour
     chatMessagesCap = (int?)gameData["chatRoomMessagesLimit"] ?? 0;
     multFreq = (float?)gameData["minMultiplierFrequency"] ?? 0.02f;
     balance = (float?)obj["player"]["balance"] ?? 0.00f;
-    userId = (string)gameData["userId"];
+    userId = (string)gameData["userId"] ?? "";
+    playerCount = (int?)gameData["playerCount"] ?? 1;
+    playerCountManager.UpdatePlayerCount(playerCount);
 
     // Handle bets array safely
     JArray betsArray = (JArray)gameData["bets"];
@@ -459,6 +467,17 @@ public class SocketIOManager : MonoBehaviour
     }
   }
 
+  void HandlePlayerJoined(string data)
+  {
+    Debug.Log("PLAYER_JOINED: " + data);
+    playerCountManager.OnPlayerJoined();
+  }
+
+  void HandlePlayerLeft(string data)
+  {
+    Debug.Log("PLAYER_LEFT: " + data);
+    playerCountManager.OnPlayerLeft();
+  }
 
   void HandleChatInit(string data)
   {
