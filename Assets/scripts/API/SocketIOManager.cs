@@ -67,6 +67,9 @@ public class SocketIOManager : MonoBehaviour
     Crashed                // plane crashed
   }
 
+  private Coroutine disconnectTimerCoroutine;
+  [SerializeField] private float disconnectDelay = 300f;
+
   private void Start()
   {
     OpenSocket();
@@ -88,6 +91,35 @@ public class SocketIOManager : MonoBehaviour
     DOTween.defaultTimeScaleIndependent = true;
     blocker.SetActive(true);
     isLoaded = false;
+  }
+
+  private void OnApplicationFocus(bool hasFocus)
+  {
+    if (!hasFocus)
+    {
+      // App lost focus, start disconnect timer
+      disconnectTimerCoroutine = StartCoroutine(DisconnectTimer());
+    }
+    else
+    {
+      // App regained focus, cancel disconnect timer
+      if (disconnectTimerCoroutine != null)
+      {
+        StopCoroutine(disconnectTimerCoroutine);
+        disconnectTimerCoroutine = null;
+        Debug.Log("Disconnect timer cancelled. App regained focus.");
+      }
+    }
+  }
+
+  private IEnumerator DisconnectTimer()
+  {
+    Debug.Log($"App lost focus. Disconnect timer started for {disconnectDelay} seconds.");
+    yield return new WaitForSeconds(disconnectDelay);
+
+    Debug.Log("Disconnect timer finished. Disconnecting due to prolonged focus loss.");
+    MainGameSocket.Disconnect();
+    ChatSocket.Disconnect();
   }
 
   private void OpenSocket()
@@ -254,7 +286,7 @@ public class SocketIOManager : MonoBehaviour
     JSManager.SendCustomMessage("error");
 #endif
   }
-  
+
   private void OnDisconnected()
   {
     Debug.LogWarning("⚠️ Disconnected from server.");
@@ -376,6 +408,8 @@ public class SocketIOManager : MonoBehaviour
 
   private void HandleGameTick(string data)
   {
+    if (CurrentState == AviatorState.Crashed) return;
+
     CurrentState = AviatorState.TickerStart;
     // Debug.Log("TICK: " + data);
     JObject obj = JObject.Parse(data);
@@ -924,6 +958,7 @@ public class AckPayload
   public bool isUserInQueue;
   public string message;
   public string betId;
+  public float winAmount;
 }
 
 [Serializable]

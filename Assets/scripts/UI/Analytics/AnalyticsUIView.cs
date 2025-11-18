@@ -24,9 +24,9 @@ public class AnalyticsUIView : MonoBehaviour
       dateText.text = formattedDate;
     }
     if (betText && bet != 0) betText.text = bet.ToString("N2");
-    if (multText && mult != 0) multText.text = mult.ToString("0.00") + "x";
+    if (multText && mult != 0) multText.text = mult.ToString("N2") + "x";
     if (winText && win != 0) winText.text = win.ToString("N2");
-    if (crashText && crash != 0) crashText.text = crash.ToString("0.00") + "x";
+    if (crashText && crash != 0) crashText.text = crash.ToString("N2") + "x";
     if (avatarImage) avatarImage.sprite = ProfileImages[UnityEngine.Random.Range(0, ProfileImages.Length)];
   }
 }

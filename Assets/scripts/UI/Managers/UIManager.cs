@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
   [SerializeField] private BetHistoryManager betHistoryManager;
   [SerializeField] private AudioManager Audio;
 
+  [SerializeField] private PopupManager popupManager;
+  private bool requestInProgress = false;
+
   [SerializeField] private Image profilePicImage;
   [SerializeField] private Sprite[] profilePicSprites;
 
@@ -164,7 +167,7 @@ public class UIManager : MonoBehaviour
 
     OtherOptionsMenuButton.onClick.AddListener(() => OtherOptionsMenu.SetActive(true));
     CloseOptionsMenuButton1.onClick.AddListener(() => OtherOptionsMenu.SetActive(false));
-    HomeButton.onClick.AddListener(() => { isUserExit = true; socket.CloseGame(); } );
+    HomeButton.onClick.AddListener(() => { isUserExit = true; socket.CloseGame(); });
     OnDiscQuitButton.onClick.AddListener(() => { isUserExit = true; socket.CloseGame(); });
 
     CloseOtherOptionButton.onClick.AddListener(() => CloseAllOtherOptionsMenu());
@@ -297,6 +300,9 @@ public class UIManager : MonoBehaviour
 
   IEnumerator OnCancel(bool isLeft)
   {
+    if (requestInProgress) yield break;
+    requestInProgress = true;
+
     Audio.PlayButtonAudio();
     CancelData data;
     if (isLeft)
@@ -330,42 +336,54 @@ public class UIManager : MonoBehaviour
 
     socket.CancelBet(data);
     yield return new WaitUntil(() => (isLeft ? socket.leftAck.Key : socket.rightAck.Key) == true);
-    // Debug.Log("Acknowledgement processed for " + (isLeft ? "Left" : "Right") + " Cancel");
+
+    AckData ackData = JsonUtility.FromJson<AckData>(isLeft ? socket.leftAck.Value : socket.rightAck.Value);
+
+    if (!ackData.success)
+    {
+      popupManager.ShowPopup(false, ackData.payload.message);
+    }
+    else
+    {
+      if (isLeft)
+      {
+        ToggleBetButtons(state: true, isLeft: true);
+        leftBetData = null;
+        SetBalance(ackData.player.balance);
+        LeftCancelBetButton.gameObject.SetActive(false);
+        LeftCashoutButton.gameObject.SetActive(false);
+        LeftBetButton.gameObject.SetActive(true);
+      }
+      else
+      {
+        ToggleBetButtons(state: true, isLeft: false);
+        rightBetData = null;
+        SetBalance(ackData.player.balance);
+        RightCancelBetButton.gameObject.SetActive(false);
+        RightCashoutButton.gameObject.SetActive(false);
+        RightBetButton.gameObject.SetActive(true);
+      }
+    }
+
+    yield return new WaitForSeconds(0.5f); // Delay before turning off blocker
 
     if (isLeft)
     {
-      AckData ackData = JsonUtility.FromJson<AckData>(socket.leftAck.Value);
-      if (!ackData.success)
-      {
-        Debug.LogError("Left Cancel failed: " + ackData.payload.message);
-      }
-      ToggleBetButtons(state: true, isLeft: true);
-      leftBetData = null;
-      SetBalance(ackData.player.balance);
-      LeftCancelBetButton.gameObject.SetActive(false);
-      LeftCashoutButton.gameObject.SetActive(false);
-      LeftBetButton.gameObject.SetActive(true);
       LeftBlocker.SetActive(false);
     }
     else
     {
-      AckData ackData = JsonUtility.FromJson<AckData>(socket.rightAck.Value);
-      if (!ackData.success)
-      {
-        Debug.LogError("Right Cancel failed: " + ackData.payload.message);
-      }
-      ToggleBetButtons(state: true, isLeft: false);
-      rightBetData = null;
-      SetBalance(ackData.player.balance);
-      RightCancelBetButton.gameObject.SetActive(false);
-      RightCashoutButton.gameObject.SetActive(false);
-      RightBetButton.gameObject.SetActive(true);
       RightBlocker.SetActive(false);
     }
+
+    requestInProgress = false;
   }
 
   IEnumerator OnCashout(bool isLeft)
   {
+    if (requestInProgress) yield break;
+    requestInProgress = true;
+
     Audio.PlayButtonAudio();
     Debug.Log("OnCashout at: " + displayedMult);
     CashoutData data;
@@ -400,46 +418,63 @@ public class UIManager : MonoBehaviour
 
     socket.CashoutBet(data);
     yield return new WaitUntil(() => (isLeft ? socket.leftAck.Key : socket.rightAck.Key) == true);
-    // Debug.Log("Acknowledgement processed for " + (isLeft ? "Left" : "Right") + " Cashout");
+
+    AckData ackData = JsonUtility.FromJson<AckData>(isLeft ? socket.leftAck.Value : socket.rightAck.Value);
+
+    if (!ackData.success)
+    {
+      popupManager.ShowPopup(false, ackData.payload.message);
+    }
+    else
+    {
+      Audio.PlayWinAudio();
+      float winnings = ackData.payload.winAmount;
+      popupManager.ShowPopup(true, "You won " + winnings.ToString("N2") + "!");
+
+      if (isLeft)
+      {
+        ToggleBetButtons(state: true, isLeft: true);
+        SetBalance(ackData.player.balance);
+        LeftBetButton.gameObject.SetActive(true);
+        LeftCashoutButton.gameObject.SetActive(false);
+        LeftCancelBetButton.gameObject.SetActive(false);
+      }
+      else
+      {
+        ToggleBetButtons(state: true, isLeft: false);
+        SetBalance(ackData.player.balance);
+        RightBetButton.gameObject.SetActive(true);
+        RightCashoutButton.gameObject.SetActive(false);
+        RightCancelBetButton.gameObject.SetActive(false);
+      }
+    }
+
+    yield return new WaitForSeconds(0.5f); // Delay before turning off blocker
 
     if (isLeft)
     {
-      AckData ackData = JsonUtility.FromJson<AckData>(socket.leftAck.Value);
-      if (!ackData.success)
-      {
-        Debug.LogError("Left Cashout failed: " + ackData.payload.message);
-      }
-      ToggleBetButtons(state: true, isLeft: true);
-      SetBalance(ackData.player.balance);
-      LeftBetButton.gameObject.SetActive(true);
-      LeftCashoutButton.gameObject.SetActive(false);
-      LeftCancelBetButton.gameObject.SetActive(false);
       LeftBlocker.SetActive(false);
     }
     else
     {
-      AckData ackData = JsonUtility.FromJson<AckData>(socket.rightAck.Value);
-      if (!ackData.success)
-      {
-        Debug.LogError("Right Cashout failed: " + ackData.payload.message);
-      }
-      ToggleBetButtons(state: true, isLeft: false);
-      SetBalance(ackData.player.balance);
-      RightBetButton.gameObject.SetActive(true);
-      RightCashoutButton.gameObject.SetActive(false);
-      RightCancelBetButton.gameObject.SetActive(false);
       RightBlocker.SetActive(false);
     }
+
+    requestInProgress = false;
   }
 
   IEnumerator OnBet(bool isLeft)
   {
+    if (requestInProgress) yield break;
+    requestInProgress = true;
+
     Audio.PlayButtonAudio();
     BetData data;
     if (isLeft)
     {
       if (!CompareBalance(socket.bets[LeftBetCounter]))
       {
+        requestInProgress = false; // Release throttling if balance is low
         yield break;
       }
       socket.leftAck = new KeyValuePair<bool, string>(false, "wait");
@@ -457,8 +492,9 @@ public class UIManager : MonoBehaviour
     }
     else
     {
-      if (!CompareBalance(socket.bets[LeftBetCounter]))
+      if (!CompareBalance(socket.bets[RightBetCounter])) // Corrected to RightBetCounter
       {
+        requestInProgress = false; // Release throttling if balance is low
         yield break;
       }
       socket.rightAck = new KeyValuePair<bool, string>(false, "wait");
@@ -477,15 +513,16 @@ public class UIManager : MonoBehaviour
 
     socket.PlaceBet(data);
     yield return new WaitUntil(() => (isLeft ? socket.leftAck.Key : socket.rightAck.Key) == true);
-    // Debug.Log("Acknowledgement processed for " + (isLeft ? "Left" : "Right") + " Bet");
-    if (isLeft)
+
+    AckData ackData = JsonUtility.FromJson<AckData>(isLeft ? socket.leftAck.Value : socket.rightAck.Value);
+
+    if (!ackData.success)
     {
-      AckData ackData = JsonUtility.FromJson<AckData>(socket.leftAck.Value);
-      if (!ackData.success)
-      {
-        Debug.LogError("Left Bet failed: " + ackData.payload.message);
-      }
-      else
+      popupManager.ShowPopup(false, ackData.payload.message);
+    }
+    else
+    {
+      if (isLeft)
       {
         leftBetData = data;
         if (!ackData.payload.isUserInQueue)
@@ -500,19 +537,6 @@ public class UIManager : MonoBehaviour
           LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
           LeftCancelBetButton.gameObject.SetActive(true);
         }
-      }
-      ToggleBetButtons(state: false, isLeft: true);
-      SetBalance(ackData.player.balance);
-      leftBetData.payload.betId = ackData.payload.betId;
-      leftBetData.serverHash = roundIdentifier;
-      LeftBlocker.SetActive(false);
-    }
-    else
-    {
-      AckData ackData = JsonUtility.FromJson<AckData>(socket.rightAck.Value);
-      if (!ackData.success)
-      {
-        Debug.LogError("Right Bet failed: " + ackData.payload.message);
       }
       else
       {
@@ -530,12 +554,32 @@ public class UIManager : MonoBehaviour
           RightCancelBetButton.gameObject.SetActive(true);
         }
       }
-      ToggleBetButtons(state: false, isLeft: false);
+      ToggleBetButtons(state: false, isLeft: isLeft); // ToggleBetButtons should be called here
       SetBalance(ackData.player.balance);
-      rightBetData.payload.betId = ackData.payload.betId;
-      rightBetData.serverHash = roundIdentifier;
+      if (isLeft)
+      {
+        leftBetData.payload.betId = ackData.payload.betId;
+        leftBetData.serverHash = roundIdentifier;
+      }
+      else
+      {
+        rightBetData.payload.betId = ackData.payload.betId;
+        rightBetData.serverHash = roundIdentifier;
+      }
+    }
+
+    yield return new WaitForSeconds(0.5f); // Delay before turning off blocker
+
+    if (isLeft)
+    {
+      LeftBlocker.SetActive(false);
+    }
+    else
+    {
       RightBlocker.SetActive(false);
     }
+
+    requestInProgress = false;
   }
 
   bool CompareBalance(float bet)
@@ -685,13 +729,11 @@ public class UIManager : MonoBehaviour
     }
     curveAnimator.OnCrash();
 
-    LeftBlocker.SetActive(true);
-    RightBlocker.SetActive(true);
-
     blueColTime = false;
     purpleColTime = false;
     pinkColTime = false;
     multColorTween?.Kill();
+    DOTween.Kill("multTween");
 
     displayedMult = crashMult;
     multiplierText.color = Color.red;
@@ -736,9 +778,6 @@ public class UIManager : MonoBehaviour
         }
       }
     }
-
-    LeftBlocker.SetActive(false);
-    RightBlocker.SetActive(false);
 
     flewAwayText.gameObject.SetActive(false);
     multiplierText.text = "1.00x";
@@ -1026,7 +1065,7 @@ public class UIManager : MonoBehaviour
     DOTween.To(() => current, x =>
     {
       current = x;
-      BalanceText.text = current.ToString("0.00"); // update text each frame
+      BalanceText.text = current.ToString("N2"); // update text each frame
     },
     bal, 0.3f)
     .SetEase(Ease.OutQuad)
@@ -1102,13 +1141,13 @@ public class UIManager : MonoBehaviour
 
   internal void ReconnectionPopup()
   {
-    if(isUserExit)
+    if (isUserExit)
       OpenPopup(ReconnectionPopupGO);
   }
 
   internal void DisconnectionPopup()
   {
-    if(!isUserExit)
+    if (!isUserExit)
       OpenPopup(DisconnectionPopupGO);
   }
 
@@ -1125,41 +1164,53 @@ public class UIManager : MonoBehaviour
   }
 
   internal void ResetGame()
+  {
+    // Reset Multiplier
+    multiplierText.text = "1.00x";
+    multiplierText.color = Color.white;
+    flewAwayText.gameObject.SetActive(false);
+    blurImage.enabled = false;
+
+    // Reset Loading Bar
+    loadingBar.SetActive(false);
+    loadingBarFillerImage.fillAmount = 0f;
+
+    // Reset Bet Buttons
+    ToggleBetButtons(true, true);
+    LeftBetButton.gameObject.SetActive(true);
+    LeftCancelBetButton.gameObject.SetActive(false);
+    LeftCashoutButton.gameObject.SetActive(false);
+    LeftBlocker.SetActive(false);
+
+    ToggleBetButtons(true, false);
+    RightBetButton.gameObject.SetActive(true);
+    RightCancelBetButton.gameObject.SetActive(false);
+    RightCashoutButton.gameObject.SetActive(false);
+    RightBlocker.SetActive(false);
+
+    // Reset Bet Data
+    leftBetData = null;
+    rightBetData = null;
+
+    curveAnimator.ResetVisual();
+
+    // Kill any running tweens
+    DOTween.Kill("multTween");
+    DOTween.Kill("multColorTween");
+    DOTween.Kill("multColorTween2");
+    DOTween.Kill("blurTween");
+    DOTween.Kill("RoundLoadingTween");
+  }
+
+  private void OnApplicationFocus(bool hasFocus)
+  {
+    if (hasFocus)
     {
-        // Reset Multiplier
-        multiplierText.text = "1.00x";
-        multiplierText.color = Color.white;
-        flewAwayText.gameObject.SetActive(false);
-        blurImage.enabled = false;
-
-        // Reset Loading Bar
-        loadingBar.SetActive(false);
-        loadingBarFillerImage.fillAmount = 0f;
-
-        // Reset Bet Buttons
-        ToggleBetButtons(true, true);
-        LeftBetButton.gameObject.SetActive(true);
-        LeftCancelBetButton.gameObject.SetActive(false);
-        LeftCashoutButton.gameObject.SetActive(false);
-        LeftBlocker.SetActive(false);
-
-        ToggleBetButtons(true, false);
-        RightBetButton.gameObject.SetActive(true);
-        RightCancelBetButton.gameObject.SetActive(false);
-        RightCashoutButton.gameObject.SetActive(false);
-        RightBlocker.SetActive(false);
-
-        // Reset Bet Data
-        leftBetData = null;
-        rightBetData = null;
-
-        curveAnimator.ResetVisual();
-
-        // Kill any running tweens
-        DOTween.Kill("multTween");
-        DOTween.Kill("multColorTween");
-        DOTween.Kill("multColorTween2");
-        DOTween.Kill("blurTween");
-        DOTween.Kill("RoundLoadingTween");
+      if (socket.CurrentState == SocketIOManager.AviatorState.TickerStart)
+      {
+        blurImage.enabled = true;
+        UpdateMultiplierDisplay(displayedMult);
+      }
     }
+  }
 }

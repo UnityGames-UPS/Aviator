@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
   [SerializeField] private AudioSource ButtonAudioSource;
   [SerializeField] private AudioSource CrashAudioSource;
   [SerializeField] private AudioSource TakeOffAudioSource;
+  [SerializeField] private AudioSource WinAudioSource;
   private float bgAudioVol = 0;
   private float buttonAudioVol = 0;
   private float crashNDtakeoffAudioVol = 0;
@@ -54,6 +55,7 @@ public class AudioManager : MonoBehaviour
     FadeAudio(ButtonAudioSource, toggle);
     FadeAudio(CrashAudioSource, toggle);
     FadeAudio(TakeOffAudioSource, toggle);
+    FadeAudio(WinAudioSource, toggle);
   }
 
   private void FadeAudio(AudioSource source, bool enable)
@@ -99,5 +101,11 @@ public class AudioManager : MonoBehaviour
   {
     if (!CrashAudioSource.mute)
       CrashAudioSource.Play();
+  }
+
+  internal void PlayWinAudio()
+  {
+    if(!WinAudioSource.mute)
+      WinAudioSource.Play();
   }
 }
