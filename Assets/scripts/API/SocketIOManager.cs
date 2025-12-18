@@ -504,13 +504,15 @@ public class SocketIOManager : MonoBehaviour
   void HandlePlayerJoined(string data)
   {
     Debug.Log("PLAYER_JOINED: " + data);
-    playerCountManager.OnPlayerJoined();
+    JObject playerObj = JObject.Parse(data);
+    playerCountManager.UpdatePlayerCount((int)playerObj["playerCount"]);
   }
 
   void HandlePlayerLeft(string data)
   {
     Debug.Log("PLAYER_LEFT: " + data);
-    playerCountManager.OnPlayerLeft();
+    JObject playerObj = JObject.Parse(data);
+    playerCountManager.UpdatePlayerCount((int)playerObj["playerCount"]);
   }
 
   void HandleChatInit(string data)

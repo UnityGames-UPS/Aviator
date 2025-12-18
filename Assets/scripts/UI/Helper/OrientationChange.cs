@@ -14,9 +14,6 @@ public class OrientationChange : MonoBehaviour
   [SerializeField] private float transitionDuration = 0.2f;
   [SerializeField] private float waitForRotation = 0.2f;
 
-  [SerializeField] private TMP_InputField inputField;
-
-
 
   private Vector2 ReferenceAspect;
   private Tween matchTween;

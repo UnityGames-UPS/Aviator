@@ -5367,7 +5367,7 @@ MonoBehaviour:
   playerCountManager: {fileID: 1631631166}
   JSManager: {fileID: 284092192}
   TestSocketURI: http://localhost:5000/
-  testToken: 95d556dd4cd64eb08fa679cd72fad20b
+  testToken: b0bb1b96200f486a98daff19c6e21ad8
   bets: []
   tickInterval: 0
   takeOffDuration: 0
@@ -5735,7 +5735,6 @@ MonoBehaviour:
   PortraitMatchHeight: 0.45
   transitionDuration: 0.2
   waitForRotation: 0.2
-  inputField: {fileID: 1586027746}
 --- !u!1 &366249646
 GameObject:
   m_ObjectHideFlags: 0
@@ -14678,8 +14677,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Could not process cancel bet.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e7a09b1b305b4909a8b0ea9cf958aff, type: 2}
+  m_sharedMaterial: {fileID: -8448222850997849518, guid: 5e7a09b1b305b4909a8b0ea9cf958aff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14703,7 +14702,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.05
+  m_fontSize: 27.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

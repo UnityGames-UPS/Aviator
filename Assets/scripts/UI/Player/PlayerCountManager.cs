@@ -18,20 +18,6 @@ public class PlayerCountManager : MonoBehaviour
     UpdateProfilePictures();
   }
 
-  internal void OnPlayerJoined()
-  {
-    playerCount++;
-    playerCountText.text = playerCount.ToString();
-    UpdateProfilePictures();
-  }
-
-  internal void OnPlayerLeft()
-  {
-    playerCount--;
-    playerCountText.text = playerCount.ToString();
-    UpdateProfilePictures();
-  }
-
   private void UpdateProfilePictures()
   {
     // Create a list of available sprites to choose from
