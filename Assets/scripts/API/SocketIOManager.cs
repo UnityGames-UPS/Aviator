@@ -32,7 +32,7 @@ public class SocketIOManager : MonoBehaviour
   private float pingInterval = 2f;
   private bool waitingForPong = false;
   private int missedPongs = 0;
-  private const int MaxMissedPongs = 5;
+  private const int MaxMissedPongs = 15;
   private Coroutine PingRoutine;
   private string myAuth = null;
   internal bool isLoaded = false;
@@ -91,6 +91,7 @@ public class SocketIOManager : MonoBehaviour
     DOTween.defaultTimeScaleIndependent = true;
     blocker.SetActive(true);
     isLoaded = false;
+    Debug.Log("prod build");
   }
 
   private void OnApplicationFocus(bool hasFocus)
@@ -584,7 +585,7 @@ public class SocketIOManager : MonoBehaviour
 
         if (missedPongs >= MaxMissedPongs)
         {
-          Debug.LogError("❌ Unable to connect to server — 5 consecutive pongs missed.");
+          Debug.LogError("❌ Unable to connect to server — "+ MaxMissedPongs + " consecutive pongs missed.");
           uiManager.DisconnectionPopup();
           yield break;
         }

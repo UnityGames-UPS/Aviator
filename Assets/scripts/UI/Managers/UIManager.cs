@@ -1141,7 +1141,7 @@ public class UIManager : MonoBehaviour
 
   internal void ReconnectionPopup()
   {
-    if (isUserExit)
+    if (!isUserExit)
       OpenPopup(ReconnectionPopupGO);
   }
 
