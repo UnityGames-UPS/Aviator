@@ -6,6 +6,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UI.ProceduralImage;
 
 public class UIManager : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private Color purpleColor;
   [SerializeField] private Color pinkColor;
   [SerializeField] private GameObject loadingBar;
-  [SerializeField] private Image loadingBarFillerImage;
+  [SerializeField] private ProceduralImage loadingBarFillerImage;
 
   [Header("Other Options Menu")]
   [SerializeField] private GameObject OtherOptionsMenu;
