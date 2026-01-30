@@ -49,8 +49,8 @@ public class ChatManager : GenericObjectPool<ChatView>
     crashHistXSD = crashHistRect.sizeDelta.x;
     gamePlayXPosi = gamePlayRect.localPosition.x;
     gamePlayXSD = gamePlayRect.sizeDelta.x;
-    betPanelXPosi = betPanelRect.localPosition.x;
-    betPanelXSD = betPanelRect.sizeDelta.x;
+    // betPanelXPosi = betPanelRect.localPosition.x;
+    // betPanelXSD = betPanelRect.sizeDelta.x;
     chatPanelXPosi = chatRect.localPosition.x;
 
     inputField.onEndEdit.AddListener((s) => OnEndEdit());
@@ -197,7 +197,7 @@ public class ChatManager : GenericObjectPool<ChatView>
   void ToggleUI(bool toggle)
   {
     inputField.interactable = toggle;
-    if(toggle)
+    if (toggle)
       inputField.ActivateInputField();
     else
       inputField.DeactivateInputField();
