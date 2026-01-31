@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Best.HTTP.Cookies;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -12,88 +11,106 @@ public class ChatManager : GenericObjectPool<ChatView>
   [SerializeField] private ScrollRect ScrollRect;
   [SerializeField] internal TMP_InputField inputField;
   [SerializeField] private Button sendButton;
-  [SerializeField] private Button chatToggle;
-  [SerializeField] private JSFunctCalls jsBridge;
+  [SerializeField] private Button openChatButton;
+  [SerializeField] private Button closeChatButton;
   private Queue<ChatView> activeMessages = new();
 
-  [Header("Mobile GO Ref")]
-  [SerializeField] private RectTransform topBarRect;
-  [SerializeField] private RectTransform crashHistRect;
-  [SerializeField] private RectTransform gamePlayRect;
-  [SerializeField] private RectTransform betPanelRect;
+  [Header("Chat Layout")]
   [SerializeField] private RectTransform chatRect;
-  private bool isChatToggle = true;
-  private float topBarXPosi;
-  private float topBarXSD;
-  private float crashHistXPosi;
-  private float crashHistXSD;
-  private float gamePlayXPosi;
-  private float gamePlayXSD;
-  private float betPanelXPosi;
-  private float betPanelXSD;
-  private float chatPanelXPosi;
+  [SerializeField] private RectTransform widthSource;
+  [SerializeField] private RectTransform layoutGroupParent;
+  [SerializeField] private RectTransform overlayParent;
+  [SerializeField] private float minWidthSourceWidth = 600f;
+  private float lastWidth = -1f;
+  private Vector2 defaultSizeDelta;
+  private Vector2 defaultAnchorMin;
+  private Vector2 defaultAnchorMax;
+  private Vector2 defaultAnchoredPosition;
+  private Vector2 defaultPivot;
+  private Vector2 defaultOffsetMin;
+  private Vector2 defaultOffsetMax;
 
   protected override void Awake()
   {
     base.Awake();
     sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage(inputField.text)));
-    chatToggle.onClick.AddListener(() =>
-    {
-      isChatToggle = !isChatToggle;
-      ToggleChat(isChatToggle);
-    });
+    if (openChatButton != null)
+      openChatButton.onClick.AddListener(OpenChat);
+    if (closeChatButton != null)
+      closeChatButton.onClick.AddListener(CloseChat);
 
-    topBarXPosi = topBarRect.localPosition.x;
-    topBarXSD = topBarRect.sizeDelta.x;
-    crashHistXPosi = crashHistRect.localPosition.x;
-    crashHistXSD = crashHistRect.sizeDelta.x;
-    gamePlayXPosi = gamePlayRect.localPosition.x;
-    gamePlayXSD = gamePlayRect.sizeDelta.x;
-    // betPanelXPosi = betPanelRect.localPosition.x;
-    // betPanelXSD = betPanelRect.sizeDelta.x;
-    chatPanelXPosi = chatRect.localPosition.x;
+    if (chatRect != null)
+    {
+      defaultSizeDelta = chatRect.sizeDelta;
+      defaultAnchorMin = chatRect.anchorMin;
+      defaultAnchorMax = chatRect.anchorMax;
+      defaultAnchoredPosition = chatRect.anchoredPosition;
+      defaultPivot = chatRect.pivot;
+      defaultOffsetMin = chatRect.offsetMin;
+      defaultOffsetMax = chatRect.offsetMax;
+    }
 
     inputField.onEndEdit.AddListener((s) => OnEndEdit());
     inputField.onValueChanged.AddListener((s) => OnValueChange());
   }
 
-  void ToggleChat(bool toggle)
+  void LateUpdate()
   {
-    Debug.Log("Toggling chat");
+    UpdateChatLayout();
+  }
 
-    float duration = 0.35f;
-    Ease easing = Ease.OutCubic;
+  void UpdateChatLayout()
+  {
+    if (widthSource == null || chatRect == null || layoutGroupParent == null || overlayParent == null)
+      return;
 
-    if (toggle)
+    float width = widthSource.rect.width;
+    if (Mathf.Abs(width - lastWidth) < 0.5f)
+      return;
+
+    lastWidth = width;
+    bool isNarrow = width < minWidthSourceWidth;
+    if (isNarrow)
     {
-      chatRect.DOLocalMoveX(chatPanelXPosi, duration).SetEase(easing);
-      topBarRect.DOLocalMoveX(topBarXPosi, duration).SetEase(easing);
-      topBarRect.DOSizeDelta(new Vector2(topBarXSD, topBarRect.sizeDelta.y), duration).SetEase(easing);
-
-      crashHistRect.DOLocalMoveX(crashHistXPosi, duration).SetEase(easing);
-      crashHistRect.DOSizeDelta(new Vector2(crashHistXSD, crashHistRect.sizeDelta.y), duration).SetEase(easing);
-
-      gamePlayRect.DOLocalMoveX(gamePlayXPosi, duration).SetEase(easing);
-      gamePlayRect.DOSizeDelta(new Vector2(gamePlayXSD, gamePlayRect.sizeDelta.y), duration).SetEase(easing);
-
-      betPanelRect.DOLocalMoveX(betPanelXPosi, duration).SetEase(easing);
-      betPanelRect.DOSizeDelta(new Vector2(betPanelXSD, betPanelRect.sizeDelta.y), duration).SetEase(easing);
+      if (chatRect.parent != overlayParent)
+        chatRect.SetParent(overlayParent, false);
+      chatRect.SetAsLastSibling();
+      // Stretch to overlay parent to avoid drift/offset when resizing.
+      chatRect.anchorMin = Vector2.zero;
+      chatRect.anchorMax = Vector2.one;
+      chatRect.pivot = new Vector2(0.5f, 0.5f);
+      chatRect.anchoredPosition = Vector2.zero;
+      chatRect.offsetMin = Vector2.zero;
+      chatRect.offsetMax = Vector2.zero;
     }
     else
     {
-      chatRect.DOLocalMoveX(chatPanelXPosi + (243 * 5), duration).SetEase(easing);
-      topBarRect.DOLocalMoveX(topBarXPosi + 243f, duration).SetEase(easing);
-      topBarRect.DOSizeDelta(new Vector2(2340f, topBarRect.sizeDelta.y), duration).SetEase(easing);
-
-      crashHistRect.DOLocalMoveX(crashHistXPosi + 243f, duration).SetEase(easing);
-      crashHistRect.DOSizeDelta(new Vector2(1746f, crashHistRect.sizeDelta.y), duration).SetEase(easing);
-
-      gamePlayRect.DOLocalMoveX(gamePlayXPosi + 243f, duration).SetEase(easing);
-      gamePlayRect.DOSizeDelta(new Vector2(1750f, gamePlayRect.sizeDelta.y), duration).SetEase(easing);
-
-      betPanelRect.DOLocalMoveX(betPanelXPosi + 243f, duration).SetEase(easing);
-      betPanelRect.DOSizeDelta(new Vector2(1747f, betPanelRect.sizeDelta.y), duration).SetEase(easing);
+      if (chatRect.parent != layoutGroupParent)
+        chatRect.SetParent(layoutGroupParent, false);
+      chatRect.SetAsLastSibling();
+      chatRect.anchorMin = defaultAnchorMin;
+      chatRect.anchorMax = defaultAnchorMax;
+      chatRect.pivot = defaultPivot;
+      chatRect.anchoredPosition = defaultAnchoredPosition;
+      chatRect.offsetMin = defaultOffsetMin;
+      chatRect.offsetMax = defaultOffsetMax;
+      chatRect.sizeDelta = defaultSizeDelta;
     }
+  }
+
+  void OpenChat()
+  {
+    UpdateChatLayout();
+    if (chatRect != null)
+      chatRect.gameObject.SetActive(true);
+    openChatButton.gameObject.SetActive(false);
+  }
+
+  void CloseChat()
+  {
+    if (chatRect != null)
+      chatRect.gameObject.SetActive(false);
+    openChatButton.gameObject.SetActive(true);
   }
 
   internal void InitChat(List<string> userIds, List<string> messages)
