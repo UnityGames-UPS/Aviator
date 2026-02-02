@@ -45,7 +45,7 @@ public class GridUIController : MonoBehaviour
     grid.constraintCount = columns;
 
     grid.cellSize = new Vector2(
-        stacked ? width : width / 2f,
+        stacked ? width - 10f : (width / 2f) - 10f,
         itemHeight
     );
 
