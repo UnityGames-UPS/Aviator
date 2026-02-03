@@ -18,6 +18,7 @@ mergeInto(LibraryManager.library, {
       console.log('sending msg: ', message);
       if (typeof window !== "undefined" && window.ReactNativeWebView) {
         if (typeof window.ReactNativeWebView.postMessage !== "undefined" && window.ReactNativeWebView.postMessage) {
+          console.log("Inside ReactNativeWebView");
           if(message == "authToken"){
             window.ReactNativeWebView.postMessage("if message is authtoken");
             var injectedObjectJson = window.ReactNativeWebView.injectedObjectJson();
@@ -40,7 +41,15 @@ mergeInto(LibraryManager.library, {
       } 
       else if (typeof window !== "undefined" && window.parent) {
         if (typeof window.parent.dispatchReactUnityEvent !== "undefined" && window.parent.dispatchReactUnityEvent) {
+          console.log("Inside dispatchReactUnityEvent");
           window.parent.dispatchReactUnityEvent(message);
+        }
+        if (typeof window.parent.postMessage === "function"){
+          console.log("Calling window.parent.postMessage");
+          window.parent.postMessage({ 
+            type: message,
+            data: { message: "authToken" }
+          }, "*");
         }
       }
     } catch (e) {

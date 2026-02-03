@@ -86,6 +86,7 @@ public class SocketIOManager : MonoBehaviour
 
   private void Awake()
   {
+    Debug.Log("New build for vimal 3");
     Application.runInBackground = true;
     DOTween.Init();
     DOTween.defaultTimeScaleIndependent = true;
@@ -151,14 +152,26 @@ public class SocketIOManager : MonoBehaviour
 
   private IEnumerator WaitForAuthToken(SocketOptions options)
   {
+    float startTime = Time.realtimeSinceStartup;
+    const float timeoutSeconds = 10f;
     // Wait until myAuth is not null
     while (myAuth == null)
     {
+      if (Time.realtimeSinceStartup - startTime >= timeoutSeconds)
+      {
+        Debug.LogError("WaitForAuthToken timed out after 10 seconds waiting for auth token.");
+        yield break;
+      }
       Debug.Log("My Auth is null");
       yield return null;
     }
     while (SocketURI == null)
     {
+      if (Time.realtimeSinceStartup - startTime >= timeoutSeconds)
+      {
+        Debug.LogError("WaitForAuthToken timed out after 10 seconds waiting for socket URI.");
+        yield break;
+      }
       Debug.Log("My Socket is null");
       yield return null;
     }
