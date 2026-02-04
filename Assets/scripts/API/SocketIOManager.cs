@@ -59,6 +59,11 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] internal AviatorState CurrentState = AviatorState.None;
   [SerializeField] internal KeyValuePair<bool, string> leftAck = new(false, "");
   [SerializeField] internal KeyValuePair<bool, string> rightAck = new(false, "");
+  private readonly Queue<bool> pendingAckSideOrder = new();
+  private string pendingLeftExpectedBetId = "";
+  private string pendingRightExpectedBetId = "";
+  private int pendingLeftExpectedBetIndex = -1;
+  private int pendingRightExpectedBetIndex = -1;
   internal enum AviatorState
   {
     None,
@@ -304,6 +309,7 @@ public class SocketIOManager : MonoBehaviour
   private void OnDisconnected()
   {
     Debug.LogWarning("⚠️ Disconnected from server.");
+    ClearPendingBetAcks();
     uiManager.DisconnectionPopup();
     uiManager.ResetGame();
     ResetPingRoutine();
@@ -644,6 +650,7 @@ public class SocketIOManager : MonoBehaviour
   {
     blocker.SetActive(true);
     ResetPingRoutine();
+    ClearPendingBetAcks();
 
     Debug.Log("Closing Socket");
 
@@ -663,23 +670,26 @@ public class SocketIOManager : MonoBehaviour
 #endif
   }
 
-  internal void CashoutBet(CashoutData cashoutData)
+  internal void CashoutBet(CashoutData cashoutData, bool isLeft)
   {
     Debug.Log("Cashing out bet: " + JsonUtility.ToJson(cashoutData));
+    RegisterPendingBetAck(isLeft, cashoutData.payload.betId, cashoutData.payload.betIndex);
     string jsonData = JsonUtility.ToJson(cashoutData);
     MainGameSocket.ExpectAcknowledgement<string>(BetAcks).Emit("request", jsonData);
   }
 
-  internal void CancelBet(CancelData cancelData)
+  internal void CancelBet(CancelData cancelData, bool isLeft)
   {
     Debug.Log("Cancelling bet: " + JsonUtility.ToJson(cancelData));
+    RegisterPendingBetAck(isLeft, cancelData.payload.betId, cancelData.payload.betIndex);
     string jsonData = JsonUtility.ToJson(cancelData);
     MainGameSocket.ExpectAcknowledgement<string>(BetAcks).Emit("request", jsonData);
   }
 
-  internal void PlaceBet(BetData betData)
+  internal void PlaceBet(BetData betData, bool isLeft)
   {
     Debug.Log("Placing bet: " + JsonUtility.ToJson(betData));
+    RegisterPendingBetAck(isLeft, betData.payload.betId, betData.payload.betIndex);
     string jsonData = JsonUtility.ToJson(betData);
     MainGameSocket.ExpectAcknowledgement<string>(BetAcks).Emit("request", jsonData);
   }
@@ -751,14 +761,130 @@ public class SocketIOManager : MonoBehaviour
   void BetAcks(string data)
   {
     Debug.Log("ack: " + data);
-    if (leftAck.Key == false && leftAck.Value == "wait")
+    bool leftWaiting = leftAck.Key == false && leftAck.Value == "wait";
+    bool rightWaiting = rightAck.Key == false && rightAck.Value == "wait";
+
+    if (!leftWaiting && !rightWaiting)
+    {
+      Debug.LogWarning($"Ack received with no pending side: {data}");
+      return;
+    }
+
+    bool? routedSide = ResolveAckSide(data, leftWaiting, rightWaiting);
+    if (!routedSide.HasValue)
+    {
+      routedSide = leftWaiting ? true : false;
+      Debug.LogWarning("Unable to resolve ack side from payload; falling back to first waiting side.");
+    }
+
+    if (routedSide.Value)
     {
       leftAck = new KeyValuePair<bool, string>(true, data);
+      pendingLeftExpectedBetId = "";
+      pendingLeftExpectedBetIndex = -1;
+      RemoveSideFromPendingQueue(true);
     }
-    if (rightAck.Key == false && rightAck.Value == "wait")
+    else
     {
       rightAck = new KeyValuePair<bool, string>(true, data);
+      pendingRightExpectedBetId = "";
+      pendingRightExpectedBetIndex = -1;
+      RemoveSideFromPendingQueue(false);
     }
+  }
+
+  private void RegisterPendingBetAck(bool isLeft, string expectedBetId, int expectedBetIndex)
+  {
+    if (isLeft)
+    {
+      leftAck = new KeyValuePair<bool, string>(false, "wait");
+      pendingLeftExpectedBetId = expectedBetId ?? "";
+      pendingLeftExpectedBetIndex = expectedBetIndex;
+    }
+    else
+    {
+      rightAck = new KeyValuePair<bool, string>(false, "wait");
+      pendingRightExpectedBetId = expectedBetId ?? "";
+      pendingRightExpectedBetIndex = expectedBetIndex;
+    }
+
+    pendingAckSideOrder.Enqueue(isLeft);
+  }
+
+  private bool? ResolveAckSide(string data, bool leftWaiting, bool rightWaiting)
+  {
+    if (leftWaiting && !rightWaiting) return true;
+    if (!leftWaiting && rightWaiting) return false;
+
+    try
+    {
+      JObject obj = JObject.Parse(data);
+      string ackBetId = obj.SelectToken("payload.betId")?.Value<string>() ?? obj["betId"]?.Value<string>();
+      int? ackBetIndex = obj.SelectToken("payload.betIndex")?.Value<int?>() ?? obj["betIndex"]?.Value<int?>();
+
+      bool leftById = !string.IsNullOrEmpty(ackBetId) && pendingLeftExpectedBetId == ackBetId;
+      bool rightById = !string.IsNullOrEmpty(ackBetId) && pendingRightExpectedBetId == ackBetId;
+
+      if (leftById ^ rightById)
+      {
+        return leftById;
+      }
+
+      bool leftByIndex = ackBetIndex.HasValue && pendingLeftExpectedBetIndex == ackBetIndex.Value;
+      bool rightByIndex = ackBetIndex.HasValue && pendingRightExpectedBetIndex == ackBetIndex.Value;
+
+      if (leftByIndex ^ rightByIndex)
+      {
+        return leftByIndex;
+      }
+    }
+    catch (Exception ex)
+    {
+      Debug.LogWarning($"Unable to parse ack payload for side resolution: {ex.Message}");
+    }
+
+    while (pendingAckSideOrder.Count > 0)
+    {
+      bool candidate = pendingAckSideOrder.Dequeue();
+      if (candidate && leftWaiting) return true;
+      if (!candidate && rightWaiting) return false;
+    }
+
+    return null;
+  }
+
+  private void RemoveSideFromPendingQueue(bool side)
+  {
+    if (pendingAckSideOrder.Count == 0) return;
+
+    Queue<bool> rebuilt = new();
+    bool removed = false;
+    while (pendingAckSideOrder.Count > 0)
+    {
+      bool value = pendingAckSideOrder.Dequeue();
+      if (!removed && value == side)
+      {
+        removed = true;
+        continue;
+      }
+      rebuilt.Enqueue(value);
+    }
+
+    while (rebuilt.Count > 0)
+    {
+      pendingAckSideOrder.Enqueue(rebuilt.Dequeue());
+    }
+  }
+
+  private void ClearPendingBetAcks()
+  {
+    pendingAckSideOrder.Clear();
+    pendingLeftExpectedBetId = "";
+    pendingRightExpectedBetId = "";
+    pendingLeftExpectedBetIndex = -1;
+    pendingRightExpectedBetIndex = -1;
+    leftAck = new KeyValuePair<bool, string>(false, "");
+    rightAck = new KeyValuePair<bool, string>(false, "");
   }
 
   internal void SendPreviousRoundReq()

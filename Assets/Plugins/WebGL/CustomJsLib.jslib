@@ -44,11 +44,11 @@ mergeInto(LibraryManager.library, {
           console.log("Inside dispatchReactUnityEvent");
           window.parent.dispatchReactUnityEvent(message);
         }
-        if (typeof window.parent.postMessage === "function"){
+        else if (typeof window.parent.postMessage === "function"){
           console.log("Calling window.parent.postMessage");
           window.parent.postMessage({ 
             type: message,
-            data: { message: "authToken" }
+            data: { }
           }, "*");
         }
       }

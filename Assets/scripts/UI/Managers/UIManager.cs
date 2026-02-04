@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Globalization;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -19,7 +20,8 @@ public class UIManager : MonoBehaviour
   [SerializeField] private AudioManager Audio;
 
   [SerializeField] private PopupManager popupManager;
-  private bool requestInProgress = false;
+  private bool leftRequestInProgress = false;
+  private bool rightRequestInProgress = false;
 
   [SerializeField] private Image profilePicImage;
   [SerializeField] private Sprite[] profilePicSprites;
@@ -82,6 +84,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private GameObject LeftAutoBetPanel;
   [SerializeField] private Button LeftAutoBetToggleButton;
   [SerializeField] private Button LeftAutoCashOutToggleButton;
+  [SerializeField] private TMP_InputField LeftAutoCashoutInputField;
   [SerializeField] private TMP_Text LeftBetText;
   [SerializeField] private List<Button> LeftStaticBetButtons;
   [SerializeField] private Button LeftBetButton;
@@ -97,6 +100,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private GameObject RightAutoBetPanel;
   [SerializeField] private Button RightAutoBetToggleButton;
   [SerializeField] private Button RightAutoCashOutToggleButton;
+  [SerializeField] private TMP_InputField RightAutoCashoutInputField;
   [SerializeField] private TMP_Text RightBetText;
   [SerializeField] private List<Button> RightStaticBetButtons;
   [SerializeField] private Button RightBetButton;
@@ -109,6 +113,13 @@ public class UIManager : MonoBehaviour
   [SerializeField] private bool RightAutoCashOutToggle;
   [SerializeField] internal int LeftBetCounter;
   [SerializeField] internal int RightBetCounter;
+  [SerializeField] private float minAutoCashoutMultiplier = 1.01f;
+  [SerializeField] private float maxAutoCashoutMultiplier = 100f;
+  [SerializeField] private float leftAutoCashoutValue = 1.01f;
+  [SerializeField] private float rightAutoCashoutValue = 1.01f;
+  [SerializeField] private int leftAutoBetLockedIndex = -1;
+  [SerializeField] private int rightAutoBetLockedIndex = -1;
+  private Coroutine autoBetCoroutine;
 
   [Header("Info UI")]
   //0: All bets panel
@@ -149,6 +160,9 @@ public class UIManager : MonoBehaviour
 
   private void Awake()
   {
+    leftBetData = null;
+    rightBetData = null;
+
     profilePicImage.sprite = profilePicSprites[Random.Range(0, profilePicSprites.Length)];
     lowBalanceCloseButton.onClick.AddListener(() => ClosePopup(lowBalancePopupGO));
 
@@ -234,23 +248,33 @@ public class UIManager : MonoBehaviour
     {
       LeftAutoToggle = !LeftAutoToggle;
       ToggleButtonClicked(LeftAutoBetToggleButton);
+      HandleAutoBetToggle(true);
     });
     RightAutoBetToggleButton.onClick.AddListener(() =>
     {
       RightAutoToggle = !RightAutoToggle;
       ToggleButtonClicked(RightAutoBetToggleButton);
+      HandleAutoBetToggle(false);
     });
 
     LeftAutoCashOutToggleButton.onClick.AddListener(() =>
     {
       LeftAutoCashOutToggle = !LeftAutoCashOutToggle;
       ToggleButtonClicked(LeftAutoCashOutToggleButton);
+      UpdateAutoCashoutInputInteractivity(true);
+      UpdateTopBarInteractivityForAutoCashout(true);
     });
     RightAutoCashOutToggleButton.onClick.AddListener(() =>
     {
       RightAutoCashOutToggle = !RightAutoCashOutToggle;
       ToggleButtonClicked(RightAutoCashOutToggleButton);
+      UpdateAutoCashoutInputInteractivity(false);
+      UpdateTopBarInteractivityForAutoCashout(false);
     });
+
+    SetupAutoCashoutInputs();
+    UpdateTopBarInteractivityForAutoCashout(true);
+    UpdateTopBarInteractivityForAutoCashout(false);
 
     clientSeed = ClientSeedGenerator();
   }
@@ -289,6 +313,11 @@ public class UIManager : MonoBehaviour
     MinBetText.text = bets[0].ToString("N2");
     MaxBetText.text = bets[^1].ToString("N2");
     MaxCashoutText.text = (bets[^1] * socket.MaxMult).ToString("N2");
+    maxAutoCashoutMultiplier = Mathf.Max(minAutoCashoutMultiplier, socket.MaxMult);
+    leftAutoCashoutValue = ClampAutoCashoutValue(leftAutoCashoutValue);
+    rightAutoCashoutValue = ClampAutoCashoutValue(rightAutoCashoutValue);
+    RefreshAutoCashoutInputText(true);
+    RefreshAutoCashoutInputText(false);
     if (username.Length > 0 && username.Length > 2)
     {
       PlayerNameText.text = username[0] + "****" + username[^1];
@@ -301,14 +330,26 @@ public class UIManager : MonoBehaviour
 
   IEnumerator OnCancel(bool isLeft)
   {
-    if (requestInProgress) yield break;
-    requestInProgress = true;
+    if (IsRequestInProgress(isLeft)) yield break;
+    SetRequestInProgress(isLeft, true);
+
+    if (isLeft && LeftAutoToggle)
+    {
+      LeftAutoToggle = false;
+      leftAutoBetLockedIndex = -1;
+      ToggleButtonClicked(LeftAutoBetToggleButton);
+    }
+    else if (!isLeft && RightAutoToggle)
+    {
+      RightAutoToggle = false;
+      rightAutoBetLockedIndex = -1;
+      ToggleButtonClicked(RightAutoBetToggleButton);
+    }
 
     Audio.PlayButtonAudio();
     CancelData data;
     if (isLeft)
     {
-      socket.leftAck = new KeyValuePair<bool, string>(false, "wait");
       LeftBlocker.SetActive(true);
       data = new CancelData
       {
@@ -322,7 +363,6 @@ public class UIManager : MonoBehaviour
     }
     else
     {
-      socket.rightAck = new KeyValuePair<bool, string>(false, "wait");
       RightBlocker.SetActive(true);
       data = new CancelData
       {
@@ -335,7 +375,7 @@ public class UIManager : MonoBehaviour
       };
     }
 
-    socket.CancelBet(data);
+    socket.CancelBet(data, isLeft);
     yield return new WaitUntil(() => (isLeft ? socket.leftAck.Key : socket.rightAck.Key) == true);
 
     AckData ackData = JsonUtility.FromJson<AckData>(isLeft ? socket.leftAck.Value : socket.rightAck.Value);
@@ -377,20 +417,19 @@ public class UIManager : MonoBehaviour
       RightBlocker.SetActive(false);
     }
 
-    requestInProgress = false;
+    SetRequestInProgress(isLeft, false);
   }
 
   IEnumerator OnCashout(bool isLeft)
   {
-    if (requestInProgress) yield break;
-    requestInProgress = true;
+    if (IsRequestInProgress(isLeft)) yield break;
+    SetRequestInProgress(isLeft, true);
 
     Audio.PlayButtonAudio();
     Debug.Log("OnCashout at: " + displayedMult);
     CashoutData data;
     if (isLeft)
     {
-      socket.leftAck = new KeyValuePair<bool, string>(false, "wait");
       LeftBlocker.SetActive(true);
       data = new CashoutData
       {
@@ -404,7 +443,6 @@ public class UIManager : MonoBehaviour
     }
     else
     {
-      socket.rightAck = new KeyValuePair<bool, string>(false, "wait");
       RightBlocker.SetActive(true);
       data = new CashoutData
       {
@@ -417,7 +455,7 @@ public class UIManager : MonoBehaviour
       };
     }
 
-    socket.CashoutBet(data);
+    socket.CashoutBet(data, isLeft);
     yield return new WaitUntil(() => (isLeft ? socket.leftAck.Key : socket.rightAck.Key) == true);
 
     AckData ackData = JsonUtility.FromJson<AckData>(isLeft ? socket.leftAck.Value : socket.rightAck.Value);
@@ -434,6 +472,7 @@ public class UIManager : MonoBehaviour
 
       if (isLeft)
       {
+        leftBetData = null;
         ToggleBetButtons(state: true, isLeft: true);
         SetBalance(ackData.player.balance);
         LeftBetButton.gameObject.SetActive(true);
@@ -442,6 +481,7 @@ public class UIManager : MonoBehaviour
       }
       else
       {
+        rightBetData = null;
         ToggleBetButtons(state: true, isLeft: false);
         SetBalance(ackData.player.balance);
         RightBetButton.gameObject.SetActive(true);
@@ -461,13 +501,19 @@ public class UIManager : MonoBehaviour
       RightBlocker.SetActive(false);
     }
 
-    requestInProgress = false;
+    SetRequestInProgress(isLeft, false);
+
+    bool shouldAutoRebet = isLeft ? LeftAutoToggle : RightAutoToggle;
+    if (shouldAutoRebet)
+    {
+      StartCoroutine(OnBet(isLeft));
+    }
   }
 
   IEnumerator OnBet(bool isLeft)
   {
-    if (requestInProgress) yield break;
-    requestInProgress = true;
+    if (IsRequestInProgress(isLeft)) yield break;
+    SetRequestInProgress(isLeft, true);
 
     Audio.PlayButtonAudio();
     BetData data;
@@ -475,10 +521,9 @@ public class UIManager : MonoBehaviour
     {
       if (!CompareBalance(socket.bets[LeftBetCounter]))
       {
-        requestInProgress = false; // Release throttling if balance is low
+        SetRequestInProgress(isLeft, false); // Release throttling if balance is low
         yield break;
       }
-      socket.leftAck = new KeyValuePair<bool, string>(false, "wait");
       LeftBlocker.SetActive(true);
       data = new BetData
       {
@@ -495,10 +540,9 @@ public class UIManager : MonoBehaviour
     {
       if (!CompareBalance(socket.bets[RightBetCounter])) // Corrected to RightBetCounter
       {
-        requestInProgress = false; // Release throttling if balance is low
+        SetRequestInProgress(isLeft, false); // Release throttling if balance is low
         yield break;
       }
-      socket.rightAck = new KeyValuePair<bool, string>(false, "wait");
       RightBlocker.SetActive(true);
       data = new BetData
       {
@@ -512,7 +556,7 @@ public class UIManager : MonoBehaviour
       };
     }
 
-    socket.PlaceBet(data);
+    socket.PlaceBet(data, isLeft);
     yield return new WaitUntil(() => (isLeft ? socket.leftAck.Key : socket.rightAck.Key) == true);
 
     AckData ackData = JsonUtility.FromJson<AckData>(isLeft ? socket.leftAck.Value : socket.rightAck.Value);
@@ -580,7 +624,7 @@ public class UIManager : MonoBehaviour
       RightBlocker.SetActive(false);
     }
 
-    requestInProgress = false;
+    SetRequestInProgress(isLeft, false);
   }
 
   bool CompareBalance(float bet)
@@ -710,24 +754,31 @@ public class UIManager : MonoBehaviour
 
   internal void OnCrash(float crashMult, float CrashDuration)
   {
+    LeftBlocker.SetActive(true);
+    RightBlocker.SetActive(true);
     Audio.PlayCrashAudio();
     // Debug.Log("OnCrash");
     if (LeftCashoutButton.gameObject.activeInHierarchy)
     {
       leftBetData = null;
+
       ToggleBetButtons(true, true);
       LeftBetButton.gameObject.SetActive(true);
+
       LeftCancelBetButton.gameObject.SetActive(false);
       LeftCashoutButton.gameObject.SetActive(false);
     }
     if (RightCashoutButton.gameObject.activeInHierarchy)
     {
       rightBetData = null;
+
       ToggleBetButtons(true, false);
       RightBetButton.gameObject.SetActive(true);
+
       RightCancelBetButton.gameObject.SetActive(false);
       RightCashoutButton.gameObject.SetActive(false);
     }
+
     curveAnimator.OnCrash();
 
     blueColTime = false;
@@ -753,6 +804,8 @@ public class UIManager : MonoBehaviour
 
   internal void OnRoundStart(float roundDuration, RoundStartData roundStartData)
   {
+    LeftBlocker.SetActive(false);
+    RightBlocker.SetActive(false);
     curveAnimator.ResetVisual();
     displayedMult = 1;
 
@@ -801,6 +854,12 @@ public class UIManager : MonoBehaviour
 
     multColorTween = multiplierText.DOFade(1f, tweenDuration)
         .SetDelay(startDelay);
+
+    if (autoBetCoroutine != null)
+    {
+      StopCoroutine(autoBetCoroutine);
+    }
+    autoBetCoroutine = StartCoroutine(TryAutoBetForRoundStart());
 
     // Debug.Log($"🎬 OnRoundStart - delay={startDelay:N2}s, duration={tweenDuration:N2}s");
   }
@@ -868,6 +927,167 @@ public class UIManager : MonoBehaviour
       blurTween?.Kill();
       blurTween = blurImage.DOColor(pinkColor, 0.3f).SetEase(Ease.InSine);
     }
+
+    TryAutoCashout(true);
+    TryAutoCashout(false);
+  }
+
+  private IEnumerator TryAutoBetForRoundStart()
+  {
+    bool startedLeftBet = false;
+    bool startedRightBet = false;
+
+    if (LeftAutoToggle && !HasBetInProgress(true))
+    {
+      if (leftAutoBetLockedIndex >= 0 && leftAutoBetLockedIndex < socket.bets.Count)
+      {
+        ChangeBet(leftAutoBetLockedIndex, true);
+      }
+      startedLeftBet = true;
+    }
+
+    if (RightAutoToggle && !HasBetInProgress(false))
+    {
+      if (rightAutoBetLockedIndex >= 0 && rightAutoBetLockedIndex < socket.bets.Count)
+      {
+        ChangeBet(rightAutoBetLockedIndex, false);
+      }
+      startedRightBet = true;
+    }
+
+    if (startedLeftBet)
+    {
+      StartCoroutine(OnBet(true));
+    }
+
+    if (startedRightBet)
+    {
+      StartCoroutine(OnBet(false));
+    }
+
+    autoBetCoroutine = null;
+    yield break;
+  }
+
+  private void HandleAutoBetToggle(bool isLeft)
+  {
+    if (isLeft)
+    {
+      if (LeftAutoToggle)
+      {
+        leftAutoBetLockedIndex = LeftBetCounter;
+        ToggleBetButtons(false, true);
+        if (!HasBetInProgress(true) && !IsRequestInProgress(true))
+        {
+          StartCoroutine(OnBet(true));
+        }
+      }
+      else
+      {
+        leftAutoBetLockedIndex = -1;
+        if (LeftCancelBetButton.gameObject.activeInHierarchy && !IsRequestInProgress(true))
+        {
+          StartCoroutine(OnCancel(true));
+        }
+        else if (!HasBetInProgress(true))
+        {
+          ToggleBetButtons(true, true);
+          LeftCancelBetButton.gameObject.SetActive(false);
+          LeftBetButton.gameObject.SetActive(true);
+        }
+      }
+      return;
+    }
+
+    if (RightAutoToggle)
+    {
+      rightAutoBetLockedIndex = RightBetCounter;
+      ToggleBetButtons(false, false);
+      if (!HasBetInProgress(false) && !IsRequestInProgress(false))
+      {
+        StartCoroutine(OnBet(false));
+      }
+    }
+    else
+    {
+      rightAutoBetLockedIndex = -1;
+      if (RightCancelBetButton.gameObject.activeInHierarchy && !IsRequestInProgress(false))
+      {
+        StartCoroutine(OnCancel(false));
+      }
+      else if (!HasBetInProgress(false))
+      {
+        ToggleBetButtons(true, false);
+        RightCancelBetButton.gameObject.SetActive(false);
+        RightBetButton.gameObject.SetActive(true);
+      }
+    }
+
+  }
+
+  private void TryAutoCashout(bool isLeft)
+  {
+    if (isLeft)
+    {
+      if (IsRequestInProgress(true))
+      {
+        return;
+      }
+
+      if (!LeftAutoCashOutToggle || leftBetData == null || !LeftCashoutButton.gameObject.activeInHierarchy)
+      {
+        return;
+      }
+
+      if (displayedMult >= leftAutoCashoutValue)
+      {
+        StartCoroutine(OnCashout(true));
+      }
+      return;
+    }
+
+    if (IsRequestInProgress(false))
+    {
+      return;
+    }
+
+    if (!RightAutoCashOutToggle || rightBetData == null || !RightCashoutButton.gameObject.activeInHierarchy)
+    {
+      return;
+    }
+
+    if (displayedMult >= rightAutoCashoutValue)
+    {
+      StartCoroutine(OnCashout(false));
+    }
+  }
+
+  private bool HasBetInProgress(bool isLeft)
+  {
+    if (isLeft)
+    {
+      bool hasBetData = leftBetData != null && leftBetData.payload != null && !string.IsNullOrEmpty(leftBetData.payload.betId);
+      return hasBetData || LeftCancelBetButton.gameObject.activeInHierarchy || LeftCashoutButton.gameObject.activeInHierarchy;
+    }
+
+    bool rightHasBetData = rightBetData != null && rightBetData.payload != null && !string.IsNullOrEmpty(rightBetData.payload.betId);
+    return rightHasBetData || RightCancelBetButton.gameObject.activeInHierarchy || RightCashoutButton.gameObject.activeInHierarchy;
+  }
+
+  private bool IsRequestInProgress(bool isLeft)
+  {
+    return isLeft ? leftRequestInProgress : rightRequestInProgress;
+  }
+
+  private void SetRequestInProgress(bool isLeft, bool state)
+  {
+    if (isLeft)
+    {
+      leftRequestInProgress = state;
+      return;
+    }
+
+    rightRequestInProgress = state;
   }
 
   IEnumerator OtherOptionButtonClicked(int index)
@@ -905,11 +1125,131 @@ public class UIManager : MonoBehaviour
     OtherOptionsPanelParent.SetActive(false);
   }
 
+  private void SetupAutoCashoutInputs()
+  {
+    leftAutoCashoutValue = ClampAutoCashoutValue(leftAutoCashoutValue);
+    rightAutoCashoutValue = ClampAutoCashoutValue(rightAutoCashoutValue);
+
+    if (LeftAutoCashoutInputField != null)
+    {
+      LeftAutoCashoutInputField.onEndEdit.AddListener(_ => OnAutoCashoutInputSubmitted(true));
+      RefreshAutoCashoutInputText(true);
+    }
+
+    if (RightAutoCashoutInputField != null)
+    {
+      RightAutoCashoutInputField.onEndEdit.AddListener(_ => OnAutoCashoutInputSubmitted(false));
+      RefreshAutoCashoutInputText(false);
+    }
+
+    UpdateAutoCashoutInputInteractivity(true);
+    UpdateAutoCashoutInputInteractivity(false);
+  }
+
+  private void OnAutoCashoutInputSubmitted(bool isLeft)
+  {
+    if (isLeft)
+    {
+      leftAutoCashoutValue = ParseAndClampAutoCashout(LeftAutoCashoutInputField, leftAutoCashoutValue);
+      RefreshAutoCashoutInputText(true);
+      return;
+    }
+
+    rightAutoCashoutValue = ParseAndClampAutoCashout(RightAutoCashoutInputField, rightAutoCashoutValue);
+    RefreshAutoCashoutInputText(false);
+  }
+
+  private void UpdateAutoCashoutInputInteractivity(bool isLeft)
+  {
+    if (isLeft)
+    {
+      if (LeftAutoCashoutInputField != null)
+      {
+        LeftAutoCashoutInputField.interactable = LeftAutoCashOutToggle;
+      }
+      return;
+    }
+
+    if (RightAutoCashoutInputField != null)
+    {
+      RightAutoCashoutInputField.interactable = RightAutoCashOutToggle;
+    }
+  }
+
+  private void UpdateTopBarInteractivityForAutoCashout(bool isLeft)
+  {
+    Button[] topBarButtons = isLeft ? LeftTopBarButtons : RightTopBarButtons;
+    bool autoCashoutEnabled = isLeft ? LeftAutoCashOutToggle : RightAutoCashOutToggle;
+    bool autoPanelActive = isLeft ? LeftAutoBetPanel.activeInHierarchy : RightAutoBetPanel.activeInHierarchy;
+
+    if (autoCashoutEnabled)
+    {
+      topBarButtons[0].interactable = false;
+      topBarButtons[1].interactable = false;
+      return;
+    }
+
+    if (autoPanelActive)
+    {
+      topBarButtons[0].interactable = true;
+      topBarButtons[1].interactable = false;
+    }
+    else
+    {
+      topBarButtons[0].interactable = false;
+      topBarButtons[1].interactable = true;
+    }
+  }
+
+  private float ParseAndClampAutoCashout(TMP_InputField inputField, float fallbackValue)
+  {
+    if (inputField == null)
+    {
+      return ClampAutoCashoutValue(fallbackValue);
+    }
+
+    string input = inputField.text?.Trim();
+    if (string.IsNullOrWhiteSpace(input))
+    {
+      return ClampAutoCashoutValue(fallbackValue);
+    }
+
+    if (!float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out float parsedValue) &&
+        !float.TryParse(input, out parsedValue))
+    {
+      return ClampAutoCashoutValue(fallbackValue);
+    }
+
+    return ClampAutoCashoutValue(parsedValue);
+  }
+
+  private float ClampAutoCashoutValue(float value)
+  {
+    return Mathf.Clamp(value, minAutoCashoutMultiplier, maxAutoCashoutMultiplier);
+  }
+
+  private void RefreshAutoCashoutInputText(bool isLeft)
+  {
+    if (isLeft)
+    {
+      if (LeftAutoCashoutInputField != null)
+      {
+        LeftAutoCashoutInputField.text = leftAutoCashoutValue.ToString("N2");
+      }
+      return;
+    }
+
+    if (RightAutoCashoutInputField != null)
+    {
+      RightAutoCashoutInputField.text = rightAutoCashoutValue.ToString("N2");
+    }
+  }
+
   void ToggleButtonClicked(Button button)
   {
     button.interactable = false;
     RectTransform KnobRect = button.transform.GetChild(0).GetComponent<RectTransform>();
-    KnobRect.DOLocalMoveX(-KnobRect.localPosition.x, 0.2f).
+    KnobRect.DOAnchorPosX(-KnobRect.anchoredPosition.x, 0.2f).
     OnComplete(() => button.interactable = true);
   }
 
@@ -938,6 +1278,8 @@ public class UIManager : MonoBehaviour
         RightAutoBetPanel?.SetActive(true);
       }
     }
+
+    UpdateTopBarInteractivityForAutoCashout(isLeft);
   }
 
   void TopBetsButtonClicked(int index, bool isFilter, bool reqData = true)
@@ -1030,26 +1372,28 @@ public class UIManager : MonoBehaviour
 
   void ToggleBetButtons(bool state, bool isLeft)
   {
+    bool shouldEnable = state && !(isLeft ? LeftAutoToggle : RightAutoToggle);
+
     if (isLeft)
     {
       foreach (Button btn in LLeftRightBetChangeButtons)
       {
-        btn.interactable = state;
+        btn.interactable = shouldEnable;
       }
       foreach (Button btn in LeftStaticBetButtons)
       {
-        btn.interactable = state;
+        btn.interactable = shouldEnable;
       }
     }
     else
     {
       foreach (Button btn in RLeftRightBetChangeButtons)
       {
-        btn.interactable = state;
+        btn.interactable = shouldEnable;
       }
       foreach (Button btn in RightStaticBetButtons)
       {
-        btn.interactable = state;
+        btn.interactable = shouldEnable;
       }
     }
   }
@@ -1192,6 +1536,14 @@ public class UIManager : MonoBehaviour
     // Reset Bet Data
     leftBetData = null;
     rightBetData = null;
+    leftRequestInProgress = false;
+    rightRequestInProgress = false;
+
+    if (autoBetCoroutine != null)
+    {
+      StopCoroutine(autoBetCoroutine);
+      autoBetCoroutine = null;
+    }
 
     curveAnimator.ResetVisual();
 
