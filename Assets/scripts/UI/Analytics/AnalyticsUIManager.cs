@@ -26,8 +26,7 @@ public class AnalyticsUIManager : GenericObjectPool<AnalyticsUIView>
       string username = userId.Length > 2 ? $"{userId[0]}****{userId[^1]}" : userId;
 
       recordUI.Setup(username, recordData.created_at, recordData.bet_amount, recordData.multiplier, recordData.win_amount, recordData.round_details.crashPoint);
-
-      recordUI.transform.SetAsLastSibling();
+      recordUI.transform.SetSiblingIndex(i);
 
       recordUI.transform.localScale = Vector3.one * 0.95f;
       recordUI.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);

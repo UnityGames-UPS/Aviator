@@ -937,6 +937,7 @@ GameObject:
   - component: {fileID: 62279713}
   - component: {fileID: 62279715}
   - component: {fileID: 62279714}
+  - component: {fileID: 62279716}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1003,6 +1004,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &62279716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62279712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298b18270323d4378acff5ed71eb1768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewportRaycastGraphic: {fileID: 0}
+  owningScrollRect: {fileID: 0}
+  disableScrollRectWhenEmpty: 1
 --- !u!1 &62920817
 GameObject:
   m_ObjectHideFlags: 0
@@ -8007,7 +8023,7 @@ MonoBehaviour:
   playerCountManager: {fileID: 1631631166}
   JSManager: {fileID: 284092192}
   TestSocketURI: https://devrealtime.dingdinghouse.com/
-  testToken: fbce1d191eaf495987ec3d679c04b36b
+  testToken: e9617e117e6949b39eddac2c79eff538
   bets: []
   tickInterval: 0
   takeOffDuration: 0
@@ -14331,6 +14347,7 @@ GameObject:
   - component: {fileID: 737474558}
   - component: {fileID: 737474559}
   - component: {fileID: 737474560}
+  - component: {fileID: 737474561}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -14397,6 +14414,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &737474561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737474557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298b18270323d4378acff5ed71eb1768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewportRaycastGraphic: {fileID: 0}
+  owningScrollRect: {fileID: 0}
+  disableScrollRectWhenEmpty: 1
 --- !u!1 &742540720
 GameObject:
   m_ObjectHideFlags: 0
@@ -18255,7 +18287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 648.4713, y: 82.58899}
+  m_AnchoredPosition: {x: 118.399994, y: 82.58899}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &902672769
@@ -27663,7 +27695,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.25
+  m_fontSize: 26.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -30592,7 +30624,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130
+  m_fontSize: 41.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -34177,7 +34209,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
+  m_fontSize: 23.75
   m_fontSizeBase: 16.57
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -40408,7 +40440,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.95
+  m_fontSize: 18
   m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -43926,6 +43958,7 @@ GameObject:
   - component: {fileID: 1889434071}
   - component: {fileID: 1889434073}
   - component: {fileID: 1889434072}
+  - component: {fileID: 1889434074}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -43992,6 +44025,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1889434074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889434070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298b18270323d4378acff5ed71eb1768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewportRaycastGraphic: {fileID: 0}
+  owningScrollRect: {fileID: 0}
+  disableScrollRectWhenEmpty: 1
 --- !u!1 &1896017881
 GameObject:
   m_ObjectHideFlags: 0
@@ -50613,6 +50661,7 @@ GameObject:
   - component: {fileID: 2100318998}
   - component: {fileID: 2100319000}
   - component: {fileID: 2100319001}
+  - component: {fileID: 2100319002}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -50679,6 +50728,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &2100319002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100318997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298b18270323d4378acff5ed71eb1768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewportRaycastGraphic: {fileID: 0}
+  owningScrollRect: {fileID: 0}
+  disableScrollRectWhenEmpty: 1
 --- !u!1 &2111916139
 GameObject:
   m_ObjectHideFlags: 0

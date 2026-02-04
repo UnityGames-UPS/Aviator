@@ -18,10 +18,12 @@ public class AnalyticsUIView : MonoBehaviour
   {
     if (usernameText && username != "") usernameText.text = username;
     string formattedDate = "";
+    string formattedTime = "";
     if (DateTime.TryParse(date, out var dateTime) && date != "")
     {
       formattedDate = dateTime.ToString("dd.MM.yy");
-      dateText.text = formattedDate;
+      formattedTime = dateTime.ToString("HH:mm");
+      dateText.text = formattedDate + " " + formattedTime;
     }
     if (betText && bet != 0) betText.text = bet.ToString("N2");
     if (multText && mult != 0) multText.text = mult.ToString("N2") + "x";

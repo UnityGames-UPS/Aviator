@@ -14,11 +14,11 @@ public class BetHistoryManager : GenericObjectPool<BetHistoryView>
 
     if (betData.Count > 0)
     {
-      foreach(var data in betData)
+      for (int i = 0; i < betData.Count; i++)
       {
         var item = base.GetFromPool();
-        item.Set(data);
-        item.transform.SetAsLastSibling();
+        item.Set(betData[i]);
+        item.transform.SetSiblingIndex(i);
       }
     }
     else

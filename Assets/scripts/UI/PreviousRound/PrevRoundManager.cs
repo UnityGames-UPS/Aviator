@@ -24,15 +24,16 @@ public class PrevRoundManager : GenericObjectPool<ParticipantView>
     crashPointText.text = roundResult.crashPoint.ToString("N2") + "x";
     if (roundResult.participants.Count > 0)
     {
-      foreach (var p in roundResult.participants)
+      for (int i = 0; i < roundResult.participants.Count; i++)
       {
+        var p = roundResult.participants[i];
         var item = base.GetFromPool();
         item.Set(p);
         if (p.cashedOut)
         {
           item.MarkCashedOut(p.multiplier, p.winAmount); 
         }
-        item.transform.SetAsLastSibling();
+        item.transform.SetSiblingIndex(i);
         item.transform.localScale = Vector3.one * 0.95f;
         item.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
       }
