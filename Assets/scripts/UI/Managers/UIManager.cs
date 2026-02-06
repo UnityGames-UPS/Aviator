@@ -53,6 +53,7 @@ public class UIManager : MonoBehaviour
   //1: Game Limits 
   //2: How To Play
   //3: Game Rules
+  //4: Change Avatar 
   [SerializeField] private Button[] OtherOptionsButtons;
   [SerializeField] private GameObject[] OtherOptionsPanels;
   [SerializeField] private Button[] OtherOptionCloseButtons;
@@ -1092,6 +1093,7 @@ public class UIManager : MonoBehaviour
 
   IEnumerator OtherOptionButtonClicked(int index)
   {
+    OtherOptionsMenu.SetActive(false);
     foreach (GameObject gameObject in OtherOptionsPanels)
     {
       gameObject.SetActive(false);

@@ -1,0 +1,2132 @@
+fileFormatVersion: 2
+guid: 08af8bbf35d2948c4b0752f648ce580d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7618368778078282654
+    second: Avaitor_Avatar_0
+  - first:
+      213: 6181182484101311059
+    second: Avaitor_Avatar_1
+  - first:
+      213: -8542215971226408744
+    second: Avaitor_Avatar_2
+  - first:
+      213: -5229332350159194028
+    second: Avaitor_Avatar_3
+  - first:
+      213: 5613543297935486638
+    second: Avaitor_Avatar_4
+  - first:
+      213: -1289679788623842075
+    second: Avaitor_Avatar_5
+  - first:
+      213: -962081544135726885
+    second: Avaitor_Avatar_6
+  - first:
+      213: -8238389310342405163
+    second: Avaitor_Avatar_7
+  - first:
+      213: -4816441235362949602
+    second: Avaitor_Avatar_8
+  - first:
+      213: 868647413127180004
+    second: Avaitor_Avatar_9
+  - first:
+      213: -7480927010927908025
+    second: Avaitor_Avatar_10
+  - first:
+      213: 2357533052141061355
+    second: Avaitor_Avatar_11
+  - first:
+      213: -1480138851156766835
+    second: Avaitor_Avatar_12
+  - first:
+      213: -7669237380085521150
+    second: Avaitor_Avatar_13
+  - first:
+      213: -8594207992190735737
+    second: Avaitor_Avatar_14
+  - first:
+      213: -8259583635879620681
+    second: Avaitor_Avatar_15
+  - first:
+      213: -3439410278871804788
+    second: Avaitor_Avatar_16
+  - first:
+      213: -6786332591653857170
+    second: Avaitor_Avatar_17
+  - first:
+      213: 6641413218429495669
+    second: Avaitor_Avatar_18
+  - first:
+      213: 5359656618269064189
+    second: Avaitor_Avatar_19
+  - first:
+      213: -6972437079545908118
+    second: Avaitor_Avatar_20
+  - first:
+      213: -8680892476781436737
+    second: Avaitor_Avatar_21
+  - first:
+      213: 225871422102311341
+    second: Avaitor_Avatar_22
+  - first:
+      213: 5517826868361999324
+    second: Avaitor_Avatar_23
+  - first:
+      213: -6649618852821171582
+    second: Avaitor_Avatar_24
+  - first:
+      213: 5259856575684429337
+    second: Avaitor_Avatar_25
+  - first:
+      213: -105155268333759578
+    second: Avaitor_Avatar_26
+  - first:
+      213: 7203825764669491221
+    second: Avaitor_Avatar_27
+  - first:
+      213: -8419880251984846267
+    second: Avaitor_Avatar_28
+  - first:
+      213: -1645599762539604188
+    second: Avaitor_Avatar_29
+  - first:
+      213: 7748600515989147425
+    second: Avaitor_Avatar_30
+  - first:
+      213: -3239882478642628295
+    second: Avaitor_Avatar_31
+  - first:
+      213: -8894169269575231527
+    second: Avaitor_Avatar_32
+  - first:
+      213: 5136872860849020469
+    second: Avaitor_Avatar_33
+  - first:
+      213: 124691754995322625
+    second: Avaitor_Avatar_34
+  - first:
+      213: 5098146825066134151
+    second: Avaitor_Avatar_35
+  - first:
+      213: -1357665521534561705
+    second: Avaitor_Avatar_36
+  - first:
+      213: 2175539825798365053
+    second: Avaitor_Avatar_37
+  - first:
+      213: 665974497644877791
+    second: Avaitor_Avatar_38
+  - first:
+      213: 1303745404832572011
+    second: Avaitor_Avatar_39
+  - first:
+      213: 1898623431436003631
+    second: Avaitor_Avatar_40
+  - first:
+      213: 2769314624135125444
+    second: Avaitor_Avatar_41
+  - first:
+      213: -5621071500368185139
+    second: Avaitor_Avatar_42
+  - first:
+      213: 4457488866664177929
+    second: Avaitor_Avatar_43
+  - first:
+      213: 3137557849206459836
+    second: Avaitor_Avatar_44
+  - first:
+      213: 5184775177983075665
+    second: Avaitor_Avatar_45
+  - first:
+      213: -4086556780186298323
+    second: Avaitor_Avatar_46
+  - first:
+      213: -4772152676973571624
+    second: Avaitor_Avatar_47
+  - first:
+      213: 8440496966439364602
+    second: Avaitor_Avatar_48
+  - first:
+      213: 5678049962270025806
+    second: Avaitor_Avatar_49
+  - first:
+      213: 778726348812857228
+    second: Avaitor_Avatar_50
+  - first:
+      213: 6679304156650817076
+    second: Avaitor_Avatar_51
+  - first:
+      213: 4215227143078128800
+    second: Avaitor_Avatar_52
+  - first:
+      213: -7440249574728276273
+    second: Avaitor_Avatar_53
+  - first:
+      213: -3608324466775277674
+    second: Avaitor_Avatar_54
+  - first:
+      213: -7672649969039532041
+    second: Avaitor_Avatar_55
+  - first:
+      213: -2346760986852492568
+    second: Avaitor_Avatar_56
+  - first:
+      213: 6565097947849504584
+    second: Avaitor_Avatar_57
+  - first:
+      213: -809609978098534953
+    second: Avaitor_Avatar_58
+  - first:
+      213: 8750661556819204462
+    second: Avaitor_Avatar_59
+  - first:
+      213: -6753293860243672858
+    second: Avaitor_Avatar_60
+  - first:
+      213: 3450928809038683145
+    second: Avaitor_Avatar_61
+  - first:
+      213: -3900116356575198316
+    second: Avaitor_Avatar_62
+  - first:
+      213: 4181672361394270222
+    second: Avaitor_Avatar_63
+  - first:
+      213: -8442869820842718994
+    second: Avaitor_Avatar_64
+  - first:
+      213: -2897047271800083923
+    second: Avaitor_Avatar_65
+  - first:
+      213: 5834200834087898004
+    second: Avaitor_Avatar_66
+  - first:
+      213: -3517275874671248921
+    second: Avaitor_Avatar_67
+  - first:
+      213: -9146496460636069574
+    second: Avaitor_Avatar_68
+  - first:
+      213: 7801474618041597280
+    second: Avaitor_Avatar_69
+  - first:
+      213: -2290553667957249915
+    second: Avaitor_Avatar_70
+  - first:
+      213: 2145603644495699123
+    second: Avaitor_Avatar_71
+  - first:
+      213: 1047944802265541
+    second: Avaitor_Avatar_72
+  - first:
+      213: -6481013026066891085
+    second: Avaitor_Avatar_73
+  - first:
+      213: 1470421050196096770
+    second: Avaitor_Avatar_74
+  - first:
+      213: -4291738067774151186
+    second: Avaitor_Avatar_75
+  - first:
+      213: 8752440646299343922
+    second: Avaitor_Avatar_76
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Avaitor_Avatar_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 2081
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26c97bec5fd164690800000000000000
+      internalID: -7618368778078282654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 2081
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35aa9b058b8f7c550800000000000000
+      internalID: 6181182484101311059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_2
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 2081
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d8a16035d3f37980800000000000000
+      internalID: -8542215971226408744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_3
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 2081
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4587d480fedad67b0800000000000000
+      internalID: -5229332350159194028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_4
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 2081
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eae28bc33ef47ed40800000000000000
+      internalID: 5613543297935486638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_5
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 2081
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e43315b0132a1ee0800000000000000
+      internalID: -1289679788623842075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_6
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 2081
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd8a4d4deeff5a2f0800000000000000
+      internalID: -962081544135726885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1876
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d36aa3329c5bad80800000000000000
+      internalID: -8238389310342405163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_8
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1876
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e16d5ac0730982db0800000000000000
+      internalID: -4816441235362949602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_9
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 1876
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eee18e483e0e0c00800000000000000
+      internalID: 868647413127180004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_10
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 1876
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74b640be4886e2890800000000000000
+      internalID: -7480927010927908025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_11
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 1876
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be44c17f1d3a7b020800000000000000
+      internalID: 2357533052141061355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_12
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 1876
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8fcb869e8d757be0800000000000000
+      internalID: -1480138851156766835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_13
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 1876
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 205ead57c35619590800000000000000
+      internalID: -7669237380085521150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_14
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1671
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78ae5ab7d5d3bb880800000000000000
+      internalID: -8594207992190735737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_15
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1671
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bf04ceb170106d80800000000000000
+      internalID: -8259583635879620681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_16
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 1671
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84d40bf292c440d0800000000000000
+      internalID: -3439410278871804788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_17
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 1671
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68d0d2a67a12d1a0800000000000000
+      internalID: -6786332591653857170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_18
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 1671
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 579e21b622a0b2c50800000000000000
+      internalID: 6641413218429495669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_19
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 1671
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfbbff13c43516a40800000000000000
+      internalID: 5359656618269064189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_20
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 1671
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6477eeea6dec3f90800000000000000
+      internalID: -6972437079545908118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_21
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1466
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb0e4142946478780800000000000000
+      internalID: -8680892476781436737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_22
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 1466
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da112579cd4722300800000000000000
+      internalID: 225871422102311341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_23
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1466
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd3b2d45d42439c40800000000000000
+      internalID: 5517826868361999324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_24
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1466
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2828ad172eec7b3a0800000000000000
+      internalID: -6649618852821171582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_25
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 1466
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9164c2b00b3cef840800000000000000
+      internalID: 5259856575684429337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_26
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1466
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a394b037d96a8ef0800000000000000
+      internalID: -105155268333759578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_27
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 1466
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5188eee8d5129f360800000000000000
+      internalID: 7203825764669491221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_28
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1261
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 542ed117583962b80800000000000000
+      internalID: -8419880251984846267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_29
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1261
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4271c571cb7a929e0800000000000000
+      internalID: -1645599762539604188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_30
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1261
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12f01fd8d1f888b60800000000000000
+      internalID: 7748600515989147425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_31
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 1261
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9397e722d00a903d0800000000000000
+      internalID: -3239882478642628295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_32
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 1261
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d7d5c23c20919480800000000000000
+      internalID: -8894169269575231527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_33
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1261
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e104f86a6d94740800000000000000
+      internalID: 5136872860849020469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_34
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 1261
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10f8ae29d7efab100800000000000000
+      internalID: 124691754995322625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_35
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1056
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a3ad8b68140c640800000000000000
+      internalID: 5098146825066134151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_36
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1056
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7521321c66a982de0800000000000000
+      internalID: -1357665521534561705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_37
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1056
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7f3d6fe1f1113e10800000000000000
+      internalID: 2175539825798365053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_38
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 1056
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd79791f6440e3900800000000000000
+      internalID: 665974497644877791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_39
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 1056
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b62e794c985d71210800000000000000
+      internalID: 1303745404832572011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_40
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1056
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f29e9f893f3495a10800000000000000
+      internalID: 1898623431436003631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_41
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 1056
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c95eda6af49e6620800000000000000
+      internalID: 2769314624135125444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_42
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 851
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc87b7b8041fdf1b0800000000000000
+      internalID: -5621071500368185139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_43
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 851
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 901e6c7e18e2cdd30800000000000000
+      internalID: 4457488866664177929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_44
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 851
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd80388d38da8b20800000000000000
+      internalID: 3137557849206459836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_45
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 851
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 155a1f3ed8504f740800000000000000
+      internalID: 5184775177983075665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_46
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 851
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d28188a8242a947c0800000000000000
+      internalID: -4086556780186298323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_47
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 851
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d19f0b9c68e5cdb0800000000000000
+      internalID: -4772152676973571624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_48
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 851
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af76164754ba22570800000000000000
+      internalID: 8440496966439364602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_49
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 647
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e48660a6b5c7cce40800000000000000
+      internalID: 5678049962270025806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_50
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 647
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8f2a360d779eca00800000000000000
+      internalID: 778726348812857228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_51
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 647
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43646f3fdb7a1bc50800000000000000
+      internalID: 6679304156650817076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_52
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 647
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aca1ced0ce7f7a30800000000000000
+      internalID: 4215227143078128800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_53
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 647
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc6e1129e6ceeb890800000000000000
+      internalID: -7440249574728276273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_54
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 647
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69f3283e308acedc0800000000000000
+      internalID: -3608324466775277674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_55
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 647
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ff9c7d2185458590800000000000000
+      internalID: -7672649969039532041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_56
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 442
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ea79ede051ae6fd0800000000000000
+      internalID: -2346760986852492568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_57
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 442
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8473739dcc9eb1b50800000000000000
+      internalID: 6565097947849504584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_58
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 442
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d533d0b300b3c4f0800000000000000
+      internalID: -809609978098534953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_59
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 442
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6910eba258907970800000000000000
+      internalID: 8750661556819204462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_60
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 442
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e0795cb30b7742a0800000000000000
+      internalID: -6753293860243672858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_61
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 442
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c99efc77924ef20800000000000000
+      internalID: 3450928809038683145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_62
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 442
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49305af56d000e9c0800000000000000
+      internalID: -3900116356575198316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_63
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 237
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0079f37bd8480a30800000000000000
+      internalID: 4181672361394270222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_64
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 237
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee8cdc351a6e4da80800000000000000
+      internalID: -8442869820842718994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_65
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 237
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2a67d20bde9bc7d0800000000000000
+      internalID: -2897047271800083923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_66
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 237
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49bc8186fbe37f050800000000000000
+      internalID: 5834200834087898004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_67
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 237
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e93b213a30203fc0800000000000000
+      internalID: -3517275874671248921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_68
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 237
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a316b64eded111180800000000000000
+      internalID: -9146496460636069574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_69
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 237
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06d7894c4d7644c60800000000000000
+      internalID: 7801474618041597280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_70
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 588a07a23915630e0800000000000000
+      internalID: -2290553667957249915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_71
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 32
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bc13f29527b6cd10800000000000000
+      internalID: 2145603644495699123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_72
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 32
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c9eea9a919b30000800000000000000
+      internalID: 1047944802265541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_73
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 32
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3be7a9c9df0de06a0800000000000000
+      internalID: -6481013026066891085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_74
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 32
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 207f13f872cf76410800000000000000
+      internalID: 1470421050196096770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_75
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 32
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5ec4947fea074c0800000000000000
+      internalID: -4291738067774151186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Avaitor_Avatar_76
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 32
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23cdc58356ae67970800000000000000
+      internalID: 8752440646299343922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Avaitor_Avatar_0: -7618368778078282654
+      Avaitor_Avatar_1: 6181182484101311059
+      Avaitor_Avatar_10: -7480927010927908025
+      Avaitor_Avatar_11: 2357533052141061355
+      Avaitor_Avatar_12: -1480138851156766835
+      Avaitor_Avatar_13: -7669237380085521150
+      Avaitor_Avatar_14: -8594207992190735737
+      Avaitor_Avatar_15: -8259583635879620681
+      Avaitor_Avatar_16: -3439410278871804788
+      Avaitor_Avatar_17: -6786332591653857170
+      Avaitor_Avatar_18: 6641413218429495669
+      Avaitor_Avatar_19: 5359656618269064189
+      Avaitor_Avatar_2: -8542215971226408744
+      Avaitor_Avatar_20: -6972437079545908118
+      Avaitor_Avatar_21: -8680892476781436737
+      Avaitor_Avatar_22: 225871422102311341
+      Avaitor_Avatar_23: 5517826868361999324
+      Avaitor_Avatar_24: -6649618852821171582
+      Avaitor_Avatar_25: 5259856575684429337
+      Avaitor_Avatar_26: -105155268333759578
+      Avaitor_Avatar_27: 7203825764669491221
+      Avaitor_Avatar_28: -8419880251984846267
+      Avaitor_Avatar_29: -1645599762539604188
+      Avaitor_Avatar_3: -5229332350159194028
+      Avaitor_Avatar_30: 7748600515989147425
+      Avaitor_Avatar_31: -3239882478642628295
+      Avaitor_Avatar_32: -8894169269575231527
+      Avaitor_Avatar_33: 5136872860849020469
+      Avaitor_Avatar_34: 124691754995322625
+      Avaitor_Avatar_35: 5098146825066134151
+      Avaitor_Avatar_36: -1357665521534561705
+      Avaitor_Avatar_37: 2175539825798365053
+      Avaitor_Avatar_38: 665974497644877791
+      Avaitor_Avatar_39: 1303745404832572011
+      Avaitor_Avatar_4: 5613543297935486638
+      Avaitor_Avatar_40: 1898623431436003631
+      Avaitor_Avatar_41: 2769314624135125444
+      Avaitor_Avatar_42: -5621071500368185139
+      Avaitor_Avatar_43: 4457488866664177929
+      Avaitor_Avatar_44: 3137557849206459836
+      Avaitor_Avatar_45: 5184775177983075665
+      Avaitor_Avatar_46: -4086556780186298323
+      Avaitor_Avatar_47: -4772152676973571624
+      Avaitor_Avatar_48: 8440496966439364602
+      Avaitor_Avatar_49: 5678049962270025806
+      Avaitor_Avatar_5: -1289679788623842075
+      Avaitor_Avatar_50: 778726348812857228
+      Avaitor_Avatar_51: 6679304156650817076
+      Avaitor_Avatar_52: 4215227143078128800
+      Avaitor_Avatar_53: -7440249574728276273
+      Avaitor_Avatar_54: -3608324466775277674
+      Avaitor_Avatar_55: -7672649969039532041
+      Avaitor_Avatar_56: -2346760986852492568
+      Avaitor_Avatar_57: 6565097947849504584
+      Avaitor_Avatar_58: -809609978098534953
+      Avaitor_Avatar_59: 8750661556819204462
+      Avaitor_Avatar_6: -962081544135726885
+      Avaitor_Avatar_60: -6753293860243672858
+      Avaitor_Avatar_61: 3450928809038683145
+      Avaitor_Avatar_62: -3900116356575198316
+      Avaitor_Avatar_63: 4181672361394270222
+      Avaitor_Avatar_64: -8442869820842718994
+      Avaitor_Avatar_65: -2897047271800083923
+      Avaitor_Avatar_66: 5834200834087898004
+      Avaitor_Avatar_67: -3517275874671248921
+      Avaitor_Avatar_68: -9146496460636069574
+      Avaitor_Avatar_69: 7801474618041597280
+      Avaitor_Avatar_7: -8238389310342405163
+      Avaitor_Avatar_70: -2290553667957249915
+      Avaitor_Avatar_71: 2145603644495699123
+      Avaitor_Avatar_72: 1047944802265541
+      Avaitor_Avatar_73: -6481013026066891085
+      Avaitor_Avatar_74: 1470421050196096770
+      Avaitor_Avatar_75: -4291738067774151186
+      Avaitor_Avatar_76: 8752440646299343922
+      Avaitor_Avatar_8: -4816441235362949602
+      Avaitor_Avatar_9: 868647413127180004
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

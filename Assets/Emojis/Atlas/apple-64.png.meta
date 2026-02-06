@@ -1,0 +1,7878 @@
+fileFormatVersion: 2
+guid: 8d2bab6687925457389f39bb659f8460
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3822350542197261839
+    second: apple-64_0
+  - first:
+      213: 6164267989423346866
+    second: apple-64_1
+  - first:
+      213: -5940236485546765638
+    second: apple-64_2
+  - first:
+      213: -8258355401956381310
+    second: apple-64_3
+  - first:
+      213: 9176280188020420045
+    second: apple-64_4
+  - first:
+      213: 8931305268325234728
+    second: apple-64_5
+  - first:
+      213: -8715387773992977336
+    second: apple-64_6
+  - first:
+      213: 4223551826039648167
+    second: apple-64_7
+  - first:
+      213: 7079826546479034224
+    second: apple-64_8
+  - first:
+      213: -8099819461517022939
+    second: apple-64_9
+  - first:
+      213: -378447317754162503
+    second: apple-64_10
+  - first:
+      213: -5794666804708270619
+    second: apple-64_11
+  - first:
+      213: -9076731348979898543
+    second: apple-64_12
+  - first:
+      213: -7464991834627884594
+    second: apple-64_13
+  - first:
+      213: 623086550559673829
+    second: apple-64_14
+  - first:
+      213: -5671812703693933471
+    second: apple-64_15
+  - first:
+      213: 1657461216695970486
+    second: apple-64_16
+  - first:
+      213: -1058686975606517538
+    second: apple-64_17
+  - first:
+      213: -3956983516112386183
+    second: apple-64_18
+  - first:
+      213: 2361982458401057875
+    second: apple-64_19
+  - first:
+      213: 1886688598148829490
+    second: apple-64_20
+  - first:
+      213: -2736281954005188516
+    second: apple-64_21
+  - first:
+      213: -8478376488147491185
+    second: apple-64_22
+  - first:
+      213: -5941644036030651610
+    second: apple-64_23
+  - first:
+      213: 2007228381751440816
+    second: apple-64_24
+  - first:
+      213: -3300752801490166658
+    second: apple-64_25
+  - first:
+      213: -5043147723400466380
+    second: apple-64_26
+  - first:
+      213: 6882246738038549589
+    second: apple-64_27
+  - first:
+      213: 9038872925930962247
+    second: apple-64_28
+  - first:
+      213: 2062239081020091860
+    second: apple-64_29
+  - first:
+      213: -1097817773866792760
+    second: apple-64_30
+  - first:
+      213: 728483439193132457
+    second: apple-64_31
+  - first:
+      213: 3772206676981001455
+    second: apple-64_32
+  - first:
+      213: -7867021362895570002
+    second: apple-64_33
+  - first:
+      213: 3798904019579873508
+    second: apple-64_34
+  - first:
+      213: -1273460066901049603
+    second: apple-64_35
+  - first:
+      213: 7971377439769576909
+    second: apple-64_36
+  - first:
+      213: 4069224934295214742
+    second: apple-64_37
+  - first:
+      213: 2757264052578721136
+    second: apple-64_38
+  - first:
+      213: 6992206032600633918
+    second: apple-64_39
+  - first:
+      213: -4917312778780023622
+    second: apple-64_40
+  - first:
+      213: -3197295937895037998
+    second: apple-64_41
+  - first:
+      213: -2134385906953792690
+    second: apple-64_42
+  - first:
+      213: 7888967342975543373
+    second: apple-64_43
+  - first:
+      213: 5583149155778923716
+    second: apple-64_44
+  - first:
+      213: -7584686260010498073
+    second: apple-64_45
+  - first:
+      213: -2611396247892018284
+    second: apple-64_46
+  - first:
+      213: -8858568616034174080
+    second: apple-64_47
+  - first:
+      213: -1744651007912169759
+    second: apple-64_48
+  - first:
+      213: -3144865750212691180
+    second: apple-64_49
+  - first:
+      213: 7892452183149090003
+    second: apple-64_50
+  - first:
+      213: -3350315908482564669
+    second: apple-64_51
+  - first:
+      213: 6699934625346748935
+    second: apple-64_52
+  - first:
+      213: -266846391758875883
+    second: apple-64_53
+  - first:
+      213: -2235668175004762738
+    second: apple-64_54
+  - first:
+      213: 1275062871850209752
+    second: apple-64_55
+  - first:
+      213: 1317315141341482950
+    second: apple-64_56
+  - first:
+      213: -882043790165878188
+    second: apple-64_57
+  - first:
+      213: 7104971025448663093
+    second: apple-64_58
+  - first:
+      213: -1924974968563337894
+    second: apple-64_59
+  - first:
+      213: 7419612332622810051
+    second: apple-64_60
+  - first:
+      213: 6055868599905901320
+    second: apple-64_61
+  - first:
+      213: 2615073151122220515
+    second: apple-64_62
+  - first:
+      213: 1781761779792081834
+    second: apple-64_63
+  - first:
+      213: -2781938586948442372
+    second: apple-64_64
+  - first:
+      213: -8869282915224106397
+    second: apple-64_65
+  - first:
+      213: 1902525906576879487
+    second: apple-64_66
+  - first:
+      213: 5453502726675452645
+    second: apple-64_67
+  - first:
+      213: 5269805139193258520
+    second: apple-64_68
+  - first:
+      213: 7590081233838359251
+    second: apple-64_69
+  - first:
+      213: -3528451437394359853
+    second: apple-64_70
+  - first:
+      213: 554433362239546506
+    second: apple-64_71
+  - first:
+      213: 7811076788395621239
+    second: apple-64_72
+  - first:
+      213: -5553507024072216947
+    second: apple-64_73
+  - first:
+      213: -7998091196621516838
+    second: apple-64_74
+  - first:
+      213: -8864263900406700160
+    second: apple-64_75
+  - first:
+      213: -5448671097848674153
+    second: apple-64_76
+  - first:
+      213: -7342294746367361456
+    second: apple-64_77
+  - first:
+      213: -8690020782150221865
+    second: apple-64_78
+  - first:
+      213: 1361755614872972898
+    second: apple-64_79
+  - first:
+      213: -3434750288157127844
+    second: apple-64_80
+  - first:
+      213: -2739151121417982552
+    second: apple-64_81
+  - first:
+      213: -7103286171496319583
+    second: apple-64_82
+  - first:
+      213: 6821219715934473
+    second: apple-64_83
+  - first:
+      213: -848505323597672456
+    second: apple-64_84
+  - first:
+      213: -5913215169156599523
+    second: apple-64_85
+  - first:
+      213: 5411495191304621591
+    second: apple-64_86
+  - first:
+      213: 7653472716022591695
+    second: apple-64_87
+  - first:
+      213: -5301311168076484381
+    second: apple-64_88
+  - first:
+      213: -3491824100686400135
+    second: apple-64_89
+  - first:
+      213: -8919379420680256288
+    second: apple-64_90
+  - first:
+      213: 8831837368395796384
+    second: apple-64_91
+  - first:
+      213: -2486438599089848207
+    second: apple-64_92
+  - first:
+      213: -6138850101365694682
+    second: apple-64_93
+  - first:
+      213: 1181520727135686125
+    second: apple-64_94
+  - first:
+      213: 5822875849518896758
+    second: apple-64_95
+  - first:
+      213: -948960837737193032
+    second: apple-64_96
+  - first:
+      213: 5149229583970816233
+    second: apple-64_97
+  - first:
+      213: 8398688156687774333
+    second: apple-64_98
+  - first:
+      213: -8909040088754903125
+    second: apple-64_99
+  - first:
+      213: -4516189027199190666
+    second: apple-64_100
+  - first:
+      213: -1671947640520920184
+    second: apple-64_101
+  - first:
+      213: -2344338099108784655
+    second: apple-64_102
+  - first:
+      213: -9063527861017454813
+    second: apple-64_103
+  - first:
+      213: -5169872599895937567
+    second: apple-64_104
+  - first:
+      213: -6624457568699788176
+    second: apple-64_105
+  - first:
+      213: -7342342555705413106
+    second: apple-64_106
+  - first:
+      213: 1607520492586790990
+    second: apple-64_107
+  - first:
+      213: -4105439712892414742
+    second: apple-64_108
+  - first:
+      213: -4839320399019434296
+    second: apple-64_109
+  - first:
+      213: 2112327608475961850
+    second: apple-64_110
+  - first:
+      213: 859028483610425354
+    second: apple-64_111
+  - first:
+      213: 3073604903030627812
+    second: apple-64_112
+  - first:
+      213: 1702024439370128846
+    second: apple-64_113
+  - first:
+      213: -1531017204647416111
+    second: apple-64_114
+  - first:
+      213: -6830154565402884190
+    second: apple-64_115
+  - first:
+      213: 3203450885865388266
+    second: apple-64_116
+  - first:
+      213: 9152915711687964212
+    second: apple-64_117
+  - first:
+      213: 8791816451518482824
+    second: apple-64_118
+  - first:
+      213: -5315702311175179396
+    second: apple-64_119
+  - first:
+      213: 5550445651557253459
+    second: apple-64_120
+  - first:
+      213: -113551762574252340
+    second: apple-64_121
+  - first:
+      213: 2033308891966028281
+    second: apple-64_122
+  - first:
+      213: 6655229814999964999
+    second: apple-64_123
+  - first:
+      213: 3849186516714700896
+    second: apple-64_124
+  - first:
+      213: -2916575155522766808
+    second: apple-64_125
+  - first:
+      213: -1004232016700042748
+    second: apple-64_126
+  - first:
+      213: -8153173750047186767
+    second: apple-64_127
+  - first:
+      213: -4515262788905525402
+    second: apple-64_128
+  - first:
+      213: 1288421371096840920
+    second: apple-64_129
+  - first:
+      213: -2350902672081226797
+    second: apple-64_130
+  - first:
+      213: 3446427479198124716
+    second: apple-64_131
+  - first:
+      213: -5188733635040976606
+    second: apple-64_132
+  - first:
+      213: -242068236731062699
+    second: apple-64_133
+  - first:
+      213: -3238677194679633666
+    second: apple-64_134
+  - first:
+      213: 4882462658261238553
+    second: apple-64_135
+  - first:
+      213: 3744772398575266621
+    second: apple-64_136
+  - first:
+      213: -4008269166179217027
+    second: apple-64_137
+  - first:
+      213: -339035720062619225
+    second: apple-64_138
+  - first:
+      213: -5065003320725583874
+    second: apple-64_139
+  - first:
+      213: -1342393214268679303
+    second: apple-64_140
+  - first:
+      213: -7717796635974821823
+    second: apple-64_141
+  - first:
+      213: -1986130856950298342
+    second: apple-64_142
+  - first:
+      213: -4792663471308474984
+    second: apple-64_143
+  - first:
+      213: -2714539726101205524
+    second: apple-64_144
+  - first:
+      213: -1262145428302086308
+    second: apple-64_145
+  - first:
+      213: 537585651767810993
+    second: apple-64_146
+  - first:
+      213: -6093703421805181568
+    second: apple-64_147
+  - first:
+      213: 5805672330315866050
+    second: apple-64_148
+  - first:
+      213: -4398561138212011897
+    second: apple-64_149
+  - first:
+      213: -6774250847924792333
+    second: apple-64_150
+  - first:
+      213: -689717805617556280
+    second: apple-64_151
+  - first:
+      213: -6060735490475491506
+    second: apple-64_152
+  - first:
+      213: -821777995597385236
+    second: apple-64_153
+  - first:
+      213: 9089579205629339444
+    second: apple-64_154
+  - first:
+      213: 805321882148202041
+    second: apple-64_155
+  - first:
+      213: 7599733529777345866
+    second: apple-64_156
+  - first:
+      213: 7971582320443189243
+    second: apple-64_157
+  - first:
+      213: 7733552923999995335
+    second: apple-64_158
+  - first:
+      213: -3941230959995748021
+    second: apple-64_159
+  - first:
+      213: -6538822698802222185
+    second: apple-64_160
+  - first:
+      213: -4644761016596640174
+    second: apple-64_161
+  - first:
+      213: -7217087890025938227
+    second: apple-64_162
+  - first:
+      213: -4485033654762176404
+    second: apple-64_163
+  - first:
+      213: -6861539236112909826
+    second: apple-64_164
+  - first:
+      213: 1256313286307989208
+    second: apple-64_165
+  - first:
+      213: 5960465078957251406
+    second: apple-64_166
+  - first:
+      213: 8341620726851615209
+    second: apple-64_167
+  - first:
+      213: 541487178051222981
+    second: apple-64_168
+  - first:
+      213: 1962073941440153551
+    second: apple-64_169
+  - first:
+      213: 1700442742975318493
+    second: apple-64_170
+  - first:
+      213: -5693328752752001082
+    second: apple-64_171
+  - first:
+      213: 4943807552246832124
+    second: apple-64_172
+  - first:
+      213: -4208192058066155283
+    second: apple-64_173
+  - first:
+      213: -6488221447716974318
+    second: apple-64_174
+  - first:
+      213: 9087583452005556635
+    second: apple-64_175
+  - first:
+      213: -5434246276038828520
+    second: apple-64_176
+  - first:
+      213: -8164301414684626257
+    second: apple-64_177
+  - first:
+      213: 6694037914464064023
+    second: apple-64_178
+  - first:
+      213: 1274700218453875822
+    second: apple-64_179
+  - first:
+      213: -4246850908959840387
+    second: apple-64_180
+  - first:
+      213: -1657142911017537917
+    second: apple-64_181
+  - first:
+      213: -4219889817241587510
+    second: apple-64_182
+  - first:
+      213: 4013185631438925976
+    second: apple-64_183
+  - first:
+      213: 8671634568836768045
+    second: apple-64_184
+  - first:
+      213: 1679663591683910252
+    second: apple-64_185
+  - first:
+      213: 4079247023205480121
+    second: apple-64_186
+  - first:
+      213: -2284405129270745547
+    second: apple-64_187
+  - first:
+      213: 465263835157934343
+    second: apple-64_188
+  - first:
+      213: 5390673401052681890
+    second: apple-64_189
+  - first:
+      213: 72676533605200333
+    second: apple-64_190
+  - first:
+      213: -7218406080131566823
+    second: apple-64_191
+  - first:
+      213: 5442626260457583152
+    second: apple-64_192
+  - first:
+      213: 1660921787536483445
+    second: apple-64_193
+  - first:
+      213: 320121555973161147
+    second: apple-64_194
+  - first:
+      213: 7136867910663371826
+    second: apple-64_195
+  - first:
+      213: 4565052539017508821
+    second: apple-64_196
+  - first:
+      213: 7992560455973808602
+    second: apple-64_197
+  - first:
+      213: 3906748512085631115
+    second: apple-64_198
+  - first:
+      213: 1558547154164222958
+    second: apple-64_199
+  - first:
+      213: -7539804885524950624
+    second: apple-64_200
+  - first:
+      213: -4994214636431948838
+    second: apple-64_201
+  - first:
+      213: 8304248480996501175
+    second: apple-64_202
+  - first:
+      213: -2755354748947621130
+    second: apple-64_203
+  - first:
+      213: 4702876961286923591
+    second: apple-64_204
+  - first:
+      213: -2839902887005457741
+    second: apple-64_205
+  - first:
+      213: 8549357453008075953
+    second: apple-64_206
+  - first:
+      213: 791288103590960917
+    second: apple-64_207
+  - first:
+      213: -2729884959842797054
+    second: apple-64_208
+  - first:
+      213: 8635863020868905208
+    second: apple-64_209
+  - first:
+      213: 6209909680305389608
+    second: apple-64_210
+  - first:
+      213: 6968181769613638723
+    second: apple-64_211
+  - first:
+      213: 3763660780377279895
+    second: apple-64_212
+  - first:
+      213: 4344193399635350824
+    second: apple-64_213
+  - first:
+      213: -6434481920662263807
+    second: apple-64_214
+  - first:
+      213: -6282806437390756003
+    second: apple-64_215
+  - first:
+      213: 3802764920917529012
+    second: apple-64_216
+  - first:
+      213: -1838982764019488322
+    second: apple-64_217
+  - first:
+      213: 4363868665525291835
+    second: apple-64_218
+  - first:
+      213: 1811864523541617412
+    second: apple-64_219
+  - first:
+      213: 7974918207791298642
+    second: apple-64_220
+  - first:
+      213: 8509346140760307393
+    second: apple-64_221
+  - first:
+      213: -2672278858330207171
+    second: apple-64_222
+  - first:
+      213: 7508388326499404017
+    second: apple-64_223
+  - first:
+      213: 6540731475217512575
+    second: apple-64_224
+  - first:
+      213: 9041940847726231754
+    second: apple-64_225
+  - first:
+      213: 6389984121240042334
+    second: apple-64_226
+  - first:
+      213: -6940370236092416792
+    second: apple-64_227
+  - first:
+      213: -308519003713237167
+    second: apple-64_228
+  - first:
+      213: 8314253242642934968
+    second: apple-64_229
+  - first:
+      213: -3855097531503086119
+    second: apple-64_230
+  - first:
+      213: 7446147379863491490
+    second: apple-64_231
+  - first:
+      213: -8051255206282375651
+    second: apple-64_232
+  - first:
+      213: 1373711678600756516
+    second: apple-64_233
+  - first:
+      213: -414769059444474223
+    second: apple-64_234
+  - first:
+      213: 7234018811605194657
+    second: apple-64_235
+  - first:
+      213: -8567893134840868240
+    second: apple-64_236
+  - first:
+      213: 7315507497308204155
+    second: apple-64_237
+  - first:
+      213: -7386677238369708719
+    second: apple-64_238
+  - first:
+      213: 3996188034194394075
+    second: apple-64_239
+  - first:
+      213: -5627954718354944077
+    second: apple-64_240
+  - first:
+      213: -898651817176045204
+    second: apple-64_241
+  - first:
+      213: 4956170764644895918
+    second: apple-64_242
+  - first:
+      213: -1374812210841642677
+    second: apple-64_243
+  - first:
+      213: 7298538925443885389
+    second: apple-64_244
+  - first:
+      213: -4230426689638829476
+    second: apple-64_245
+  - first:
+      213: -8981676428342478719
+    second: apple-64_246
+  - first:
+      213: -5649101666673645698
+    second: apple-64_247
+  - first:
+      213: -631684386969843578
+    second: apple-64_248
+  - first:
+      213: 6592447339025605083
+    second: apple-64_249
+  - first:
+      213: 3527447438738275782
+    second: apple-64_250
+  - first:
+      213: 238580982472641878
+    second: apple-64_251
+  - first:
+      213: -2345517202413453615
+    second: apple-64_252
+  - first:
+      213: -4746254285771751336
+    second: apple-64_253
+  - first:
+      213: 3045824166771081462
+    second: apple-64_254
+  - first:
+      213: 3587253838115299660
+    second: apple-64_255
+  - first:
+      213: 5602506336400807461
+    second: apple-64_256
+  - first:
+      213: 2837514531127774029
+    second: apple-64_257
+  - first:
+      213: 6715715591223783025
+    second: apple-64_258
+  - first:
+      213: 4106988926157750950
+    second: apple-64_259
+  - first:
+      213: -3711639287011049349
+    second: apple-64_260
+  - first:
+      213: -3886529248458099736
+    second: apple-64_261
+  - first:
+      213: 4588913674610306249
+    second: apple-64_262
+  - first:
+      213: 3138264047590513513
+    second: apple-64_263
+  - first:
+      213: -6025302925471851737
+    second: apple-64_264
+  - first:
+      213: 5075006354384889656
+    second: apple-64_265
+  - first:
+      213: 5004701885324679868
+    second: apple-64_266
+  - first:
+      213: -8258273524773565513
+    second: apple-64_267
+  - first:
+      213: -9144139456688703178
+    second: apple-64_268
+  - first:
+      213: -3689226179474055641
+    second: apple-64_269
+  - first:
+      213: -1080518052157068364
+    second: apple-64_270
+  - first:
+      213: -7799915169763344873
+    second: apple-64_271
+  - first:
+      213: 8002912787501025415
+    second: apple-64_272
+  - first:
+      213: 736285098971590127
+    second: apple-64_273
+  - first:
+      213: -6431177853818124752
+    second: apple-64_274
+  - first:
+      213: 2433172218709967603
+    second: apple-64_275
+  - first:
+      213: 5881765387613747369
+    second: apple-64_276
+  - first:
+      213: -5221367898579297865
+    second: apple-64_277
+  - first:
+      213: -5209016604657159067
+    second: apple-64_278
+  - first:
+      213: -2632243686448802229
+    second: apple-64_279
+  - first:
+      213: -7465191450642357622
+    second: apple-64_280
+  - first:
+      213: 2760749477162711767
+    second: apple-64_281
+  - first:
+      213: 8870310026191463883
+    second: apple-64_282
+  - first:
+      213: 5178979824161181899
+    second: apple-64_283
+  - first:
+      213: -515014925674207671
+    second: apple-64_284
+  - first:
+      213: 5230683239566540849
+    second: apple-64_285
+  - first:
+      213: 1989199151461026891
+    second: apple-64_286
+  - first:
+      213: -1343357335059506829
+    second: apple-64_287
+  - first:
+      213: 4091518486119326515
+    second: apple-64_288
+  - first:
+      213: 8615456754124721999
+    second: apple-64_289
+  - first:
+      213: -8659332368439099685
+    second: apple-64_290
+  - first:
+      213: 2502652365787887525
+    second: apple-64_291
+  - first:
+      213: -6632019460716334782
+    second: apple-64_292
+  - first:
+      213: -2850123648457073210
+    second: apple-64_293
+  - first:
+      213: -1811821599512909180
+    second: apple-64_294
+  - first:
+      213: 785884625366831558
+    second: apple-64_295
+  - first:
+      213: 2422250071075709762
+    second: apple-64_296
+  - first:
+      213: -4593599222672560139
+    second: apple-64_297
+  - first:
+      213: -8885938058138783039
+    second: apple-64_298
+  - first:
+      213: 8537265077427652659
+    second: apple-64_299
+  - first:
+      213: -2025341197899772828
+    second: apple-64_300
+  - first:
+      213: -2068605244738054509
+    second: apple-64_301
+  - first:
+      213: 2980847372829839165
+    second: apple-64_302
+  - first:
+      213: 8774146749753187871
+    second: apple-64_303
+  - first:
+      213: 1442607732959081718
+    second: apple-64_304
+  - first:
+      213: 277326454682343524
+    second: apple-64_305
+  - first:
+      213: 547191987894237262
+    second: apple-64_306
+  - first:
+      213: -4197584363922216009
+    second: apple-64_307
+  - first:
+      213: 976678148237501288
+    second: apple-64_308
+  - first:
+      213: -1004127693233008903
+    second: apple-64_309
+  - first:
+      213: -7830986644792463649
+    second: apple-64_310
+  - first:
+      213: 2035646623468902476
+    second: apple-64_311
+  - first:
+      213: -6152373436757537762
+    second: apple-64_312
+  - first:
+      213: -7261354179257113659
+    second: apple-64_313
+  - first:
+      213: -4140687223776278730
+    second: apple-64_314
+  - first:
+      213: -4647481747778667938
+    second: apple-64_315
+  - first:
+      213: 5944594091568209594
+    second: apple-64_316
+  - first:
+      213: 8495296475586149668
+    second: apple-64_317
+  - first:
+      213: -2766982392276869888
+    second: apple-64_318
+  - first:
+      213: -7704523083556299357
+    second: apple-64_319
+  - first:
+      213: 8433683362845505020
+    second: apple-64_320
+  - first:
+      213: -8875293417203256888
+    second: apple-64_321
+  - first:
+      213: -3272521690963050724
+    second: apple-64_322
+  - first:
+      213: 2517197225822455279
+    second: apple-64_323
+  - first:
+      213: 4224671439389595957
+    second: apple-64_324
+  - first:
+      213: -1794907599964644737
+    second: apple-64_325
+  - first:
+      213: 5416679397499725741
+    second: apple-64_326
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: apple-64_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f97f4dfe6844fac0800000000000000
+      internalID: -3822350542197261839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4d3e1a311eb8550800000000000000
+      internalID: 6164267989423346866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab29b2d936a009da0800000000000000
+      internalID: -5940236485546765638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d267d348d646d80800000000000000
+      internalID: -8258355401956381310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_4
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcd69668632b85f70800000000000000
+      internalID: 9176280188020420045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_5
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 828b91b42de52fb70800000000000000
+      internalID: 8931305268325234728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_6
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84cbd53eef8bc0780800000000000000
+      internalID: -8715387773992977336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_7
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7afab8922021d9a30800000000000000
+      internalID: 4223551826039648167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_8
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07f6346cbb8904260800000000000000
+      internalID: 7079826546479034224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_9
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5296b7b4d19a79f80800000000000000
+      internalID: -8099819461517022939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_10
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b2501b6b2c7fbaf0800000000000000
+      internalID: -378447317754162503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_11
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ed9d991e35359fa0800000000000000
+      internalID: -5794666804708270619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_12
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 157a66ebde8f80280800000000000000
+      internalID: -9076731348979898543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_13
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec930d54a75076890800000000000000
+      internalID: -7464991834627884594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_14
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5edce6e9ae5a5a800800000000000000
+      internalID: 623086550559673829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_15
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16476c3856ca941b0800000000000000
+      internalID: -5671812703693933471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_16
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba662ae13c700710800000000000000
+      internalID: 1657461216695970486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_17
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 1056
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed014aa0ec9ce41f0800000000000000
+      internalID: -1058686975606517538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9778b040578f519c0800000000000000
+      internalID: -3956983516112386183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_19
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ce2b6188277c020800000000000000
+      internalID: 2361982458401057875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_20
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 231d07ea84dde2a10800000000000000
+      internalID: 1886688598148829490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_21
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c50853e6f06c60ad0800000000000000
+      internalID: -2736281954005188516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_22
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86e1ff1181c65a80800000000000000
+      internalID: -8478376488147491185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_23
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 623239aba3a0b8da0800000000000000
+      internalID: -5941644036030651610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_24
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b57065149b1bdb10800000000000000
+      internalID: 2007228381751440816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_25
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7c9dcfa0de5132d0800000000000000
+      internalID: -3300752801490166658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_26
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43035e48dd3230ab0800000000000000
+      internalID: -5043147723400466380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_27
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55ce06dc1f6a28f50800000000000000
+      internalID: 6882246738038549589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_28
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74db2004907807d70800000000000000
+      internalID: 9038872925930962247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_29
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dd612a948b8e9c10800000000000000
+      internalID: 2062239081020091860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_30
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c84f881d84c3c0f0800000000000000
+      internalID: -1097817773866792760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_31
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad8cd904d71c1a00800000000000000
+      internalID: 728483439193132457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_32
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fec2fc89cf1995430800000000000000
+      internalID: 3772206676981001455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_33
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eab333070c9b2d290800000000000000
+      internalID: -7867021362895570002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_34
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e8acde041b68b430800000000000000
+      internalID: 3798904019579873508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_35
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 990
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfeb7b4f0d2c35ee0800000000000000
+      internalID: -1273460066901049603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc5470c1c8500ae60800000000000000
+      internalID: 7971377439769576909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_37
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69a14df948ac87830800000000000000
+      internalID: 4069224934295214742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_38
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07d98e51c05c34620800000000000000
+      internalID: 2757264052578721136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_39
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e321181275e490160800000000000000
+      internalID: 6992206032600633918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_40
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab4e35ba41232cbb0800000000000000
+      internalID: -4917312778780023622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_41
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d387f3d84ce0a3d0800000000000000
+      internalID: -3197295937895037998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_42
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e435b6a73532162e0800000000000000
+      internalID: -2134385906953792690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_43
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d48e6ba300e3b7d60800000000000000
+      internalID: 7888967342975543373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_44
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cc893e83945b7d40800000000000000
+      internalID: 5583149155778923716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_45
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e7c94b2808cdb690800000000000000
+      internalID: -7584686260010498073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_46
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49bbb94c2f472cbd0800000000000000
+      internalID: -2611396247892018284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_47
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08bfbd647ca001580800000000000000
+      internalID: -8858568616034174080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_48
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ee2e50e621c9c7e0800000000000000
+      internalID: -1744651007912169759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_49
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41bb74c23413b54d0800000000000000
+      internalID: -3144865750212691180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_50
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d49b5fc17f978d60800000000000000
+      internalID: 7892452183149090003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_51
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cd7e859e694181d0800000000000000
+      internalID: -3350315908482564669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_52
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70202224b03fafc50800000000000000
+      internalID: 6699934625346748935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_53
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 924
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5131e99de98fb4cf0800000000000000
+      internalID: -266846391758875883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8df131d3af49f0e0800000000000000
+      internalID: -2235668175004762738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_55
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d1dbe62deee1b110800000000000000
+      internalID: 1275062871850209752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_56
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cf07e0442b084210800000000000000
+      internalID: 1317315141341482950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_57
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45ad2da98d952c3f0800000000000000
+      internalID: -882043790165878188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_58
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5387f4ff08de99260800000000000000
+      internalID: 7104971025448663093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_59
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a55734d077d1945e0800000000000000
+      internalID: -1924974968563337894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_60
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cb07111b12c7f660800000000000000
+      internalID: 7419612332622810051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_61
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80b55dff764ca0450800000000000000
+      internalID: 6055868599905901320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_62
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e52d4afc2b9a4420800000000000000
+      internalID: 2615073151122220515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_63
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa3ffd606e61ab810800000000000000
+      internalID: 1781761779792081834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_64
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf66cf138919469d0800000000000000
+      internalID: -2781938586948442372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_65
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36a40a91e2af9e480800000000000000
+      internalID: -8869282915224106397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_66
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7f2e756b31276a10800000000000000
+      internalID: 1902525906576879487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_67
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e25d1506dbbeab40800000000000000
+      internalID: 5453502726675452645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_68
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 812642d7adb122940800000000000000
+      internalID: 5269805139193258520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_69
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d24b4f0ba2655960800000000000000
+      internalID: 7590081233838359251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_70
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d984eabc1c680fc0800000000000000
+      internalID: -3528451437394359853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_71
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 858
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a84e9e7943eb1b700800000000000000
+      internalID: 554433362239546506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77bbe9544f4866c60800000000000000
+      internalID: 7811076788395621239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_73
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ee98c09cafde2b0800000000000000
+      internalID: -5553507024072216947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_74
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adf0230be62110190800000000000000
+      internalID: -7998091196621516838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_75
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087a0fc82fecbf480800000000000000
+      internalID: -8864263900406700160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_76
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 798caca318e6264b0800000000000000
+      internalID: -5448671097848674153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_77
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05e7e8e44ddea1a90800000000000000
+      internalID: -7342294746367361456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_78
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7df7c2de328d66780800000000000000
+      internalID: -8690020782150221865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_79
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26ea56f448de5e210800000000000000
+      internalID: 1361755614872972898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_80
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b493e9fc05550d0800000000000000
+      internalID: -3434750288157127844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_81
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ada4c551949cf9d0800000000000000
+      internalID: -2739151121417982552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_82
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a57402acde0c6d90800000000000000
+      internalID: -7103286171496319583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_83
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9096a1afcdb381000800000000000000
+      internalID: 6821219715934473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_84
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ffceec57e08934f0800000000000000
+      internalID: -848505323597672456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_85
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1138f9122a00fda0800000000000000
+      internalID: -5913215169156599523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_86
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71e4275843e791b40800000000000000
+      internalID: 5411495191304621591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_87
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc0bba8a2e8963a60800000000000000
+      internalID: 7653472716022591695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_88
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e07df68495fd66b0800000000000000
+      internalID: -5301311168076484381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_89
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 792
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 975707c1b7c8a8fc0800000000000000
+      internalID: -3491824100686400135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e48c6d7caff73480800000000000000
+      internalID: -8919379420680256288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_91
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0af80412b4df09a70800000000000000
+      internalID: 8831837368395796384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_92
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1700e6194456e7dd0800000000000000
+      internalID: -2486438599089848207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_93
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f1aba9b5c6ecaa0800000000000000
+      internalID: -6138850101365694682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_94
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ded0fa367da956010800000000000000
+      internalID: 1181520727135686125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_95
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67656c5fbb20fc050800000000000000
+      internalID: 5822875849518896758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_96
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b1eae8552d94d2f0800000000000000
+      internalID: -948960837737193032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_97
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e0538b560db57740800000000000000
+      internalID: 5149229583970816233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_98
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72b7ae51622e8470800000000000000
+      internalID: 8398688156687774333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_99
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7ac0ccd3bbc5480800000000000000
+      internalID: -8909040088754903125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_100
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 679764fe1064351c0800000000000000
+      internalID: -4516189027199190666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_101
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 883b2b3ba7c0cc8e0800000000000000
+      internalID: -1671947640520920184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_102
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f5d4317bec377fd0800000000000000
+      internalID: -2344338099108784655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_103
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 327d2385e61e73280800000000000000
+      internalID: -9063527861017454813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_104
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed6d25f24ce048b0800000000000000
+      internalID: -5169872599895937567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_105
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 074500c60f23114a0800000000000000
+      internalID: -6624457568699788176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_106
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 726
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e02f1f3d852ca1a90800000000000000
+      internalID: -7342342555705413106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_108
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae4144a255c8607c0800000000000000
+      internalID: -4105439712892414742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_109
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ce1526acb747dcb0800000000000000
+      internalID: -4839320399019434296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_110
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af9c570b4ce705d10800000000000000
+      internalID: 2112327608475961850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_111
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a08ba81cad1ebeb00800000000000000
+      internalID: 859028483610425354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_112
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed1a09ef53a7aa20800000000000000
+      internalID: 3073604903030627812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_113
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecd90bbb53ece9710800000000000000
+      internalID: 1702024439370128846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_114
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1deaafbc6fbb0cae0800000000000000
+      internalID: -1531017204647416111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_115
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a706284c9a6631a0800000000000000
+      internalID: -6830154565402884190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_116
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae8ba6bab91f47c20800000000000000
+      internalID: 3203450885865388266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_117
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 436b0467850b50f70800000000000000
+      internalID: 9152915711687964212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_118
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 889c13b4b7ec20a70800000000000000
+      internalID: 8791816451518482824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_119
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c733eaa69e4da36b0800000000000000
+      internalID: -5315702311175179396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_120
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3518e2e99e4270d40800000000000000
+      internalID: 5550445651557253459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_121
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6642806459c6ef0800000000000000
+      internalID: -113551762574252340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_122
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f937401aa3c73c10800000000000000
+      internalID: 2033308891966028281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_123
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74d59ad71402c5c50800000000000000
+      internalID: 6655229814999964999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_124
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 660
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 060c00b3ebe0b6530800000000000000
+      internalID: 3849186516714700896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_125
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 828f556495e3687d0800000000000000
+      internalID: -2916575155522766808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_126
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 402158c2d404012f0800000000000000
+      internalID: -1004232016700042748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_127
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b0e564fbab1ade80800000000000000
+      internalID: -8153173750047186767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_128
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66f1fb79a609651c0800000000000000
+      internalID: -4515262788905525402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_129
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dabf31296461e110800000000000000
+      internalID: 1288421371096840920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_130
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d3f411b97aef5fd0800000000000000
+      internalID: -2350902672081226797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_131
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caacfb9488b24df20800000000000000
+      internalID: 3446427479198124716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_132
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 221e241004aedf7b0800000000000000
+      internalID: -5188733635040976606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_133
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5566d32a83004acf0800000000000000
+      internalID: -242068236731062699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_134
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef836fc2048ed03d0800000000000000
+      internalID: -3238677194679633666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_135
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91345c65bedf1c340800000000000000
+      internalID: 4882462658261238553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_136
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3b24c5e7aa18f330800000000000000
+      internalID: 3744772398575266621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_137
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d719cb91e64cf58c0800000000000000
+      internalID: -4008269166179217027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_138
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a1bf731fc08b4bf0800000000000000
+      internalID: -339035720062619225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_139
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef74af9b05e75b9b0800000000000000
+      internalID: -5065003320725583874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_140
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97bde92eb7cde5de0800000000000000
+      internalID: -1342393214268679303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_141
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 594
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1481408a9d0e4e490800000000000000
+      internalID: -7717796635974821823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_143
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 895faa827f90d7db0800000000000000
+      internalID: -4792663471308474984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_144
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ced2d095084045ad0800000000000000
+      internalID: -2714539726101205524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_145
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5fbb2b8b65fb7ee0800000000000000
+      internalID: -1262145428302086308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_146
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bb97f15d43e57700800000000000000
+      internalID: 537585651767810993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_147
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08548b01601de6ba0800000000000000
+      internalID: -6093703421805181568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_148
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cf9ac28934e19050800000000000000
+      internalID: 5805672330315866050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_149
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 780090a03fb25f2c0800000000000000
+      internalID: -4398561138212011897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_150
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f3dd0eceb60df1a0800000000000000
+      internalID: -6774250847924792333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_151
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c457e06f41ad66f0800000000000000
+      internalID: -689717805617556280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_152
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4ffa9cbe21f3eba0800000000000000
+      internalID: -6060735490475491506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_153
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce17f2854457894f0800000000000000
+      internalID: -821777995597385236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_154
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 437605df02ca42e70800000000000000
+      internalID: 9089579205629339444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_155
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 936ea4b2cf31d2b00800000000000000
+      internalID: 805321882148202041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_156
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a451106516da77960800000000000000
+      internalID: 7599733529777345866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_157
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf7eccb92efb0ae60800000000000000
+      internalID: 7971582320443189243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_158
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c504b60969135b60800000000000000
+      internalID: 7733552923999995335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_159
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 528
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b418eabc25fed49c0800000000000000
+      internalID: -3941230959995748021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_160
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79be1ac466f6145a0800000000000000
+      internalID: -6538822698802222185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_161
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25ecc23e67e7a8fb0800000000000000
+      internalID: -4644761016596640174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_162
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc20b324dc0c7db90800000000000000
+      internalID: -7217087890025938227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_163
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c608a3a57a5f1c1c0800000000000000
+      internalID: -4485033654762176404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_164
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef9b5133b6ae6c0a0800000000000000
+      internalID: -6861539236112909826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_165
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d6cdf417425f6110800000000000000
+      internalID: 1256313286307989208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_166
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4b1e5fc863d7b250800000000000000
+      internalID: 5960465078957251406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_167
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e9b603fad363c370800000000000000
+      internalID: 8341620726851615209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_168
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cdfb2238bfb38700800000000000000
+      internalID: 541487178051222981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_169
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc7479eaadfaa3b10800000000000000
+      internalID: 1962073941440153551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_170
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd94fe75aaf299710800000000000000
+      internalID: 1700442742975318493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_171
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cff2b6f9ab3df0b0800000000000000
+      internalID: -5693328752752001082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_172
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfbd09d76ceeb9440800000000000000
+      internalID: 4943807552246832124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_173
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de8c8508e9f7995c0800000000000000
+      internalID: -4208192058066155283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_174
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21152c828f435f5a0800000000000000
+      internalID: -6488221447716974318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_175
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b91628360059d1e70800000000000000
+      internalID: 9087583452005556635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_176
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 462
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81e57b6cdcda594b0800000000000000
+      internalID: -5434246276038828520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_178
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71290a4440006ec50800000000000000
+      internalID: 6694037914464064023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_179
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6c5e045815a0b110800000000000000
+      internalID: 1274700218453875822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_180
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77676d59972015c0800000000000000
+      internalID: -4246850908959840387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_181
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38e2eb66d45a009e0800000000000000
+      internalID: -1657142911017537917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_182
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac0f604b190ff65c0800000000000000
+      internalID: -4219889817241587510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_183
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8907e9ba113b1b730800000000000000
+      internalID: 4013185631438925976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_184
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d21638132b5d75870800000000000000
+      internalID: 8671634568836768045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_185
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6ae97c232d5f4710800000000000000
+      internalID: 1679663591683910252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_186
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b67b390e856c9830800000000000000
+      internalID: 4079247023205480121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_187
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 536acb263a92c40e0800000000000000
+      internalID: -2284405129270745547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_188
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 701bc653ef2f47600800000000000000
+      internalID: 465263835157934343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_189
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a654e1b5e48fca40800000000000000
+      internalID: 5390673401052681890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_190
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc17b091ce2320100800000000000000
+      internalID: 72676533605200333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_191
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 913fc353ae113db90800000000000000
+      internalID: -7218406080131566823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_192
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03279c36fb7188b40800000000000000
+      internalID: 5442626260457583152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_193
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 574a1d9d097cc0710800000000000000
+      internalID: 1660921787536483445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_194
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 396
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb0c9bcebdc417400800000000000000
+      internalID: 320121555973161147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_195
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23c79ff4d8f3b0360800000000000000
+      internalID: 7136867910663371826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_196
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d73229f8135a5f30800000000000000
+      internalID: 4565052539017508821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_197
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9272863674bee60800000000000000
+      internalID: 7992560455973808602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_198
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8066a9a21f873630800000000000000
+      internalID: 3906748512085631115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_199
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeb87a1116211a510800000000000000
+      internalID: 1558547154164222958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_200
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1d78a776b3d5790800000000000000
+      internalID: -7539804885524950624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_201
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad3ca67af3cf0bab0800000000000000
+      internalID: -4994214636431948838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_202
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b6af54eefd9e3370800000000000000
+      internalID: 8304248480996501175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_203
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa9ace447303c9d0800000000000000
+      internalID: -2755354748947621130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_204
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74520ebeda9f34140800000000000000
+      internalID: 4702876961286923591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_205
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b2fe67ee53a698d0800000000000000
+      internalID: -2839902887005457741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_206
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc726c9e4b65a670800000000000000
+      internalID: 8549357453008075953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_207
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51f188976583bfa00800000000000000
+      internalID: 791288103590960917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_208
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20a73e2b7108d1ad0800000000000000
+      internalID: -2729884959842797054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_209
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f8a2d7a9afb8d770800000000000000
+      internalID: 8635863020868905208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_210
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 820ccd5e3f70e2650800000000000000
+      internalID: 6209909680305389608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_211
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 330
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34c7c248664f3b060800000000000000
+      internalID: 6968181769613638723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_212
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d057df9853b3430800000000000000
+      internalID: 3763660780377279895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_213
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8259cd461eca94c30800000000000000
+      internalID: 4344193399635350824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_214
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 108a045d8c024b6a0800000000000000
+      internalID: -6434481920662263807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_215
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5759ca35dcfec8a0800000000000000
+      internalID: -6282806437390756003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_216
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b11b933c8226c430800000000000000
+      internalID: 3802764920917529012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_217
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb96d826bee9a76e0800000000000000
+      internalID: -1838982764019488322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_218
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3bc7173e639f8c30800000000000000
+      internalID: 4363868665525291835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_219
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40b94da3f29052910800000000000000
+      internalID: 1811864523541617412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_220
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 258f1386bd99cae60800000000000000
+      internalID: 7974918207791298642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_221
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c6fbd60b35471670800000000000000
+      internalID: 8509346140760307393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_222
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c017469882aead0800000000000000
+      internalID: -2672278858330207171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_223
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f8cfacd667233860800000000000000
+      internalID: 7508388326499404017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_224
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f787e875f9855ca50800000000000000
+      internalID: 6540731475217512575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_225
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac001d47b4d6b7d70800000000000000
+      internalID: 9041940847726231754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_226
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b36e2e3b8cda850800000000000000
+      internalID: 6389984121240042334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_227
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec740cba0adeaf90800000000000000
+      internalID: -6940370236092416792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_228
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 264
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f0739c99be7bbf0800000000000000
+      internalID: -308519003713237167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_230
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d5f5446831ff7ac0800000000000000
+      internalID: -3855097531503086119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_231
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a318f13797065760800000000000000
+      internalID: 7446147379863491490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_232
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1e46891c02344090800000000000000
+      internalID: -8051255206282375651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_233
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42dbdc25e77601310800000000000000
+      internalID: 1373711678600756516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_234
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e3dfbecb17e3af0800000000000000
+      internalID: -414769059444474223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_235
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a7983c18c5646460800000000000000
+      internalID: 7234018811605194657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_236
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0725d48a69ab81980800000000000000
+      internalID: -8567893134840868240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_237
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7c23c04f47e58560800000000000000
+      internalID: 7315507497308204155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_238
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 155928020304d7990800000000000000
+      internalID: -7386677238369708719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_239
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdbc2d928df457730800000000000000
+      internalID: 3996188034194394075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_240
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf4878700d75e1b0800000000000000
+      internalID: -5627954718354944077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_241
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c69667cfee85783f0800000000000000
+      internalID: -898651817176045204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_242
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eacc5d03d0bd7c440800000000000000
+      internalID: 4956170764644895918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_243
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b491aeb049fabece0800000000000000
+      internalID: -1374812210841642677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_244
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49a17ebb7e994560800000000000000
+      internalID: 7298538925443885389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_245
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c52febbe6518a45c0800000000000000
+      internalID: -4230426689638829476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_246
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 198
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 188b52910ecaa5380800000000000000
+      internalID: -8981676428342478719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_247
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e77a9d1e6fb5a91b0800000000000000
+      internalID: -5649101666673645698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_248
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6888088956ecb37f0800000000000000
+      internalID: -631684386969843578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_249
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd127133de31d7b50800000000000000
+      internalID: 6592447339025605083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_250
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd3bdd91c204f030800000000000000
+      internalID: 3527447438738275782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_251
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65d0276b32c9f4300800000000000000
+      internalID: 238580982472641878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_252
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1def39f088c037fd0800000000000000
+      internalID: -2345517202413453615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_253
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85046e2bfdae12eb0800000000000000
+      internalID: -4746254285771751336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_254
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f0c0b431f0f44a20800000000000000
+      internalID: 3045824166771081462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_255
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c41e4041c5c78c130800000000000000
+      internalID: 3587253838115299660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_256
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5269b0164d910cd40800000000000000
+      internalID: 5602506336400807461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_257
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4b41e8ae60e06720800000000000000
+      internalID: 2837514531127774029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_258
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17e2273bfb3033d50800000000000000
+      internalID: 6715715591223783025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_259
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a288182ba4fef830800000000000000
+      internalID: 4106988926157750950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_260
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b70825bcbbb9d7cc0800000000000000
+      internalID: -3711639287011049349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_261
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e33d708d36401ac0800000000000000
+      internalID: -3886529248458099736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_262
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cc64188ca81faf30800000000000000
+      internalID: 4588913674610306249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_263
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 132
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96b1308268a5d8b20800000000000000
+      internalID: 3138264047590513513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_264
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72bd027a9e2d16ca0800000000000000
+      internalID: -6025302925471851737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_265
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83726f9046b0e6640800000000000000
+      internalID: 5075006354384889656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_266
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cba518149d5447540800000000000000
+      internalID: 5004701885324679868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_267
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bbcbd1cbf7b46d80800000000000000
+      internalID: -8258273524773565513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_268
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 639bf63ac9d791180800000000000000
+      internalID: -9144139456688703178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_269
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72e906c065c3dccc0800000000000000
+      internalID: -3689226179474055641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_270
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bbe7cf6e8a3101f0800000000000000
+      internalID: -1080518052157068364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_271
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71e33149a7221c390800000000000000
+      internalID: -7799915169763344873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_272
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7880e6b67ce001f60800000000000000
+      internalID: 8002912787501025415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_273
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed6d91856fc73a00800000000000000
+      internalID: 736285098971590127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_274
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 036cfc7d0dddfb6a0800000000000000
+      internalID: -6431177853818124752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_275
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f28e8dcd3d54c120800000000000000
+      internalID: 2433172218709967603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_276
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a8b7e4057a30a150800000000000000
+      internalID: 5881765387613747369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_277
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b99d8b6f89f987b0800000000000000
+      internalID: -5221367898579297865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_278
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5647c422ffad5b7b0800000000000000
+      internalID: -5209016604657159067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_279
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4654fa3054687bd0800000000000000
+      internalID: -2632243686448802229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_280
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 66
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a82ed2c8def466890800000000000000
+      internalID: -7465191450642357622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_281
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7daf02cb507205620800000000000000
+      internalID: 2760749477162711767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_282
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc56abec8fba91b70800000000000000
+      internalID: 8870310026191463883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_283
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc0da0ee5be6fd740800000000000000
+      internalID: 5178979824161181899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_284
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9462a2d57ac4ad8f0800000000000000
+      internalID: -515014925674207671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_285
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13004fa61be179840800000000000000
+      internalID: 5230683239566540849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_286
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4cc75ac61e0b9b10800000000000000
+      internalID: 1989199151461026891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_287
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 379dc550f9f6b5de0800000000000000
+      internalID: -1343357335059506829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_288
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3332615a26ef7c830800000000000000
+      internalID: 4091518486119326515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_289
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4f085f6540409770800000000000000
+      internalID: 8615456754124721999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_290
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bde352b071fd3d780800000000000000
+      internalID: -8659332368439099685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_291
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7f31b21153bb220800000000000000
+      internalID: 2502652365787887525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_292
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 241768c307556f3a0800000000000000
+      internalID: -6632019460716334782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_293
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd96cf64a35278d0800000000000000
+      internalID: -2850123648457073210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_294
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48a27accadd1bd6e0800000000000000
+      internalID: -1811821599512909180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_295
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c15e6927e508ea00800000000000000
+      internalID: 785884625366831558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_296
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 243e1a32b9f8d9120800000000000000
+      internalID: 2422250071075709762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple-64_297
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff671c48d14040c0800000000000000
+      internalID: -4593599222672560139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c2b282894afdf41449bad4e6f940b202
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      apple-64_0: -3822350542197261839
+      apple-64_1: 6164267989423346866
+      apple-64_10: -378447317754162503
+      apple-64_100: -4516189027199190666
+      apple-64_101: -1671947640520920184
+      apple-64_102: -2344338099108784655
+      apple-64_103: -9063527861017454813
+      apple-64_104: -5169872599895937567
+      apple-64_105: -6624457568699788176
+      apple-64_106: -7342342555705413106
+      apple-64_107: 1607520492586790990
+      apple-64_108: -4105439712892414742
+      apple-64_109: -4839320399019434296
+      apple-64_11: -5794666804708270619
+      apple-64_110: 2112327608475961850
+      apple-64_111: 859028483610425354
+      apple-64_112: 3073604903030627812
+      apple-64_113: 1702024439370128846
+      apple-64_114: -1531017204647416111
+      apple-64_115: -6830154565402884190
+      apple-64_116: 3203450885865388266
+      apple-64_117: 9152915711687964212
+      apple-64_118: 8791816451518482824
+      apple-64_119: -5315702311175179396
+      apple-64_12: -9076731348979898543
+      apple-64_120: 5550445651557253459
+      apple-64_121: -113551762574252340
+      apple-64_122: 2033308891966028281
+      apple-64_123: 6655229814999964999
+      apple-64_124: 3849186516714700896
+      apple-64_125: -2916575155522766808
+      apple-64_126: -1004232016700042748
+      apple-64_127: -8153173750047186767
+      apple-64_128: -4515262788905525402
+      apple-64_129: 1288421371096840920
+      apple-64_13: -7464991834627884594
+      apple-64_130: -2350902672081226797
+      apple-64_131: 3446427479198124716
+      apple-64_132: -5188733635040976606
+      apple-64_133: -242068236731062699
+      apple-64_134: -3238677194679633666
+      apple-64_135: 4882462658261238553
+      apple-64_136: 3744772398575266621
+      apple-64_137: -4008269166179217027
+      apple-64_138: -339035720062619225
+      apple-64_139: -5065003320725583874
+      apple-64_14: 623086550559673829
+      apple-64_140: -1342393214268679303
+      apple-64_141: -7717796635974821823
+      apple-64_142: -1986130856950298342
+      apple-64_143: -4792663471308474984
+      apple-64_144: -2714539726101205524
+      apple-64_145: -1262145428302086308
+      apple-64_146: 537585651767810993
+      apple-64_147: -6093703421805181568
+      apple-64_148: 5805672330315866050
+      apple-64_149: -4398561138212011897
+      apple-64_15: -5671812703693933471
+      apple-64_150: -6774250847924792333
+      apple-64_151: -689717805617556280
+      apple-64_152: -6060735490475491506
+      apple-64_153: -821777995597385236
+      apple-64_154: 9089579205629339444
+      apple-64_155: 805321882148202041
+      apple-64_156: 7599733529777345866
+      apple-64_157: 7971582320443189243
+      apple-64_158: 7733552923999995335
+      apple-64_159: -3941230959995748021
+      apple-64_16: 1657461216695970486
+      apple-64_160: -6538822698802222185
+      apple-64_161: -4644761016596640174
+      apple-64_162: -7217087890025938227
+      apple-64_163: -4485033654762176404
+      apple-64_164: -6861539236112909826
+      apple-64_165: 1256313286307989208
+      apple-64_166: 5960465078957251406
+      apple-64_167: 8341620726851615209
+      apple-64_168: 541487178051222981
+      apple-64_169: 1962073941440153551
+      apple-64_17: -1058686975606517538
+      apple-64_170: 1700442742975318493
+      apple-64_171: -5693328752752001082
+      apple-64_172: 4943807552246832124
+      apple-64_173: -4208192058066155283
+      apple-64_174: -6488221447716974318
+      apple-64_175: 9087583452005556635
+      apple-64_176: -5434246276038828520
+      apple-64_177: -8164301414684626257
+      apple-64_178: 6694037914464064023
+      apple-64_179: 1274700218453875822
+      apple-64_18: -3956983516112386183
+      apple-64_180: -4246850908959840387
+      apple-64_181: -1657142911017537917
+      apple-64_182: -4219889817241587510
+      apple-64_183: 4013185631438925976
+      apple-64_184: 8671634568836768045
+      apple-64_185: 1679663591683910252
+      apple-64_186: 4079247023205480121
+      apple-64_187: -2284405129270745547
+      apple-64_188: 465263835157934343
+      apple-64_189: 5390673401052681890
+      apple-64_19: 2361982458401057875
+      apple-64_190: 72676533605200333
+      apple-64_191: -7218406080131566823
+      apple-64_192: 5442626260457583152
+      apple-64_193: 1660921787536483445
+      apple-64_194: 320121555973161147
+      apple-64_195: 7136867910663371826
+      apple-64_196: 4565052539017508821
+      apple-64_197: 7992560455973808602
+      apple-64_198: 3906748512085631115
+      apple-64_199: 1558547154164222958
+      apple-64_2: -5940236485546765638
+      apple-64_20: 1886688598148829490
+      apple-64_200: -7539804885524950624
+      apple-64_201: -4994214636431948838
+      apple-64_202: 8304248480996501175
+      apple-64_203: -2755354748947621130
+      apple-64_204: 4702876961286923591
+      apple-64_205: -2839902887005457741
+      apple-64_206: 8549357453008075953
+      apple-64_207: 791288103590960917
+      apple-64_208: -2729884959842797054
+      apple-64_209: 8635863020868905208
+      apple-64_21: -2736281954005188516
+      apple-64_210: 6209909680305389608
+      apple-64_211: 6968181769613638723
+      apple-64_212: 3763660780377279895
+      apple-64_213: 4344193399635350824
+      apple-64_214: -6434481920662263807
+      apple-64_215: -6282806437390756003
+      apple-64_216: 3802764920917529012
+      apple-64_217: -1838982764019488322
+      apple-64_218: 4363868665525291835
+      apple-64_219: 1811864523541617412
+      apple-64_22: -8478376488147491185
+      apple-64_220: 7974918207791298642
+      apple-64_221: 8509346140760307393
+      apple-64_222: -2672278858330207171
+      apple-64_223: 7508388326499404017
+      apple-64_224: 6540731475217512575
+      apple-64_225: 9041940847726231754
+      apple-64_226: 6389984121240042334
+      apple-64_227: -6940370236092416792
+      apple-64_228: -308519003713237167
+      apple-64_229: 8314253242642934968
+      apple-64_23: -5941644036030651610
+      apple-64_230: -3855097531503086119
+      apple-64_231: 7446147379863491490
+      apple-64_232: -8051255206282375651
+      apple-64_233: 1373711678600756516
+      apple-64_234: -414769059444474223
+      apple-64_235: 7234018811605194657
+      apple-64_236: -8567893134840868240
+      apple-64_237: 7315507497308204155
+      apple-64_238: -7386677238369708719
+      apple-64_239: 3996188034194394075
+      apple-64_24: 2007228381751440816
+      apple-64_240: -5627954718354944077
+      apple-64_241: -898651817176045204
+      apple-64_242: 4956170764644895918
+      apple-64_243: -1374812210841642677
+      apple-64_244: 7298538925443885389
+      apple-64_245: -4230426689638829476
+      apple-64_246: -8981676428342478719
+      apple-64_247: -5649101666673645698
+      apple-64_248: -631684386969843578
+      apple-64_249: 6592447339025605083
+      apple-64_25: -3300752801490166658
+      apple-64_250: 3527447438738275782
+      apple-64_251: 238580982472641878
+      apple-64_252: -2345517202413453615
+      apple-64_253: -4746254285771751336
+      apple-64_254: 3045824166771081462
+      apple-64_255: 3587253838115299660
+      apple-64_256: 5602506336400807461
+      apple-64_257: 2837514531127774029
+      apple-64_258: 6715715591223783025
+      apple-64_259: 4106988926157750950
+      apple-64_26: -5043147723400466380
+      apple-64_260: -3711639287011049349
+      apple-64_261: -3886529248458099736
+      apple-64_262: 4588913674610306249
+      apple-64_263: 3138264047590513513
+      apple-64_264: -6025302925471851737
+      apple-64_265: 5075006354384889656
+      apple-64_266: 5004701885324679868
+      apple-64_267: -8258273524773565513
+      apple-64_268: -9144139456688703178
+      apple-64_269: -3689226179474055641
+      apple-64_27: 6882246738038549589
+      apple-64_270: -1080518052157068364
+      apple-64_271: -7799915169763344873
+      apple-64_272: 8002912787501025415
+      apple-64_273: 736285098971590127
+      apple-64_274: -6431177853818124752
+      apple-64_275: 2433172218709967603
+      apple-64_276: 5881765387613747369
+      apple-64_277: -5221367898579297865
+      apple-64_278: -5209016604657159067
+      apple-64_279: -2632243686448802229
+      apple-64_28: 9038872925930962247
+      apple-64_280: -7465191450642357622
+      apple-64_281: 2760749477162711767
+      apple-64_282: 8870310026191463883
+      apple-64_283: 5178979824161181899
+      apple-64_284: -515014925674207671
+      apple-64_285: 5230683239566540849
+      apple-64_286: 1989199151461026891
+      apple-64_287: -1343357335059506829
+      apple-64_288: 4091518486119326515
+      apple-64_289: 8615456754124721999
+      apple-64_29: 2062239081020091860
+      apple-64_290: -8659332368439099685
+      apple-64_291: 2502652365787887525
+      apple-64_292: -6632019460716334782
+      apple-64_293: -2850123648457073210
+      apple-64_294: -1811821599512909180
+      apple-64_295: 785884625366831558
+      apple-64_296: 2422250071075709762
+      apple-64_297: -4593599222672560139
+      apple-64_298: -8885938058138783039
+      apple-64_3: -8258355401956381310
+      apple-64_30: -1097817773866792760
+      apple-64_31: 728483439193132457
+      apple-64_32: 3772206676981001455
+      apple-64_33: -7867021362895570002
+      apple-64_34: 3798904019579873508
+      apple-64_35: -1273460066901049603
+      apple-64_36: 7971377439769576909
+      apple-64_37: 4069224934295214742
+      apple-64_38: 2757264052578721136
+      apple-64_39: 6992206032600633918
+      apple-64_4: 9176280188020420045
+      apple-64_40: -4917312778780023622
+      apple-64_41: -3197295937895037998
+      apple-64_42: -2134385906953792690
+      apple-64_43: 7888967342975543373
+      apple-64_44: 5583149155778923716
+      apple-64_45: -7584686260010498073
+      apple-64_46: -2611396247892018284
+      apple-64_47: -8858568616034174080
+      apple-64_48: -1744651007912169759
+      apple-64_49: -3144865750212691180
+      apple-64_5: 8931305268325234728
+      apple-64_50: 7892452183149090003
+      apple-64_51: -3350315908482564669
+      apple-64_52: 6699934625346748935
+      apple-64_53: -266846391758875883
+      apple-64_54: -2235668175004762738
+      apple-64_55: 1275062871850209752
+      apple-64_56: 1317315141341482950
+      apple-64_57: -882043790165878188
+      apple-64_58: 7104971025448663093
+      apple-64_59: -1924974968563337894
+      apple-64_6: -8715387773992977336
+      apple-64_60: 7419612332622810051
+      apple-64_61: 6055868599905901320
+      apple-64_62: 2615073151122220515
+      apple-64_63: 1781761779792081834
+      apple-64_64: -2781938586948442372
+      apple-64_65: -8869282915224106397
+      apple-64_66: 1902525906576879487
+      apple-64_67: 5453502726675452645
+      apple-64_68: 5269805139193258520
+      apple-64_69: 7590081233838359251
+      apple-64_7: 4223551826039648167
+      apple-64_70: -3528451437394359853
+      apple-64_71: 554433362239546506
+      apple-64_72: 7811076788395621239
+      apple-64_73: -5553507024072216947
+      apple-64_74: -7998091196621516838
+      apple-64_75: -8864263900406700160
+      apple-64_76: -5448671097848674153
+      apple-64_77: -7342294746367361456
+      apple-64_78: -8690020782150221865
+      apple-64_79: 1361755614872972898
+      apple-64_8: 7079826546479034224
+      apple-64_80: -3434750288157127844
+      apple-64_81: -2739151121417982552
+      apple-64_82: -7103286171496319583
+      apple-64_83: 6821219715934473
+      apple-64_84: -848505323597672456
+      apple-64_85: -5913215169156599523
+      apple-64_86: 5411495191304621591
+      apple-64_87: 7653472716022591695
+      apple-64_88: -5301311168076484381
+      apple-64_89: -3491824100686400135
+      apple-64_9: -8099819461517022939
+      apple-64_90: -8919379420680256288
+      apple-64_91: 8831837368395796384
+      apple-64_92: -2486438599089848207
+      apple-64_93: -6138850101365694682
+      apple-64_94: 1181520727135686125
+      apple-64_95: 5822875849518896758
+      apple-64_96: -948960837737193032
+      apple-64_97: 5149229583970816233
+      apple-64_98: 8398688156687774333
+      apple-64_99: -8909040088754903125
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

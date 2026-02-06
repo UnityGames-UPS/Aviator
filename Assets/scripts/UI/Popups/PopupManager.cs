@@ -2,15 +2,25 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.UI.ProceduralImage;
 
-public class PopupManager : MonoBehaviour
+internal class PopupManager : MonoBehaviour
 {
   [SerializeField] private GameObject popupObject;
   [SerializeField] private TMP_Text popupText;
   [SerializeField] private Image statusImage;
   [SerializeField] private Sprite[] statusImages;
   [SerializeField] private Color greenColor;
-  private Image PopupImage;
+  private static readonly string[] DummyPopupMessages =
+  {
+    "Test popup: Connection restored.",
+    "Test popup: Bet placed.",
+    "Test popup: Cashout failed.",
+    "Test popup: Balance updated.",
+    "Test popup: You won 12.34!",
+    "Test popup: Try again."
+  };
+  private ProceduralImage PopupImage;
   private CanvasGroup popupCanvasGroup;
   private RectTransform popupRectTransform;
   private float initYposi;
@@ -26,13 +36,30 @@ public class PopupManager : MonoBehaviour
       popupRectTransform = popupObject.GetComponent<RectTransform>();
       initYposi = popupRectTransform.localPosition.y;
 
-      PopupImage = popupObject.GetComponent<Image>();
+      PopupImage = popupObject.GetComponent<ProceduralImage>();
       popupCanvasGroup = popupObject.GetComponent<CanvasGroup>();
       popupCanvasGroup.alpha = 0;
     }
   }
 
-  public void ShowPopup(bool status, string message)
+#if UNITY_EDITOR
+  // private void Update()
+  // {
+  //   if (Input.GetKeyDown(KeyCode.Space))
+  //   {
+  //     ShowRandomDummyPopup();
+  //   }
+  // }
+
+  // private void ShowRandomDummyPopup()
+  // {
+  //   bool status = Random.value > 0.5f;
+  //   string message = DummyPopupMessages[Random.Range(0, DummyPopupMessages.Length)];
+  //   ShowPopup(status, message);
+  // }
+#endif
+
+  internal void ShowPopup(bool status, string message)
   {
     if (popupObject == null) return;
 
