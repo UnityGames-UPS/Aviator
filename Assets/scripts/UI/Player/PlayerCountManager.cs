@@ -21,7 +21,7 @@ public class PlayerCountManager : MonoBehaviour
   private void UpdateProfilePictures()
   {
     // Create a list of available sprites to choose from
-    List<Sprite> availableSprites = new List<Sprite>(availableProfilePics);
+    List<Sprite> availableSprites = new List<Sprite>(GetAvailableProfileSprites());
 
     // Hide all images first
     foreach (var image in profilePicImages)
@@ -31,7 +31,7 @@ public class PlayerCountManager : MonoBehaviour
 
     // Determine how many images to show (max 3)
     int imagesToShow = Mathf.Min(playerCount, profilePicImages.Length);
-    imagesToShow = Mathf.Min(imagesToShow, availableProfilePics.Length);
+    imagesToShow = Mathf.Min(imagesToShow, availableSprites.Count);
 
     // Show and randomize the required number of images
     for (int i = 0; i < imagesToShow; i++)
@@ -43,5 +43,12 @@ public class PlayerCountManager : MonoBehaviour
       // Remove the chosen sprite to avoid duplicates in one update
       availableSprites.RemoveAt(randomIndex);
     }
+  }
+
+  private List<Sprite> GetAvailableProfileSprites()
+  {
+    if (UIManager.Instance != null)
+      return UIManager.Instance.GetProfileSprites();
+    return new List<Sprite>(availableProfilePics);
   }
 }

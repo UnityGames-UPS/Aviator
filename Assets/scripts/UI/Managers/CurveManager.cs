@@ -19,6 +19,12 @@ public class CurveManager : MonoBehaviour
   [SerializeField] private float bottomHM = 0.64f;
   [SerializeField] private float bottomWM = 0.85f;
 
+  [Header("Portrait Curve Points")]
+  [SerializeField] private float topHMPortrait = 0.75f;
+  [SerializeField] private float bottomHMPortrait = 0.5f;
+  [SerializeField] private float topWMPortrait = 0.76f;
+  [SerializeField] private float bottomWMPortrait = 0.85f;
+
   [SerializeField] private float crashXoffset = 2000;
   [SerializeField] private float crashYoffset;
   [SerializeField] private float slowCrashDuration = 4f;
@@ -26,28 +32,64 @@ public class CurveManager : MonoBehaviour
   [SerializeField] private float fastCrashTakeoffOffset = 0.3f;
 
   internal bool Flying;
-  private Sequence loopSequence;
-  private Sequence initialSequence;
   private float predictedFlightMult;
-  private Tween takeOffTween;
-  private Tween loopTween;
   private bool animationToggle = true;
+  private bool isPortrait;
+  private float takeoffElapsed;
+  private float loopElapsed;
+  private bool loopGoingDown = true;
+  [SerializeField] private float takeoffHeightTimeExponent = 1.5f;
+  [Header("Debug")]
+  [SerializeField] private bool debugToggle = false;
+  [SerializeField] private KeyCode debugStartKey = KeyCode.T;
+  [SerializeField] private KeyCode debugStopKey = KeyCode.Y;
+  [SerializeField] private float debugTakeoffDuration = 2f;
+
+  private enum AnimState
+  {
+    Idle,
+    Takeoff,
+    Loop
+  }
+
+  private AnimState state = AnimState.Idle;
 
   void Awake()
   {
     ResetVisual();
   }
 
+  void Update()
+  {
+    if (debugToggle)
+      HandleDebugInput();
+
+    if (!animationToggle || !curve.enabled)
+      return;
+
+    switch (state)
+    {
+      case AnimState.Takeoff:
+        UpdateTakeoff();
+        break;
+      case AnimState.Loop:
+        UpdateLoop();
+        break;
+    }
+  }
+
   internal void ResetVisual()
   {
-    takeOffTween?.Kill();
-    loopTween?.Kill();
     if(animationToggle)
       curve.enabled = true;
     curve.followCurve = true;
     curve.heightMultiplier = zeroHM;
     curve.widthMultiplier = zeroWM;
     curve.SetVerticesDirty();
+    state = AnimState.Idle;
+    takeoffElapsed = 0f;
+    loopElapsed = 0f;
+    loopGoingDown = true;
   }
 
   internal void StartFlyingAnimation()
@@ -56,44 +98,21 @@ public class CurveManager : MonoBehaviour
     ResetVisual();
 
     Flying = true;
-    initialSequence?.Kill();
-    // Initial move (zero -> top)
-    initialSequence = DOTween.Sequence()
-      .Append(DOTween.To(() => curve.heightMultiplier,
-        v => { curve.heightMultiplier = v; curve.SetVerticesDirty(); },
-        topHM, socket.takeOffDuration)
-        .SetEase(Ease.OutSine))
-      .Join(DOTween.To(() => curve.widthMultiplier,
-        v => { curve.widthMultiplier = v; curve.SetVerticesDirty(); },
-        topWM, socket.takeOffDuration)
-        .SetEase(Ease.OutSine))
-      .OnComplete(() =>
-      {
-        // small blend delay before loop
-        DOVirtual.DelayedCall(0.1f, StartLoop);
-      });
+    state = AnimState.Takeoff;
+    takeoffElapsed = 0f;
   }
 
   void StartLoop()
   {
-    loopSequence?.Kill();
-    loopSequence = DOTween.Sequence()
-      .Append(DOTween.To(() => curve.heightMultiplier,
-        v => { curve.heightMultiplier = v; curve.SetVerticesDirty(); },
-        bottomHM, loopDuration)
-        .SetEase(Ease.InOutSine))
-      .Join(DOTween.To(() => curve.widthMultiplier,
-        v => { curve.widthMultiplier = v; curve.SetVerticesDirty(); },
-        bottomWM, loopDuration)
-        .SetEase(Ease.InOutSine))
-      .SetLoops(-1, LoopType.Yoyo);
+    state = AnimState.Loop;
+    loopElapsed = 0f;
+    loopGoingDown = true;
   }
 
   internal void OnCrash()
   {
     Flying = false;
-    initialSequence?.Kill();
-    loopSequence?.Kill();
+    state = AnimState.Idle;
     curve.followCurve = false;
     curve.heightMultiplier = 0;
     curve.widthMultiplier = 0;
@@ -124,5 +143,87 @@ public class CurveManager : MonoBehaviour
     curve.enabled = toggle;
     curve.PlaneParent.gameObject.SetActive(toggle);
   }
-}
 
+  internal void SetPortraitMode(bool portrait)
+  {
+    if (isPortrait == portrait)
+      return;
+
+    isPortrait = portrait;
+  }
+
+  void UpdateTakeoff()
+  {
+    float duration = Mathf.Max(0.0001f, GetTakeoffDuration());
+    takeoffElapsed = Mathf.Min(duration, takeoffElapsed + Time.deltaTime);
+
+    float t = Mathf.Min(1f, takeoffElapsed / duration);
+    float widthEased = EaseOutSine(t);
+    float heightTime = Mathf.Pow(t, Mathf.Max(0.01f, takeoffHeightTimeExponent));
+    float heightEased = EaseOutSine(heightTime);
+
+    float topH = isPortrait ? topHMPortrait : topHM;
+    float topW = isPortrait ? topWMPortrait : topWM;
+    curve.heightMultiplier = Mathf.Lerp(zeroHM, topH, heightEased);
+    curve.widthMultiplier = Mathf.Lerp(zeroWM, topW, widthEased);
+    curve.SetVerticesDirty();
+
+    if (takeoffElapsed >= duration)
+      StartLoop();
+  }
+
+  void UpdateLoop()
+  {
+    float duration = Mathf.Max(0.0001f, loopDuration);
+    loopElapsed += Time.deltaTime;
+
+    if (loopElapsed >= duration)
+    {
+      loopElapsed -= duration;
+      loopGoingDown = !loopGoingDown;
+    }
+
+    float t = loopElapsed / duration;
+    float eased = EaseInOutSine(t);
+
+    float topH = isPortrait ? topHMPortrait : topHM;
+    float bottomH = isPortrait ? bottomHMPortrait : bottomHM;
+    float topW = isPortrait ? topWMPortrait : topWM;
+    float bottomW = isPortrait ? bottomWMPortrait : bottomWM;
+
+    float fromH = loopGoingDown ? topH : bottomH;
+    float toH = loopGoingDown ? bottomH : topH;
+    float fromW = loopGoingDown ? topW : bottomW;
+    float toW = loopGoingDown ? bottomW : topW;
+
+    curve.heightMultiplier = Mathf.Lerp(fromH, toH, eased);
+    curve.widthMultiplier = Mathf.Lerp(fromW, toW, eased);
+    curve.SetVerticesDirty();
+  }
+
+  static float EaseOutSine(float t)
+  {
+    return Mathf.Sin(t * Mathf.PI * 0.5f);
+  }
+
+  static float EaseInOutSine(float t)
+  {
+    return -(Mathf.Cos(Mathf.PI * t) - 1f) * 0.5f;
+  }
+
+  float GetTakeoffDuration()
+  {
+    if (debugToggle)
+      return debugTakeoffDuration;
+    return socket != null ? socket.takeOffDuration : debugTakeoffDuration;
+  }
+
+  void HandleDebugInput()
+  {
+    if (Input.GetKeyDown(debugStartKey))
+      StartFlyingAnimation();
+
+    if (Input.GetKeyDown(debugStopKey))
+      OnCrash();
+  }
+}

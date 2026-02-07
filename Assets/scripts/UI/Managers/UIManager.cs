@@ -11,6 +11,8 @@ using UnityEngine.UI.ProceduralImage;
 
 public class UIManager : MonoBehaviour
 {
+  public static UIManager Instance { get; private set; }
+
   [SerializeField] private CurveManager curveAnimator;
   [SerializeField] private SocketIOManager socket;
   [SerializeField] private AnalyticsUIManager analyticsUIManager;
@@ -25,6 +27,9 @@ public class UIManager : MonoBehaviour
 
   [SerializeField] private Image profilePicImage;
   [SerializeField] private Sprite[] profilePicSprites;
+  [SerializeField] private List<Button> avatarButtons;
+  [SerializeField] private int avatarPanelIndex = 4;
+  private readonly List<Sprite> avatarSprites = new List<Sprite>();
 
   [Header("Multiplier Objects and Values")]
   [SerializeField] private TMP_Text multiplierText;
@@ -161,10 +166,17 @@ public class UIManager : MonoBehaviour
 
   private void Awake()
   {
+    if (Instance != null && Instance != this)
+    {
+      Destroy(gameObject);
+      return;
+    }
+    Instance = this;
+
     leftBetData = null;
     rightBetData = null;
 
-    profilePicImage.sprite = profilePicSprites[Random.Range(0, profilePicSprites.Length)];
+    SetupAvatarButtons();
     lowBalanceCloseButton.onClick.AddListener(() => ClosePopup(lowBalancePopupGO));
 
     LeftBetButton.onClick.AddListener(() => StartCoroutine(OnBet(true)));
@@ -278,6 +290,79 @@ public class UIManager : MonoBehaviour
     UpdateTopBarInteractivityForAutoCashout(false);
 
     clientSeed = ClientSeedGenerator();
+  }
+
+  private void SetupAvatarButtons()
+  {
+    avatarSprites.Clear();
+
+    if (avatarButtons != null && avatarButtons.Count > 0)
+    {
+      foreach (var button in avatarButtons)
+      {
+        if (button == null)
+          continue;
+
+        Image img = button.GetComponent<Image>();
+        if (img == null)
+          img = button.GetComponentInChildren<Image>();
+
+        if (img == null || img.sprite == null)
+          continue;
+
+        Sprite sprite = img.sprite;
+        avatarSprites.Add(sprite);
+        button.onClick.AddListener(() => OnAvatarButtonClicked(sprite));
+      }
+    }
+
+    if (avatarSprites.Count > 0)
+    {
+      profilePicImage.sprite = avatarSprites[Random.Range(0, avatarSprites.Count)];
+      return;
+    }
+
+    if (profilePicSprites != null && profilePicSprites.Length > 0)
+      profilePicImage.sprite = profilePicSprites[Random.Range(0, profilePicSprites.Length)];
+  }
+
+  private void SetProfilePicture(Sprite sprite)
+  {
+    if (sprite == null || profilePicImage == null)
+      return;
+    profilePicImage.sprite = sprite;
+  }
+
+  internal List<Sprite> GetProfileSprites()
+  {
+    if (avatarSprites.Count > 0)
+      return avatarSprites;
+    return new List<Sprite>(profilePicSprites);
+  }
+
+  internal Sprite GetRandomProfileSprite()
+  {
+    List<Sprite> sprites = GetProfileSprites();
+    if (sprites == null || sprites.Count == 0)
+      return null;
+    return sprites[Random.Range(0, sprites.Count)];
+  }
+
+  private void OnAvatarButtonClicked(Sprite sprite)
+  {
+    SetProfilePicture(sprite);
+    CloseAvatarPanelIfOpen();
+  }
+
+  private void CloseAvatarPanelIfOpen()
+  {
+    if (OtherOptionsPanels == null)
+      return;
+
+    if (avatarPanelIndex < 0 || avatarPanelIndex >= OtherOptionsPanels.Length)
+      return;
+
+    CloseOtherOptionMenu(avatarPanelIndex);
   }
 
   internal void SetInit(List<float> bets, float bal, string username)

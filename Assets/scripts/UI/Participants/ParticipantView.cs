@@ -35,7 +35,10 @@ public class ParticipantView : MonoBehaviour
     }
     cashoutMultText.text = "";
     cashoutWinText.text = "";
-    avatarImage.sprite = ProfileImages[Random.Range(0, ProfileImages.Length)];
+    Sprite sprite = UIManager.Instance != null ? UIManager.Instance.GetRandomProfileSprite() : null;
+    if (sprite == null && ProfileImages != null && ProfileImages.Length > 0)
+      sprite = ProfileImages[Random.Range(0, ProfileImages.Length)];
+    avatarImage.sprite = sprite;
   }
 
   internal void MarkCashedOut(double multiplier, double winAmount)

@@ -17,6 +17,8 @@ public class CurveFillerUI : MaskableGraphic
   [Header("Plane Follow")]
   [SerializeField] internal bool followCurve = true;
   [SerializeField] internal RectTransform PlaneParent;
+  [SerializeField] private bool clampPlaneToRect = true;
+  [SerializeField] private float planeClampPadding = 6f;
 
   // Expose if you want to read it elsewhere
   private Vector2 LastTopPoint;
@@ -112,7 +114,20 @@ public class CurveFillerUI : MaskableGraphic
 
     // 5) Plane follow (works in edit mode too)
     if (PlaneParent != null && followCurve)
-      PlaneParent.anchoredPosition = LastTopPoint;
+    {
+      Vector2 planePos = LastTopPoint;
+      if (clampPlaneToRect)
+      {
+        float minX = rect.xMin + planeClampPadding;
+        float maxX = rect.xMax - planeClampPadding;
+        float minY = rect.yMin + planeClampPadding;
+        float maxY = rect.yMax - planeClampPadding;
+        planePos.x = Mathf.Clamp(planePos.x, minX, maxX);
+        planePos.y = Mathf.Clamp(planePos.y, minY, maxY);
+      }
+
+      PlaneParent.anchoredPosition = planePos;
+    }
   }
 
 #if UNITY_EDITOR

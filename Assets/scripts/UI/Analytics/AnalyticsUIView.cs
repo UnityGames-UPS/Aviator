@@ -29,6 +29,12 @@ public class AnalyticsUIView : MonoBehaviour
     if (multText && mult != 0) multText.text = mult.ToString("N2") + "x";
     if (winText && win != 0) winText.text = win.ToString("N2");
     if (crashText && crash != 0) crashText.text = crash.ToString("N2") + "x";
-    if (avatarImage) avatarImage.sprite = ProfileImages[UnityEngine.Random.Range(0, ProfileImages.Length)];
+    if (avatarImage)
+    {
+      Sprite sprite = UIManager.Instance != null ? UIManager.Instance.GetRandomProfileSprite() : null;
+      if (sprite == null && ProfileImages != null && ProfileImages.Length > 0)
+        sprite = ProfileImages[UnityEngine.Random.Range(0, ProfileImages.Length)];
+      avatarImage.sprite = sprite;
+    }
   }
 }

@@ -124,7 +124,10 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
   {
     var res = new List<float>(count);
     for (int i = 0; i < count; i++)
-      res.Add(Random.Range(1.05f, socket.MaxMult));
+    {
+      float t = Mathf.Pow(Random.value, 3f);
+      res.Add(Mathf.Lerp(1.05f, socket.MaxMult, t));
+    }
     return res;
   }
 }

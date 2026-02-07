@@ -15,6 +15,8 @@ public class GridUIController : MonoBehaviour
   [SerializeField]
   private RectTransform widthSource;
   [SerializeField]
+  private CurveManager curveManager;
+  [SerializeField]
   private float minItemWidth = 250f;
   [SerializeField]
   private float minWidthSourceWidth = 250f;
@@ -23,6 +25,7 @@ public class GridUIController : MonoBehaviour
   [SerializeField]
   private float verticalSpacingWhenStacked = 16f;
   float lastWidth = -1f;
+  bool lastStacked;
   void LateUpdate()
   {
     GamePlayPanelMove();
@@ -75,5 +78,12 @@ public class GridUIController : MonoBehaviour
     }
 
     LayoutRebuilder.MarkLayoutForRebuild(rect);
+
+    if (stacked != lastStacked)
+    {
+      lastStacked = stacked;
+      if (curveManager != null)
+        curveManager.SetPortraitMode(stacked);
+    }
   }
 }
