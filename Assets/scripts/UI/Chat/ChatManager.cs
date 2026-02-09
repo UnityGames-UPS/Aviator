@@ -32,6 +32,7 @@ public class ChatManager : GenericObjectPool<ChatView>
   private Vector2 defaultAnchoredPosition;
   private Vector2 defaultPivot;
   private Vector2 defaultOffsetMin;
+  private bool isEmojiWindowOpen = false;
   private Vector2 defaultOffsetMax;
 
   protected override void Awake()
@@ -55,6 +56,12 @@ public class ChatManager : GenericObjectPool<ChatView>
     }
     inputField.OnEndEdit.AddListener(OnEndEdit);
     inputField.OnValueChanged.AddListener((s) => OnValueChange());
+
+    OpenEmojiButton.onClick.AddListener(() =>
+    {
+      isEmojiWindowOpen = !isEmojiWindowOpen;
+      ToggleEmojiWindow(isEmojiWindowOpen);
+    });
 
     NativeKeyboardManager.Initialize(); // make sure instance exists
     DOVirtual.DelayedCall(0.5f, () =>
