@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 namespace AdvancedInputFieldPlugin
 {
 	/// <summary>Access point for the NativeKeyboard for current platform</summary>
-	public class NativeKeyboardManager : MonoBehaviour
+	public class NativeKeyboardManager: MonoBehaviour
 	{
 		/// <summary>The singleton instance of NativeKeyboardManager</summary>
 		private static NativeKeyboardManager instance;
@@ -37,8 +37,8 @@ namespace AdvancedInputFieldPlugin
     [DllImport("__Internal")]
     private static extern bool JS_SystemInfo_IsMobile();
 #endif
-		/// <summary>The singleton instance of NativeKeyboardManager</summary>
-		public static NativeKeyboardManager Instance
+        /// <summary>The singleton instance of NativeKeyboardManager</summary>
+        public static NativeKeyboardManager Instance
 		{
 			get
 			{
@@ -50,7 +50,7 @@ namespace AdvancedInputFieldPlugin
 		internal static void CreateInstance()
 		{
 			instance = FindObjectOfType<NativeKeyboardManager>();
-			if (instance == null)
+			if(instance == null)
 			{
 				GameObject gameObject = new GameObject("NativeKeyboardManager");
 				DontDestroyOnLoad(gameObject);
@@ -63,7 +63,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (!ValidateInstance()) { return null; }
+				if(!ValidateInstance()) { return null; }
 				return Instance.keyboard;
 			}
 		}
@@ -72,7 +72,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (!ValidateInstance()) { return null; }
+				if(!ValidateInstance()) { return null; }
 				return Instance.emojiEngine;
 			}
 		}
@@ -81,7 +81,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (!ValidateInstance()) { return null; }
+				if(!ValidateInstance()) { return null; }
 				return Instance.richTextBindingEngine;
 			}
 		}
@@ -105,23 +105,23 @@ namespace AdvancedInputFieldPlugin
 		{
 			get { return Instance.keyboard.HardwareKeyboardConnected; }
 		}
-		public static bool isMobileBrowserInWebGl = false;
-		private void CheckIfMobile()
-		{
-			isMobileBrowserInWebGl = false;
+        public static bool isMobileBrowserInWebGl = false;
+        private void CheckIfMobile()
+        {
+            isMobileBrowserInWebGl = false;
 
 #if !UNITY_EDITOR && UNITY_WEBGL
             isMobileBrowserInWebGl = JS_SystemInfo_IsMobile();
 #endif
 
-			Debug.Log("isMobileBrowserInWebGl " + isMobileBrowserInWebGl);
-		}
-		public static bool InstanceValid
+            Debug.Log("isMobileBrowserInWebGl " + isMobileBrowserInWebGl);
+        }
+        public static bool InstanceValid
 		{
 			get
 			{
-				if (instance == null) { return false; }
-				else if (instance.gameObject == null && !ReferenceEquals(instance.gameObject, null)) { return false; } //Pending destruction
+				if(instance == null) { return false; }
+				else if(instance.gameObject == null && !ReferenceEquals(instance.gameObject, null)) { return false; } //Pending destruction
 				return true;
 			}
 		}
@@ -270,9 +270,9 @@ namespace AdvancedInputFieldPlugin
 
 		private void OnApplicationPause(bool pause)
 		{
-			if (!pause)
+			if(!pause)
 			{
-				if (activeInputFieldBeforePause != null)
+				if(activeInputFieldBeforePause != null)
 				{
 					activeInputFieldBeforePause.ManualDeselect();
 					StartCoroutine(DelayedRestore());
@@ -283,22 +283,22 @@ namespace AdvancedInputFieldPlugin
 		private IEnumerator DelayedRestore()
 		{
 			float totalWaitTime = 0;
-			if (Keyboard != null)
-			{
-				while (Keyboard.State != KeyboardState.HIDDEN)
-				{
-					yield return new WaitForSeconds(0.1f);
-					totalWaitTime += 0.1f;
-					if (totalWaitTime > 1f)
-					{
-						break;
-					}
-				}
-			}
-			if (activeInputFieldBeforePause != null)
-			{
-				activeInputFieldBeforePause.ManualSelect();
-			}
+            if (Keyboard != null)
+            {
+                while (Keyboard.State != KeyboardState.HIDDEN)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                    totalWaitTime += 0.1f;
+                    if (totalWaitTime > 1f)
+                    {
+                        break;
+                    }
+                }
+            }
+            if (activeInputFieldBeforePause != null)
+            {
+                activeInputFieldBeforePause.ManualSelect();
+            }
 		}
 		#endregion
 
@@ -310,7 +310,7 @@ namespace AdvancedInputFieldPlugin
 
 		public static void TryDestroy()
 		{
-			if (instance != null && instance.gameObject != null)
+			if(instance != null && instance.gameObject != null)
 			{
 				Destroy(instance.gameObject);
 			}
@@ -320,12 +320,12 @@ namespace AdvancedInputFieldPlugin
 		/// <returns>true if there is a valid instance</returns>
 		public static bool ValidateInstance()
 		{
-			if (InstanceValid) { return true; } //Instance is still valid
+			if(InstanceValid) { return true; } //Instance is still valid
 #if UNITY_EDITOR
 			if(!editorInPlayMode) { return false; } //Not going to recreate instance when leaving play mode
 #endif
 
-			if (instance == null)
+			if(instance == null)
 			{
 				CreateInstance();
 			}
@@ -335,7 +335,7 @@ namespace AdvancedInputFieldPlugin
 		/// <summary>Checks whether the native binding should be active or not</summary>
 		public static void UpdateKeyboardActiveState()
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.UpdateActiveState();
 		}
 
@@ -345,7 +345,7 @@ namespace AdvancedInputFieldPlugin
 		/// </summary>
 		public static void EnableHardwareKeyboardUpdates()
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.EnableHardwareKeyboardUpdates();
 		}
 
@@ -355,14 +355,14 @@ namespace AdvancedInputFieldPlugin
 		/// </summary>
 		public static void DisableHardwareKeyboardUpdates()
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.DisableHardwareKeyboardUpdates();
 		}
 
 		/// <summary>Updates the native text and selection</summary>
 		public static void UpdateTextEdit(string text, int selectionStartPosition, int selectionEndPosition)
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.UpdateTextEdit(text, selectionStartPosition, selectionEndPosition);
 		}
 
@@ -375,35 +375,35 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="secure">Indicates whether input should be secure</param>
 		public static void ShowKeyboard(string text, int selectionStartPosition, int selectionEndPosition, NativeKeyboardConfiguration configuration)
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.ShowKeyboard(text, selectionStartPosition, selectionEndPosition, configuration);
 		}
 
 		/// <summary>Shows the TouchScreenKeyboard for current platform without changing settings</summary>
 		public static void RestoreKeyboard()
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.RestoreKeyboard();
 		}
 
 		/// <summary>Hides the TouchScreenKeyboard for current platform</summary>
 		public static void HideKeyboard()
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.HideKeyboard();
 		}
 
 		/// <summary>(Android only) Starts listening for sms messages with one time codes until timeout (5 minutes)</summary>
 		public static void StartListeningForOneTimeCodes()
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.StartListeningForOneTimeCodes();
 		}
 
 		/// <summary>Resets the autofill service for current platform (Android only)</summary>
 		public static void ResetAutofill()
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.ResetAutofill();
 		}
 
@@ -411,7 +411,7 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="domainName">The domain name of your website, only needed for iOS</param>
 		public static void SaveCredentials(string domainName)
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.SaveCredentials(domainName);
 		}
 
@@ -419,7 +419,7 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="listener">The KeyboardHeightChangedListener to add</param>
 		public static void AddKeyboardHeightChangedListener(OnKeyboardHeightChangedHandler listener)
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.AddKeyboardHeightChangedListener(listener);
 		}
 
@@ -427,7 +427,7 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="listener">The KeyboardHeightChangedListener to remove</param>
 		public static void RemoveKeyboardHeightChangedListener(OnKeyboardHeightChangedHandler listener)
 		{
-			if (!ValidateInstance()) { return; } //No need to remove event listener if instance is null
+			if(!ValidateInstance()) { return; } //No need to remove event listener if instance is null
 			Keyboard.RemoveKeyboardHeightChangedListener(listener);
 		}
 
@@ -435,7 +435,7 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="listener">The HardwareKeyboardChangedListener to add</param>
 		public static void AddHardwareKeyboardChangedListener(OnHardwareKeyboardChangedHandler listener)
 		{
-			if (!ValidateInstance()) { return; }
+			if(!ValidateInstance()) { return; }
 			Keyboard.AddHardwareKeyboardChangedListener(listener);
 		}
 
@@ -443,7 +443,7 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="listener">The KeyboardHeightChangedListener to remove</param>
 		public static void RemoveHardwareKeyboardChangedListener(OnHardwareKeyboardChangedHandler listener)
 		{
-			if (!ValidateInstance()) { return; } //No need to remove event listener if instance is null
+			if(!ValidateInstance()) { return; } //No need to remove event listener if instance is null
 			Keyboard.RemoveHardwareKeyboardChangedListener(listener);
 		}
 	}

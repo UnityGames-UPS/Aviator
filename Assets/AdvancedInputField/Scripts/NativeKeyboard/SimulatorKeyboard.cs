@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace AdvancedInputFieldPlugin
 {
-	public class SimulatorKeyboard : NativeKeyboard
+	public class SimulatorKeyboard: NativeKeyboard
 	{
 		public const float TRANSITION_TIME = 0.5f;
 		public readonly Color DEFAULT_COLOR = Color.black;
@@ -27,12 +27,12 @@ namespace AdvancedInputFieldPlugin
 		[SerializeField]
 		private string[] mainPageValues;
 
-		[SerializeField]
-		private RectTransform[] numbercharacterRows;
-		[SerializeField]
-		private string[] numberPageValues;
+        [SerializeField]
+        private RectTransform[] numbercharacterRows; 
+        [SerializeField]
+        private string[] numberPageValues;
 
-		[SerializeField]
+        [SerializeField]
 		private string[] symbolPage1Values;
 
 		[SerializeField]
@@ -44,8 +44,8 @@ namespace AdvancedInputFieldPlugin
 		private RectTransform rectTransform;
 		private Canvas canvas;
 		private Vector2 buttonSize;
-		private Vector2 NumberbuttonSize;
-		private bool mainPageActive;
+        private Vector2 NumberbuttonSize;
+        private bool mainPageActive;
 		private int pageNr;
 		private bool uppercaseActive;
 
@@ -60,11 +60,11 @@ namespace AdvancedInputFieldPlugin
 
 		private float currentTransitionTime;
 		private bool processHardwareKeyboardEvents;
-		[SerializeField]
-		internal GameObject standardObject;
-		[SerializeField]
-		internal GameObject numberObject;
-		public bool ShouldSubmit
+        [SerializeField]
+        internal GameObject standardObject;
+        [SerializeField]
+        internal GameObject numberObject;
+        public bool ShouldSubmit
 		{
 			get { return (lineType != LineType.MULTILINE_NEWLINE); }
 		}
@@ -75,9 +75,9 @@ namespace AdvancedInputFieldPlugin
 		{
 			rectTransform = GetComponent<RectTransform>();
 			buttonSize = DetermineSmallestButtonSize();
-			NumberbuttonSize = DetermineNumberSmallestButtonSize();
-			ConfigureCharacterRows(mainPageValues);
-			ConfigureNumberCharacterRows(numberPageValues);
+            NumberbuttonSize = DetermineNumberSmallestButtonSize();
+            ConfigureCharacterRows(mainPageValues);
+            ConfigureNumberCharacterRows(numberPageValues);
 			textValidator = new TextValidator(CharacterValidation.NONE, LineType.SINGLE_LINE);
 		}
 
@@ -94,10 +94,10 @@ namespace AdvancedInputFieldPlugin
 
 		private void Update()
 		{
-			if (State == KeyboardState.PENDING_SHOW)
+			if(State == KeyboardState.PENDING_SHOW)
 			{
 				currentTransitionTime += Time.deltaTime;
-				if (currentTransitionTime >= TRANSITION_TIME)
+				if(currentTransitionTime >= TRANSITION_TIME)
 				{
 					currentTransitionTime = TRANSITION_TIME;
 					OnKeyboardShow();
@@ -110,10 +110,10 @@ namespace AdvancedInputFieldPlugin
 				anchoredPositon.y = -((1 - progress) * rectTransform.rect.height);
 				rectTransform.anchoredPosition = anchoredPositon;
 			}
-			else if (State == KeyboardState.PENDING_HIDE)
+			else if(State == KeyboardState.PENDING_HIDE)
 			{
 				currentTransitionTime += Time.deltaTime;
-				if (currentTransitionTime >= TRANSITION_TIME)
+				if(currentTransitionTime >= TRANSITION_TIME)
 				{
 					currentTransitionTime = TRANSITION_TIME;
 					OnKeyboardHide();
@@ -126,7 +126,7 @@ namespace AdvancedInputFieldPlugin
 				rectTransform.anchoredPosition = anchoredPositon;
 			}
 
-			if (processHardwareKeyboardEvents)
+			if(processHardwareKeyboardEvents)
 			{
 				UpdateHardwareKeyboardInput();
 			}
@@ -135,12 +135,12 @@ namespace AdvancedInputFieldPlugin
 		internal void UpdateHardwareKeyboardInput()
 		{
 			Event keyboardEvent = new Event();
-			while (Event.PopEvent(keyboardEvent))
+			while(Event.PopEvent(keyboardEvent))
 			{
-				if (keyboardEvent.rawType == EventType.KeyDown)
+				if(keyboardEvent.rawType == EventType.KeyDown)
 				{
 					bool shouldContinue = ProcessKeyboardEvent(keyboardEvent);
-					if (!shouldContinue)
+					if(!shouldContinue)
 					{
 						return;
 					}
@@ -148,9 +148,9 @@ namespace AdvancedInputFieldPlugin
 			}
 
 			InputEvent inputEvent;
-			while (InputMethodManager.PopEvent(out inputEvent))
+			while(InputMethodManager.PopEvent(out inputEvent))
 			{
-				switch (inputEvent.Type)
+				switch(inputEvent.Type)
 				{
 					case InputEventType.CHARACTER:
 						CharacterInputEvent characterInputEvent = (CharacterInputEvent)inputEvent;
@@ -169,7 +169,7 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="keyboardEvent">The keyboard event to process</param>
 		internal bool ProcessKeyboardEvent(Event keyboardEvent)
 		{
-			switch (keyboardEvent.keyCode)
+			switch(keyboardEvent.keyCode)
 			{
 				case KeyCode.Backspace:
 					OnBackspaceClick();
@@ -187,7 +187,7 @@ namespace AdvancedInputFieldPlugin
 					return true;
 				case KeyCode.Return: //Submit
 				case KeyCode.KeypadEnter: //Submit
-					if (ShouldSubmit)
+					if(ShouldSubmit)
 					{
 						OnKeyboardDone();
 						return false;
@@ -203,12 +203,12 @@ namespace AdvancedInputFieldPlugin
 			}
 
 			char c = keyboardEvent.character;
-			if (!Multiline && (c == '\t' || c == '\r' || c == 10)) //Don't allow return chars or tabulator key to be entered into single line fields.
+			if(!Multiline && (c == '\t' || c == '\r' || c == 10)) //Don't allow return chars or tabulator key to be entered into single line fields.
 			{
 				return true;
 			}
 
-			if (c == '\r' || (int)c == 3) //Convert carriage return and end-of-text characters to newline.
+			if(c == '\r' || (int)c == 3) //Convert carriage return and end-of-text characters to newline.
 			{
 				c = '\n';
 			}
@@ -222,7 +222,7 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="c">The character to insert</param>
 		internal void TryInsertChar(char c)
 		{
-			if (!IsValidChar(c))
+			if(!IsValidChar(c))
 			{
 				return;
 			}
@@ -234,7 +234,7 @@ namespace AdvancedInputFieldPlugin
 		/// <param name="c">The character to check</param>
 		internal bool IsValidChar(char c)
 		{
-			if ((int)c == 127 || (int)c == 0) //Delete key on mac and zero char
+			if((int)c == 127 || (int)c == 0) //Delete key on mac and zero char
 			{
 				return false;
 			}
@@ -245,13 +245,13 @@ namespace AdvancedInputFieldPlugin
 		internal override void Setup()
 		{
 			LoadMainPage();
-			LoadNumbersPage();
+            LoadNumbersPage();
 			mainPageActive = true;
 			uppercaseActive = false;
 
-			if (numberObject) numberObject.SetActive(false);
-			if (standardObject) standardObject.SetActive(true);
-		}
+            if (numberObject) numberObject.SetActive(false);
+            if (standardObject) standardObject.SetActive(true);
+        }
 
 		public override void UpdateTextEdit(string text, int selectionStartPosition, int selectionEndPosition)
 		{
@@ -262,7 +262,6 @@ namespace AdvancedInputFieldPlugin
 
 		public override void ShowKeyboard(string text, int selectionStartPosition, int selectionEndPosition, NativeKeyboardConfiguration configuration)
 		{
-			Debug.Log("showkeys");
 			this.text = text;
 			this.selectionStartPosition = selectionStartPosition;
 			this.selectionEndPosition = selectionEndPosition;
@@ -274,7 +273,7 @@ namespace AdvancedInputFieldPlugin
 			textValidator.LineType = configuration.lineType;
 
 			CharacterValidator characterValidator = null;
-			if (!string.IsNullOrEmpty(configuration.characterValidatorJSON))
+			if(!string.IsNullOrEmpty(configuration.characterValidatorJSON))
 			{
 				characterValidator = ScriptableObject.CreateInstance<CharacterValidator>();
 				JsonUtility.FromJsonOverwrite(configuration.characterValidatorJSON, characterValidator);
@@ -283,14 +282,14 @@ namespace AdvancedInputFieldPlugin
 
 			canvas = GetComponentInParent<Canvas>(); //Update current Canvas
 
-			if (State == KeyboardState.HIDDEN)
+			if(State == KeyboardState.HIDDEN)
 			{
 				currentTransitionTime = 0;
 				State = KeyboardState.PENDING_SHOW;
 			}
 
 			LoadMainPage();
-			LoadNumbersPage();
+            LoadNumbersPage();
 			mainPageActive = true;
 			uppercaseActive = false;
 
@@ -306,50 +305,50 @@ namespace AdvancedInputFieldPlugin
                 if (standardObject) standardObject.SetActive(true);
             }
 #else
-			if (numberObject) numberObject.SetActive(false);
-			if (standardObject) standardObject.SetActive(false);
+  				if (numberObject) numberObject.SetActive(false);
+                if (standardObject) standardObject.SetActive(false);
 #endif
 
-			if (Screen.width > Screen.height)
-			{
-				this.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-			}
-			else
-			{
-				this.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
-			}
+            if(Screen.width > Screen.height)
+            {
+                this.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+            }
+            else
+            {
+                this.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
 		}
 
 		public override void HideKeyboard()
 		{
-			if (gameObject == null) { return; }
+			if(gameObject == null) { return; }
 			canvas = GetComponentInParent<Canvas>(); //Update current Canvas
 
-			if (State == KeyboardState.VISIBLE || State == KeyboardState.PENDING_HIDE || State == KeyboardState.PENDING_SHOW)
+			if(State == KeyboardState.VISIBLE || State == KeyboardState.PENDING_HIDE || State == KeyboardState.PENDING_SHOW)
 			{
 				currentTransitionTime = 0;
 				State = KeyboardState.PENDING_HIDE;
 			}
 		}
-		public void ConfigureNumberCharacterRows(string[] characterRowValues)
-		{
-			int length = numbercharacterRows.Length;
-			for (int i = 0; i < length; i++)
-			{
-				ConfigureCharacterRow(numbercharacterRows[i], characterRowValues[i], NumberbuttonSize);
-			}
-		}
-
-		public void ConfigureCharacterRows(string[] characterRowValues)
+        public void ConfigureNumberCharacterRows(string[] characterRowValues)
+        {
+            int length = numbercharacterRows.Length;
+            for (int i = 0; i < length; i++)
+            {
+                ConfigureCharacterRow(numbercharacterRows[i], characterRowValues[i],NumberbuttonSize);
+            }
+        }
+        
+        public void ConfigureCharacterRows(string[] characterRowValues)
 		{
 			int length = characterRows.Length;
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
-				ConfigureCharacterRow(characterRows[i], characterRowValues[i], buttonSize);
+				ConfigureCharacterRow(characterRows[i], characterRowValues[i],buttonSize);
 			}
 		}
 
-		private void ConfigureCharacterRow(RectTransform characterRow, string characterRowValue, Vector2 _buttonSize)
+		private void ConfigureCharacterRow(RectTransform characterRow, string characterRowValue,Vector2 _buttonSize)
 		{
 			CleanCharacterRow(characterRow);
 
@@ -358,7 +357,7 @@ namespace AdvancedInputFieldPlugin
 			float x = (-((length - 1) * 0.5f) * (_buttonSize.x + xSpacing));
 			float y = 0;
 
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
 				Button characterButton = CreateCharacterButton(characterRow);
 				characterButton.onClick.AddListener(() => OnCharacterButtonClick(characterButton));
@@ -372,18 +371,18 @@ namespace AdvancedInputFieldPlugin
 
 		private void CleanCharacterRow(RectTransform characterRow)
 		{
-			while (characterRow.childCount > 0)
+			while(characterRow.childCount > 0)
 			{
 				DestroyImmediate(characterRow.GetChild(0).gameObject);
 			}
 		}
-
-		private Vector2 DetermineSmallestButtonSize()
+        
+        private Vector2 DetermineSmallestButtonSize()
 		{
 			Vector2 smallestButtonSize = new Vector2(float.MaxValue, float.MaxValue);
 
 			int length = characterRows.Length;
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
 				Vector2 boundsSize = characterRows[i].rect.size;
 				float buttonWidth = ((boundsSize.x - xSpacing) / mainPageValues[i].Length) - xSpacing;
@@ -395,24 +394,24 @@ namespace AdvancedInputFieldPlugin
 
 			return smallestButtonSize;
 		}
-		private Vector2 DetermineNumberSmallestButtonSize()
-		{
-			Vector2 smallestButtonSize = new Vector2(float.MaxValue, float.MaxValue);
+        private Vector2 DetermineNumberSmallestButtonSize()
+        {
+            Vector2 smallestButtonSize = new Vector2(float.MaxValue, float.MaxValue);
 
-			int length = numbercharacterRows.Length;
-			for (int i = 0; i < length; i++)
-			{
-				Vector2 boundsSize = numbercharacterRows[i].rect.size;
-				float buttonWidth = ((boundsSize.x - xSpacing) / numberPageValues[i].Length) - xSpacing;
-				float buttonHeight = boundsSize.y - ySpacing;
+            int length = numbercharacterRows.Length;
+            for (int i = 0; i < length; i++)
+            {
+                Vector2 boundsSize = numbercharacterRows[i].rect.size;
+                float buttonWidth = ((boundsSize.x - xSpacing) / numberPageValues[i].Length) - xSpacing;
+                float buttonHeight = boundsSize.y - ySpacing;
 
-				smallestButtonSize.x = Mathf.Min(buttonWidth, smallestButtonSize.x);
-				smallestButtonSize.y = Mathf.Min(buttonHeight, smallestButtonSize.y);
-			}
+                smallestButtonSize.x = Mathf.Min(buttonWidth, smallestButtonSize.x);
+                smallestButtonSize.y = Mathf.Min(buttonHeight, smallestButtonSize.y);
+            }
 
-			return smallestButtonSize;
-		}
-		private Button CreateCharacterButton(Transform parentTransform)
+            return smallestButtonSize;
+        }
+        private Button CreateCharacterButton(Transform parentTransform)
 		{
 			Button characterButton = Instantiate(characterButtonPrefab);
 			RectTransform rectTransform = characterButton.GetComponent<RectTransform>();
@@ -429,7 +428,7 @@ namespace AdvancedInputFieldPlugin
 		private void LoadMainPage()
 		{
 			int length = characterRows.Length;
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
 				UpdateCharacterRow(characterRows[i], mainPageValues[i]);
 			}
@@ -440,20 +439,20 @@ namespace AdvancedInputFieldPlugin
 			iconRenderer.color = DEFAULT_COLOR;
 			label.enabled = false;
 		}
-		private void LoadNumbersPage()
-		{
-			int length = numbercharacterRows.Length;
-			for (int i = 0; i < length; i++)
-			{
-				UpdateCharacterRow(numbercharacterRows[i], numberPageValues[i]);
-			}
+        private void LoadNumbersPage()
+        {
+            int length = numbercharacterRows.Length;
+            for (int i = 0; i < length; i++)
+            {
+                UpdateCharacterRow(numbercharacterRows[i], numberPageValues[i]);
+            }
 
-
-		}
-		private void LoadSymbolsPage1()
+           
+        }
+        private void LoadSymbolsPage1()
 		{
 			int length = characterRows.Length;
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
 				UpdateCharacterRow(characterRows[i], symbolPage1Values[i]);
 			}
@@ -468,7 +467,7 @@ namespace AdvancedInputFieldPlugin
 		private void LoadSymbolsPage2()
 		{
 			int length = characterRows.Length;
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
 				UpdateCharacterRow(characterRows[i], symbolPage2Values[i]);
 			}
@@ -484,9 +483,9 @@ namespace AdvancedInputFieldPlugin
 		private void UpdateCharacterRow(RectTransform characterRow, string characterRowValue)
 		{
 			int length = characterRow.childCount;
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
-				if (i >= characterRowValue.Length) { break; }
+				if(i >= characterRowValue.Length) { break; }
 
 				Button characterButton = characterRow.GetChild(i).GetComponent<Button>();
 				Text label = characterButton.GetComponentInChildren<Text>();
@@ -497,7 +496,7 @@ namespace AdvancedInputFieldPlugin
 		private void UpdateMainPageCase()
 		{
 			int length = characterRows.Length;
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
 				UpdateCharacterRowCase(characterRows[i]);
 			}
@@ -506,11 +505,11 @@ namespace AdvancedInputFieldPlugin
 		private void UpdateCharacterRowCase(RectTransform characterRow)
 		{
 			int length = characterRow.childCount;
-			for (int i = 0; i < length; i++)
+			for(int i = 0; i < length; i++)
 			{
 				Button characterButton = characterRow.GetChild(i).GetComponent<Button>();
 				Text label = characterButton.GetComponentInChildren<Text>();
-				if (uppercaseActive)
+				if(uppercaseActive)
 				{
 					label.text = label.text.ToUpper();
 				}
@@ -531,7 +530,7 @@ namespace AdvancedInputFieldPlugin
 
 		public void Insert(string input)
 		{
-			if (selectionEndPosition > selectionStartPosition)
+			if(selectionEndPosition > selectionStartPosition)
 			{
 				text = text.Remove(selectionStartPosition, selectionEndPosition - selectionStartPosition);
 				selectionEndPosition = selectionStartPosition;
@@ -539,7 +538,7 @@ namespace AdvancedInputFieldPlugin
 
 			string resultText;
 			int resultCaretPosition;
-			if (emojisAllowed) //Not validating individual characters when using emojis, because that could break the character sequences
+			if(emojisAllowed) //Not validating individual characters when using emojis, because that could break the character sequences
 			{
 				int caretPosition = selectionStartPosition;
 				resultText = text.Insert(caretPosition, input);
@@ -547,9 +546,9 @@ namespace AdvancedInputFieldPlugin
 			}
 			else
 			{
-				if (characterLimit > 0 && text.Length + input.Length > characterLimit)
+				if(characterLimit > 0 && text.Length + input.Length > characterLimit)
 				{
-					if (text.Length < characterLimit)
+					if(text.Length < characterLimit)
 					{
 						int amountAllowed = characterLimit - text.Length;
 						input = input.Substring(0, amountAllowed);
@@ -573,7 +572,7 @@ namespace AdvancedInputFieldPlugin
 			selectionEndPosition = resultCaretPosition;
 			OnTextEditUpdate(text, selectionStartPosition, selectionEndPosition);
 
-			if (uppercaseActive)
+			if(uppercaseActive)
 			{
 				OnShiftClick();
 			}
@@ -581,7 +580,7 @@ namespace AdvancedInputFieldPlugin
 
 		public void ApplyCharacterLimit(ref string text, ref int caretPosition)
 		{
-			if (characterLimit != 0 && text.Length > characterLimit)
+			if(characterLimit != 0 && text.Length > characterLimit)
 			{
 				text = text.Substring(0, characterLimit);
 				caretPosition = Mathf.Clamp(caretPosition, 0, text.Length);
@@ -590,12 +589,12 @@ namespace AdvancedInputFieldPlugin
 
 		public void OnShiftClick()
 		{
-			if (mainPageActive)
+			if(mainPageActive)
 			{
 				Image iconRenderer = shiftButton.transform.Find("Icon").GetComponent<Image>();
 				iconRenderer.enabled = true;
 				uppercaseActive = !uppercaseActive;
-				if (uppercaseActive)
+				if(uppercaseActive)
 				{
 					iconRenderer.color = ACTIVE_COLOR;
 				}
@@ -607,7 +606,7 @@ namespace AdvancedInputFieldPlugin
 			}
 			else
 			{
-				if (pageNr == 1)
+				if(pageNr == 1)
 				{
 					pageNr = 2;
 					LoadSymbolsPage2();
@@ -625,7 +624,7 @@ namespace AdvancedInputFieldPlugin
 			OnSpecialKeyPressed(SpecialKeyCode.BACKSPACE);
 			DeletePreviousChar();
 
-			if (uppercaseActive)
+			if(uppercaseActive)
 			{
 				OnShiftClick();
 			}
@@ -635,7 +634,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			DeleteNextChar();
 
-			if (uppercaseActive)
+			if(uppercaseActive)
 			{
 				OnShiftClick();
 			}
@@ -644,16 +643,16 @@ namespace AdvancedInputFieldPlugin
 		/// <summary>Deletes previous character</summary>
 		internal void DeletePreviousChar()
 		{
-			if (selectionEndPosition > selectionStartPosition)
+			if(selectionEndPosition > selectionStartPosition)
 			{
 				DeleteSelection();
 			}
-			else if (selectionStartPosition > 0) //Backwards delete
+			else if(selectionStartPosition > 0) //Backwards delete
 			{
 				selectionStartPosition--;
 
 				EmojiData emojiData;
-				if (emojisAllowed && NativeKeyboardManager.EmojiEngine.TryFindPreviousEmojiInText(text, selectionStartPosition, out emojiData))
+				if(emojisAllowed && NativeKeyboardManager.EmojiEngine.TryFindPreviousEmojiInText(text, selectionStartPosition, out emojiData))
 				{
 					int count = emojiData.text.Length;
 					text = text.Remove(selectionStartPosition + 1 - count, count);
@@ -672,14 +671,14 @@ namespace AdvancedInputFieldPlugin
 		/// <summary>Deletes next character</summary>
 		internal void DeleteNextChar()
 		{
-			if (selectionEndPosition > selectionStartPosition)
+			if(selectionEndPosition > selectionStartPosition)
 			{
 				DeleteSelection();
 			}
-			else if (selectionStartPosition < text.Length) //Forward delete
+			else if(selectionStartPosition < text.Length) //Forward delete
 			{
 				EmojiData emojiData;
-				if (emojisAllowed && NativeKeyboardManager.EmojiEngine.TryFindNextEmojiInText(text, selectionStartPosition, out emojiData))
+				if(emojisAllowed && NativeKeyboardManager.EmojiEngine.TryFindNextEmojiInText(text, selectionStartPosition, out emojiData))
 				{
 					int count = emojiData.text.Length;
 					text = text.Remove(selectionStartPosition, count);
@@ -708,17 +707,17 @@ namespace AdvancedInputFieldPlugin
 			mainPageActive = !mainPageActive;
 			pageNr = 1;
 
-			if (mainPageActive)
+			if(mainPageActive)
 			{
 				ConfigureCharacterRows(mainPageValues);
 				LoadMainPage();
-				LoadNumbersPage();
+                LoadNumbersPage();
 				uppercaseActive = false;
 				UpdateMainPageCase();
 
-				if (numberObject) numberObject.SetActive(false);
-				if (standardObject) standardObject.SetActive(true);
-			}
+                if (numberObject) numberObject.SetActive(false);
+                if (standardObject) standardObject.SetActive(true);
+            }
 			else
 			{
 				ConfigureCharacterRows(symbolPage1Values);
@@ -743,11 +742,11 @@ namespace AdvancedInputFieldPlugin
 
 		public void OnDoneClick()
 		{
-			if (lineType == LineType.SINGLE_LINE || lineType == LineType.MULTILINE_SUBMIT)
+			if(lineType == LineType.SINGLE_LINE || lineType == LineType.MULTILINE_SUBMIT)
 			{
 				OnKeyboardDone();
 			}
-			else if (lineType == LineType.MULTILINE_NEWLINE)
+			else if(lineType == LineType.MULTILINE_NEWLINE)
 			{
 				Insert("\n");
 			}

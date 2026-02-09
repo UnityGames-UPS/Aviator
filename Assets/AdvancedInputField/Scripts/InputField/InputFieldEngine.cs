@@ -111,7 +111,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (HasSelection)
+				if(HasSelection)
 				{
 					return text.Substring(selectionStartPosition, selectionEndPosition - selectionStartPosition);
 				}
@@ -132,7 +132,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (caretIsStart)
+				if(caretIsStart)
 				{
 					return selectionStartPosition;
 				}
@@ -148,7 +148,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (caretIsStart)
+				if(caretIsStart)
 				{
 					return processedSelectionStartPosition;
 				}
@@ -163,7 +163,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (caretIsStart)
+				if(caretIsStart)
 				{
 					return richTextSelectionStartPosition;
 				}
@@ -179,11 +179,11 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (InputField.ShouldUseRichText)
+				if(InputField.ShouldUseRichText)
 				{
 					return RichTextCaretPosition;
 				}
-				else if (InputField.LiveDecoration)
+				else if(InputField.LiveDecoration)
 				{
 					return ProcessedCaretPosition;
 				}
@@ -217,11 +217,11 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (InputField.ShouldUseRichText)
+				if(InputField.ShouldUseRichText)
 				{
 					return RichTextSelectionStartPosition;
 				}
-				else if (InputField.LiveDecoration)
+				else if(InputField.LiveDecoration)
 				{
 					return ProcessedSelectionStartPosition;
 				}
@@ -255,11 +255,11 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (InputField.ShouldUseRichText)
+				if(InputField.ShouldUseRichText)
 				{
 					return RichTextSelectionEndPosition;
 				}
-				else if (InputField.LiveDecoration)
+				else if(InputField.LiveDecoration)
 				{
 					return ProcessedSelectionEndPosition;
 				}
@@ -289,10 +289,10 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if ((!Application.isEditor || Settings.SimulateMobileBehaviourInEditor) && InputField.CanUseTouchSelectionCursors)
+				if((!Application.isEditor || Settings.SimulateMobileBehaviourInEditor) && InputField.CanUseTouchSelectionCursors)
 				{
 					TouchTextSelectionHandler touchTextSelectionHandler = textNavigator.GetTextSelectionHandler<TouchTextSelectionHandler>();
-					if (touchTextSelectionHandler.StartCursor.Selected || touchTextSelectionHandler.EndCursor.Selected)
+					if(touchTextSelectionHandler.StartCursor.Selected || touchTextSelectionHandler.EndCursor.Selected)
 					{
 						return true;
 					}
@@ -306,7 +306,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			get
 			{
-				if (NativeKeyboardManager.InstanceValid) //Normally this behaviour should always be active (except when closing application)
+				if(NativeKeyboardManager.InstanceValid) //Normally this behaviour should always be active (except when closing application)
 				{
 					return NativeKeyboardManager.Instance;
 				}
@@ -337,12 +337,12 @@ namespace AdvancedInputFieldPlugin
 			InitializeTextRenderers();
 			InitializeComponents();
 
-			if (InputField.LiveDecoration)
+			if(InputField.LiveDecoration)
 			{
 				InitializeLiveProcessing();
 			}
 
-			if (InputField.ShouldUseRichText)
+			if(InputField.ShouldUseRichText)
 			{
 				InitializeRichTextEditing(InputField.Text);
 			}
@@ -353,7 +353,7 @@ namespace AdvancedInputFieldPlugin
 			RefreshRenderedText();
 
 			ScrollArea scrollArea = InputField.ScrollArea;
-			if (InputField.Multiline)
+			if(InputField.Multiline)
 			{
 				scrollArea.Horizontal = false;
 				scrollArea.Vertical = true;
@@ -413,7 +413,7 @@ namespace AdvancedInputFieldPlugin
 		private void InitializeComponents()
 		{
 			keyboardClient = InputField.gameObject.GetComponent<InputFieldKeyboardClient>();
-			if (keyboardClient == null)
+			if(keyboardClient == null)
 			{
 				keyboardClient = InputField.gameObject.AddComponent<InputFieldKeyboardClient>();
 			}
@@ -430,7 +430,7 @@ namespace AdvancedInputFieldPlugin
 		internal void InitializeLiveProcessing()
 		{
 			string processedText = InputField.LiveDecorationFilter.ProcessText(Text, CaretPosition);
-			if (processedText != null)
+			if(processedText != null)
 			{
 				SetProcessedText(processedText);
 			}
@@ -438,7 +438,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void InitializeRichTextEditing(string richText)
 		{
-			if (InputField.RichTextConfig != null)
+			if(InputField.RichTextConfig != null)
 			{
 				richTextProcessor = new RichTextProcessor(InputField.RichTextConfig.GetSupportedTags(), InputField.EmojisAllowed, InputField.RichTextBindingsAllowed);
 			}
@@ -456,19 +456,19 @@ namespace AdvancedInputFieldPlugin
 
 		internal void SetText(string text, bool invokeTextChangeEvent = true)
 		{
-			if (this.text != text)
+			if(this.text != text)
 			{
 				this.text = text;
 				textDirty = true;
 				hasModifiedTextAfterClick = true;
 
 				InputField.UpdateTextProperty(this.text);
-				if (invokeTextChangeEvent)
+				if(invokeTextChangeEvent)
 				{
 					eventHandler?.InvokeValueChanged(text);
 				}
 
-				if (!Application.isPlaying)
+				if(!Application.isPlaying)
 				{
 					InputField.TextRenderer.Text = text;
 					UpdateActiveTextRenderer();
@@ -478,22 +478,22 @@ namespace AdvancedInputFieldPlugin
 
 		internal void SetSelection(int selectionStartPosition, int selectionEndPosition, bool caretIsStart = false, bool invokeTextSelectionChangeEvent = true)
 		{
-			if (this.selectionStartPosition != selectionStartPosition || this.selectionEndPosition != selectionEndPosition)
+			if(this.selectionStartPosition != selectionStartPosition || this.selectionEndPosition != selectionEndPosition)
 			{
 				this.selectionStartPosition = selectionStartPosition;
 				this.selectionEndPosition = selectionEndPosition;
 				selectionDirty = true;
 
-				if (invokeTextSelectionChangeEvent)
+				if(invokeTextSelectionChangeEvent)
 				{
 					eventHandler?.InvokeTextSelectionChanged(selectionStartPosition, selectionEndPosition);
 				}
 			}
 
 			this.caretIsStart = caretIsStart;
-			if (selectionDirty)
+			if(selectionDirty)
 			{
-				if (invokeTextSelectionChangeEvent)
+				if(invokeTextSelectionChangeEvent)
 				{
 					eventHandler?.InvokeCaretPositionChanged(CaretPosition);
 				}
@@ -502,7 +502,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void SetProcessedText(string processedText)
 		{
-			if (this.processedText != processedText)
+			if(this.processedText != processedText)
 			{
 				this.processedText = processedText;
 				textDirty = true;
@@ -511,7 +511,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void SetProcessedSelection(int processedSelectionStartPosition, int processedSelectionEndPosition, bool caretIsStart = false)
 		{
-			if (this.processedSelectionStartPosition != processedSelectionStartPosition || this.processedSelectionEndPosition != processedSelectionEndPosition)
+			if(this.processedSelectionStartPosition != processedSelectionStartPosition || this.processedSelectionEndPosition != processedSelectionEndPosition)
 			{
 				this.processedSelectionStartPosition = processedSelectionStartPosition;
 				this.processedSelectionEndPosition = processedSelectionEndPosition;
@@ -525,7 +525,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void SetRichText(string richText)
 		{
-			if (this.richText != richText)
+			if(this.richText != richText)
 			{
 				this.richText = richText;
 				textDirty = true;
@@ -537,7 +537,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void SetRichTextSelection(int richTextSelectionStartPosition, int richTextSelectionEndPosition, bool caretIsStart = false)
 		{
-			if (this.richTextSelectionStartPosition != richTextSelectionStartPosition || this.richTextSelectionEndPosition != richTextSelectionEndPosition)
+			if(this.richTextSelectionStartPosition != richTextSelectionStartPosition || this.richTextSelectionEndPosition != richTextSelectionEndPosition)
 			{
 				this.richTextSelectionStartPosition = richTextSelectionStartPosition;
 				this.richTextSelectionEndPosition = richTextSelectionEndPosition;
@@ -549,7 +549,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void SetVisibleSelection(int visibleSelectionStartPosition, int visibleSelectionEndPosition, bool caretIsStart = false)
 		{
-			if (InputField.ShouldUseRichText)
+			if(InputField.ShouldUseRichText)
 			{
 				SetRichTextSelection(visibleSelectionStartPosition, visibleSelectionEndPosition, caretIsStart);
 
@@ -558,7 +558,7 @@ namespace AdvancedInputFieldPlugin
 
 				this.caretIsStart = caretIsStart;
 			}
-			else if (InputField.LiveDecoration)
+			else if(InputField.LiveDecoration)
 			{
 				SetProcessedSelection(visibleSelectionStartPosition, visibleSelectionEndPosition, caretIsStart);
 			}
@@ -571,7 +571,7 @@ namespace AdvancedInputFieldPlugin
 		internal void RefreshBasicTextSelectionHandlerAppearance()
 		{
 			BasicTextSelectionHandler basicTextSelectionHandler = textNavigator.GetTextSelectionHandler<BasicTextSelectionHandler>();
-			if (basicTextSelectionHandler != null)
+			if(basicTextSelectionHandler != null)
 			{
 				basicTextSelectionHandler.RefreshAppearance();
 				selectionDirty = true;
@@ -580,10 +580,10 @@ namespace AdvancedInputFieldPlugin
 
 		internal void RefreshTextSelectionRenderOrder()
 		{
-			if (selectionTransform == null)
+			if(selectionTransform == null)
 			{
 				selectionTransform = InputField.TextContentTransform.Find("Selection") as RectTransform;
-				if (selectionTransform == null)
+				if(selectionTransform == null)
 				{
 					GameObject selectionObject = new GameObject("Selection");
 					selectionObject.transform.SetParent(InputField.TextContentTransform);
@@ -599,7 +599,7 @@ namespace AdvancedInputFieldPlugin
 				}
 			}
 
-			if (InputField.SelectionBehindText)
+			if(InputField.SelectionBehindText)
 			{
 				selectionTransform.SetAsFirstSibling();
 			}
@@ -615,22 +615,22 @@ namespace AdvancedInputFieldPlugin
 			TextRenderer textRenderer = InputField.TextRenderer;
 			TextRenderer processedTextRenderer = InputField.ProcessedTextRenderer;
 
-			if (InputField.ShouldUseRichText)
+			if(InputField.ShouldUseRichText)
 			{
 				textRenderer.Text = richText;
 			}
-			else if (InputField.LiveDecoration || (!InputField.Selected && InputField.PostDecoration))
+			else if(InputField.LiveDecoration || (!InputField.Selected && InputField.PostDecoration))
 			{
 				processedTextRenderer.Text = processedText;
 			}
 			else
 			{
 				string text;
-				if (Text.Length > 0)
+				if(Text.Length > 0)
 				{
 					text = Text;
 
-					if (InputField.Secure && !InputField.VisiblePassword)
+					if(InputField.Secure && !InputField.VisiblePassword)
 					{
 						text = new string(Settings.PasswordMaskingCharacter, text.Length);
 					}
@@ -648,15 +648,15 @@ namespace AdvancedInputFieldPlugin
 
 		internal void ProcessDone()
 		{
-			if (InputField.NextInputField != null)
+			if(InputField.NextInputField != null)
 			{
-				if (!InputField.NextInputField.ReadOnly)
+				if(!InputField.NextInputField.ReadOnly)
 				{
 					KeyboardClient.Keyboard.State = KeyboardState.HIDDEN; //Flag keyboard as inactive, so next inputfield will load it's settings
 				}
 				Deselect(EndEditReason.KEYBOARD_NEXT);
 				InputField.NextInputField.ManualSelect(BeginEditReason.KEYBOARD_NEXT);
-				Debug.Log("process done");
+                Debug.Log("process done");
 			}
 			else
 			{
@@ -695,8 +695,8 @@ namespace AdvancedInputFieldPlugin
 			ScrollArea scrollArea = InputField.ScrollArea;
 			scrollArea.OnValueChanged.RemoveListener(OnTextScrollChanged);
 
-			if (!NativeKeyboardManager.InstanceValid) { return; }
-			if (Selected)
+			if(!NativeKeyboardManager.InstanceValid) { return; }
+			if(Selected)
 			{
 				Deselect(EndEditReason.PROGRAMMATIC_DESELECT);
 				EndEditMode();
@@ -712,7 +712,7 @@ namespace AdvancedInputFieldPlugin
 		internal void OnRectTransformDimensionsChange()
 		{
 			Canvas canvas = InputField.Canvas;
-			if (Selected && canvas != null && lastCanvasScaleFactor != canvas.scaleFactor)
+			if(Selected && canvas != null && lastCanvasScaleFactor != canvas.scaleFactor)
 			{
 				textInputHandler.OnCanvasScaleChanged(canvas.scaleFactor);
 				textNavigator.OnCanvasScaleChanged(canvas.scaleFactor);
@@ -725,9 +725,9 @@ namespace AdvancedInputFieldPlugin
 
 		internal void OnApplicationPause(bool pause)
 		{
-			if (pause)
+			if(pause)
 			{
-				if (Time.realtimeSinceStartup - lastTimeSelected <= 1) //Check if this was inputfield was selected within last second
+				if(Time.realtimeSinceStartup - lastTimeSelected <= 1) //Check if this was inputfield was selected within last second
 				{
 					NativeKeyboardManager.ActiveInputFieldBeforePause = InputField;
 				}
@@ -739,7 +739,7 @@ namespace AdvancedInputFieldPlugin
 			RectTransform rectTransform = InputField.RectTransform;
 			Vector2 size = rectTransform.rect.size;
 			Vector2 sizeDifference = value - size;
-			if (sizeDifference != Vector2.zero)
+			if(sizeDifference != Vector2.zero)
 			{
 				Vector2 sizeDelta = rectTransform.sizeDelta;
 				sizeDelta += sizeDifference;
@@ -765,24 +765,24 @@ namespace AdvancedInputFieldPlugin
 
 			textContentTransform.sizeDelta = preferredSize;
 
-			if (mode != InputFieldMode.SCROLL_TEXT)
+			if(mode != InputFieldMode.SCROLL_TEXT)
 			{
-				switch (mode)
+				switch(mode)
 				{
 					case InputFieldMode.HORIZONTAL_RESIZE_FIT_TEXT:
 						float marginX = (rectTransform.rect.width - textAreaTransform.rect.width);
 						size.x = Mathf.Max(preferredSize.x, resizeMinWidth - marginX);
-						if (resizeMaxWidth > 0)
+						if(resizeMaxWidth > 0)
 						{
 							ScrollArea scrollArea = textAreaTransform.GetComponent<ScrollArea>();
-							if (size.x > resizeMaxWidth - marginX)
+							if(size.x > resizeMaxWidth - marginX)
 							{
 								size.x = resizeMaxWidth - marginX;
 								scrollArea.enabled = true;
 							}
 							else
 							{
-								if (scrollArea.enabled)
+								if(scrollArea.enabled)
 								{
 									scrollArea.MoveContentImmediately(Vector2.zero);
 								}
@@ -795,17 +795,17 @@ namespace AdvancedInputFieldPlugin
 					case InputFieldMode.VERTICAL_RESIZE_FIT_TEXT:
 						float marginY = (rectTransform.rect.height - textAreaTransform.rect.height);
 						size.y = Mathf.Max(preferredSize.y, resizeMinHeight - marginY);
-						if (resizeMaxHeight > 0)
+						if(resizeMaxHeight > 0)
 						{
 							ScrollArea scrollArea = textAreaTransform.GetComponent<ScrollArea>();
-							if (size.y > resizeMaxHeight - marginY)
+							if(size.y > resizeMaxHeight - marginY)
 							{
 								size.y = resizeMaxHeight - marginY;
 								scrollArea.enabled = true;
 							}
 							else
 							{
-								if (scrollArea.enabled)
+								if(scrollArea.enabled)
 								{
 									scrollArea.MoveContentImmediately(Vector2.zero);
 								}
@@ -829,16 +829,16 @@ namespace AdvancedInputFieldPlugin
 			TextRenderer placeholderTextRenderer = InputField.PlaceholderTextRenderer;
 			TextRenderer processedTextRenderer = InputField.ProcessedTextRenderer;
 			string richText = InputField.RichText;
-			if (!Application.isPlaying)
+			if(!Application.isPlaying)
 			{
 				richText = InputField.Text;
 			}
 
-			if (Selected)
+			if(Selected)
 			{
-				if (liveProcessing)
+				if(liveProcessing)
 				{
-					if (string.IsNullOrEmpty(processedText))
+					if(string.IsNullOrEmpty(processedText))
 					{
 						placeholderTextRenderer.Show();
 						textRenderer.Hide();
@@ -851,9 +851,9 @@ namespace AdvancedInputFieldPlugin
 						processedTextRenderer.Show();
 					}
 				}
-				else if (shouldUseRichText)
+				else if(shouldUseRichText)
 				{
-					if (string.IsNullOrEmpty(richText))
+					if(string.IsNullOrEmpty(richText))
 					{
 						placeholderTextRenderer.Show();
 						textRenderer.Hide();
@@ -868,7 +868,7 @@ namespace AdvancedInputFieldPlugin
 				}
 				else
 				{
-					if (string.IsNullOrEmpty(text))
+					if(string.IsNullOrEmpty(text))
 					{
 						placeholderTextRenderer.Show();
 						textRenderer.Hide();
@@ -884,9 +884,9 @@ namespace AdvancedInputFieldPlugin
 			}
 			else
 			{
-				if (liveProcessing || postProcessing)
+				if(liveProcessing || postProcessing)
 				{
-					if (string.IsNullOrEmpty(processedText))
+					if(string.IsNullOrEmpty(processedText))
 					{
 						placeholderTextRenderer.Show();
 						textRenderer.Hide();
@@ -899,9 +899,9 @@ namespace AdvancedInputFieldPlugin
 						processedTextRenderer.Show();
 					}
 				}
-				else if (shouldUseRichText)
+				else if(shouldUseRichText)
 				{
-					if (string.IsNullOrEmpty(richText))
+					if(string.IsNullOrEmpty(richText))
 					{
 						placeholderTextRenderer.Show();
 						textRenderer.Hide();
@@ -916,7 +916,7 @@ namespace AdvancedInputFieldPlugin
 				}
 				else
 				{
-					if (string.IsNullOrEmpty(text))
+					if(string.IsNullOrEmpty(text))
 					{
 						placeholderTextRenderer.Show();
 						textRenderer.Hide();
@@ -937,11 +937,11 @@ namespace AdvancedInputFieldPlugin
 		{
 			UpdateVisibleTextRenderers();
 
-			if (InputField.PlaceholderTextRenderer.Visible)
+			if(InputField.PlaceholderTextRenderer.Visible)
 			{
 				return InputField.PlaceholderTextRenderer;
 			}
-			else if (InputField.ProcessedTextRenderer.Visible)
+			else if(InputField.ProcessedTextRenderer.Visible)
 			{
 				return InputField.ProcessedTextRenderer;
 			}
@@ -961,14 +961,14 @@ namespace AdvancedInputFieldPlugin
 		internal void UpdateActiveTextRenderer()
 		{
 			TextRenderer activeTextRenderer = GetActiveTextRenderer();
-			if (activeTextRenderer.UpdateImmediately())
+			if(activeTextRenderer.UpdateImmediately())
 			{
 				Util.UpdateTextAlignment(activeTextRenderer, InputField.TextContentTransform);
 				UpdateSize(activeTextRenderer);
 				UpdateCaretPosition();
 				activeTextRenderer.UpdateImmediately();
 			}
-			else if (InputField.gameObject.activeInHierarchy)
+			else if(InputField.gameObject.activeInHierarchy)
 			{
 				InputField.StartCoroutine(DelayedUpdateActiveTextRenderer());
 			}
@@ -982,14 +982,14 @@ namespace AdvancedInputFieldPlugin
 
 		internal void UpdateSettings()
 		{
-			if (Application.isEditor)
+			if(Application.isEditor)
 			{
 				textManipulator?.RefreshTextValidator();
 
-				if (!Settings.SimulateMobileBehaviourInEditor) { return; }
+				if(!Settings.SimulateMobileBehaviourInEditor) { return; }
 			}
 
-			if (Selected)
+			if(Selected)
 			{
 				LoadKeyboard(); //Reload keyboard to apply settings
 			}
@@ -1000,9 +1000,9 @@ namespace AdvancedInputFieldPlugin
 		/// <summary>Updates the visual position of the caret</summary>
 		internal void UpdateCaretPosition()
 		{
-			if (Application.isPlaying && selected)
+			if(Application.isPlaying && selected)
 			{
-				if (InputField.CanUseActionBar && ActionBar == null)
+				if(InputField.CanUseActionBar && ActionBar == null)
 				{
 					textInputHandler.InitActionBar(this);
 				}
@@ -1012,14 +1012,14 @@ namespace AdvancedInputFieldPlugin
 
 		internal RectTransform GetCaretTransform()
 		{
-			if (!selected)
+			if(!selected)
 			{
 				Debug.LogWarning("This input field is not selected");
 				return null;
 			}
 
 			BasicTextSelectionHandler basicTextSelectionHandler = textNavigator.GetTextSelectionHandler<BasicTextSelectionHandler>();
-			if (basicTextSelectionHandler != null)
+			if(basicTextSelectionHandler != null)
 			{
 				return basicTextSelectionHandler.CaretTransform;
 			}
@@ -1030,10 +1030,10 @@ namespace AdvancedInputFieldPlugin
 
 		public void OnTextScrollChanged(Vector2 scroll)
 		{
-			if (textInputHandler != null && ActionBar != null)
+			if(textInputHandler != null && ActionBar != null)
 			{
 				textInputHandler.BreakHold();
-				if (InputField.CanUseActionBar)
+				if(InputField.CanUseActionBar)
 				{
 					textNavigator.UpdateActionBarPosition();
 				}
@@ -1048,14 +1048,14 @@ namespace AdvancedInputFieldPlugin
 			int currentSelectionEndPosition = selectionEndPosition;
 			NativeKeyboardManager.RemoveHardwareKeyboardChangedListener(OnHardwareKeyboardChanged); //Will be readded in Initialize()
 			Initialize();
-			if (editMode)
+			if(editMode)
 			{
 				textNavigator.BeginEditMode();
 				textManipulator.BeginEditMode();
 
 				InputField.SetTextSelection(currentSelectionStartPosition, currentSelectionEndPosition);
 
-				if (!ShouldUseHardwareKeyboard()) //Reload soft keyboard
+				if(!ShouldUseHardwareKeyboard()) //Reload soft keyboard
 				{
 					keyboardClient.HideKeyboard();
 					LoadKeyboard();
@@ -1067,7 +1067,7 @@ namespace AdvancedInputFieldPlugin
 		{
 			bool shouldUseHardwareKeyboard = false;
 
-			switch (Settings.MobileKeyboardBehaviour)
+			switch(Settings.MobileKeyboardBehaviour)
 			{
 				case MobileKeyboardBehaviour.USE_HARDWARE_KEYBOARD_WHEN_AVAILABLE:
 					shouldUseHardwareKeyboard = NativeKeyboardManager.HardwareKeyboardConnected;
@@ -1086,12 +1086,12 @@ namespace AdvancedInputFieldPlugin
 		/// <summary>Toggles the tag pair defined by given start and end tag in current text selection</summary>
 		internal void ToggleTagPair(string startTag, string endTag)
 		{
-			if (InputField.ShouldUseRichText)
+			if(InputField.ShouldUseRichText)
 			{
-				if (!HasSelection) { return; }
+				if(!HasSelection) { return; }
 
 				TextEditFrame richTextEditFrame = richTextProcessor.ToggleTagPair(startTag, endTag);
-				if (InputField.RichText != richTextEditFrame.text)
+				if(InputField.RichText != richTextEditFrame.text)
 				{
 					SetRichText(richTextEditFrame.text);
 					SetRichTextSelection(richTextEditFrame.selectionStartPosition, richTextEditFrame.selectionEndPosition);
@@ -1105,9 +1105,9 @@ namespace AdvancedInputFieldPlugin
 
 		public void ReplaceSelectedTextInRichText(string textToInsert)
 		{
-			if (InputField.ShouldUseRichText)
+			if(InputField.ShouldUseRichText)
 			{
-				if (!HasSelection) { return; }
+				if(!HasSelection) { return; }
 
 				TextEditFrame textEditFrame = lastTextEditFrame;
 				int start = textEditFrame.selectionStartPosition;
@@ -1127,26 +1127,26 @@ namespace AdvancedInputFieldPlugin
 
 		internal void CheckClick(PointerEventData eventData)
 		{
-			if (!InputField.interactable) { return; }
+			if(!InputField.interactable) { return; }
 
 			SelectionMode selectionMode = InputField.SelectionMode;
 			Canvas canvas = InputField.Canvas;
 			RectTransform textAreaTransform = InputField.TextAreaTransform;
 			CaretOnBeginEdit caretOnBeginEdit = InputField.CaretOnBeginEdit;
 
-			if (!Selected && selectionMode == SelectionMode.SELECT_ON_RELEASE)
+			if(!Selected && selectionMode == SelectionMode.SELECT_ON_RELEASE)
 			{
 				Vector2 currentPosition = eventData.position;
 				Vector2 move = (currentPosition - pressPosition) / canvas.scaleFactor;
 				float fontSize = GetActiveTextRenderer().FontSize;
-				if (Mathf.Abs(move.x) > fontSize || Mathf.Abs(move.y) > fontSize) //Using font size as the tap threshold
+				if(Mathf.Abs(move.x) > fontSize || Mathf.Abs(move.y) > fontSize) //Using font size as the tap threshold
 				{
 					EventSystem.current.SetSelectedGameObject(null);
 					return;
 				}
 
 				beginEditReason = BeginEditReason.USER_SELECT;
-				if (EventSystem.current.currentSelectedGameObject != InputField.gameObject)
+				if(EventSystem.current.currentSelectedGameObject != InputField.gameObject)
 				{
 					EventSystem.current.SetSelectedGameObject(InputField.gameObject);
 				}
@@ -1158,37 +1158,37 @@ namespace AdvancedInputFieldPlugin
 				localMousePosition.x += (textAreaTransform.rect.width * 0.5f);
 				localMousePosition.y -= (textAreaTransform.rect.height * 0.5f);
 
-				if (caretOnBeginEdit == CaretOnBeginEdit.LOCATION_OF_CLICK)
+				if(caretOnBeginEdit == CaretOnBeginEdit.LOCATION_OF_CLICK)
 				{
 					textInputHandler.OnPress(localMousePosition);
 					textInputHandler.OnRelease(localMousePosition);
 				}
-				else if (caretOnBeginEdit == CaretOnBeginEdit.START_OF_TEXT)
+				else if(caretOnBeginEdit == CaretOnBeginEdit.START_OF_TEXT)
 				{
 					SetSelection(0, 0);
 				}
-				else if (caretOnBeginEdit == CaretOnBeginEdit.END_OF_TEXT)
+				else if(caretOnBeginEdit == CaretOnBeginEdit.END_OF_TEXT)
 				{
 					int caretPosition = Text.Length;
 					SetSelection(caretPosition, caretPosition);
 				}
-				else if (caretOnBeginEdit == CaretOnBeginEdit.SELECT_ALL)
+				else if(caretOnBeginEdit == CaretOnBeginEdit.SELECT_ALL)
 				{
 					SetSelection(0, Text.Length);
 				}
 			}
-			else if (selected && selectionMode == SelectionMode.SELECT_ON_PRESS && !editMode)
+			else if(selected && selectionMode == SelectionMode.SELECT_ON_PRESS && !editMode)
 			{
 				Vector2 currentPosition = eventData.position;
 				Vector2 move = (currentPosition - pressPosition) / canvas.scaleFactor;
 				float fontSize = GetActiveTextRenderer().FontSize;
-				if (Mathf.Abs(move.x) > fontSize || Mathf.Abs(move.y) > fontSize) //Using font size as the tap threshold
+				if(Mathf.Abs(move.x) > fontSize || Mathf.Abs(move.y) > fontSize) //Using font size as the tap threshold
 				{
 					return;
 				}
 
 				beginEditReason = BeginEditReason.USER_SELECT;
-				if (EventSystem.current.currentSelectedGameObject != InputField.gameObject)
+				if(EventSystem.current.currentSelectedGameObject != InputField.gameObject)
 				{
 					EventSystem.current.SetSelectedGameObject(InputField.gameObject);
 				}
@@ -1208,10 +1208,10 @@ namespace AdvancedInputFieldPlugin
 			DragMode dragMode = InputField.DragMode;
 			Transform transform = InputField.transform;
 
-			if (!Selected || dragMode == DragMode.MOVE_TEXT)
+			if(!Selected || dragMode == DragMode.MOVE_TEXT)
 			{
 				IBeginDragHandler beginDragHandler = transform.parent.GetComponentInParent<IBeginDragHandler>();
-				if (beginDragHandler != null)
+				if(beginDragHandler != null)
 				{
 					beginDragHandler.OnBeginDrag(eventData);
 				}
@@ -1235,10 +1235,10 @@ namespace AdvancedInputFieldPlugin
 			TextRenderer textRenderer = InputField.TextRenderer;
 			bool liveProcessing = InputField.LiveDecoration;
 
-			if (!Selected || dragMode == DragMode.MOVE_TEXT)
+			if(!Selected || dragMode == DragMode.MOVE_TEXT)
 			{
 				IDragHandler dragHandler = transform.parent.GetComponentInParent<IDragHandler>();
-				if (dragHandler != null)
+				if(dragHandler != null)
 				{
 					dragHandler.OnDrag(eventData);
 				}
@@ -1248,9 +1248,9 @@ namespace AdvancedInputFieldPlugin
 			}
 
 
-			if (PositionOutOfBounds(eventData))
+			if(PositionOutOfBounds(eventData))
 			{
-				if (!dragOutOfBounds)
+				if(!dragOutOfBounds)
 				{
 					dragOutOfBounds = true;
 				}
@@ -1266,12 +1266,12 @@ namespace AdvancedInputFieldPlugin
 			localMousePosition.x += (textAreaTransform.rect.width * 0.5f);
 			localMousePosition.y -= (textAreaTransform.rect.height * 0.5f);
 
-			if (dragMode == DragMode.UPDATE_TEXT_SELECTION && !string.IsNullOrEmpty(text))
+			if(dragMode == DragMode.UPDATE_TEXT_SELECTION && !string.IsNullOrEmpty(text))
 			{
-				if (!UsingTouchSelectionCursors)
+				if(!UsingTouchSelectionCursors)
 				{
 					int position;
-					if (liveProcessing)
+					if(liveProcessing)
 					{
 						position = textNavigator.GetCharacterIndexFromPosition(processedTextRenderer, localMousePosition);
 					}
@@ -1294,10 +1294,10 @@ namespace AdvancedInputFieldPlugin
 			DragMode dragMode = InputField.DragMode;
 			Transform transform = InputField.transform;
 
-			if (!Selected || dragMode == DragMode.MOVE_TEXT)
+			if(!Selected || dragMode == DragMode.MOVE_TEXT)
 			{
 				IEndDragHandler endDragHandler = transform.parent.GetComponentInParent<IEndDragHandler>();
-				if (endDragHandler != null)
+				if(endDragHandler != null)
 				{
 					endDragHandler.OnEndDrag(eventData);
 				}
@@ -1326,14 +1326,14 @@ namespace AdvancedInputFieldPlugin
 			localMousePosition.x += (textAreaTransform.rect.width * 0.5f);
 			localMousePosition.y -= (textAreaTransform.rect.height * 0.5f);
 
-			if (!selected)
+			if(!selected)
 			{
-				if (selectionMode == SelectionMode.SELECT_ON_PRESS)
+				if(selectionMode == SelectionMode.SELECT_ON_PRESS)
 				{
 					beginEditReason = BeginEditReason.USER_SELECT;
 					EnableSelection();
 				}
-				else if (selectionMode == SelectionMode.SELECT_ON_RELEASE)
+				else if(selectionMode == SelectionMode.SELECT_ON_RELEASE)
 				{
 					textInputHandler.LastPosition = localMousePosition;
 					return;
@@ -1349,7 +1349,7 @@ namespace AdvancedInputFieldPlugin
 
 			UserPressing = false;
 
-			if (!selected)
+			if(!selected)
 			{
 				CheckClick(eventData);
 				return;
@@ -1366,23 +1366,23 @@ namespace AdvancedInputFieldPlugin
 
 		internal void OnDeselect(BaseEventData eventData)
 		{
-			ActiveBehaviour?.StopCoroutine(DelayedDeselect());
-			ActiveBehaviour?.StartCoroutine(DelayedDeselect());
+            ActiveBehaviour?.StopCoroutine(DelayedDeselect());
+            ActiveBehaviour?.StartCoroutine(DelayedDeselect());
 		}
 
 		internal void OnUpdateSelected(BaseEventData eventData)
 		{
-			if (textNavigator.EditMode)
+			if(textNavigator.EditMode)
 			{
-				if (InputField.LiveDecoration)
+				if(InputField.LiveDecoration)
 				{
 					LiveDecorationFilter liveDecorationFilter = InputField.LiveDecorationFilter;
 					string processedText;
-					if (liveDecorationFilter.UpdateFilter(out processedText))
+					if(liveDecorationFilter.UpdateFilter(out processedText))
 					{
 						SetProcessedText(processedText);
 
-						if (Selected)
+						if(Selected)
 						{
 							int caretPosition = CaretPosition;
 							int processedCaretPosition = liveDecorationFilter.DetermineProcessedCaret(text, caretPosition, processedText);
@@ -1393,15 +1393,15 @@ namespace AdvancedInputFieldPlugin
 
 				textInputHandler.Process();
 
-				if (InputField.CanUseTouchSelectionCursors)
+				if(InputField.CanUseTouchSelectionCursors)
 				{
 					TouchTextSelectionHandler touchTextSelectionHandler = textNavigator.GetTextSelectionHandler<TouchTextSelectionHandler>();
-					if (touchTextSelectionHandler.StartCursor.Selected)
+					if(touchTextSelectionHandler.StartCursor.Selected)
 					{
 						updateDrag = true;
 						dragOutOfBounds = touchTextSelectionHandler.StartCursor.OutOfBounds;
 					}
-					else if (touchTextSelectionHandler.EndCursor.Selected)
+					else if(touchTextSelectionHandler.EndCursor.Selected)
 					{
 						updateDrag = true;
 						dragOutOfBounds = touchTextSelectionHandler.EndCursor.OutOfBounds;
@@ -1413,12 +1413,12 @@ namespace AdvancedInputFieldPlugin
 					}
 				}
 
-				if (updateDrag)
+				if(updateDrag)
 				{
 					UpdateDrag();
 				}
 			}
-			else if (textInputHandler != null)
+			else if(textInputHandler != null)
 			{
 				textInputHandler.UpdateHold();
 			}
@@ -1436,7 +1436,7 @@ namespace AdvancedInputFieldPlugin
 			Canvas canvas = InputField.Canvas;
 			float fastScrollSensitivity = InputField.FastScrollSensitivity;
 
-			if (dragOutOfBounds)
+			if(dragOutOfBounds)
 			{
 				Vector2 localMousePosition;
 #if ENABLE_INPUT_SYSTEM
@@ -1447,12 +1447,12 @@ namespace AdvancedInputFieldPlugin
 				localMousePosition.x += (textAreaTransform.rect.width * 0.5f);
 				localMousePosition.y -= (textAreaTransform.rect.height * 0.5f);
 
-				if (InputField.DragMode == DragMode.UPDATE_TEXT_SELECTION && !string.IsNullOrEmpty(text))
+				if(InputField.DragMode == DragMode.UPDATE_TEXT_SELECTION && !string.IsNullOrEmpty(text))
 				{
-					if (!UsingTouchSelectionCursors)
+					if(!UsingTouchSelectionCursors)
 					{
 						int position;
-						if (InputField.LiveDecoration)
+						if(InputField.LiveDecoration)
 						{
 							position = textNavigator.GetCharacterIndexFromPosition(processedTextRenderer, localMousePosition);
 						}
@@ -1466,14 +1466,14 @@ namespace AdvancedInputFieldPlugin
 
 					BasicTextSelectionHandler basicTextSelectionHandler = textNavigator.GetTextSelectionHandler<BasicTextSelectionHandler>();
 					float fullSize = Mathf.Min(canvas.pixelRect.width, canvas.pixelRect.height); //Use same reference size for horizontal and vertical scroll sensitivity calculation
-					if (InputField.Multiline)
+					if(InputField.Multiline)
 					{
 						float scrollSensitivity = 1;
-						if (localMousePosition.y > 0)
+						if(localMousePosition.y > 0)
 						{
 							scrollSensitivity += fastScrollSensitivity * Mathf.Abs(localMousePosition.y / fullSize);
 						}
-						else if (localMousePosition.y < -textAreaTransform.rect.height)
+						else if(localMousePosition.y < -textAreaTransform.rect.height)
 						{
 							scrollSensitivity += fastScrollSensitivity * Mathf.Abs((-textAreaTransform.rect.height - localMousePosition.y) / fullSize);
 						}
@@ -1483,11 +1483,11 @@ namespace AdvancedInputFieldPlugin
 					else
 					{
 						float scrollSensitivity = 1;
-						if (localMousePosition.x < 0)
+						if(localMousePosition.x < 0)
 						{
 							scrollSensitivity += fastScrollSensitivity * Mathf.Abs(localMousePosition.x / fullSize);
 						}
-						else if (localMousePosition.x > textAreaTransform.rect.width)
+						else if(localMousePosition.x > textAreaTransform.rect.width)
 						{
 							scrollSensitivity += fastScrollSensitivity * Mathf.Abs((localMousePosition.x - textAreaTransform.rect.width) / fullSize);
 						}
@@ -1522,9 +1522,9 @@ namespace AdvancedInputFieldPlugin
 		internal void EnableSelection()
 		{
 			AdvancedInputField lastSelectedInputField = NativeKeyboardManager.LastSelectedInputField;
-			if (lastSelectedInputField != null && NativeKeyboardManager.LastSelectedInputField != InputField)
+			if(lastSelectedInputField != null && NativeKeyboardManager.LastSelectedInputField != InputField)
 			{
-				if (lastSelectedInputField.ShouldBlockDeselect)
+				if(lastSelectedInputField.ShouldBlockDeselect)
 				{
 					return;
 				}
@@ -1532,7 +1532,7 @@ namespace AdvancedInputFieldPlugin
 
 			selected = true;
 			NativeKeyboardManager.LastSelectedInputField = InputField;
-			if (InputField.ReadOnly)
+			if(InputField.ReadOnly)
 			{
 				keyboardClient.ClearEventQueue();
 				CloseKeyboard();
@@ -1540,7 +1540,7 @@ namespace AdvancedInputFieldPlugin
 			}
 			else
 			{
-				if (InputField == NativeKeyboardManager.ActiveInputFieldBeforePause)
+				if(InputField == NativeKeyboardManager.ActiveInputFieldBeforePause)
 				{
 					NativeKeyboardManager.ActiveInputFieldBeforePause = null;
 					KeyboardClient.Keyboard.RestoreKeyboard();
@@ -1555,15 +1555,15 @@ namespace AdvancedInputFieldPlugin
 			}
 			eventHandler?.InvokeSelectionChanged(true);
 		}
-		public void Refresh()
+        public void Refresh()
+        {
+            eventHandler?.InvokeSelectionChanged(true);
+            BeginEditMode();
+        }
+        /// <summary>Marks as deselected</summary>
+        internal void DisableSelection()
 		{
-			eventHandler?.InvokeSelectionChanged(true);
-			BeginEditMode();
-		}
-		/// <summary>Marks as deselected</summary>
-		internal void DisableSelection()
-		{
-			if (Selected)
+			if(Selected)
 			{
 				lastTimeSelected = Time.realtimeSinceStartup;
 				selected = false;
@@ -1574,11 +1574,11 @@ namespace AdvancedInputFieldPlugin
 
 		public void LoadKeyboard()
 		{
-			if (InputField.ReadOnly) { return; }
+			if(InputField.ReadOnly) { return; }
 
 			string text = InputField.Text;
 
-			if (InputField.ShouldUseRichText)
+			if(InputField.ShouldUseRichText)
 			{
 				TextEditFrame textEditFrame = richTextProcessor.LastTextEditFrame;
 				text = textEditFrame.text;
@@ -1603,22 +1603,21 @@ namespace AdvancedInputFieldPlugin
 			};
 
 			string characterValidatorJSON = null;
-			if (InputField.CharacterValidation == CharacterValidation.CUSTOM && InputField.CharacterValidator != null)
+			if(InputField.CharacterValidation == CharacterValidation.CUSTOM && InputField.CharacterValidator != null)
 			{
 				characterValidatorJSON = JsonUtility.ToJson(InputField.CharacterValidator);
 			}
 			configuration.characterValidatorJSON = characterValidatorJSON;
 
 #if !UNITY_EDITOR
-			KeyboardClient.Keyboard.State = KeyboardState.PENDING_HIDE;
+			KeyboardClient.Keyboard.State = KeyboardState.PENDING_SHOW;
 #endif
-			KeyboardClient.Keyboard.State = KeyboardState.PENDING_HIDE;
-			// KeyboardClient.ShowKeyboard(text, selectionStartPosition, selectionEndPosition, configuration);
+			KeyboardClient.ShowKeyboard(text, selectionStartPosition, selectionEndPosition, configuration);
 		}
 
 		public void CloseKeyboard()
 		{
-			if (KeyboardClient.Keyboard.State != KeyboardState.HIDDEN)
+			if(KeyboardClient.Keyboard.State != KeyboardState.HIDDEN)
 			{
 				KeyboardClient.Keyboard.State = KeyboardState.PENDING_HIDE;
 				KeyboardClient.HideKeyboard();
@@ -1627,7 +1626,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void ConfigureActionBar()
 		{
-			if (InputField.CanUseActionBar)
+			if(InputField.CanUseActionBar)
 			{
 				textInputHandler.InitActionBar(this);
 			}
@@ -1637,7 +1636,7 @@ namespace AdvancedInputFieldPlugin
 		internal void BeginEditMode()
 		{
 			editMode = true;
-			if (InputField.CanUseActionBar)
+			if(InputField.CanUseActionBar)
 			{
 				textInputHandler.InitActionBar(this);
 			}
@@ -1657,7 +1656,7 @@ namespace AdvancedInputFieldPlugin
 		internal void EndEditMode()
 		{
 			editMode = false;
-			if (ActionBar != null)
+			if(ActionBar != null)
 			{
 				Object.Destroy(ActionBar.gameObject);
 			}
@@ -1665,11 +1664,11 @@ namespace AdvancedInputFieldPlugin
 			textManipulator.EndEditMode();
 			textInputHandler.CancelInput();
 
-			if (InputField.LiveDecoration)
+			if(InputField.LiveDecoration)
 			{
 				LiveDecorationFilter liveDecorationFilter = InputField.LiveDecorationFilter;
 				string processedText;
-				if (liveDecorationFilter.UpdateFilter(out processedText, true))
+				if(liveDecorationFilter.UpdateFilter(out processedText, true))
 				{
 					SetProcessedText(processedText);
 				}
@@ -1682,19 +1681,19 @@ namespace AdvancedInputFieldPlugin
 
 		internal void ApplyTextEditFrame(TextEditFrame textEditFrame)
 		{
-			if (InputField.LineLimit > 0 && !InputField.ShouldUseRichText)
+			if(InputField.LineLimit > 0 && !InputField.ShouldUseRichText)
 			{
-				if (ApplyLineLimit(textEditFrame, out TextEditFrame resultTextEditFrame))
+				if(ApplyLineLimit(textEditFrame, out TextEditFrame resultTextEditFrame))
 				{
 					ApplyTextEditFrame(resultTextEditFrame); //Retry
 					return;
 				}
 			}
 
-			if (InputField.LiveProcessing)
+			if(InputField.LiveProcessing)
 			{
 				TextEditFrame processedFrame = InputField.LiveProcessingFilter.ProcessTextEditUpdate(textEditFrame, lastTextEditFrame);
-				if (processedFrame.text != textEditFrame.text || processedFrame.selectionStartPosition != textEditFrame.selectionStartPosition
+				if(processedFrame.text != textEditFrame.text || processedFrame.selectionStartPosition != textEditFrame.selectionStartPosition
 					|| processedFrame.selectionEndPosition != textEditFrame.selectionEndPosition)
 				{
 					textEditFrame = processedFrame;
@@ -1705,16 +1704,16 @@ namespace AdvancedInputFieldPlugin
 			SetText(textEditFrame.text);
 			SetSelection(textEditFrame.selectionStartPosition, textEditFrame.selectionEndPosition);
 
-			if (InputField.LiveDecoration)
+			if(InputField.LiveDecoration)
 			{
 				LiveDecorationFilter liveDecorationFilter = InputField.LiveDecorationFilter;
-				if (textEditFrame.text != lastTextEditFrame.text)
+				if(textEditFrame.text != lastTextEditFrame.text)
 				{
 					string processedText = liveDecorationFilter.ProcessText(textEditFrame.text, textEditFrame.selectionStartPosition);
 					SetProcessedText(processedText);
 				}
 
-				if (textEditFrame.selectionStartPosition != lastTextEditFrame.selectionStartPosition || textEditFrame.selectionEndPosition != lastTextEditFrame.selectionEndPosition)
+				if(textEditFrame.selectionStartPosition != lastTextEditFrame.selectionStartPosition || textEditFrame.selectionEndPosition != lastTextEditFrame.selectionEndPosition)
 				{
 					int processedSelectionStartPosition = liveDecorationFilter.DetermineProcessedCaret(textEditFrame.text, textEditFrame.selectionStartPosition, processedText);
 					int processedSelectionEndPosition = liveDecorationFilter.DetermineProcessedCaret(textEditFrame.text, textEditFrame.selectionEndPosition, processedText);
@@ -1722,12 +1721,12 @@ namespace AdvancedInputFieldPlugin
 				}
 			}
 
-			if (InputField.ShouldUseRichText)
+			if(InputField.ShouldUseRichText)
 			{
 				TextEditFrame richTextEditFrame = richTextProcessor.ProcessTextEditFrame(textEditFrame);
-				if (InputField.LineLimit > 0)
+				if(InputField.LineLimit > 0)
 				{
-					if (ApplyLineLimit(textEditFrame, out TextEditFrame resultTextEditFrame))
+					if(ApplyLineLimit(textEditFrame, out TextEditFrame resultTextEditFrame))
 					{
 						ApplyTextEditFrame(resultTextEditFrame); //Retry
 						return;
@@ -1742,7 +1741,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void ApplyRichTextEditFrame(TextEditFrame richTextEditFrame)
 		{
-			if (InputField.LiveProcessing)
+			if(InputField.LiveProcessing)
 			{
 				InputField.LiveProcessingFilter.OnRichTextEditUpdate(richTextEditFrame, richTextProcessor.LastRichTextEditFrame);
 			}
@@ -1758,7 +1757,7 @@ namespace AdvancedInputFieldPlugin
 			resultTextEditFrame = textEditFrame;
 
 			TextRenderer activeTextRenderer;
-			if (InputField.LiveDecoration || (!InputField.Selected && InputField.PostDecoration))
+			if(InputField.LiveDecoration || (!InputField.Selected && InputField.PostDecoration))
 			{
 				activeTextRenderer = InputField.ProcessedTextRenderer;
 			}
@@ -1772,13 +1771,13 @@ namespace AdvancedInputFieldPlugin
 			activeTextRenderer.Text = text;
 			activeTextRenderer.UpdateImmediately();
 
-			if (activeTextRenderer.LineCount > InputField.LineLimit && text.Length > 1)
+			if(activeTextRenderer.LineCount > InputField.LineLimit && text.Length > 1)
 			{
 				int selectionStartPosition = textEditFrame.selectionStartPosition;
 				selectionStartPosition--;
 
 				EmojiData emojiData;
-				if (InputField.EmojisAllowed && NativeKeyboardManager.EmojiEngine.TryFindPreviousEmojiInText(text, selectionStartPosition, out emojiData))
+				if(InputField.EmojisAllowed && NativeKeyboardManager.EmojiEngine.TryFindPreviousEmojiInText(text, selectionStartPosition, out emojiData))
 				{
 					int count = emojiData.text.Length;
 					text = text.Remove(selectionStartPosition + 1 - count, count);
@@ -1801,7 +1800,7 @@ namespace AdvancedInputFieldPlugin
 
 		internal void OnUpdate()
 		{
-			if (selected)
+			if(selected)
 			{
 				textNavigator.OnUpdate();
 			}
@@ -1814,19 +1813,19 @@ namespace AdvancedInputFieldPlugin
 
 		internal void RefreshRendering()
 		{
-			if (textDirty || selectionDirty)
+			if(textDirty || selectionDirty)
 			{
-				if (selected)
+				if(selected)
 				{
 					TextEditFrame? lastNativeTextEditFrame = keyboardClient.LastTextEditFrame;
-					if (lastNativeTextEditFrame == null)
+					if(lastNativeTextEditFrame == null)
 					{
 						keyboardClient.UpdateTextEdit(text, selectionStartPosition, selectionEndPosition); //Sync state with native code
 					}
 					else
 					{
 						TextEditFrame lastNativeFrame = lastNativeTextEditFrame.Value;
-						if (lastNativeFrame.text != text
+						if(lastNativeFrame.text != text
 							|| lastNativeFrame.selectionStartPosition != selectionStartPosition
 							|| lastNativeFrame.selectionEndPosition != selectionEndPosition)
 						{
@@ -1835,14 +1834,14 @@ namespace AdvancedInputFieldPlugin
 					}
 				}
 
-				if (textDirty) //Always update selection if text changed
+				if(textDirty) //Always update selection if text changed
 				{
 					RefreshRenderedText();
 					textNavigator.UpdateRendering();
 					textDirty = false;
 					selectionDirty = false;
 				}
-				else if (selectionDirty) //Only update selection if only selection changed
+				else if(selectionDirty) //Only update selection if only selection changed
 				{
 					textNavigator.UpdateRendering();
 					selectionDirty = false;
@@ -1859,7 +1858,7 @@ namespace AdvancedInputFieldPlugin
 		internal bool IsCanvasFrontRendererSelected()
 		{
 			GameObject currentSelection = EventSystem.current.currentSelectedGameObject;
-			if (currentSelection != null)
+			if(currentSelection != null)
 			{
 				bool selected = (currentSelection.GetComponentInParent<CanvasFrontRenderer>() != null);
 				return selected;
@@ -1871,7 +1870,7 @@ namespace AdvancedInputFieldPlugin
 		internal bool IsInputFieldChildSelected()
 		{
 			GameObject currentSelection = EventSystem.current.currentSelectedGameObject;
-			if (currentSelection != null)
+			if(currentSelection != null)
 			{
 				return (currentSelection.GetComponentInParent<AdvancedInputField>() == InputField);
 			}
@@ -1882,10 +1881,10 @@ namespace AdvancedInputFieldPlugin
 		internal bool IsInputFieldRefocusableSelected()
 		{
 			GameObject currentSelection = EventSystem.current.currentSelectedGameObject;
-			if (currentSelection != null)
+			if(currentSelection != null)
 			{
-				if (currentSelection.GetComponentInParent<InputFieldRefocusable>() != null) { return true; }
-				if (currentSelection.GetComponentInParent<InputFieldButton>() != null) { return true; }
+				if(currentSelection.GetComponentInParent<InputFieldRefocusable>() != null) { return true; }
+				if(currentSelection.GetComponentInParent<InputFieldButton>() != null) { return true; }
 			}
 
 			return false;
@@ -1895,17 +1894,17 @@ namespace AdvancedInputFieldPlugin
 		internal IEnumerator DelayedDeselect()
 		{
 			yield return null;
-			if (this == null) { yield break; }
+			if(this == null) { yield break; }
 
-			if (IsCanvasFrontRendererSelected() || IsInputFieldChildSelected() || IsInputFieldRefocusableSelected()) //Invalid deselect
+			if(IsCanvasFrontRendererSelected() || IsInputFieldChildSelected() || IsInputFieldRefocusableSelected()) //Invalid deselect
 			{
 				Reselect();
 			}
-			else if (InputField.ShouldBlockDeselect)
+			else if(InputField.ShouldBlockDeselect)
 			{
 				eventHandler?.InvokeEndEdit(text, endEditReason);
 
-				if (InputField.ShouldBlockDeselect) //Second check, because flag could have been changed when above event got called
+				if(InputField.ShouldBlockDeselect) //Second check, because flag could have been changed when above event got called
 				{
 					Reselect();
 				}
@@ -1928,22 +1927,22 @@ namespace AdvancedInputFieldPlugin
 		/// <summary>(Re)selects the InputField</summary>
 		internal void Reselect()
 		{
-			if (EventSystem.current != null)
+			if(EventSystem.current != null)
 			{
 				EventSystem.current.SetSelectedGameObject(InputField.gameObject);
 				textInputHandler.OnSelect();
 			}
 			else
 			{
-				ActiveBehaviour?.StopCoroutine(DelayedReselect());
-				ActiveBehaviour?.StartCoroutine(DelayedReselect());
+                ActiveBehaviour?.StopCoroutine(DelayedReselect());
+                ActiveBehaviour?.StartCoroutine(DelayedReselect());
 			}
 		}
 
 		internal IEnumerator DelayedReselect()
 		{
 			yield return null;
-			if (EventSystem.current != null)
+			if(EventSystem.current != null)
 			{
 				EventSystem.current.SetSelectedGameObject(InputField.gameObject);
 				textInputHandler.OnSelect();
@@ -1957,12 +1956,12 @@ namespace AdvancedInputFieldPlugin
 			Reselect();
 			EnableSelection();
 			BeginEditMode();
-			switch (InputField.CaretOnBeginEdit)
+			switch(InputField.CaretOnBeginEdit)
 			{
 				case CaretOnBeginEdit.START_OF_TEXT: textNavigator.MoveToStart(); break;
 				case CaretOnBeginEdit.END_OF_TEXT: textNavigator.MoveToEnd(); break;
 				case CaretOnBeginEdit.LOCATION_OF_CLICK:
-					if (beginEditReason == BeginEditReason.USER_SELECT)
+					if(beginEditReason == BeginEditReason.USER_SELECT)
 					{
 						textNavigator.ResetCaret(textInputHandler.LastPosition);
 					}

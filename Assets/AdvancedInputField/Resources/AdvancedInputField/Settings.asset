@@ -52,7 +52,7 @@ MonoBehaviour:
     touchTextSelectionPrefab: {fileID: 114766093189932370, guid: 408f8a9c9aa54ad45843c32292d51fcd, type: 3}
     touchSelectionCursorsScale: 1
     mobileKeyboardBehaviour: 0
-  simulateMobileBehaviourInEditor: 0
+  simulateMobileBehaviourInEditor: 1
   portraitKeyboardCanvasPrefab: {fileID: 223433812243205740, guid: 6f3a16ea735a431428ab4869d2eac475, type: 3}
   landscapeKeyboardCanvasPrefab: {fileID: 223962674380260514, guid: c29a23e7b4a26ab4f9ec9a8fdef8a28e, type: 3}
   doubleTapThreshold: 0.5

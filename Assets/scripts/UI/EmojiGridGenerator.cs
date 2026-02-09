@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using AdvancedInputFieldPlugin;
-using DG.Tweening;
-
 
 public class EmojiGridGenerator : MonoBehaviour
 {
@@ -13,6 +11,8 @@ public class EmojiGridGenerator : MonoBehaviour
 
     private bool generated = false;
 
+    // Must match the baseUnicode used in your editor script
+    private const int BASE_UNICODE = 0xE000;
 
     void Start()
     {
@@ -20,8 +20,6 @@ public class EmojiGridGenerator : MonoBehaviour
         generated = true;
 
         GenerateEmojis();
-        NativeKeyboardManager.TryDestroy();
-
     }
 
     void GenerateEmojis()
@@ -51,13 +49,15 @@ public class EmojiGridGenerator : MonoBehaviour
     {
         if (inputField == null) return;
 
-        string tag = $"<sprite index={index}>";
+        // Convert index to unicode character
+        char emojiChar = (char)(BASE_UNICODE + index);
 
-        // Always append to end
-        inputField.Text += tag;
+        // Insert as real character
+        inputField.Text += emojiChar;
 
         // Move caret to end
         inputField.CaretPosition = inputField.Text.Length;
+
         inputField.ManualSelect();
     }
 }

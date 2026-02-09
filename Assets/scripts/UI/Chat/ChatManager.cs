@@ -64,12 +64,6 @@ public class ChatManager : GenericObjectPool<ChatView>
     });
 
     NativeKeyboardManager.Initialize(); // make sure instance exists
-    DOVirtual.DelayedCall(0.5f, () =>
-    {
-      inputField.ManualSelect();
-      inputField.ManualDeselect();
-    });
-    NativeKeyboardManager.LastSelectedInputField = inputField;
   }
 
   void LateUpdate()
