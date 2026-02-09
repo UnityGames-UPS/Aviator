@@ -54,6 +54,10 @@ public class UIManager : MonoBehaviour
   [SerializeField] private GameObject OtherOptionsPanelParent;
   [SerializeField] private TMP_Text BalanceText;
   [SerializeField] private TMP_Text PlayerNameText;
+  [SerializeField] private int provablyFairPanelIndex = -1;
+  [SerializeField] private Button provablyFairOpenButton;
+  [SerializeField] private Button provablyFairCloseButtonPortrait;
+  [SerializeField] private Button provablyFairCloseButtonLandscape;
   //0: Bet History
   //1: Game Limits 
   //2: How To Play
@@ -199,6 +203,24 @@ public class UIManager : MonoBehaviour
     OnDiscQuitButton.onClick.AddListener(() => { isUserExit = true; socket.CloseGame(); });
 
     CloseOtherOptionButton.onClick.AddListener(() => CloseAllOtherOptionsMenu());
+    if (provablyFairOpenButton != null)
+      provablyFairOpenButton.onClick.AddListener(() =>
+      {
+        if (IsOtherOptionIndexValid(provablyFairPanelIndex))
+          StartCoroutine(OtherOptionButtonClicked(provablyFairPanelIndex));
+      });
+    if (provablyFairCloseButtonPortrait != null)
+      provablyFairCloseButtonPortrait.onClick.AddListener(() =>
+      {
+        if (IsOtherOptionIndexValid(provablyFairPanelIndex))
+          CloseOtherOptionMenu(provablyFairPanelIndex);
+      });
+    if (provablyFairCloseButtonLandscape != null)
+      provablyFairCloseButtonLandscape.onClick.AddListener(() =>
+      {
+        if (IsOtherOptionIndexValid(provablyFairPanelIndex))
+          CloseOtherOptionMenu(provablyFairPanelIndex);
+      });
 
     CloseOptionsMenuButton1.onClick.Invoke(); //Close Other Options Menu By Default
 
@@ -1178,6 +1200,9 @@ public class UIManager : MonoBehaviour
 
   IEnumerator OtherOptionButtonClicked(int index)
   {
+    if (!IsOtherOptionIndexValid(index))
+      yield break;
+
     OtherOptionsMenu.SetActive(false);
     foreach (GameObject gameObject in OtherOptionsPanels)
     {
@@ -1199,6 +1224,9 @@ public class UIManager : MonoBehaviour
 
   void CloseOtherOptionMenu(int index)
   {
+    if (!IsOtherOptionIndexValid(index))
+      return;
+
     OtherOptionsPanels[index].SetActive(false);
     OtherOptionsPanelParent.SetActive(false);
   }
@@ -1210,6 +1238,13 @@ public class UIManager : MonoBehaviour
       panel.SetActive(false);
     }
     OtherOptionsPanelParent.SetActive(false);
+  }
+
+  private bool IsOtherOptionIndexValid(int index)
+  {
+    if (OtherOptionsPanels == null)
+      return false;
+    return index >= 0 && index < OtherOptionsPanels.Length;
   }
 
   private void SetupAutoCashoutInputs()
