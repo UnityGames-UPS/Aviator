@@ -15,7 +15,7 @@ MonoBehaviour:
   assetVersion: 2
   m_TextWrappingMode: 1
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   m_enableTintAllSprites: 0
   m_enableParseEscapeCharacters: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc433fbdc6604424a99e60c141c45030, type: 2}
   m_matchMaterialPreset: 1
   m_HideSubTextObjects: 1
-  m_defaultSpriteAsset: {fileID: 11400000, guid: c41005c129ba4d66911b75229fd70b45, type: 2}
+  m_defaultSpriteAsset: {fileID: 11400000, guid: 26099709f3c894af591e290c2ea06377, type: 2}
   m_defaultSpriteAssetPath: Sprite Assets/
   m_enableEmojiSupport: 1
   m_MissingCharacterSpriteUnicode: 0

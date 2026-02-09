@@ -4,15 +4,19 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using AdvancedInputFieldPlugin;
 
 public class ChatManager : GenericObjectPool<ChatView>
 {
   [SerializeField] private SocketIOManager socketIOManager;
   [SerializeField] private ScrollRect ScrollRect;
-  [SerializeField] internal TMP_InputField inputField;
+  [SerializeField] internal AdvancedInputField inputField;
+  [SerializeField] internal TMP_Text inputText;
   [SerializeField] private Button sendButton;
   [SerializeField] private Button openChatButton;
   [SerializeField] private Button closeChatButton;
+  [SerializeField] private Button OpenEmojiButton;
+  [SerializeField] private GameObject EmojiWindowObject;
   private Queue<ChatView> activeMessages = new();
 
   [Header("Chat Layout")]
@@ -33,7 +37,7 @@ public class ChatManager : GenericObjectPool<ChatView>
   protected override void Awake()
   {
     base.Awake();
-    sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage(inputField.text)));
+    sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage(inputField.Text)));
     if (openChatButton != null)
       openChatButton.onClick.AddListener(OpenChat);
     if (closeChatButton != null)
@@ -49,9 +53,16 @@ public class ChatManager : GenericObjectPool<ChatView>
       defaultOffsetMin = chatRect.offsetMin;
       defaultOffsetMax = chatRect.offsetMax;
     }
+    inputField.OnEndEdit.AddListener(OnEndEdit);
+    inputField.OnValueChanged.AddListener((s) => OnValueChange());
 
-    inputField.onEndEdit.AddListener((s) => OnEndEdit());
-    inputField.onValueChanged.AddListener((s) => OnValueChange());
+    NativeKeyboardManager.Initialize(); // make sure instance exists
+    DOVirtual.DelayedCall(0.5f, () =>
+    {
+      inputField.ManualSelect();
+      inputField.ManualDeselect();
+    });
+    NativeKeyboardManager.LastSelectedInputField = inputField;
   }
 
   void LateUpdate()
@@ -152,37 +163,36 @@ public class ChatManager : GenericObjectPool<ChatView>
     if (ScrollRect.verticalNormalizedPosition <= 0.05f)
       ScrollRect.verticalNormalizedPosition = 0f;
   }
-
-  void OnEndEdit()
+  void OnEndEdit(string text, EndEditReason reason)
   {
-    bool enterPressed = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter);
-    bool escapePressed = Input.GetKeyDown(KeyCode.Escape);
-    if (enterPressed)
+    if (reason == EndEditReason.KEYBOARD_DONE)
     {
-      string msg = inputField.text = inputField.text.Replace("\n", "").Replace("\r", "").Trim();
+      string msg = text.Replace("\n", "").Replace("\r", "").Trim();
       StartCoroutine(SendChatMessage(msg));
     }
-    else if (escapePressed)
+    else if (reason == EndEditReason.KEYBOARD_CANCEL)
     {
-      DOVirtual.DelayedCall(0.001f, () =>
-      {
-        inputField.text = "";
-      });
+      inputField.Text = "";
     }
   }
 
   void OnValueChange()
   {
-    if (inputField.textComponent.color == Color.red && !inputField.text.Contains("Char Limit Exceeded"))
+    if (inputText.color == Color.red && !inputField.Text.Contains("Char Limit Exceeded"))
     {
-      inputField.textComponent.color = Color.white;
+      setColor(Color.white);
     }
+  }
+
+  void ToggleEmojiWindow(bool isActive)
+  {
+    EmojiWindowObject.SetActive(isActive);
   }
 
   internal IEnumerator SendChatMessage(string msg)
   {
     ToggleUI(false);
-    inputField.text = "";
+    inputField.Text = "";
 
     if (string.IsNullOrEmpty(msg))
     {
@@ -198,8 +208,8 @@ public class ChatManager : GenericObjectPool<ChatView>
 
     if (msg.Length > socketIOManager.chatCharCap)
     {
-      inputField.textComponent.color = Color.red;
-      inputField.text = "Char Limit Exceeded!!!";
+      setColor(Color.red);
+      inputField.Text = "Char Limit Exceeded!!!";
       ToggleUI(true);
       yield break;
     }
@@ -215,9 +225,14 @@ public class ChatManager : GenericObjectPool<ChatView>
   {
     inputField.interactable = toggle;
     if (toggle)
-      inputField.ActivateInputField();
+      inputField.ManualSelect();
     else
-      inputField.DeactivateInputField();
+      inputField.ManualDeselect();
     sendButton.interactable = toggle;
+  }
+
+  void setColor(Color input)
+  {
+    inputText.color = input;
   }
 }
