@@ -56,4 +56,27 @@ mergeInto(LibraryManager.library, {
       console.error("[CustomJsLib] SendPostMessage Error:", e);
     }
   }
+  ,
+
+  CopyTextToClipboard: function (textPtr) {
+    try {
+      var text = UTF8ToString(textPtr);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () {
+            if (typeof SendMessage === 'function') {
+              SendMessage('PROVABLY FAIR - MANAGER', 'OnCopySuccess');
+            }
+          },
+          function (err) {
+            console.log("[CustomJsLib] CopyTextToClipboard failed:", err);
+          }
+        );
+      } else {
+        console.log("[CustomJsLib] Clipboard API not available.");
+      }
+    } catch (e) {
+      console.error("[CustomJsLib] CopyTextToClipboard Error:", e);
+    }
+  }
 });

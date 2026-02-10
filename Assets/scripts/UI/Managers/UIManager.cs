@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private PrevRoundManager prevRoundManager;
   [SerializeField] private BetHistoryManager betHistoryManager;
   [SerializeField] private AudioManager Audio;
+  [SerializeField] private ProvablyFairSettingsManager provablyFairSettingsManager;
 
   [SerializeField] private PopupManager popupManager;
   private bool leftRequestInProgress = false;
@@ -156,6 +158,9 @@ public class UIManager : MonoBehaviour
   [SerializeField] private int currentTopBetFilterIndex;
   [SerializeField] private int currentTopBetTimeIndex;
   [SerializeField] private string clientSeed;
+  [SerializeField] private string clientSeedRandom;
+  [SerializeField] private string clientSeedManual;
+  [SerializeField] private string serverSeed;
   [SerializeField] private string roundIdentifier = "";
 
   private bool blueColTime = false;
@@ -311,7 +316,12 @@ public class UIManager : MonoBehaviour
     UpdateTopBarInteractivityForAutoCashout(true);
     UpdateTopBarInteractivityForAutoCashout(false);
 
-    clientSeed = ClientSeedGenerator();
+    clientSeedRandom = ClientSeedGenerator();
+    clientSeedManual = ClientSeedGenerator();
+    clientSeed = clientSeedRandom;
+    serverSeed = Guid.NewGuid().ToString();
+    if (provablyFairSettingsManager != null)
+      provablyFairSettingsManager.Initialize(clientSeedRandom, clientSeedManual, serverSeed, useManual: false);
   }
 
   private void SetupAvatarButtons()
@@ -340,12 +350,12 @@ public class UIManager : MonoBehaviour
 
     if (avatarSprites.Count > 0)
     {
-      profilePicImage.sprite = avatarSprites[Random.Range(0, avatarSprites.Count)];
+      profilePicImage.sprite = avatarSprites[UnityEngine.Random.Range(0, avatarSprites.Count)];
       return;
     }
 
     if (profilePicSprites != null && profilePicSprites.Length > 0)
-      profilePicImage.sprite = profilePicSprites[Random.Range(0, profilePicSprites.Length)];
+      profilePicImage.sprite = profilePicSprites[UnityEngine.Random.Range(0, profilePicSprites.Length)];
   }
 
   private void SetProfilePicture(Sprite sprite)
@@ -367,7 +377,7 @@ public class UIManager : MonoBehaviour
     List<Sprite> sprites = GetProfileSprites();
     if (sprites == null || sprites.Count == 0)
       return null;
-    return sprites[Random.Range(0, sprites.Count)];
+    return sprites[UnityEngine.Random.Range(0, sprites.Count)];
   }
 
   private void OnAvatarButtonClicked(Sprite sprite)
@@ -1592,6 +1602,22 @@ public class UIManager : MonoBehaviour
     string clientSeed = new string(seedChars);
     Debug.Log("Generated Client Seed: " + clientSeed);
     return clientSeed;
+  }
+
+  internal void SetActiveClientSeed(string seed)
+  {
+    if (string.IsNullOrEmpty(seed))
+      return;
+    clientSeed = seed;
+  }
+
+  internal void UpdateServerSeed(string seed)
+  {
+    if (string.IsNullOrEmpty(seed))
+      return;
+    serverSeed = seed;
+    if (provablyFairSettingsManager != null)
+      provablyFairSettingsManager.UpdateServerSeed(serverSeed);
   }
 
   internal void CheckAndClosePopups()

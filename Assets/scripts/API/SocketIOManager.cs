@@ -444,6 +444,9 @@ public class SocketIOManager : MonoBehaviour
     Debug.Log("CRASH: " + data);
     JObject obj = JObject.Parse(data);
     float crashPoint = (float)obj["crashPoint"];
+    string serverSeed = obj.Value<string>("serverSeed");
+    if (!string.IsNullOrEmpty(serverSeed))
+      uiManager.UpdateServerSeed(serverSeed);
     uiManager.OnCrash(crashPoint, crashDuration);
     StartCoroutine(crashHistoryManager.AddCrash(crashPoint));
   }

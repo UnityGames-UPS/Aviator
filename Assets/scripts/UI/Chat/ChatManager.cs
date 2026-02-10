@@ -10,7 +10,7 @@ public class ChatManager : GenericObjectPool<ChatView>
 {
   [SerializeField] private SocketIOManager socketIOManager;
   [SerializeField] private ScrollRect ScrollRect;
-  [SerializeField] internal AdvancedInputField inputField;
+  [SerializeField] internal TMP_InputField inputField;
   [SerializeField] internal TMP_Text inputText;
   [SerializeField] private Button sendButton;
   [SerializeField] private Button openChatButton;
@@ -38,7 +38,7 @@ public class ChatManager : GenericObjectPool<ChatView>
   protected override void Awake()
   {
     base.Awake();
-    sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage(inputField.Text)));
+    sendButton.onClick.AddListener(() => StartCoroutine(SendChatMessage(inputField.text)));
     if (openChatButton != null)
       openChatButton.onClick.AddListener(OpenChat);
     if (closeChatButton != null)
@@ -54,8 +54,8 @@ public class ChatManager : GenericObjectPool<ChatView>
       defaultOffsetMin = chatRect.offsetMin;
       defaultOffsetMax = chatRect.offsetMax;
     }
-    inputField.OnEndEdit.AddListener(OnEndEdit);
-    inputField.OnValueChanged.AddListener((s) => OnValueChange());
+    // inputField.onEndEdit.AddListener(OnEndEdit);
+    inputField.onValueChanged.AddListener((s) => OnValueChange());
 
     OpenEmojiButton.onClick.AddListener(() =>
     {
@@ -173,13 +173,13 @@ public class ChatManager : GenericObjectPool<ChatView>
     }
     else if (reason == EndEditReason.KEYBOARD_CANCEL)
     {
-      inputField.Text = "";
+      inputField.text = "";
     }
   }
 
   void OnValueChange()
   {
-    if (inputText.color == Color.red && !inputField.Text.Contains("Char Limit Exceeded"))
+    if (inputText.color == Color.red && !inputField.text.Contains("Char Limit Exceeded"))
     {
       setColor(Color.white);
     }
@@ -193,7 +193,7 @@ public class ChatManager : GenericObjectPool<ChatView>
   internal IEnumerator SendChatMessage(string msg)
   {
     ToggleUI(false);
-    inputField.Text = "";
+    inputField.text = "";
 
     if (string.IsNullOrEmpty(msg))
     {
@@ -210,12 +210,17 @@ public class ChatManager : GenericObjectPool<ChatView>
     if (msg.Length > socketIOManager.chatCharCap)
     {
       setColor(Color.red);
-      inputField.Text = "Char Limit Exceeded!!!";
+      inputField.text = "Char Limit Exceeded!!!";
       ToggleUI(true);
       yield break;
     }
 
     socketIOManager.SendChatMessage(msg);
+    if (isEmojiWindowOpen)
+    {
+      ToggleEmojiWindow(false);
+      isEmojiWindowOpen = false;
+    }
 
     yield return new WaitForSeconds(1f);
 
@@ -226,9 +231,9 @@ public class ChatManager : GenericObjectPool<ChatView>
   {
     inputField.interactable = toggle;
     if (toggle)
-      inputField.ManualSelect();
+      inputField.ActivateInputField();
     else
-      inputField.ManualDeselect();
+      inputField.DeactivateInputField();
     sendButton.interactable = toggle;
   }
 
