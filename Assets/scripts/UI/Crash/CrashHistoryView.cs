@@ -1,13 +1,16 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CrashHistoryView : MonoBehaviour
 {
   [SerializeField] private TMP_Text multiplierText;
   [SerializeField] private RectTransform rect;
+  [SerializeField] private Button detailsButton;
   [SerializeField] private Color PurpleColor;
   private Vector3 originalScale;
+  private CrashHistoryRoundData roundData;
 
   internal RectTransform Rect => rect;
 
@@ -15,17 +18,24 @@ public class CrashHistoryView : MonoBehaviour
   {
     if (!multiplierText) multiplierText = GetComponent<TMP_Text>();
     if (!rect) rect = GetComponent<RectTransform>();
+    if (!detailsButton) detailsButton = GetComponent<Button>();
   }
 
   void Awake()
   {
     if (!multiplierText) multiplierText = GetComponent<TMP_Text>();
     if (!rect) rect = GetComponent<RectTransform>();
+    if (!detailsButton) detailsButton = GetComponent<Button>();
     originalScale = rect.localScale;
+
+    if (detailsButton != null)
+      detailsButton.onClick.AddListener(OpenProvablyFairPopup);
   }
 
-  internal void SetValue(float multiplier, bool resetTransforms = false)
+  internal void SetData(CrashHistoryRoundData data, bool resetTransforms = false)
   {
+    roundData = data;
+    float multiplier = data != null ? data.crashPoint : 0f;
     multiplierText.text = multiplier.ToString("N2") + "x";
 
     // colors (optional)
@@ -38,6 +48,15 @@ public class CrashHistoryView : MonoBehaviour
       multiplierText.alpha = 1f;
       // DO NOT force anchoredPosition here on init; layout will place it.
     }
+  }
+
+  private void OpenProvablyFairPopup()
+  {
+    if (roundData == null)
+      return;
+
+    if (UIManager.Instance != null)
+      UIManager.Instance.OpenProvablyFairPopupFromCrashHistory(roundData);
   }
 
   internal void PrepareSpawnVisual()

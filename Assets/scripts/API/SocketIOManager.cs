@@ -7,6 +7,7 @@ using Best.SocketIO.Events;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using DG.Tweening;
+using System.Globalization;
 
 public class SocketIOManager : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] internal BetHistoryData BetHistoryData = new();
   [SerializeField] internal LastRoundResult lastRoundResult = new();
   [SerializeField] internal RoundStartData roundData = new();
+  [SerializeField] internal List<CrashHistoryRoundData> crashHistoryRounds = new();
   [SerializeField] internal AnalyticsRoot analyticsData = new();
   [SerializeField] internal AviatorState CurrentState = AviatorState.None;
   [SerializeField] internal KeyValuePair<bool, string> leftAck = new(false, "");
@@ -296,7 +298,6 @@ public class SocketIOManager : MonoBehaviour
     waitingForPong = false;
     missedPongs = 0;
     lastPongTime = Time.time;
-    SendPing();
   }
   private void OnError(Error err)
   {
@@ -367,15 +368,13 @@ public class SocketIOManager : MonoBehaviour
     JArray crashHistory = (JArray)gameData["crashHistory"];
     if (crashHistory == null)
     {
-      List<float> emptyList = new();
-      crashHistoryManager.InitHistory(emptyList);
+      crashHistoryRounds = new List<CrashHistoryRoundData>();
+      crashHistoryManager.InitHistory(crashHistoryRounds);
     }
     else
     {
-      List<float> initCrashPoints = ((JArray)gameData["crashHistory"])
-        .Select(x => (float)JObject.Parse(x.ToString())["crashPoint"])
-        .ToList();
-      crashHistoryManager.InitHistory(initCrashPoints);
+      crashHistoryRounds = ParseCrashHistoryRounds(crashHistory);
+      crashHistoryManager.InitHistory(crashHistoryRounds);
     }
 
     List<Participant> participants = new();
@@ -444,11 +443,174 @@ public class SocketIOManager : MonoBehaviour
     Debug.Log("CRASH: " + data);
     JObject obj = JObject.Parse(data);
     float crashPoint = (float)obj["crashPoint"];
+    string hash = obj.Value<string>("hash");
+    string roundId = obj.Value<string>("roundId") ?? obj.Value<string>("round_id");
+    string createdAt = obj.Value<string>("createdAt") ?? obj.Value<string>("created_at");
     string serverSeed = obj.Value<string>("serverSeed");
+    JToken clientSeedsToken = obj["clientSeeds"] ?? obj["client_seeds"];
+    JToken userIdsToken = obj["userIds"] ?? obj["user_ids"];
+    JToken usedClientSeedRecordsToken = obj["usedClientSeedRecords"];
+
+    if (string.IsNullOrWhiteSpace(createdAt))
+      createdAt = DateTime.UtcNow.ToString("o");
+
+    CrashHistoryRoundData crashData = new()
+    {
+      roundId = roundId ?? "",
+      serverSeed = serverSeed ?? "",
+      createdAt = createdAt ?? "",
+      hash = hash ?? "",
+      crashPoint = crashPoint,
+      userIds = new List<string>(),
+      clientSeeds = new List<string>()
+    };
+    PopulateUserSeedData(clientSeedsToken, userIdsToken, crashData.userIds, crashData.clientSeeds);
+    PopulateUsedClientSeedRecords(usedClientSeedRecordsToken, crashData.userIds, crashData.clientSeeds);
+
     if (!string.IsNullOrEmpty(serverSeed))
       uiManager.UpdateServerSeed(serverSeed);
     uiManager.OnCrash(crashPoint, crashDuration);
-    StartCoroutine(crashHistoryManager.AddCrash(crashPoint));
+    StartCoroutine(crashHistoryManager.AddCrash(crashData));
+  }
+
+  private List<CrashHistoryRoundData> ParseCrashHistoryRounds(JArray crashHistory)
+  {
+    List<CrashHistoryRoundData> rounds = new();
+
+    foreach (var token in crashHistory)
+    {
+      JObject roundObj = null;
+      if (token == null || token.Type == JTokenType.Null)
+        continue;
+
+      if (token.Type == JTokenType.String)
+      {
+        string raw = token.Value<string>();
+        if (string.IsNullOrWhiteSpace(raw))
+          continue;
+
+        try
+        {
+          roundObj = JObject.Parse(raw);
+        }
+        catch (Exception ex)
+        {
+          Debug.LogWarning($"Unable to parse crash history round: {ex.Message}");
+          continue;
+        }
+      }
+      else if (token.Type == JTokenType.Object)
+      {
+        roundObj = (JObject)token;
+      }
+
+      if (roundObj == null)
+        continue;
+
+      JToken clientSeedsToken = roundObj["clientSeeds"] ?? roundObj["client_seeds"];
+      JToken userIdsToken = roundObj["userIds"] ?? roundObj["user_ids"];
+      JToken usedClientSeedRecordsToken = roundObj["usedClientSeedRecords"];
+      CrashHistoryRoundData round = new()
+      {
+        roundId = roundObj.Value<string>("roundId") ?? roundObj.Value<string>("round_id") ?? "",
+        serverSeed = roundObj.Value<string>("serverSeed") ?? roundObj.Value<string>("server_seed") ?? "",
+        createdAt = roundObj.Value<string>("finishedAt") ?? roundObj.Value<string>("createdAt") ?? roundObj.Value<string>("created_at") ?? "",
+        hash = roundObj.Value<string>("hash") ?? roundObj.Value<string>("serverHash") ?? roundObj.Value<string>("server_hash") ?? "",
+        crashPoint = ParseFloatOrDefault(roundObj["crashPoint"], 0f),
+        userIds = new List<string>(),
+        clientSeeds = new List<string>()
+      };
+
+      PopulateUserSeedData(clientSeedsToken, userIdsToken, round.userIds, round.clientSeeds);
+      PopulateUsedClientSeedRecords(usedClientSeedRecordsToken, round.userIds, round.clientSeeds);
+      rounds.Add(round);
+    }
+
+    return rounds;
+  }
+
+  private void PopulateUserSeedData(JToken clientSeedsToken, JToken userIdsToken, List<string> userIds, List<string> clientSeeds)
+  {
+    if (userIdsToken is JArray userIdsArray)
+    {
+      foreach (var userToken in userIdsArray)
+      {
+        string id = userToken?.ToString() ?? "";
+        if (!string.IsNullOrWhiteSpace(id))
+          userIds.Add(id);
+      }
+    }
+
+    if (clientSeedsToken == null || clientSeedsToken.Type == JTokenType.Null)
+      return;
+
+    if (clientSeedsToken is JObject seedsObject)
+    {
+      foreach (var prop in seedsObject.Properties())
+      {
+        if (!string.IsNullOrWhiteSpace(prop.Name))
+          userIds.Add(prop.Name);
+
+        string seed = prop.Value?.ToString() ?? "";
+        if (!string.IsNullOrWhiteSpace(seed))
+          clientSeeds.Add(seed);
+      }
+      return;
+    }
+
+    if (clientSeedsToken is JArray seedsArray)
+    {
+      foreach (var seedToken in seedsArray)
+      {
+        string seed = seedToken?.ToString() ?? "";
+        if (!string.IsNullOrWhiteSpace(seed))
+          clientSeeds.Add(seed);
+      }
+      return;
+    }
+
+    string singleSeed = clientSeedsToken.ToString();
+    if (!string.IsNullOrWhiteSpace(singleSeed))
+      clientSeeds.Add(singleSeed);
+  }
+
+  private void PopulateUsedClientSeedRecords(JToken usedClientSeedRecordsToken, List<string> userIds, List<string> clientSeeds)
+  {
+    if (usedClientSeedRecordsToken == null || usedClientSeedRecordsToken.Type == JTokenType.Null)
+      return;
+
+    if (usedClientSeedRecordsToken is JObject)
+      return;
+
+    if (usedClientSeedRecordsToken is JArray records)
+    {
+      foreach (var record in records)
+      {
+        if (record == null || record.Type != JTokenType.Object)
+          continue;
+
+        string userId = record.Value<string>("userId") ?? "";
+        string seed = record.Value<string>("seed") ?? "";
+        if (!string.IsNullOrWhiteSpace(userId))
+          userIds.Add(userId);
+        if (!string.IsNullOrWhiteSpace(seed))
+          clientSeeds.Add(seed);
+      }
+    }
+  }
+
+  private float ParseFloatOrDefault(JToken token, float fallback)
+  {
+    if (token == null || token.Type == JTokenType.Null)
+      return fallback;
+
+    if (token.Type == JTokenType.Float || token.Type == JTokenType.Integer)
+      return token.Value<float>();
+
+    if (float.TryParse(token.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out float parsed))
+      return parsed;
+
+    return fallback;
   }
 
   void HandleLeaderboardAddBet(string data)
@@ -541,6 +703,7 @@ public class SocketIOManager : MonoBehaviour
   void HandleChatInit(string data)
   {
     Debug.Log("CHAT INIT: " + data);
+    SendPing();
     JObject crashHistoryObj = JObject.Parse(data);
     JArray arr = (JArray)crashHistoryObj["chatHistory"];
 
@@ -1123,10 +1286,15 @@ public class ChatMessageData
 public class AnalyticsRecord
 {
   public string round_id;
+  public string roundId;
   public string created_at;
+  public string createdAt;
   public string user_id;
+  public string userId;
   public float bet_amount;
+  public float betAmount;
   public float win_amount;
+  public float winAmount;
   public float multiplier;
   public RoundDetails round_details;
 }
@@ -1150,5 +1318,33 @@ public class RoundDetails
 {
   public float crashPoint;
   public string server_seed;
+  public string serverSeed;
+  public List<UsedClientSeedRecord> usedClientSeedRecords;
   public List<string> client_seeds;
+  public List<string> clientSeeds;
+  public string hash;
+  public string server_hash;
+  public string created_at;
+  public string createdAt;
+  public List<string> user_ids;
+  public List<string> userIds;
+}
+
+[Serializable]
+public class UsedClientSeedRecord
+{
+  public string userId;
+  public string seed;
+}
+
+[Serializable]
+public class CrashHistoryRoundData
+{
+  public string roundId;
+  public string serverSeed;
+  public string createdAt;
+  public string hash;
+  public float crashPoint;
+  public List<string> userIds;
+  public List<string> clientSeeds;
 }

@@ -4,14 +4,12 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using AdvancedInputFieldPlugin;
 
 public class ChatManager : GenericObjectPool<ChatView>
 {
   [SerializeField] private SocketIOManager socketIOManager;
   [SerializeField] private ScrollRect ScrollRect;
   [SerializeField] internal TMP_InputField inputField;
-  [SerializeField] internal TMP_Text inputText;
   [SerializeField] private Button sendButton;
   [SerializeField] private Button openChatButton;
   [SerializeField] private Button closeChatButton;
@@ -54,7 +52,6 @@ public class ChatManager : GenericObjectPool<ChatView>
       defaultOffsetMin = chatRect.offsetMin;
       defaultOffsetMax = chatRect.offsetMax;
     }
-    // inputField.onEndEdit.AddListener(OnEndEdit);
     inputField.onValueChanged.AddListener((s) => OnValueChange());
 
     OpenEmojiButton.onClick.AddListener(() =>
@@ -62,8 +59,6 @@ public class ChatManager : GenericObjectPool<ChatView>
       isEmojiWindowOpen = !isEmojiWindowOpen;
       ToggleEmojiWindow(isEmojiWindowOpen);
     });
-
-    NativeKeyboardManager.Initialize(); // make sure instance exists
   }
 
   void LateUpdate()
@@ -164,22 +159,10 @@ public class ChatManager : GenericObjectPool<ChatView>
     if (ScrollRect.verticalNormalizedPosition <= 0.05f)
       ScrollRect.verticalNormalizedPosition = 0f;
   }
-  void OnEndEdit(string text, EndEditReason reason)
-  {
-    if (reason == EndEditReason.KEYBOARD_DONE)
-    {
-      string msg = text.Replace("\n", "").Replace("\r", "").Trim();
-      StartCoroutine(SendChatMessage(msg));
-    }
-    else if (reason == EndEditReason.KEYBOARD_CANCEL)
-    {
-      inputField.text = "";
-    }
-  }
 
   void OnValueChange()
   {
-    if (inputText.color == Color.red && !inputField.text.Contains("Char Limit Exceeded"))
+    if (inputField.textComponent.color == Color.red && !inputField.text.Contains("Char Limit Exceeded"))
     {
       setColor(Color.white);
     }
@@ -239,6 +222,6 @@ public class ChatManager : GenericObjectPool<ChatView>
 
   void setColor(Color input)
   {
-    inputText.color = input;
+    inputField.textComponent.color = input;
   }
 }

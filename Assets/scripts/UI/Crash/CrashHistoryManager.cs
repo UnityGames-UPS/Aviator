@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems; // for LayoutRebuilder
+using UnityEngine.EventSystems;
+using System; // for LayoutRebuilder
 
 public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
 {
@@ -26,13 +27,13 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
     if (!layoutGroup) layoutGroup = ParentTransform.GetComponent<HorizontalLayoutGroup>();
   }
 
-  internal void InitHistory(List<float> multipliers)
+  internal void InitHistory(List<CrashHistoryRoundData> rounds)
   {
     ReturnAllItemsToPool();
     slots.Clear();
 
     // ensure fixed count
-    var list = new List<float>(multipliers);
+    var list = new List<CrashHistoryRoundData>(rounds);
     if (list.Count < socket.maxHistoryCount)
     {
       list.AddRange(GenerateRandomCrashes(socket.maxHistoryCount - list.Count));
@@ -48,7 +49,7 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
       var v = GetFromPool();
       v.transform.SetParent(container, false);
       v.transform.SetAsLastSibling();
-      v.SetValue(list[i], /*resetTransforms:*/ true);
+      v.SetData(list[i], /*resetTransforms:*/ true);
       slots.Add(v);
     }
 
@@ -56,7 +57,7 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
     LayoutRebuilder.ForceRebuildLayoutImmediate(container);
   }
 
-  internal IEnumerator AddCrash(float newMultiplier)
+  internal IEnumerator AddCrash(CrashHistoryRoundData newRound)
   {
     if (slots.Count == 0) yield break;
 
@@ -73,7 +74,7 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
     // Move recycled in hierarchy to first
     recycled.transform.SetAsFirstSibling();
     // Set the new number (no transform reset here)
-    recycled.SetValue(newMultiplier, false);
+    recycled.SetData(newRound, false);
 
     // Force layout to compute TARGET positions for the new order
     LayoutRebuilder.ForceRebuildLayoutImmediate(container);
@@ -120,13 +121,25 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
     LayoutRebuilder.ForceRebuildLayoutImmediate(container);
   }
 
-  internal List<float> GenerateRandomCrashes(int count)
+  internal List<CrashHistoryRoundData> GenerateRandomCrashes(int count)
   {
-    var res = new List<float>(count);
+    var res = new List<CrashHistoryRoundData>(count);
     for (int i = 0; i < count; i++)
     {
-      float t = Mathf.Pow(Random.value, 3f);
-      res.Add(Mathf.Lerp(1.05f, socket.MaxMult, t));
+      float t = Mathf.Pow(UnityEngine.Random.value, 3f);
+      float crashPoint = Mathf.Lerp(1.05f, socket.MaxMult, t);
+      string mockSeed = Guid.NewGuid().ToString();
+      string mockClientSeed = Guid.NewGuid().ToString("N").Substring(0, 12);
+      res.Add(new CrashHistoryRoundData
+      {
+        roundId = Guid.NewGuid().ToString(),
+        serverSeed = mockSeed,
+        createdAt = DateTime.UtcNow.ToString("o"),
+        hash = "",
+        crashPoint = crashPoint,
+        userIds = new List<string> { "mock_user" },
+        clientSeeds = new List<string> { mockClientSeed }
+      });
     }
     return res;
   }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Globalization;
+using System.Numerics;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -80,6 +81,27 @@ public class UIManager : MonoBehaviour
   [SerializeField] private GameObject DisconnectionPopupGO;
   [SerializeField] private Button lowBalanceCloseButton;
   [SerializeField] private Button OnDiscQuitButton;
+
+  [Header("Provably Fair Popup")]
+  [SerializeField] private GameObject provablyFairPopupGO;
+  [SerializeField] private Button provablyFairPopupCloseButton;
+  [SerializeField] private Button provablyFairPopupBackgroundButton;
+  [SerializeField] private Button provablyFairInfoOpenButton;
+  [SerializeField] private TMP_Text provablyFairRoundIdText;
+  [SerializeField] private TMP_Text provablyFairMultiplierText;
+  [SerializeField] private TMP_Text provablyFairCrashPointText;
+  [SerializeField] private TMP_Text provablyFairTimestampText;
+  [SerializeField] private TMP_Text provablyFairServerSeedText;
+  [SerializeField] private TMP_Text provablyFairServerHashHexText;
+  [SerializeField] private TMP_Text provablyFairServerHashDecimalText;
+  [SerializeField] private TMP_Text[] provablyFairUserIdTexts;
+  [SerializeField] private TMP_Text[] provablyFairClientSeedTexts;
+  [SerializeField] private Image[] provablyFairProfileImages;
+
+  [Header("Provably Fair Info Popup")]
+  [SerializeField] private GameObject provablyFairInfoPopupGO;
+  [SerializeField] private Button provablyFairInfoCloseButton;
+  [SerializeField] private Button provablyFairInfoBackgroundButton;
 
   [Header("Local Variables to keep track")]
   [SerializeField] private bool SoundToggle = true;
@@ -172,6 +194,18 @@ public class UIManager : MonoBehaviour
   private Tween blurTween;
   [SerializeField] internal BetData leftBetData;
   [SerializeField] internal BetData rightBetData;
+  private const int provablyFairMaxUsers = 3;
+
+  private class ProvablyFairPopupPayload
+  {
+    public string roundId;
+    public float multiplier;
+    public string timestamp;
+    public string serverSeed;
+    public string serverHash;
+    public readonly List<string> userIds = new();
+    public readonly List<string> clientSeeds = new();
+  }
 
   private void Awake()
   {
@@ -187,6 +221,20 @@ public class UIManager : MonoBehaviour
 
     SetupAvatarButtons();
     lowBalanceCloseButton.onClick.AddListener(() => ClosePopup(lowBalancePopupGO));
+    if (provablyFairPopupCloseButton != null)
+      provablyFairPopupCloseButton.onClick.AddListener(CloseProvablyFairPopup);
+    if (provablyFairPopupBackgroundButton != null)
+      provablyFairPopupBackgroundButton.onClick.AddListener(CloseProvablyFairPopup);
+    if (provablyFairInfoOpenButton != null)
+      provablyFairInfoOpenButton.onClick.AddListener(OpenProvablyFairInfoPopup);
+    if (provablyFairPopupGO != null)
+      provablyFairPopupGO.SetActive(false);
+    if (provablyFairInfoCloseButton != null)
+      provablyFairInfoCloseButton.onClick.AddListener(CloseProvablyFairInfoPopup);
+    if (provablyFairInfoBackgroundButton != null)
+      provablyFairInfoBackgroundButton.onClick.AddListener(CloseProvablyFairInfoPopup);
+    if (provablyFairInfoPopupGO != null)
+      provablyFairInfoPopupGO.SetActive(false);
 
     LeftBetButton.onClick.AddListener(() => StartCoroutine(OnBet(true)));
     RightBetButton.onClick.AddListener(() => StartCoroutine(OnBet(false)));
@@ -1620,6 +1668,278 @@ public class UIManager : MonoBehaviour
       provablyFairSettingsManager.UpdateServerSeed(serverSeed);
   }
 
+  internal void OpenProvablyFairPopupFromAnalytics(AnalyticsRecord record)
+  {
+    if (record == null)
+      return;
+
+    RoundDetails roundDetails = record.round_details;
+    if (roundDetails == null)
+      Debug.LogWarning("ProvablyFair popup: analytics `round_details` missing.");
+
+    ProvablyFairPopupPayload payload = new()
+    {
+      roundId = record.round_id ?? "",
+      multiplier = record.round_details.crashPoint > 0 ? record.round_details.crashPoint : record.multiplier,
+      timestamp = record.created_at ?? "",
+      serverSeed = roundDetails != null ? roundDetails.server_seed ?? "" : "",
+      serverHash = roundDetails != null ? roundDetails.hash ?? "" : ""
+    };
+
+    if (roundDetails != null && roundDetails.user_ids != null)
+    {
+      for (int i = 0; i < roundDetails.user_ids.Count && i < provablyFairMaxUsers; i++)
+      {
+        payload.userIds.Add(roundDetails.user_ids[i] ?? "");
+      }
+    }
+
+    if (payload.userIds.Count == 0 && !string.IsNullOrWhiteSpace(record.user_id))
+      payload.userIds.Add(record.user_id);
+
+    if (roundDetails != null && roundDetails.client_seeds != null)
+    {
+      for (int i = 0; i < roundDetails.client_seeds.Count && i < provablyFairMaxUsers; i++)
+      {
+        payload.clientSeeds.Add(roundDetails.client_seeds[i] ?? "");
+      }
+    }
+
+    if (roundDetails != null && roundDetails.usedClientSeedRecords != null && roundDetails.usedClientSeedRecords.Count > 0)
+    {
+      payload.userIds.Clear();
+      payload.clientSeeds.Clear();
+      for (int i = 0; i < roundDetails.usedClientSeedRecords.Count && i < provablyFairMaxUsers; i++)
+      {
+        UsedClientSeedRecord seedRecord = roundDetails.usedClientSeedRecords[i];
+        payload.userIds.Add(seedRecord != null ? seedRecord.userId ?? "" : "");
+        payload.clientSeeds.Add(seedRecord != null ? seedRecord.seed ?? "" : "");
+      }
+    }
+
+    WarnProvablyFairMissingFields(payload, "analytics");
+    OpenProvablyFairPopup(payload);
+  }
+
+  internal void OpenProvablyFairPopupFromCrashHistory(CrashHistoryRoundData roundData)
+  {
+    if (roundData == null)
+      return;
+
+    ProvablyFairPopupPayload payload = new()
+    {
+      roundId = roundData.roundId ?? "",
+      multiplier = roundData.crashPoint,
+      timestamp = roundData.createdAt ?? "",
+      serverSeed = roundData.serverSeed ?? "",
+      serverHash = roundData.hash ?? ""
+    };
+
+    if (roundData.userIds != null)
+    {
+      for (int i = 0; i < roundData.userIds.Count && i < provablyFairMaxUsers; i++)
+      {
+        payload.userIds.Add(roundData.userIds[i] ?? "");
+      }
+    }
+
+    if (roundData.clientSeeds != null)
+    {
+      for (int i = 0; i < roundData.clientSeeds.Count && i < provablyFairMaxUsers; i++)
+      {
+        payload.clientSeeds.Add(roundData.clientSeeds[i] ?? "");
+      }
+    }
+
+    WarnProvablyFairMissingFields(payload, "crash history");
+    OpenProvablyFairPopup(payload);
+  }
+
+  private void OpenProvablyFairPopup(ProvablyFairPopupPayload payload)
+  {
+    if (provablyFairPopupGO == null || payload == null)
+      return;
+
+    string roundId = payload.roundId ?? "";
+    roundId = roundId.Trim();
+    if (roundId.Length > 8)
+      roundId = roundId.Substring(0, 8);
+
+    if (provablyFairRoundIdText != null)
+      provablyFairRoundIdText.text = "ROUND " + roundId;
+
+    string multText = payload.multiplier > 0 ? payload.multiplier.ToString("N2") + "x" : "";
+    if (provablyFairMultiplierText != null)
+      provablyFairMultiplierText.text = multText;
+    if (provablyFairCrashPointText != null)
+      provablyFairCrashPointText.text = multText;
+
+    if (provablyFairTimestampText != null)
+      provablyFairTimestampText.text = FormatProvablyFairTimestamp(payload.timestamp);
+    if (provablyFairServerSeedText != null)
+      provablyFairServerSeedText.text = payload.serverSeed ?? "";
+
+    string hashFull = payload.serverHash ?? "";
+    if (string.IsNullOrWhiteSpace(hashFull) && !string.IsNullOrWhiteSpace(payload.serverSeed) && payload.clientSeeds.Count > 0)
+      hashFull = ComputeSha512Hex(payload.serverSeed, payload.clientSeeds);
+
+    string hashHex = GetNormalizedHashHex(hashFull);
+    string hashHexPrefix = hashHex.Length > 13 ? hashHex.Substring(0, 13) : hashHex;
+    if (provablyFairServerHashHexText != null)
+      provablyFairServerHashHexText.text = hashHexPrefix;
+    if (provablyFairServerHashDecimalText != null)
+      provablyFairServerHashDecimalText.text = ConvertHashHexToDecimal(hashHexPrefix);
+
+    int rowCount = Mathf.Max(
+      provablyFairUserIdTexts != null ? provablyFairUserIdTexts.Length : 0,
+      provablyFairClientSeedTexts != null ? provablyFairClientSeedTexts.Length : 0);
+    rowCount = Mathf.Max(rowCount, provablyFairProfileImages != null ? provablyFairProfileImages.Length : 0);
+    rowCount = Mathf.Max(rowCount, provablyFairMaxUsers);
+
+    for (int i = 0; i < rowCount; i++)
+    {
+      string userId = i < payload.userIds.Count ? payload.userIds[i] : "";
+      string clientSeedValue = i < payload.clientSeeds.Count ? payload.clientSeeds[i] : "";
+      bool hasData = !string.IsNullOrWhiteSpace(userId) || !string.IsNullOrWhiteSpace(clientSeedValue);
+
+      if (provablyFairUserIdTexts != null && i < provablyFairUserIdTexts.Length && provablyFairUserIdTexts[i] != null)
+        provablyFairUserIdTexts[i].text = hasData ? MaskProvablyFairUserId(userId) : "";
+
+      if (provablyFairClientSeedTexts != null && i < provablyFairClientSeedTexts.Length && provablyFairClientSeedTexts[i] != null)
+        provablyFairClientSeedTexts[i].text = hasData && !string.IsNullOrWhiteSpace(clientSeedValue) ? clientSeedValue : "";
+
+      if (provablyFairProfileImages != null && i < provablyFairProfileImages.Length && provablyFairProfileImages[i] != null)
+      {
+        Image img = provablyFairProfileImages[i];
+        if (!hasData)
+        {
+          img.sprite = null;
+          img.enabled = false;
+        }
+        else
+        {
+          Sprite sprite = GetRandomProfileSprite();
+          if (sprite == null && profilePicSprites != null && profilePicSprites.Length > 0)
+            sprite = profilePicSprites[UnityEngine.Random.Range(0, profilePicSprites.Length)];
+          img.sprite = sprite;
+          img.enabled = true;
+        }
+      }
+    }
+
+    provablyFairPopupGO.SetActive(true);
+  }
+
+  private void CloseProvablyFairPopup()
+  {
+    if (provablyFairPopupGO != null)
+      provablyFairPopupGO.SetActive(false);
+  }
+
+  internal void OpenProvablyFairInfoPopup()
+  {
+    if (provablyFairInfoPopupGO != null)
+      provablyFairInfoPopupGO.SetActive(true);
+  }
+
+  private void CloseProvablyFairInfoPopup()
+  {
+    if (provablyFairInfoPopupGO != null)
+      provablyFairInfoPopupGO.SetActive(false);
+  }
+
+  private string FormatProvablyFairTimestamp(string timestamp)
+  {
+    if (string.IsNullOrWhiteSpace(timestamp))
+      return "";
+
+    if (DateTime.TryParse(timestamp, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out var utcTime))
+      return utcTime.ToLocalTime().ToString("HH:mm:ss");
+
+    if (DateTime.TryParse(timestamp, out var localTime))
+      return localTime.ToString("HH:mm:ss");
+
+    return "";
+  }
+
+  private string GetNormalizedHashHex(string rawHash)
+  {
+    if (string.IsNullOrWhiteSpace(rawHash))
+      return "";
+
+    string hash = rawHash.Trim();
+    if (hash.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+      hash = hash.Substring(2);
+
+    char[] chars = hash.Where(Uri.IsHexDigit).ToArray();
+    return new string(chars);
+  }
+
+  private string ConvertHashHexToDecimal(string hashHex)
+  {
+    if (string.IsNullOrWhiteSpace(hashHex))
+      return "";
+
+    try
+    {
+      BigInteger value = BigInteger.Parse("0" + hashHex, NumberStyles.HexNumber);
+      return value.ToString();
+    }
+    catch
+    {
+      return "";
+    }
+  }
+
+  private string ComputeSha512Hex(string serverSeedValue, List<string> clientSeeds)
+  {
+    if (string.IsNullOrWhiteSpace(serverSeedValue) || clientSeeds == null || clientSeeds.Count == 0)
+      return "";
+
+    string combined = serverSeedValue + string.Concat(clientSeeds);
+    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(combined);
+    using (var sha = SHA512.Create())
+    {
+      byte[] hash = sha.ComputeHash(bytes);
+      return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+    }
+  }
+
+  private string MaskProvablyFairUserId(string userId)
+  {
+    if (string.IsNullOrWhiteSpace(userId))
+      return "";
+
+    string value = userId.Trim();
+    if (value.Length <= 2)
+      return value;
+
+    return $"{value[0]}***{value[^1]}";
+  }
+
+  private void WarnProvablyFairMissingFields(ProvablyFairPopupPayload payload, string source)
+  {
+    List<string> missing = new();
+
+    if (string.IsNullOrWhiteSpace(payload.roundId))
+      missing.Add("roundId");
+    if (payload.multiplier <= 0f)
+      missing.Add("multiplier");
+    if (string.IsNullOrWhiteSpace(payload.timestamp))
+      missing.Add("timestamp");
+    if (string.IsNullOrWhiteSpace(payload.serverSeed))
+      missing.Add("serverSeed");
+    if (string.IsNullOrWhiteSpace(payload.serverHash))
+      missing.Add("hash");
+    if (payload.userIds.Count == 0)
+      missing.Add("userIds");
+    if (payload.clientSeeds.Count == 0)
+      missing.Add("clientSeeds");
+
+    if (missing.Count > 0)
+      Debug.LogWarning($"ProvablyFair popup ({source}): missing backend data -> {string.Join(", ", missing)}");
+  }
+
   internal void CheckAndClosePopups()
   {
     if (ReconnectionPopupGO.activeInHierarchy)
@@ -1658,6 +1978,8 @@ public class UIManager : MonoBehaviour
 
   internal void ResetGame()
   {
+    CloseProvablyFairPopup();
+
     // Reset Multiplier
     multiplierText.text = "1.00x";
     multiplierText.color = Color.white;

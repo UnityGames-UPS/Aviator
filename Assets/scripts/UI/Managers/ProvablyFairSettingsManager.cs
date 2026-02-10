@@ -36,6 +36,10 @@ public class ProvablyFairSettingsManager : MonoBehaviour
   [Header("References")]
   [SerializeField] private UIManager uiManager;
 
+  [Header("Provably Fair Info Popup")]
+  [SerializeField] private Button provablyFairInfoOpenButtonPortrait;
+  [SerializeField] private Button provablyFairInfoOpenButtonLandscape;
+
   [Header("Manual Seed Popup")]
   [SerializeField] private GameObject manualSeedPanel;
   [SerializeField] private TMP_InputField manualSeedInputField;
@@ -84,6 +88,7 @@ public class ProvablyFairSettingsManager : MonoBehaviour
   private void Awake()
   {
     BindToggles();
+    BindProvablyFairInfoPopup();
     BindManualSeedPopup();
     BindCopyButtons();
     SetupCopiedPopup();
@@ -107,6 +112,14 @@ private void BindToggles()
       landscapeManualToggle.onValueChanged.AddListener(isOn => OnToggleChanged(ClientSeedMode.Manual, isOn));
 }
 
+  private void BindProvablyFairInfoPopup()
+  {
+    if (provablyFairInfoOpenButtonPortrait != null)
+      provablyFairInfoOpenButtonPortrait.onClick.AddListener(OpenProvablyFairInfoPopup);
+    if (provablyFairInfoOpenButtonLandscape != null)
+      provablyFairInfoOpenButtonLandscape.onClick.AddListener(OpenProvablyFairInfoPopup);
+  }
+
   private void BindManualSeedPopup()
 {
   if (manualSeedOpenButtonPortrait != null)
@@ -125,6 +138,12 @@ private void BindToggles()
     manualSeedInputField.onValueChanged.AddListener(_ => RefreshManualSeedSaveState());
 
     RefreshManualSeedSaveState();
+  }
+
+  private void OpenProvablyFairInfoPopup()
+  {
+    if (uiManager != null)
+      uiManager.OpenProvablyFairInfoPopup();
   }
 
   private void BindCopyButtons()

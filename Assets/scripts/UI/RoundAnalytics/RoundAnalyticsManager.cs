@@ -23,9 +23,7 @@ public class RoundAnalyticsManager : GenericObjectPool<AnalyticsUIView>
     {
       var recordData = records[i];
       var recordUI = base.GetFromPool();
-      // Debug.Log(recordData.round_details.crashPoint);
-      // Debug.Log(recordData.created_at);
-      recordUI.Setup(mult: recordData.round_details.crashPoint, date: recordData.created_at);
+      recordUI.Setup(recordData);
       recordUI.transform.SetSiblingIndex(i);
       
       recordUI.transform.localScale = Vector3.one * 0.95f;

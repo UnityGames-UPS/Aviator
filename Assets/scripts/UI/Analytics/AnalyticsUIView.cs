@@ -12,23 +12,48 @@ public class AnalyticsUIView : MonoBehaviour
   [SerializeField] private TMP_Text winText;
   [SerializeField] private TMP_Text multText;
   [SerializeField] private TMP_Text crashText;
+  [SerializeField] private Button provablyFairButton;
   [SerializeField] private Sprite[] ProfileImages;
+  private AnalyticsRecord currentRecord;
 
-  public void Setup(string username = "", string date = "", float bet = 0, float mult = 0, float win = 0, float crash = 0f)
+  private void Awake()
   {
-    if (usernameText && username != "") usernameText.text = username;
-    string formattedDate = "";
-    string formattedTime = "";
-    if (DateTime.TryParse(date, out var dateTime) && date != "")
+    if (provablyFairButton != null)
     {
-      formattedDate = dateTime.ToString("dd.MM.yy");
-      formattedTime = dateTime.ToString("HH:mm");
-      dateText.text = formattedDate + " " + formattedTime;
+      provablyFairButton.onClick.RemoveAllListeners();
+      provablyFairButton.onClick.AddListener(OnProvablyFairButtonClicked);
     }
-    if (betText && bet != 0) betText.text = bet.ToString("N2");
-    if (multText && mult != 0) multText.text = mult.ToString("N2") + "x";
-    if (winText && win != 0) winText.text = win.ToString("N2");
-    if (crashText && crash != 0) crashText.text = crash.ToString("N2") + "x";
+  }
+
+  public void Setup(AnalyticsRecord recordData)
+  {
+    currentRecord = recordData;
+    RoundDetails roundDetails = recordData != null ? recordData.round_details : null;
+
+    string username = recordData?.user_id ?? "";
+    username = username.Length > 2 ? $"{username[0]}****{username[^1]}" : username;
+    if (usernameText)
+      usernameText.text = username;
+
+    if (dateText)
+    {
+      string createdAt = recordData?.created_at ?? "";
+      if (DateTime.TryParse(createdAt, out var dateTime))
+        dateText.text = dateTime.ToString("dd.MM.yy HH:mm");
+      else
+        dateText.text = "";
+    }
+
+    float bet = recordData != null ? recordData.bet_amount : 0f;
+    float mult = recordData != null ? recordData.multiplier : 0f;
+    float win = recordData != null ? recordData.win_amount : 0f;
+    float crash = roundDetails != null ? roundDetails.crashPoint : 0f;
+
+    if (betText) betText.text = bet > 0 ? bet.ToString("N2") : "";
+    if (multText) multText.text = mult > 0 ? mult.ToString("N2") + "x" : crash > 0 ? crash.ToString("N2") + "x" : "";
+    if (winText) winText.text = win > 0 ? win.ToString("N2") : "";
+    if (crashText) crashText.text = crash > 0 ? crash.ToString("N2") + "x" : mult > 0 ? mult.ToString("N2") + "x" : "";
+
     if (avatarImage)
     {
       Sprite sprite = UIManager.Instance != null ? UIManager.Instance.GetRandomProfileSprite() : null;
@@ -36,5 +61,14 @@ public class AnalyticsUIView : MonoBehaviour
         sprite = ProfileImages[UnityEngine.Random.Range(0, ProfileImages.Length)];
       avatarImage.sprite = sprite;
     }
+  }
+
+  private void OnProvablyFairButtonClicked()
+  {
+    if (currentRecord == null)
+      return;
+
+    if (UIManager.Instance != null)
+      UIManager.Instance.OpenProvablyFairPopupFromAnalytics(currentRecord);
   }
 }
