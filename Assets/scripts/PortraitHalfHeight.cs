@@ -4,10 +4,17 @@ using UnityEngine;
 public class PortraitHalfHeight : MonoBehaviour
 {
   [SerializeField] private RectTransform sourceRect;
+  [Header("Portrait Overrides (Plane)")]
+  [SerializeField] private RectTransform targetPlaneRect;
+  [SerializeField] private Vector3 portraitPlaneLocalPosition;
+  [SerializeField] private Vector2 portraitPlaneSizeDelta;
 
   private RectTransform selfRect;
   private float originalHeight;
+  private Vector3 originalPlaneLocalPosition;
+  private Vector2 originalPlaneSizeDelta;
   private bool initialized;
+  private bool planeInitialized;
 
   void Awake()
   {
@@ -34,6 +41,13 @@ public class PortraitHalfHeight : MonoBehaviour
       originalHeight = selfRect.sizeDelta.y;
       initialized = true;
     }
+
+    if (!planeInitialized && targetPlaneRect != null)
+    {
+      originalPlaneLocalPosition = targetPlaneRect.localPosition;
+      originalPlaneSizeDelta = targetPlaneRect.sizeDelta;
+      planeInitialized = true;
+    }
   }
 
   private void Apply()
@@ -51,5 +65,17 @@ public class PortraitHalfHeight : MonoBehaviour
       size.y = targetHeight;
       selfRect.sizeDelta = size;
     }
+
+    if (targetPlaneRect == null || !planeInitialized) return;
+
+    bool isPortrait = w < h;
+    Vector3 targetPos = isPortrait ? portraitPlaneLocalPosition : originalPlaneLocalPosition;
+    Vector2 targetSize = isPortrait ? portraitPlaneSizeDelta : originalPlaneSizeDelta;
+
+    if (targetPlaneRect.localPosition != targetPos)
+      targetPlaneRect.localPosition = targetPos;
+
+    if (targetPlaneRect.sizeDelta != targetSize)
+      targetPlaneRect.sizeDelta = targetSize;
   }
 }

@@ -34,7 +34,7 @@ internal class PopupManager : MonoBehaviour
       popupObject.SetActive(false);
 
       popupRectTransform = popupObject.GetComponent<RectTransform>();
-      initYposi = popupRectTransform.localPosition.y;
+      initYposi = popupRectTransform.anchoredPosition.y;
 
       PopupImage = popupObject.GetComponent<ProceduralImage>();
       popupCanvasGroup = popupObject.GetComponent<CanvasGroup>();
@@ -76,17 +76,21 @@ internal class PopupManager : MonoBehaviour
     {
       popupCanvasGroup.DOKill();
       popupRectTransform.DOKill();
-      popupRectTransform.localPosition = new(popupRectTransform.localPosition.x, initYposi, popupRectTransform.localPosition.z);
+      popupRectTransform.anchoredPosition = new(popupRectTransform.anchoredPosition.x, initYposi);
       popupObject.SetActive(false);
       popupCanvasGroup.alpha=0;
     }
     popupObject.SetActive(true);
     popupCanvasGroup.DOFade(1, animationDuration);
-    popupRectTransform.DOLocalMoveY(initYposi - 100f, animationDuration).SetEase(Ease.OutBack)
+    popupRectTransform.DOAnchorPosY(initYposi - 100f, animationDuration).SetEase(Ease.OutBack)
     .OnComplete(() =>
     {
       popupCanvasGroup.DOFade(0, animationDuration/2).SetDelay(animationDuration + animationDuration/2);
-      popupRectTransform.DOLocalMoveY(popupRectTransform.localPosition.y - 100f, animationDuration).SetEase(Ease.InBack).SetDelay(animationDuration);
+      popupRectTransform.DOAnchorPosY(popupRectTransform.anchoredPosition.y - 100f, animationDuration).SetEase(Ease.InBack).SetDelay(animationDuration).OnComplete(() =>
+      {
+        popupObject.SetActive(false);
+        popupRectTransform.anchoredPosition = new(popupRectTransform.anchoredPosition.x, initYposi);
+      });
     });
   }
 }
