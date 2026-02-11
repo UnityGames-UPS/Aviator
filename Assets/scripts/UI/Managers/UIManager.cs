@@ -165,6 +165,7 @@ public class UIManager : MonoBehaviour
   //3. Loading panel
   [SerializeField] private GameObject[] InfoUIPanels;
   [SerializeField] private Button[] InfoUIButtons;
+  [SerializeField] private ScrollViewportRaycastGate[] infoScrollGates;
   //0: Player Panel
   //1: Date&Time Panel
   [SerializeField] private GameObject[] TopBetPanels;
@@ -1283,6 +1284,7 @@ public class UIManager : MonoBehaviour
       socket.OnRequestBetHistory();
       yield return new WaitUntil(() => socket.BetHistAck);
       betHistoryManager.PopulateBetHistory();
+      RefreshInfoScrollGates();
       BetHistoryLoader.SetActive(false);
     }
   }
@@ -1515,6 +1517,7 @@ public class UIManager : MonoBehaviour
       socket.SendPreviousRoundReq();
       yield return new WaitUntil(() => socket.PrevRoundAck);
       prevRoundManager.PopulatePreviousRounds();
+      RefreshInfoScrollGates();
       InfoUIPanels[^1].SetActive(false);
     }
     if (index == 2)
@@ -1530,10 +1533,21 @@ public class UIManager : MonoBehaviour
       {
         analyticsUIManager.PopulateAnalyticsUI();
       }
+      RefreshInfoScrollGates();
       InfoUIPanels[^1].SetActive(false);
     }
 
     InfoUIPanels[index].SetActive(true);
+  }
+
+  private void RefreshInfoScrollGates()
+  {
+    if (infoScrollGates == null) return;
+    foreach (var gate in infoScrollGates)
+    {
+      if (gate != null)
+        gate.Refresh();
+    }
   }
 
   void ButtonAnimation(int index, Button[] buttonArray)
