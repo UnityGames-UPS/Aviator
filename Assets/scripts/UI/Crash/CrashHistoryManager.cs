@@ -136,6 +136,7 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
         serverSeed = mockSeed,
         createdAt = DateTime.UtcNow.ToString("o"),
         hash = "",
+        combinedHash = "",
         crashPoint = crashPoint,
         userIds = new List<string> { "mock_user" },
         clientSeeds = new List<string> { mockClientSeed }

@@ -443,7 +443,7 @@ public class SocketIOManager : MonoBehaviour
     Debug.Log("CRASH: " + data);
     JObject obj = JObject.Parse(data);
     float crashPoint = (float)obj["crashPoint"];
-    string hash = obj.Value<string>("hash");
+    string hash = obj.Value<string>("hash") ?? obj.Value<string>("combinedHash");
     string roundId = obj.Value<string>("roundId") ?? obj.Value<string>("round_id");
     string createdAt = obj.Value<string>("createdAt") ?? obj.Value<string>("created_at");
     string serverSeed = obj.Value<string>("serverSeed");
@@ -460,6 +460,7 @@ public class SocketIOManager : MonoBehaviour
       serverSeed = serverSeed ?? "",
       createdAt = createdAt ?? "",
       hash = hash ?? "",
+      combinedHash = obj.Value<string>("combinedHash") ?? "",
       crashPoint = crashPoint,
       userIds = new List<string>(),
       clientSeeds = new List<string>()
@@ -515,7 +516,8 @@ public class SocketIOManager : MonoBehaviour
         roundId = roundObj.Value<string>("roundId") ?? roundObj.Value<string>("round_id") ?? "",
         serverSeed = roundObj.Value<string>("serverSeed") ?? roundObj.Value<string>("server_seed") ?? "",
         createdAt = roundObj.Value<string>("finishedAt") ?? roundObj.Value<string>("createdAt") ?? roundObj.Value<string>("created_at") ?? "",
-        hash = roundObj.Value<string>("hash") ?? roundObj.Value<string>("serverHash") ?? roundObj.Value<string>("server_hash") ?? "",
+        hash = roundObj.Value<string>("hash") ?? roundObj.Value<string>("serverHash") ?? roundObj.Value<string>("server_hash") ?? roundObj.Value<string>("combinedHash") ?? "",
+        combinedHash = roundObj.Value<string>("combinedHash") ?? "",
         crashPoint = ParseFloatOrDefault(roundObj["crashPoint"], 0f),
         userIds = new List<string>(),
         clientSeeds = new List<string>()
@@ -1344,6 +1346,7 @@ public class CrashHistoryRoundData
   public string serverSeed;
   public string createdAt;
   public string hash;
+  public string combinedHash;
   public float crashPoint;
   public List<string> userIds;
   public List<string> clientSeeds;

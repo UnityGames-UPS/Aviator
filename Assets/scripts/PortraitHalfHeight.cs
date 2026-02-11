@@ -44,7 +44,7 @@ public class PortraitHalfHeight : MonoBehaviour
     float h = sourceRect.rect.height;
     if (w <= 0f || h <= 0f) return;
 
-    float targetHeight = (w < h) ? (originalHeight * 0.5f) : originalHeight;
+    float targetHeight = (w < h) ? (originalHeight * 0.7f) : originalHeight;
     Vector2 size = selfRect.sizeDelta;
     if (!Mathf.Approximately(size.y, targetHeight))
     {

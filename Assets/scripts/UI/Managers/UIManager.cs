@@ -92,6 +92,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private TMP_Text provablyFairCrashPointText;
   [SerializeField] private TMP_Text provablyFairTimestampText;
   [SerializeField] private TMP_Text provablyFairServerSeedText;
+  [SerializeField] private TMP_Text provablyFairServerHashFullText;
   [SerializeField] private TMP_Text provablyFairServerHashHexText;
   [SerializeField] private TMP_Text provablyFairServerHashDecimalText;
   [SerializeField] private TMP_Text[] provablyFairUserIdTexts;
@@ -1008,9 +1009,9 @@ public class UIManager : MonoBehaviour
     float tweenDuration = roundDuration * 0.10f * 0.98f; // 98% of the last quarter
 
     loadingBar.SetActive(true);
-    loadingBarFillerImage.fillAmount = 1f;
+    loadingBarFillerImage.fillAmount = 0f;
 
-    loadingBarFillerImage.DOFillAmount(0f, startDelay)
+    loadingBarFillerImage.DOFillAmount(1f, startDelay)
       .SetEase(Ease.Linear)
       .SetId("RoundLoadingTween")
       .OnComplete(() =>
@@ -1732,7 +1733,7 @@ public class UIManager : MonoBehaviour
       multiplier = roundData.crashPoint,
       timestamp = roundData.createdAt ?? "",
       serverSeed = roundData.serverSeed ?? "",
-      serverHash = roundData.hash ?? ""
+      serverHash = !string.IsNullOrWhiteSpace(roundData.combinedHash) ? roundData.combinedHash : (roundData.hash ?? "")
     };
 
     if (roundData.userIds != null)
@@ -1785,6 +1786,8 @@ public class UIManager : MonoBehaviour
 
     string hashHex = GetNormalizedHashHex(hashFull);
     string hashHexPrefix = hashHex.Length > 13 ? hashHex.Substring(0, 13) : hashHex;
+    if (provablyFairServerHashFullText != null)
+      provablyFairServerHashFullText.text = hashHex;
     if (provablyFairServerHashHexText != null)
       provablyFairServerHashHexText.text = hashHexPrefix;
     if (provablyFairServerHashDecimalText != null)
@@ -1800,13 +1803,13 @@ public class UIManager : MonoBehaviour
     {
       string userId = i < payload.userIds.Count ? payload.userIds[i] : "";
       string clientSeedValue = i < payload.clientSeeds.Count ? payload.clientSeeds[i] : "";
-      bool hasData = !string.IsNullOrWhiteSpace(userId) || !string.IsNullOrWhiteSpace(clientSeedValue);
+      bool hasData = !string.IsNullOrWhiteSpace(userId) && !string.IsNullOrWhiteSpace(clientSeedValue);
 
       if (provablyFairUserIdTexts != null && i < provablyFairUserIdTexts.Length && provablyFairUserIdTexts[i] != null)
         provablyFairUserIdTexts[i].text = hasData ? MaskProvablyFairUserId(userId) : "";
 
       if (provablyFairClientSeedTexts != null && i < provablyFairClientSeedTexts.Length && provablyFairClientSeedTexts[i] != null)
-        provablyFairClientSeedTexts[i].text = hasData && !string.IsNullOrWhiteSpace(clientSeedValue) ? clientSeedValue : "";
+        provablyFairClientSeedTexts[i].text = hasData ? clientSeedValue : "";
 
       if (provablyFairProfileImages != null && i < provablyFairProfileImages.Length && provablyFairProfileImages[i] != null)
       {

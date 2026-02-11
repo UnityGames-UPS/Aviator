@@ -1,0 +1,884 @@
+fileFormatVersion: 2
+guid: e55a6c711a3f94b43a43571dc0e2049b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1357982628165778281
+    second: Aviator UFC_0
+  - first:
+      213: -6062226019081380711
+    second: Aviator UFC_1
+  - first:
+      213: -8514812269805615343
+    second: Aviator UFC_2
+  - first:
+      213: 379167789930935208
+    second: Aviator UFC_3
+  - first:
+      213: -6200844456516463788
+    second: Aviator UFC_4
+  - first:
+      213: 4447491403840686139
+    second: Aviator UFC_5
+  - first:
+      213: -3458169310243945060
+    second: Aviator UFC_6
+  - first:
+      213: 2334376499301881014
+    second: Aviator UFC_7
+  - first:
+      213: -1848485731673590358
+    second: Aviator UFC_8
+  - first:
+      213: -5023334417020290007
+    second: Aviator UFC_9
+  - first:
+      213: -3515614692376241462
+    second: Aviator UFC_10
+  - first:
+      213: -1740493498020989104
+    second: Aviator UFC_11
+  - first:
+      213: 2970520355237933381
+    second: Aviator UFC_12
+  - first:
+      213: 7073044668165518257
+    second: Aviator UFC_13
+  - first:
+      213: -4863016966914700281
+    second: Aviator UFC_14
+  - first:
+      213: 4379806617021855173
+    second: Aviator UFC_15
+  - first:
+      213: -853628460587665783
+    second: Aviator UFC_16
+  - first:
+      213: -6507156008108413638
+    second: Aviator UFC_17
+  - first:
+      213: -2343658757183028057
+    second: Aviator UFC_18
+  - first:
+      213: 8127419140583319995
+    second: Aviator UFC_19
+  - first:
+      213: -2756890552942077401
+    second: Aviator UFC_20
+  - first:
+      213: -1437742230925481384
+    second: Aviator UFC_21
+  - first:
+      213: -8593459310872403974
+    second: Aviator UFC_22
+  - first:
+      213: -3039699547860499839
+    second: Aviator UFC_23
+  - first:
+      213: -7695414097963892559
+    second: Aviator UFC_24
+  - first:
+      213: 3559443289233477368
+    second: Aviator UFC_25
+  - first:
+      213: -2856562657415424409
+    second: Aviator UFC_26
+  - first:
+      213: 3143034938223670579
+    second: Aviator UFC_27
+  - first:
+      213: -2590453641233072392
+    second: Aviator UFC_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Aviator UFC_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 95
+        width: 153
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 794070d9ef9772de0800000000000000
+      internalID: -1357982628165778281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_1
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 205
+        width: 113
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c16800e85aedba0800000000000000
+      internalID: -6062226019081380711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 95
+        width: 140
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1174911aa5f45d980800000000000000
+      internalID: -8514812269805615343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_3
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 64
+        width: 7
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a37a159813134500800000000000000
+      internalID: 379167789930935208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_4
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 170
+        width: 233
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 453d2edf1dc22f9a0800000000000000
+      internalID: -6200844456516463788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_5
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 95
+        width: 129
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3807833ed9a8bd30800000000000000
+      internalID: 4447491403840686139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_6
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 87
+        width: 69
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9580c1a55d1200d0800000000000000
+      internalID: -3458169310243945060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_7
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 147
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b498ecde0f556020800000000000000
+      internalID: 2334376499301881014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_8
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 87
+        width: 32
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa5b73f450cd856e0800000000000000
+      internalID: -1848485731673590358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_9
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 86
+        width: 75
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92cf28566f7894ab0800000000000000
+      internalID: -5023334417020290007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_10
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 87
+        width: 53
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aca15c55017063fc0800000000000000
+      internalID: -3515614692376241462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_11
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 87
+        width: 48
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057f494926688d7e0800000000000000
+      internalID: -1740493498020989104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_12
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 86
+        width: 46
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 541360c4688693920800000000000000
+      internalID: 2970520355237933381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 54
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b3f97ea6a0882260800000000000000
+      internalID: 7073044668165518257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_14
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 0
+        width: 44
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70c0a5e75d7138cb0800000000000000
+      internalID: -4863016966914700281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_15
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 0
+        width: 45
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c53e78b9e238cc30800000000000000
+      internalID: 4379806617021855173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_16
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 0
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9863284107d4724f0800000000000000
+      internalID: -853628460587665783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_17
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 53
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3d26a64610f1b5a0800000000000000
+      internalID: -6507156008108413638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_18
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 0
+        width: 17
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a44f5f07c6a97fd0800000000000000
+      internalID: -2343658757183028057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_19
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 0
+        width: 61
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb9ed2fb5a46ac070800000000000000
+      internalID: 8127419140583319995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_20
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 0
+        width: 42
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72ad14316ae8db9d0800000000000000
+      internalID: -2756890552942077401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_21
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85aeb17fe0d1c0ce0800000000000000
+      internalID: -1437742230925481384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_22
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 61
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff5daf6946edb880800000000000000
+      internalID: -8593459310872403974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_23
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 0
+        width: 49
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1820cd1cd51d0d5d0800000000000000
+      internalID: -3039699547860499839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_24
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b0445366a5643590800000000000000
+      internalID: -7695414097963892559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_25
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 0
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fec8e410dea56130800000000000000
+      internalID: 3559443289233477368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_26
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 0
+        width: 45
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7669b16d5637b58d0800000000000000
+      internalID: -2856562657415424409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_27
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 0
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 335b671bf9d4e9b20800000000000000
+      internalID: 3143034938223670579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aviator UFC_28
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 0
+        width: 47
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe7f2b532cdc0cd0800000000000000
+      internalID: -2590453641233072392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Aviator UFC_0: -1357982628165778281
+      Aviator UFC_1: -6062226019081380711
+      Aviator UFC_10: -3515614692376241462
+      Aviator UFC_11: -1740493498020989104
+      Aviator UFC_12: 2970520355237933381
+      Aviator UFC_13: 7073044668165518257
+      Aviator UFC_14: -4863016966914700281
+      Aviator UFC_15: 4379806617021855173
+      Aviator UFC_16: -853628460587665783
+      Aviator UFC_17: -6507156008108413638
+      Aviator UFC_18: -2343658757183028057
+      Aviator UFC_19: 8127419140583319995
+      Aviator UFC_2: -8514812269805615343
+      Aviator UFC_20: -2756890552942077401
+      Aviator UFC_21: -1437742230925481384
+      Aviator UFC_22: -8593459310872403974
+      Aviator UFC_23: -3039699547860499839
+      Aviator UFC_24: -7695414097963892559
+      Aviator UFC_25: 3559443289233477368
+      Aviator UFC_26: -2856562657415424409
+      Aviator UFC_27: 3143034938223670579
+      Aviator UFC_28: -2590453641233072392
+      Aviator UFC_3: 379167789930935208
+      Aviator UFC_4: -6200844456516463788
+      Aviator UFC_5: 4447491403840686139
+      Aviator UFC_6: -3458169310243945060
+      Aviator UFC_7: 2334376499301881014
+      Aviator UFC_8: -1848485731673590358
+      Aviator UFC_9: -5023334417020290007
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
