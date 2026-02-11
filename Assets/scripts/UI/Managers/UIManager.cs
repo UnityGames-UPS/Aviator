@@ -44,6 +44,8 @@ public class UIManager : MonoBehaviour
   [SerializeField] private Color purpleColor;
   [SerializeField] private Color pinkColor;
   [SerializeField] private GameObject loadingBar;
+  [SerializeField] private GameObject aviatorLogo;
+  [SerializeField] private GameObject spribeLogo;
   [SerializeField] private ProceduralImage loadingBarFillerImage;
 
   [Header("Other Options Menu")]
@@ -1009,6 +1011,8 @@ public class UIManager : MonoBehaviour
     float tweenDuration = roundDuration * 0.10f * 0.98f; // 98% of the last quarter
 
     loadingBar.SetActive(true);
+    aviatorLogo.SetActive(true);
+    spribeLogo.SetActive(true);
     loadingBarFillerImage.fillAmount = 0f;
 
     loadingBarFillerImage.DOFillAmount(1f, startDelay)
@@ -1016,6 +1020,8 @@ public class UIManager : MonoBehaviour
       .SetId("RoundLoadingTween")
       .OnComplete(() =>
       {
+        aviatorLogo.SetActive(false);
+        spribeLogo.SetActive(false);
         loadingBar.SetActive(false); // hide when done (optional)
       });
 
