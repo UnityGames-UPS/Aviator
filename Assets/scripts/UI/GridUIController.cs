@@ -66,7 +66,7 @@ public class GridUIController : MonoBehaviour
     // 🚨 THIS is the key line
     rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalHeight);
     float widthForBetPanel = MainParent_RT.rect.width;
-    // Debug.Log(widthForBetPanel);
+    Debug.Log(widthForBetPanel);
     if (widthForBetPanel < minWidthSourceWidth)
     {
       BetPanel_RT.SetParent(widthSource);

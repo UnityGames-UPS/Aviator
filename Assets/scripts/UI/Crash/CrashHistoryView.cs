@@ -8,7 +8,9 @@ public class CrashHistoryView : MonoBehaviour
   [SerializeField] private TMP_Text multiplierText;
   [SerializeField] private RectTransform rect;
   [SerializeField] private Button detailsButton;
+  [SerializeField] private Color BlueColor;
   [SerializeField] private Color PurpleColor;
+  [SerializeField] private Color PinkColor;
   private Vector3 originalScale;
   private CrashHistoryRoundData roundData;
 
@@ -39,8 +41,9 @@ public class CrashHistoryView : MonoBehaviour
     multiplierText.text = multiplier.ToString("N2") + "x";
 
     // colors (optional)
-    if (multiplier <= 3.8f) multiplierText.color = new(Color.blue.r, Color.blue.g, Color.blue.b, 0);
-    else multiplierText.color = PurpleColor;
+    if (multiplier <= 2f) multiplierText.color = BlueColor;
+    else if (multiplier < 10f) multiplierText.color = PurpleColor;
+    else multiplierText.color = PinkColor;
 
     if (resetTransforms)
     {

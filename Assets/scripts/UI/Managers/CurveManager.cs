@@ -38,7 +38,9 @@ public class CurveManager : MonoBehaviour
   private float takeoffElapsed;
   private float loopElapsed;
   private bool loopGoingDown = true;
+  private float currentMult = 1f;
   [SerializeField] private float takeoffHeightTimeExponent = 1.5f;
+  [SerializeField] private float takeoffEndMultiplier = 2f;
   [Header("Debug")]
   [SerializeField] private bool debugToggle = false;
   [SerializeField] private KeyCode debugStartKey = KeyCode.T;
@@ -90,6 +92,7 @@ public class CurveManager : MonoBehaviour
     takeoffElapsed = 0f;
     loopElapsed = 0f;
     loopGoingDown = true;
+    currentMult = 1f;
   }
 
   internal void StartFlyingAnimation()
@@ -100,6 +103,14 @@ public class CurveManager : MonoBehaviour
     Flying = true;
     state = AnimState.Takeoff;
     takeoffElapsed = 0f;
+    currentMult = 1f;
+  }
+
+  internal void NotifyMultiplier(float mult)
+  {
+    currentMult = Mathf.Max(1f, mult);
+    if (state == AnimState.Takeoff && currentMult >= takeoffEndMultiplier)
+      StartLoop();
   }
 
   void StartLoop()
@@ -154,10 +165,8 @@ public class CurveManager : MonoBehaviour
 
   void UpdateTakeoff()
   {
-    float duration = Mathf.Max(0.0001f, GetTakeoffDuration());
-    takeoffElapsed = Mathf.Min(duration, takeoffElapsed + Time.deltaTime);
-
-    float t = Mathf.Min(1f, takeoffElapsed / duration);
+    float t = Mathf.InverseLerp(1f, takeoffEndMultiplier, currentMult);
+    t = Mathf.Clamp01(t);
     float widthEased = EaseOutSine(t);
     float heightTime = Mathf.Pow(t, Mathf.Max(0.01f, takeoffHeightTimeExponent));
     float heightEased = EaseOutSine(heightTime);
@@ -168,7 +177,7 @@ public class CurveManager : MonoBehaviour
     curve.widthMultiplier = Mathf.Lerp(zeroWM, topW, widthEased);
     curve.SetVerticesDirty();
 
-    if (takeoffElapsed >= duration)
+    if (currentMult >= takeoffEndMultiplier)
       StartLoop();
   }
 

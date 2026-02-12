@@ -467,9 +467,9 @@ public class UIManager : MonoBehaviour
     for (int i = 0; i < 4; i++)
     {
       int indexcopy = i;
-      LeftStaticBetButtons[indexcopy].GetComponentInChildren<TMP_Text>().text = staticBets[indexcopy].value.ToString("N2");
+      LeftStaticBetButtons[indexcopy].GetComponentInChildren<TMP_Text>().text = staticBets[indexcopy].value.ToString();
       LeftStaticBetButtons[indexcopy].onClick.AddListener(() => ChangeBet(staticBets[indexcopy].index, true));
-      RightStaticBetButtons[indexcopy].GetComponentInChildren<TMP_Text>().text = staticBets[indexcopy].value.ToString("N2");
+      RightStaticBetButtons[indexcopy].GetComponentInChildren<TMP_Text>().text = staticBets[indexcopy].value.ToString();
       RightStaticBetButtons[indexcopy].onClick.AddListener(() => ChangeBet(staticBets[indexcopy].index, false));
     }
 
@@ -874,7 +874,7 @@ public class UIManager : MonoBehaviour
       float bet = socket.bets[LeftBetCounter];
       LeftBetText.text = bet.ToString("N2");
       LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2");
-      Debug.Log(index + " " + bet);
+      // Debug.Log(index + " " + bet);
     }
     else
     {
@@ -1014,9 +1014,9 @@ public class UIManager : MonoBehaviour
     loadingBar.SetActive(true);
     aviatorLogo.SetActive(true);
     spribeLogo.SetActive(true);
-    loadingBarFillerImage.fillAmount = 0f;
+    loadingBarFillerImage.fillAmount = 1f;
 
-    loadingBarFillerImage.DOFillAmount(1f, startDelay)
+    loadingBarFillerImage.DOFillAmount(0f, startDelay)
       .SetEase(Ease.Linear)
       .SetId("RoundLoadingTween")
       .OnComplete(() =>
@@ -1061,6 +1061,7 @@ public class UIManager : MonoBehaviour
 
   private void UpdateMultiplierDisplay(float mult)
   {
+    curveAnimator.NotifyMultiplier(mult);
     multiplierText.text = mult.ToString("N2") + "x";
 
     if (LeftCashoutButton.gameObject.activeInHierarchy)
@@ -1080,21 +1081,21 @@ public class UIManager : MonoBehaviour
       multColorTween2 = multiplierText.DOColor(Color.white, 0.3f).SetEase(Ease.OutSine);
     }
 
-    if (mult <= 3.8f && !blueColTime)
+    if (mult <= 2f && !blueColTime)
     {
       // Debug.Log("blur color blue");
       blueColTime = true;
       blurTween?.Kill();
       blurTween = blurImage.DOColor(blueColor, 0.3f).SetEase(Ease.InSine);
     }
-    else if (mult > 3.8f && !purpleColTime)
+    else if (mult > 2f && mult < 10f && !purpleColTime)
     {
       // Debug.Log("blur color purple, mult: " + mult);
       purpleColTime = true;
       blurTween?.Kill();
       blurTween = blurImage.DOColor(purpleColor, 0.3f).SetEase(Ease.InSine);
     }
-    else if (mult > 10 && !pinkColTime)
+    else if (mult >= 10f && !pinkColTime)
     {
       // Debug.Log("blur color pink");
       pinkColTime = true;

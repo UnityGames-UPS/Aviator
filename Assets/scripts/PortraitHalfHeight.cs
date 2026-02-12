@@ -58,7 +58,7 @@ public class PortraitHalfHeight : MonoBehaviour
     float h = sourceRect.rect.height;
     if (w <= 0f || h <= 0f) return;
 
-    float targetHeight = (w < h) ? (originalHeight * 0.5f) : originalHeight;
+    float targetHeight = (w < h) ? (originalHeight * 0.8f) : originalHeight;
     Vector2 size = selfRect.sizeDelta;
     if (!Mathf.Approximately(size.y, targetHeight))
     {
@@ -69,13 +69,13 @@ public class PortraitHalfHeight : MonoBehaviour
     if (targetPlaneRect == null || !planeInitialized) return;
 
     bool isPortrait = w < h;
-    Vector3 targetPos = isPortrait ? portraitPlaneLocalPosition : originalPlaneLocalPosition;
-    Vector2 targetSize = isPortrait ? portraitPlaneSizeDelta : originalPlaneSizeDelta;
+    // Vector3 targetPos = isPortrait ? portraitPlaneLocalPosition : originalPlaneLocalPosition;
+    // Vector2 targetSize = isPortrait ? portraitPlaneSizeDelta : originalPlaneSizeDelta;
 
-    if (targetPlaneRect.localPosition != targetPos)
-      targetPlaneRect.localPosition = targetPos;
+    // if (targetPlaneRect.localPosition != targetPos)
+    //   targetPlaneRect.localPosition = targetPos;
 
-    if (targetPlaneRect.sizeDelta != targetSize)
-      targetPlaneRect.sizeDelta = targetSize;
+    // if (targetPlaneRect.sizeDelta != targetSize)
+    //   targetPlaneRect.sizeDelta = targetSize;
   }
 }

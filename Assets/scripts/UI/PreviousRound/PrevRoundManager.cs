@@ -6,21 +6,21 @@ public class PrevRoundManager : GenericObjectPool<ParticipantView>
 {
   [SerializeField] private SocketIOManager socket;
   [SerializeField] private TMP_Text crashPointText;
+  [SerializeField] private Color BlueColor;
   [SerializeField] private Color PurpleColor;
+  [SerializeField] private Color PinkColor;
 
   internal void PopulatePreviousRounds()
   {
     base.ReturnAllItemsToPool();
 
     LastRoundResult roundResult = socket.lastRoundResult;
-    if (roundResult.crashPoint <= 3.8f)
-    {
-      crashPointText.color = Color.blue;
-    }
-    else
-    {
+    if (roundResult.crashPoint <= 2f)
+      crashPointText.color = BlueColor;
+    else if (roundResult.crashPoint < 10f)
       crashPointText.color = PurpleColor;
-    }
+    else
+      crashPointText.color = PinkColor;
     crashPointText.text = roundResult.crashPoint.ToString("N2") + "x";
     if (roundResult.participants.Count > 0)
     {

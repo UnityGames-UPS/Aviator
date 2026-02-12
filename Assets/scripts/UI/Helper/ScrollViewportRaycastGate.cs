@@ -9,16 +9,11 @@ using UnityEngine.UI;
 public class ScrollViewportRaycastGate : MonoBehaviour
 {
   [SerializeField] private Graphic viewportRaycastGraphic;
-  [SerializeField] private ScrollRect owningScrollRect;
-  [SerializeField] private bool disableScrollRectWhenEmpty = true;
 
   private void Awake()
   {
     if (viewportRaycastGraphic == null && transform.parent != null)
       viewportRaycastGraphic = transform.parent.GetComponent<Graphic>();
-
-    if (owningScrollRect == null)
-      owningScrollRect = GetComponentInParent<ScrollRect>();
   }
 
   private void OnEnable()
@@ -26,15 +21,12 @@ public class ScrollViewportRaycastGate : MonoBehaviour
     Refresh();
   }
 
-  public void Refresh()
+  internal void Refresh()
   {
     bool hasVisibleItems = HasAnyActiveImmediateChild();
 
     if (viewportRaycastGraphic != null)
       viewportRaycastGraphic.raycastTarget = hasVisibleItems;
-
-    if (disableScrollRectWhenEmpty && owningScrollRect != null)
-      owningScrollRect.enabled = hasVisibleItems;
   }
 
   private bool HasAnyActiveImmediateChild()
