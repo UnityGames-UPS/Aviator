@@ -7,6 +7,8 @@ public class GridUIController : MonoBehaviour
   [SerializeField]
   private GridLayoutGroup grid;
   [SerializeField]
+  private LayoutElement MainParent_LE;
+  [SerializeField]
   private RectTransform BetPanel_RT;
   [SerializeField]
   private RectTransform MainParent_RT;
@@ -43,6 +45,14 @@ public class GridUIController : MonoBehaviour
     bool stacked = width < minItemWidth * 2f;
     int columns = stacked ? 1 : 2;
     int rows = Mathf.CeilToInt(grid.transform.childCount / (float)columns);
+    if (columns == 2)
+    {
+      MainParent_LE.preferredHeight = 704f;
+    }
+    else
+    {
+      MainParent_LE.preferredHeight = 1000f;
+    }
 
     grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
     grid.constraintCount = columns;
