@@ -15,6 +15,7 @@ public class CrashHistoryView : MonoBehaviour
   private CrashHistoryRoundData roundData;
 
   internal RectTransform Rect => rect;
+  internal CrashHistoryRoundData Data => roundData;
 
   void OnValidate()
   {
@@ -64,7 +65,7 @@ public class CrashHistoryView : MonoBehaviour
 
   internal void PrepareSpawnVisual()
   {
-    rect.localScale = originalScale * 1.25f;
+    rect.localScale = originalScale * 3f;
     multiplierText.alpha = 0f;
     rect.DOKill();
     multiplierText.DOKill();

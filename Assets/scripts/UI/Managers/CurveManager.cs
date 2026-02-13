@@ -4,7 +4,6 @@ using DG.Tweening;
 public class CurveManager : MonoBehaviour
 {
 
-  [SerializeField] private SocketIOManager socket;
   [SerializeField] private CurveFillerUI curve;
 
   [SerializeField] private float loopDuration = 2f;
@@ -21,23 +20,28 @@ public class CurveManager : MonoBehaviour
 
   [Header("Portrait Curve Points")]
   [SerializeField] private float topHMPortrait = 0.75f;
-  [SerializeField] private float bottomHMPortrait = 0.5f;
   [SerializeField] private float topWMPortrait = 0.76f;
+  [SerializeField] private float bottomHMPortrait = 0.5f;
   [SerializeField] private float bottomWMPortrait = 0.85f;
 
+  [Space(10)]
   [SerializeField] private float crashXoffset = 2000;
   [SerializeField] private float crashYoffset;
-  [SerializeField] private float slowCrashDuration = 4f;
-  [SerializeField] private float fastCrashDuration = 2f;
-  [SerializeField] private float fastCrashTakeoffOffset = 0.3f;
+
+  [Space(10)]
+  [SerializeField] private float slowCrashDuration = 2f;
+  [SerializeField] private float fastCrashDuration = 1f;
+
+  [Space(10)]
+  [SerializeField] private float takeoffDurationSeconds = 9f;
 
   internal bool Flying;
-  private float predictedFlightMult;
   private bool animationToggle = true;
   private bool isPortrait;
   private float takeoffElapsed;
   private float loopElapsed;
   private bool loopGoingDown = true;
+  private bool loopAllowed;
   private float currentMult = 1f;
   [SerializeField] private float takeoffHeightTimeExponent = 1.5f;
   [SerializeField] private float takeoffEndMultiplier = 2f;
@@ -92,6 +96,7 @@ public class CurveManager : MonoBehaviour
     takeoffElapsed = 0f;
     loopElapsed = 0f;
     loopGoingDown = true;
+    loopAllowed = false;
     currentMult = 1f;
   }
 
@@ -103,6 +108,7 @@ public class CurveManager : MonoBehaviour
     Flying = true;
     state = AnimState.Takeoff;
     takeoffElapsed = 0f;
+    loopAllowed = false;
     currentMult = 1f;
   }
 
@@ -110,7 +116,7 @@ public class CurveManager : MonoBehaviour
   {
     currentMult = Mathf.Max(1f, mult);
     if (state == AnimState.Takeoff && currentMult >= takeoffEndMultiplier)
-      StartLoop();
+      loopAllowed = true;
   }
 
   void StartLoop()
@@ -120,7 +126,7 @@ public class CurveManager : MonoBehaviour
     loopGoingDown = true;
   }
 
-  internal void OnCrash()
+  internal void OnCrash(float crashMult)
   {
     Flying = false;
     state = AnimState.Idle;
@@ -143,7 +149,8 @@ public class CurveManager : MonoBehaviour
     float crashX = Plane.anchoredPosition.x + crashXoffset;
     float crashY = Plane.anchoredPosition.y + crashYoffset;
 
-    float CrashDuration = predictedFlightMult > socket.takeOffDuration - fastCrashTakeoffOffset ? slowCrashDuration : fastCrashDuration;
+    float finalMult = crashMult > 0f ? crashMult : currentMult;
+    float CrashDuration = finalMult >= takeoffEndMultiplier ? slowCrashDuration : fastCrashDuration;
 
     Plane.DOAnchorPos(new Vector2(crashX, crashY), CrashDuration);
   }
@@ -165,8 +172,10 @@ public class CurveManager : MonoBehaviour
 
   void UpdateTakeoff()
   {
-    float t = Mathf.InverseLerp(1f, takeoffEndMultiplier, currentMult);
-    t = Mathf.Clamp01(t);
+    float duration = Mathf.Max(0.0001f, GetTakeoffDuration());
+    takeoffElapsed = Mathf.Min(duration, takeoffElapsed + Time.deltaTime);
+
+    float t = Mathf.Min(1f, takeoffElapsed / duration);
     float widthEased = EaseOutSine(t);
     float heightTime = Mathf.Pow(t, Mathf.Max(0.01f, takeoffHeightTimeExponent));
     float heightEased = EaseOutSine(heightTime);
@@ -177,7 +186,7 @@ public class CurveManager : MonoBehaviour
     curve.widthMultiplier = Mathf.Lerp(zeroWM, topW, widthEased);
     curve.SetVerticesDirty();
 
-    if (currentMult >= takeoffEndMultiplier)
+    if (takeoffElapsed >= duration && loopAllowed)
       StartLoop();
   }
 
@@ -224,7 +233,7 @@ public class CurveManager : MonoBehaviour
   {
     if (debugToggle)
       return debugTakeoffDuration;
-    return socket != null ? socket.takeOffDuration : debugTakeoffDuration;
+    return takeoffDurationSeconds;
   }
 
   void HandleDebugInput()
@@ -233,6 +242,7 @@ public class CurveManager : MonoBehaviour
       StartFlyingAnimation();
 
     if (Input.GetKeyDown(debugStopKey))
-      OnCrash();
+      OnCrash(currentMult);
   }
+
 }

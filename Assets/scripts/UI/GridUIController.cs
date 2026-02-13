@@ -26,8 +26,22 @@ public class GridUIController : MonoBehaviour
   private float itemHeight = 120f;
   [SerializeField]
   private float verticalSpacingWhenStacked = 16f;
+  [Header("Portrait Overrides (Plane)")]
+  [SerializeField]
+  private RectTransform targetPlaneRect;
+  [SerializeField]
+  private Vector3 portraitPlaneLocalPosition;
+  [SerializeField]
+  private Vector2 portraitPlaneSizeDelta;
+  private Vector3 originalPlaneLocalPosition;
+  private Vector2 originalPlaneSizeDelta;
+  private bool planeInitialized;
   float lastWidth = -1f;
   bool lastStacked;
+  void Awake()
+  {
+    CachePlaneDefaults();
+  }
   void LateUpdate()
   {
     GamePlayPanelMove();
@@ -76,7 +90,7 @@ public class GridUIController : MonoBehaviour
     // 🚨 THIS is the key line
     rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalHeight);
     float widthForBetPanel = MainParent_RT.rect.width;
-    Debug.Log(widthForBetPanel);
+    // Debug.Log(widthForBetPanel);
     if (widthForBetPanel < minWidthSourceWidth)
     {
       BetPanel_RT.SetParent(widthSource);
@@ -95,5 +109,33 @@ public class GridUIController : MonoBehaviour
       if (curveManager != null)
         curveManager.SetPortraitMode(stacked);
     }
+
+    ApplyPlaneSizing(stacked);
+  }
+
+  private void CachePlaneDefaults()
+  {
+    if (!planeInitialized && targetPlaneRect != null)
+    {
+      originalPlaneLocalPosition = targetPlaneRect.localPosition;
+      originalPlaneSizeDelta = targetPlaneRect.sizeDelta;
+      planeInitialized = true;
+    }
+  }
+
+  private void ApplyPlaneSizing(bool isPortrait)
+  {
+    CachePlaneDefaults();
+    if (targetPlaneRect == null || !planeInitialized)
+      return;
+
+    Vector3 targetPos = isPortrait ? portraitPlaneLocalPosition : originalPlaneLocalPosition;
+    Vector2 targetSize = isPortrait ? portraitPlaneSizeDelta : originalPlaneSizeDelta;
+
+    if (targetPlaneRect.localPosition != targetPos)
+      targetPlaneRect.localPosition = targetPos;
+
+    if (targetPlaneRect.sizeDelta != targetSize)
+      targetPlaneRect.sizeDelta = targetSize;
   }
 }

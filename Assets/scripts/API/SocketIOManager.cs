@@ -16,6 +16,7 @@ public class SocketIOManager : MonoBehaviour
   [SerializeField] private ParticipantManager participantUI;
   [SerializeField] private ChatManager chatUI;
   [SerializeField] private CrashHistoryManager crashHistoryManager;
+  [SerializeField] private CrashHistoryPopupManager crashHistoryPopupManager;
   [SerializeField] private PlayerCountManager playerCountManager;
   private SocketOptions socketOptions;
   private SocketManager MainSocketManager;
@@ -97,6 +98,7 @@ public class SocketIOManager : MonoBehaviour
     Application.runInBackground = true;
     DOTween.Init();
     DOTween.defaultTimeScaleIndependent = true;
+    DOTween.SetTweensCapacity(500, 50);
     blocker.SetActive(true);
     isLoaded = false;
     Debug.Log("prod build");
@@ -368,13 +370,17 @@ public class SocketIOManager : MonoBehaviour
     JArray crashHistory = (JArray)gameData["crashHistory"];
     if (crashHistory == null)
     {
-      crashHistoryRounds = new List<CrashHistoryRoundData>();
+      crashHistoryRounds = NormalizeCrashHistoryList(new List<CrashHistoryRoundData>());
       crashHistoryManager.InitHistory(crashHistoryRounds);
+      if (crashHistoryPopupManager != null)
+        crashHistoryPopupManager.InitHistory(crashHistoryRounds);
     }
     else
     {
-      crashHistoryRounds = ParseCrashHistoryRounds(crashHistory);
+      crashHistoryRounds = NormalizeCrashHistoryList(ParseCrashHistoryRounds(crashHistory));
       crashHistoryManager.InitHistory(crashHistoryRounds);
+      if (crashHistoryPopupManager != null)
+        crashHistoryPopupManager.InitHistory(crashHistoryRounds);
     }
 
     List<Participant> participants = new();
@@ -471,7 +477,14 @@ public class SocketIOManager : MonoBehaviour
     if (!string.IsNullOrEmpty(serverSeed))
       uiManager.UpdateServerSeed(serverSeed);
     uiManager.OnCrash(crashPoint, crashDuration);
+    if (crashHistoryRounds == null)
+      crashHistoryRounds = new List<CrashHistoryRoundData>();
+    crashHistoryRounds.Add(crashData);
+    if (crashHistoryRounds.Count > maxHistoryCount)
+      crashHistoryRounds.RemoveAt(0);
     StartCoroutine(crashHistoryManager.AddCrash(crashData));
+    if (crashHistoryPopupManager != null)
+      crashHistoryPopupManager.AddCrash(crashData);
   }
 
   private List<CrashHistoryRoundData> ParseCrashHistoryRounds(JArray crashHistory)
@@ -529,6 +542,23 @@ public class SocketIOManager : MonoBehaviour
     }
 
     return rounds;
+  }
+
+  private List<CrashHistoryRoundData> NormalizeCrashHistoryList(List<CrashHistoryRoundData> rounds)
+  {
+    var list = rounds ?? new List<CrashHistoryRoundData>();
+    if (maxHistoryCount <= 0)
+      return list;
+
+    if (list.Count < maxHistoryCount)
+    {
+      if (crashHistoryManager != null)
+        list.AddRange(crashHistoryManager.GenerateRandomCrashes(maxHistoryCount - list.Count));
+    }
+    else if (list.Count > maxHistoryCount)
+      list = list.GetRange(list.Count - maxHistoryCount, maxHistoryCount);
+
+    return list;
   }
 
   private void PopulateUserSeedData(JToken clientSeedsToken, JToken userIdsToken, List<string> userIds, List<string> clientSeeds)

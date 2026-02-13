@@ -15,7 +15,7 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
   [SerializeField] private float slideDuration = 0.40f;
   [SerializeField] private Ease slideEase = Ease.OutCubic;
   [SerializeField] private float scaleDuration = 0.35f;
-  [SerializeField] private Ease scaleEase = Ease.OutBack;
+  [SerializeField] private Ease scaleEase = Ease.Linear;
 
   // Left → right order (0 = left-most / newest after we rotate)
   private readonly List<CrashHistoryView> slots = new();
@@ -32,19 +32,10 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
     ReturnAllItemsToPool();
     slots.Clear();
 
-    // ensure fixed count
-    var list = new List<CrashHistoryRoundData>(rounds);
-    if (list.Count < socket.maxHistoryCount)
-    {
-      list.AddRange(GenerateRandomCrashes(socket.maxHistoryCount - list.Count));
-    }
-    else if (list.Count > socket.maxHistoryCount)
-    {
-      list = list.GetRange(list.Count - socket.maxHistoryCount, socket.maxHistoryCount); // keep latest N 
-    }
+    var list = rounds ?? new List<CrashHistoryRoundData>();
 
-    // create exactly maxHistoryCount slots
-    for (int i = 0; i < socket.maxHistoryCount; i++)
+    // create slots based on provided list
+    for (int i = 0; i < list.Count; i++)
     {
       var v = GetFromPool();
       v.transform.SetParent(container, false);
@@ -60,6 +51,8 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
   internal IEnumerator AddCrash(CrashHistoryRoundData newRound)
   {
     if (slots.Count == 0) yield break;
+
+    yield return new WaitForSecondsRealtime(0.5f);
 
     // Capture current positions BEFORE reordering
     var beforeX = new float[slots.Count];
@@ -96,7 +89,7 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
       r.DOKill(); // cancel any lingering tweens
     }
 
-    // Recycled (index 0): start from left offset + scaled up + transparent text
+    // Recycled (index 0):y start from left offset + scaled up + transparent text
     var recRect = recycled.Rect;
     recRect.anchoredPosition = new Vector2(targetX[0] - introOffsetX, recRect.anchoredPosition.y);
     recycled.PrepareSpawnVisual(); // set scale>1 and alpha 0
@@ -119,6 +112,14 @@ public class CrashHistoryManager : GenericObjectPool<CrashHistoryView>
     yield return spawnSeq.WaitForCompletion();
     if (layoutGroup) layoutGroup.enabled = true;
     LayoutRebuilder.ForceRebuildLayoutImmediate(container);
+  }
+
+  internal List<CrashHistoryRoundData> GetDisplayedRounds()
+  {
+    var res = new List<CrashHistoryRoundData>(slots.Count);
+    for (int i = 0; i < slots.Count; i++)
+      res.Add(slots[i].Data);
+    return res;
   }
 
   internal List<CrashHistoryRoundData> GenerateRandomCrashes(int count)

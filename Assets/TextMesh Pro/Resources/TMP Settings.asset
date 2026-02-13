@@ -34,10 +34,10 @@ MonoBehaviour:
   m_autoSizeTextContainer: 0
   m_IsTextObjectScaleStatic: 0
   m_fallbackFontAssets:
-  - {fileID: 11400000, guid: dc433fbdc6604424a99e60c141c45030, type: 2}
+  - {fileID: 0}
   m_matchMaterialPreset: 1
   m_HideSubTextObjects: 1
-  m_defaultSpriteAsset: {fileID: 11400000, guid: 26099709f3c894af591e290c2ea06377, type: 2}
+  m_defaultSpriteAsset: {fileID: 11400000, guid: 3ee38090d8fb9aa41ad3c37e00556fa2, type: 2}
   m_defaultSpriteAssetPath: Sprite Assets/
   m_enableEmojiSupport: 1
   m_MissingCharacterSpriteUnicode: 0

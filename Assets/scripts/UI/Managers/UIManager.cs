@@ -47,6 +47,14 @@ public class UIManager : MonoBehaviour
   [SerializeField] private GameObject aviatorLogo;
   [SerializeField] private GameObject spribeLogo;
   [SerializeField] private ProceduralImage loadingBarFillerImage;
+  [Header("Multiplier Smoothing")]
+  [SerializeField] private float extrapolationMaxSeconds = 0.8f;
+  [SerializeField] private float extrapolationMaxDelta = 0.5f;
+  [SerializeField] private float minTickInterval = 0.05f;
+  private float lastTickTime;
+  private float lastTickInterval;
+  private float lastMultVelocity;
+  private float extrapolationElapsed;
 
   [Header("Other Options Menu")]
   [SerializeField] private GameObject OtherOptionsMenu;
@@ -72,6 +80,7 @@ public class UIManager : MonoBehaviour
   [SerializeField] private GameObject[] OtherOptionsPanels;
   [SerializeField] private Button[] OtherOptionCloseButtons;
   [SerializeField] private Button CloseOtherOptionButton;
+  [SerializeField] private Button AvatarPanelBottomCloseButton;
   [SerializeField] private GameObject BetHistoryLoader;
   [SerializeField] private TMP_Text MinBetText;
   [SerializeField] private TMP_Text MaxBetText;
@@ -310,6 +319,8 @@ public class UIManager : MonoBehaviour
       int index = i;
       OtherOptionCloseButtons[i].onClick.AddListener(() => CloseOtherOptionMenu(index));
     }
+    if (AvatarPanelBottomCloseButton != null)
+      AvatarPanelBottomCloseButton.onClick.AddListener(CloseAvatarPanelIfOpen);
 
     InfoUIButtons[0].onClick.AddListener(() => StartCoroutine(ShowInfoUI(0)));
     InfoUIButtons[1].onClick.AddListener(() => StartCoroutine(ShowInfoUI(1)));
@@ -374,6 +385,27 @@ public class UIManager : MonoBehaviour
     serverSeed = Guid.NewGuid().ToString();
     if (provablyFairSettingsManager != null)
       provablyFairSettingsManager.Initialize(clientSeedRandom, clientSeedManual, serverSeed, useManual: false);
+  }
+
+  private void Update()
+  {
+    if (curveAnimator == null || !curveAnimator.Flying)
+      return;
+
+    if (DOTween.IsTweening("multTween"))
+      return;
+
+    float timeSinceTick = Time.time - lastTickTime;
+    if (timeSinceTick < lastTickInterval || lastMultVelocity <= 0f)
+      return;
+
+    if (extrapolationElapsed >= extrapolationMaxSeconds)
+      return;
+
+    extrapolationElapsed = Mathf.Min(extrapolationMaxSeconds, extrapolationElapsed + Time.deltaTime);
+    float maxMult = targetMult + Mathf.Min(extrapolationMaxDelta, lastMultVelocity * extrapolationMaxSeconds);
+    displayedMult = Mathf.Min(maxMult, displayedMult + lastMultVelocity * Time.deltaTime);
+    UpdateMultiplierDisplay(displayedMult);
   }
 
   private void SetupAvatarButtons()
@@ -475,10 +507,10 @@ public class UIManager : MonoBehaviour
 
     LeftBetCounter = staticBets[0].index;
     LeftBetText.text = staticBets[0].value.ToString("N2");
-    LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2");
+    LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2") + " PKR";
     RightBetCounter = staticBets[0].index;
     RightBetText.text = staticBets[0].value.ToString("N2");
-    RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2");
+    RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2") + " PKR";
     BalanceText.text = bal.ToString("N2");
     MinBetText.text = bets[0].ToString("N2");
     MaxBetText.text = bets[^1].ToString("N2");
@@ -682,6 +714,14 @@ public class UIManager : MonoBehaviour
 
   IEnumerator OnBet(bool isLeft)
   {
+    if (isLeft)
+    {
+      LeftBetButton.gameObject.SetActive(false); 
+    }
+    else
+    {
+      RightBetButton.gameObject.SetActive(false);
+    }
     if (IsRequestInProgress(isLeft)) yield break;
     SetRequestInProgress(isLeft, true);
 
@@ -835,7 +875,7 @@ public class UIManager : MonoBehaviour
         }
       }
       LeftBetText.text = socket.bets[LeftBetCounter].ToString("N2");
-      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[LeftBetCounter].ToString("N2");
+      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[LeftBetCounter].ToString("N2") + " PKR";
     }
     else
     {
@@ -862,7 +902,7 @@ public class UIManager : MonoBehaviour
         }
       }
       RightBetText.text = socket.bets[RightBetCounter].ToString("N2");
-      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[RightBetCounter].ToString("N2");
+      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[RightBetCounter].ToString("N2") + " PKR";
     }
   }
 
@@ -873,7 +913,7 @@ public class UIManager : MonoBehaviour
       LeftBetCounter = index;
       float bet = socket.bets[LeftBetCounter];
       LeftBetText.text = bet.ToString("N2");
-      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2");
+      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2") + " PKR";
       // Debug.Log(index + " " + bet);
     }
     else
@@ -881,7 +921,7 @@ public class UIManager : MonoBehaviour
       RightBetCounter = index;
       float bet = socket.bets[RightBetCounter];
       RightBetText.text = bet.ToString("N2");
-      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2");
+      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2") + " PKR";
     }
   }
 
@@ -949,13 +989,15 @@ public class UIManager : MonoBehaviour
       RightCashoutButton.gameObject.SetActive(false);
     }
 
-    curveAnimator.OnCrash();
+    curveAnimator.OnCrash(crashMult);
 
     blueColTime = false;
     purpleColTime = false;
     pinkColTime = false;
     multColorTween?.Kill();
     DOTween.Kill("multTween");
+    lastMultVelocity = 0f;
+    extrapolationElapsed = 0f;
 
     displayedMult = crashMult;
     multiplierText.color = Color.red;
@@ -978,6 +1020,9 @@ public class UIManager : MonoBehaviour
     RightBlocker.SetActive(false);
     curveAnimator.ResetVisual();
     displayedMult = 1;
+    targetMult = 1;
+    lastMultVelocity = 0f;
+    extrapolationElapsed = 0f;
 
     roundIdentifier = roundStartData.serverHash;
 
@@ -1042,8 +1087,18 @@ public class UIManager : MonoBehaviour
   {
     float startVal = displayedMult;
     targetMult = newMult;
+    lastTickInterval = Mathf.Max(minTickInterval, tick);
+    lastTickTime = Time.time;
+    lastMultVelocity = (newMult - startVal) / lastTickInterval;
+    extrapolationElapsed = 0f;
 
     DOTween.Kill("multTween");
+
+    if (!curveAnimator.Flying)
+    {
+      curveAnimator.StartFlyingAnimation();
+    }
+    curveAnimator.NotifyMultiplier(newMult);
 
     DOTween.To(() => startVal, v =>
     {
@@ -1052,11 +1107,6 @@ public class UIManager : MonoBehaviour
     }, newMult, tick)
     .SetId("multTween")
     .SetEase(Ease.Linear);
-
-    if (!curveAnimator.Flying)
-    {
-      curveAnimator.StartFlyingAnimation();
-    }
   }
 
   private void UpdateMultiplierDisplay(float mult)
