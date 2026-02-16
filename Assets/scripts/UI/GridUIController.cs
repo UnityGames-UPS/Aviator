@@ -59,14 +59,14 @@ public class GridUIController : MonoBehaviour
     bool stacked = width < minItemWidth * 2f;
     int columns = stacked ? 1 : 2;
     int rows = Mathf.CeilToInt(grid.transform.childCount / (float)columns);
-    if (columns == 2)
-    {
-      MainParent_LE.preferredHeight = 704f;
-    }
-    else
-    {
-      MainParent_LE.preferredHeight = 1000f;
-    }
+    // if (columns == 2)
+    // {
+    //   MainParent_LE.preferredHeight = 704f;
+    // }
+    // else
+    // {
+    //   MainParent_LE.preferredHeight = 1000f;
+    // }
 
     grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
     grid.constraintCount = columns;

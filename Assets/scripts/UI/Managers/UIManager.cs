@@ -326,7 +326,6 @@ public class UIManager : MonoBehaviour
     InfoUIButtons[1].onClick.AddListener(() => StartCoroutine(ShowInfoUI(1)));
     InfoUIButtons[2].onClick.AddListener(() => StartCoroutine(ShowInfoUI(2)));
 
-    InfoUIButtons[0].onClick.Invoke(); //Default to All Bets
 
     TopBetFilterButtons[0].onClick.AddListener(() => TopBetsButtonClicked(0, true));
     TopBetFilterButtons[1].onClick.AddListener(() => TopBetsButtonClicked(1, true));
@@ -385,6 +384,11 @@ public class UIManager : MonoBehaviour
     serverSeed = Guid.NewGuid().ToString();
     if (provablyFairSettingsManager != null)
       provablyFairSettingsManager.Initialize(clientSeedRandom, clientSeedManual, serverSeed, useManual: false);
+  }
+
+  void Start()
+  {
+    InfoUIButtons[0].onClick.Invoke(); //Default to All Bets
   }
 
   private void Update()
@@ -716,7 +720,7 @@ public class UIManager : MonoBehaviour
   {
     if (isLeft)
     {
-      LeftBetButton.gameObject.SetActive(false); 
+      LeftBetButton.gameObject.SetActive(false);
     }
     else
     {
@@ -1568,7 +1572,6 @@ public class UIManager : MonoBehaviour
       socket.SendPreviousRoundReq();
       yield return new WaitUntil(() => socket.PrevRoundAck);
       prevRoundManager.PopulatePreviousRounds();
-      RefreshInfoScrollGates();
       InfoUIPanels[^1].SetActive(false);
     }
     if (index == 2)
@@ -1584,10 +1587,10 @@ public class UIManager : MonoBehaviour
       {
         analyticsUIManager.PopulateAnalyticsUI();
       }
-      RefreshInfoScrollGates();
       InfoUIPanels[^1].SetActive(false);
     }
 
+    RefreshInfoScrollGates();
     InfoUIPanels[index].SetActive(true);
   }
 
@@ -1597,7 +1600,7 @@ public class UIManager : MonoBehaviour
     foreach (var gate in infoScrollGates)
     {
       if (gate != null)
-        gate.Refresh();
+        StartCoroutine(gate.Refresh());
     }
   }
 
