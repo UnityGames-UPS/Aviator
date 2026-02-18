@@ -6,6 +6,25 @@ public class GridUIController : MonoBehaviour
 {
   [SerializeField]
   private GridLayoutGroup grid;
+  private float referenceScreenHeight = 2340f;
+  private float referencePreferredHeight = 700f;
+  private int lastScreenHeight;
+  [SerializeField]
+  private GameObject LeftAutobetOptions;
+  [SerializeField]
+  private GameObject RightAutobetOptions;
+  [SerializeField]
+  private RectTransform LeftAutobet_transform;
+  [SerializeField]
+  private RectTransform RightAutobet_transform;
+  [SerializeField]
+  private RectTransform LeftMainBet_transform;
+  [SerializeField]
+  private RectTransform RightMainBet_transform;
+  [SerializeField]
+  private RectTransform LeftInBet_transform;
+  [SerializeField]
+  private RectTransform RightInBet_transform;
   [SerializeField]
   private LayoutElement MainParent_LE;
   [SerializeField]
@@ -47,6 +66,92 @@ public class GridUIController : MonoBehaviour
     GamePlayPanelMove();
   }
 
+  internal void CheckAndFixLeftAutoBet(bool isActive)
+  {
+    if (lastStacked && isActive)
+    {
+      LeftAutobet_transform.SetParent(LeftMainBet_transform);
+      LeftAutobet_transform.SetSiblingIndex(LeftMainBet_transform.childCount - 2);
+      grid.cellSize = new Vector2(grid.cellSize.x, 300);
+      itemHeight = 300;
+      LeftAutobet_transform.anchorMin = new Vector2(0.5f, 0f);
+      LeftAutobet_transform.anchorMax = new Vector2(0.5f, 0f);
+
+      // Pivot center
+      LeftAutobet_transform.pivot = new Vector2(0.5f, 0.5f);
+
+      // Position
+      LeftAutobet_transform.anchoredPosition = new Vector2(0f, 21.69f);
+      Canvas.ForceUpdateCanvases();
+    }
+    else
+    {
+      LeftAutobet_transform.SetParent(LeftInBet_transform);
+      if (!RightAutobetOptions.activeSelf)
+      {
+        grid.cellSize = new Vector2(grid.cellSize.x, 260);
+        itemHeight = 260;
+      }
+    }
+  }
+
+  internal void CheckAndFixRightAutoBet(bool isActive)
+  {
+    if (lastStacked && isActive)
+    {
+      RightAutobet_transform.SetParent(RightMainBet_transform);
+      RightAutobet_transform.SetSiblingIndex(RightMainBet_transform.childCount - 2);
+      grid.cellSize = new Vector2(grid.cellSize.x, 300);
+      itemHeight = 300;
+      RightAutobet_transform.anchorMin = new Vector2(0.5f, 0f);
+      RightAutobet_transform.anchorMax = new Vector2(0.5f, 0f);
+
+      // Pivot center
+      RightAutobet_transform.pivot = new Vector2(0.5f, 0.5f);
+
+      // Position
+      RightAutobet_transform.anchoredPosition = new Vector2(0f, 21.69f);
+      Canvas.ForceUpdateCanvases();
+    }
+    else
+    {
+      RightAutobet_transform.SetParent(RightInBet_transform);
+      if (!LeftAutobetOptions.activeSelf)
+      {
+        grid.cellSize = new Vector2(grid.cellSize.x, 260);
+        itemHeight = 260;
+      }
+    }
+  }
+  void OnRectTransformDimensionsChange()
+  {
+    if (Screen.height != lastScreenHeight)
+    {
+      UpdatePreferredHeight();
+    }
+  }
+  void UpdatePreferredHeight()
+  {
+    float referenceHeight = 2340f;
+    float referencePreferred = 680f;
+
+    float targetDeviceHeight = 3049f;   // Replace with actual Debug.Log value
+    float targetPreferred = 875f;
+
+    float slope = (targetPreferred - referencePreferred) /
+                  (targetDeviceHeight - referenceHeight);
+
+    float newPreferredHeight =
+        referencePreferred +
+        (Screen.height - referenceHeight) * slope;
+
+    MainParent_LE.preferredHeight = newPreferredHeight;
+
+    LayoutRebuilder.ForceRebuildLayoutImmediate(
+        MainParent_LE.GetComponent<RectTransform>()
+    );
+  }
+
   void GamePlayPanelMove()
   {
     float width = widthSource.rect.width;
@@ -59,6 +164,8 @@ public class GridUIController : MonoBehaviour
     bool stacked = width < minItemWidth * 2f;
     int columns = stacked ? 1 : 2;
     int rows = Mathf.CeilToInt(grid.transform.childCount / (float)columns);
+    CheckAndFixLeftAutoBet(LeftAutobetOptions.activeSelf);
+    CheckAndFixRightAutoBet(RightAutobetOptions.activeSelf);
     // if (columns == 2)
     // {
     //   MainParent_LE.preferredHeight = 704f;

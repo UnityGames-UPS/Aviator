@@ -207,6 +207,7 @@ public class UIManager : MonoBehaviour
   private Tween blurTween;
   [SerializeField] internal BetData leftBetData;
   [SerializeField] internal BetData rightBetData;
+  [SerializeField] private GridUIController gridController;
   private const int provablyFairMaxUsers = 3;
 
   private class ProvablyFairPopupPayload
@@ -1505,10 +1506,12 @@ public class UIManager : MonoBehaviour
       if (isLeft)
       {
         LeftAutoBetPanel?.SetActive(false);
+        gridController.CheckAndFixLeftAutoBet(false);
       }
       else
       {
         RightAutoBetPanel?.SetActive(false);
+        gridController.CheckAndFixRightAutoBet(false);
       }
     }
     else
@@ -1516,10 +1519,12 @@ public class UIManager : MonoBehaviour
       if (isLeft)
       {
         LeftAutoBetPanel?.SetActive(true);
+        gridController.CheckAndFixLeftAutoBet(true);
       }
       else
       {
         RightAutoBetPanel?.SetActive(true);
+        gridController.CheckAndFixRightAutoBet(true);
       }
     }
 
