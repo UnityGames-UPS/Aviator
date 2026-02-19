@@ -78,7 +78,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4287243859
-  m_fontColor: {r: 0.3254902, g: 0.14901961, b: 0.5411765, a: 1}
+  m_fontColor: {r: 0.4499998, g: 0, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -155,9 +155,9 @@ MonoBehaviour:
   multiplierText: {fileID: 7326433704656791119}
   rect: {fileID: 8922768982322363250}
   detailsButton: {fileID: 7470981594038911644}
-  BlueColor: {r: 0.19215687, g: 0.64705884, b: 0.9137255, a: 1}
-  PurpleColor: {r: 0.39215687, g: 0.1764706, b: 0.6627451, a: 1}
-  PinkColor: {r: 0.62352943, g: 0.08235294, b: 0.58431375, a: 1}
+  BlueColor: {r: 0, g: 0.630435, b: 1, a: 1}
+  PurpleColor: {r: 0.4435482, g: 0, b: 1, a: 1}
+  PinkColor: {r: 1, g: 0, b: 0.927536, a: 1}
 --- !u!114 &4816196659450684367
 MonoBehaviour:
   m_ObjectHideFlags: 0

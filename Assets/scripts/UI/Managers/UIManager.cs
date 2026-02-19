@@ -1121,11 +1121,11 @@ public class UIManager : MonoBehaviour
 
     if (LeftCashoutButton.gameObject.activeInHierarchy)
     {
-      LeftCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("N2");
+      LeftCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("N2") + " PKR";
     }
     if (RightCashoutButton.gameObject.activeInHierarchy)
     {
-      RightCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("N2");
+      RightCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("N2") + " PKR";
     }
 
     if (multiplierText.color.a <= 0.3f && multColorTween2 == null)
