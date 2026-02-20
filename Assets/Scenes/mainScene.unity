@@ -31716,7 +31716,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 427642316}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.48027676
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -31796,7 +31796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.46499634, y: -27.153}
+  m_AnchoredPosition: {x: -0.46496582, y: -27.153}
   m_SizeDelta: {x: -0.93, y: -54.295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918215964
@@ -37294,8 +37294,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 261.57, y: 0}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: 345.7, y: -7.09}
+  m_SizeDelta: {x: 52.36, y: 49.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059455313
 MonoBehaviour:
@@ -53178,8 +53178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 261.57, y: 0}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: 345.7, y: -7.09}
+  m_SizeDelta: {x: 52.36, y: 49.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429185018
 MonoBehaviour:
@@ -55852,7 +55852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1.050003}
+  m_AnchoredPosition: {x: 0, y: -1.0499878}
   m_SizeDelta: {x: 449.09, y: 54.300003}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1511820332
@@ -59990,7 +59990,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.035, y: 0}
   m_AnchorMax: {x: 0.6426043, y: 1}
-  m_AnchoredPosition: {x: -7.600647, y: -2.6399841}
+  m_AnchoredPosition: {x: -7.6006775, y: -2.6399841}
   m_SizeDelta: {x: -18.33, y: -20.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1621450149
@@ -73826,6 +73826,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1966829752}
+  BetOFF_Button: {fileID: 1429185019}
+  BetON_Button: {fileID: 1059455314}
+  BetParentObject: {fileID: 1721369224}
   LeftAutobetOptions: {fileID: 79832693}
   RightAutobetOptions: {fileID: 103549926}
   LeftAutobet_transform: {fileID: 79832694}
@@ -79454,7 +79457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000068665, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.000068665, y: 0}
   m_SizeDelta: {x: -1.7949829, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2100319000

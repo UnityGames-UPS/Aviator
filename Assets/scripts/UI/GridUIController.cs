@@ -10,6 +10,12 @@ public class GridUIController : MonoBehaviour
   private float referencePreferredHeight = 700f;
   private int lastScreenHeight;
   [SerializeField]
+  private Button BetOFF_Button;
+  [SerializeField]
+  private Button BetON_Button;
+  [SerializeField]
+  private GameObject BetParentObject;
+  [SerializeField]
   private GameObject LeftAutobetOptions;
   [SerializeField]
   private GameObject RightAutobetOptions;
@@ -57,9 +63,40 @@ public class GridUIController : MonoBehaviour
   private bool planeInitialized;
   float lastWidth = -1f;
   bool lastStacked;
+  int multiplierbetsize = 1;
   void Awake()
   {
     CachePlaneDefaults();
+  }
+
+  void Start()
+  {
+    BetON_Button.onClick.RemoveAllListeners();
+    BetON_Button.onClick.AddListener(delegate { ToggleBet(true); });
+    BetOFF_Button.onClick.RemoveAllListeners();
+    BetOFF_Button.onClick.AddListener(delegate { ToggleBet(false); });
+  }
+
+  private void ToggleBet(bool isActive)
+  {
+    BetParentObject.SetActive(isActive);
+    if (isActive)
+    {
+      BetON_Button.gameObject.SetActive(false);
+      BetOFF_Button.gameObject.SetActive(true);
+      multiplierbetsize = 1;
+    }
+    else
+    {
+      BetON_Button.gameObject.SetActive(true);
+      BetOFF_Button.gameObject.SetActive(false);
+      multiplierbetsize = 2;
+    }
+    float width = widthSource.rect.width;
+    grid.cellSize = new Vector2(
+        lastStacked ? width - 10f : ((width / 2f) - 10f) * multiplierbetsize,
+        itemHeight
+    );
   }
   void LateUpdate()
   {
@@ -179,7 +216,7 @@ public class GridUIController : MonoBehaviour
     grid.constraintCount = columns;
 
     grid.cellSize = new Vector2(
-        stacked ? width - 10f : (width / 2f) - 10f,
+        stacked ? width - 10f : ((width / 2f) - 10f) * multiplierbetsize,
         itemHeight
     );
 
