@@ -40,11 +40,7 @@ mergeInto(LibraryManager.library, {
         }
       } 
       else if (typeof window !== "undefined" && window.parent) {
-        if (typeof window.parent.dispatchReactUnityEvent !== "undefined" && window.parent.dispatchReactUnityEvent) {
-          console.log("Inside dispatchReactUnityEvent");
-          window.parent.dispatchReactUnityEvent(message);
-        }
-        else if (typeof window.parent.postMessage === "function"){
+        if (typeof window.parent.postMessage === "function"){
           console.log("Calling window.parent.postMessage");
           window.parent.postMessage({ 
             type: message,
