@@ -109,8 +109,8 @@ public class GridUIController : MonoBehaviour
     {
       LeftAutobet_transform.SetParent(LeftMainBet_transform);
       LeftAutobet_transform.SetSiblingIndex(LeftMainBet_transform.childCount - 2);
-      grid.cellSize = new Vector2(grid.cellSize.x, 340);
-      itemHeight = 340;
+      grid.cellSize = new Vector2(grid.cellSize.x, 360);
+      itemHeight = 360;
       LeftAutobet_transform.anchorMin = new Vector2(0.5f, 0f);
       LeftAutobet_transform.anchorMax = new Vector2(0.5f, 0f);
 
@@ -126,8 +126,8 @@ public class GridUIController : MonoBehaviour
       LeftAutobet_transform.SetParent(LeftInBet_transform);
       if (!RightAutobetOptions.activeSelf)
       {
-        grid.cellSize = new Vector2(grid.cellSize.x, 300);
-        itemHeight = 300;
+        grid.cellSize = new Vector2(grid.cellSize.x, 320);
+        itemHeight = 320;
       }
     }
   }
@@ -138,8 +138,8 @@ public class GridUIController : MonoBehaviour
     {
       RightAutobet_transform.SetParent(RightMainBet_transform);
       RightAutobet_transform.SetSiblingIndex(RightMainBet_transform.childCount - 2);
-      grid.cellSize = new Vector2(grid.cellSize.x, 340);
-      itemHeight = 340;
+      grid.cellSize = new Vector2(grid.cellSize.x, 360);
+      itemHeight = 360;
       RightAutobet_transform.anchorMin = new Vector2(0.5f, 0f);
       RightAutobet_transform.anchorMax = new Vector2(0.5f, 0f);
 
@@ -155,8 +155,8 @@ public class GridUIController : MonoBehaviour
       RightAutobet_transform.SetParent(RightInBet_transform);
       if (!LeftAutobetOptions.activeSelf)
       {
-        grid.cellSize = new Vector2(grid.cellSize.x, 300);
-        itemHeight = 300;
+        grid.cellSize = new Vector2(grid.cellSize.x, 320);
+        itemHeight = 320;
       }
     }
   }
