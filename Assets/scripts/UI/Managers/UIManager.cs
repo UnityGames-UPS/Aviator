@@ -512,10 +512,10 @@ public class UIManager : MonoBehaviour
 
     LeftBetCounter = staticBets[0].index;
     LeftBetText.text = staticBets[0].value.ToString("N2");
-    LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2") + " PKR";
+    LeftBetButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2") + " PKR";
     RightBetCounter = staticBets[0].index;
     RightBetText.text = staticBets[0].value.ToString("N2");
-    RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2") + " PKR";
+    RightBetButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Bet\n" + staticBets[0].value.ToString("N2") + " PKR";
     BalanceText.text = bal.ToString("N2");
     MinBetText.text = bets[0].ToString("N2");
     MaxBetText.text = bets[^1].ToString("N2");
@@ -787,14 +787,14 @@ public class UIManager : MonoBehaviour
         leftBetData = data;
         if (!ackData.payload.isUserInQueue)
         {
-          LeftCancelBetButton.transform.GetChild(0).gameObject.SetActive(false);
-          LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
+          LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
+          LeftCancelBetButton.transform.GetChild(2).gameObject.SetActive(true);
           LeftCancelBetButton.gameObject.SetActive(true);
         }
         else if (ackData.payload.isUserInQueue)
         {
-          LeftCancelBetButton.transform.GetChild(0).gameObject.SetActive(true);
-          LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
+          LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
+          LeftCancelBetButton.transform.GetChild(2).gameObject.SetActive(false);
           LeftCancelBetButton.gameObject.SetActive(true);
         }
       }
@@ -803,14 +803,14 @@ public class UIManager : MonoBehaviour
         rightBetData = data;
         if (!ackData.payload.isUserInQueue)
         {
-          RightCancelBetButton.transform.GetChild(0).gameObject.SetActive(false);
-          RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
+          RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
+          RightCancelBetButton.transform.GetChild(2).gameObject.SetActive(true);
           RightCancelBetButton.gameObject.SetActive(true);
         }
         else if (ackData.payload.isUserInQueue)
         {
-          RightCancelBetButton.transform.GetChild(0).gameObject.SetActive(true);
-          RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
+          RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
+          RightCancelBetButton.transform.GetChild(2).gameObject.SetActive(false);
           RightCancelBetButton.gameObject.SetActive(true);
         }
       }
@@ -880,7 +880,7 @@ public class UIManager : MonoBehaviour
         }
       }
       LeftBetText.text = socket.bets[LeftBetCounter].ToString("N2");
-      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[LeftBetCounter].ToString("N2") + " PKR";
+      LeftBetButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[LeftBetCounter].ToString("N2") + " PKR";
     }
     else
     {
@@ -907,7 +907,7 @@ public class UIManager : MonoBehaviour
         }
       }
       RightBetText.text = socket.bets[RightBetCounter].ToString("N2");
-      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[RightBetCounter].ToString("N2") + " PKR";
+      RightBetButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Bet\n" + socket.bets[RightBetCounter].ToString("N2") + " PKR";
     }
   }
 
@@ -918,7 +918,7 @@ public class UIManager : MonoBehaviour
       LeftBetCounter = index;
       float bet = socket.bets[LeftBetCounter];
       LeftBetText.text = bet.ToString("N2");
-      LeftBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2") + " PKR";
+      LeftBetButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2") + " PKR";
       // Debug.Log(index + " " + bet);
     }
     else
@@ -926,7 +926,7 @@ public class UIManager : MonoBehaviour
       RightBetCounter = index;
       float bet = socket.bets[RightBetCounter];
       RightBetText.text = bet.ToString("N2");
-      RightBetButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2") + " PKR";
+      RightBetButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Bet\n" + bet.ToString("N2") + " PKR";
     }
   }
 
@@ -949,7 +949,7 @@ public class UIManager : MonoBehaviour
       {
         Debug.LogError("roundID not similar left bet data: " + leftBetData.serverHash + " roundIdentifier: " + roundIdentifier);
       }
-      LeftCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("N2");
+      LeftCashoutButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("N2");
       LeftCashoutButton.gameObject.SetActive(true);
       LeftCancelBetButton.gameObject.SetActive(false);
       LeftBetButton.gameObject.SetActive(false);
@@ -960,7 +960,7 @@ public class UIManager : MonoBehaviour
       {
         Debug.LogError("roundID not similar right bet data: " + leftBetData.serverHash + " roundIdentifier: " + roundIdentifier);
       }
-      RightCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("N2");
+      RightCashoutButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("N2");
       RightCashoutButton.gameObject.SetActive(true);
       RightCancelBetButton.gameObject.SetActive(false);
       RightBetButton.gameObject.SetActive(false);
@@ -1038,8 +1038,8 @@ public class UIManager : MonoBehaviour
         leftBetData.serverHash = roundIdentifier;
         if (LeftCancelBetButton.gameObject.activeInHierarchy && LeftCancelBetButton.transform.GetChild(0).gameObject.activeInHierarchy)
         {
-          LeftCancelBetButton.transform.GetChild(0).gameObject.SetActive(false);
-          LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
+          LeftCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
+          LeftCancelBetButton.transform.GetChild(2).gameObject.SetActive(true);
         }
       }
       else if (participant.betId == rightBetData?.payload?.betId)
@@ -1047,8 +1047,8 @@ public class UIManager : MonoBehaviour
         rightBetData.serverHash = roundIdentifier;
         if (RightCancelBetButton.gameObject.activeInHierarchy && RightCancelBetButton.transform.GetChild(0).gameObject.activeInHierarchy)
         {
-          RightCancelBetButton.transform.GetChild(0).gameObject.SetActive(false);
-          RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(true);
+          RightCancelBetButton.transform.GetChild(1).gameObject.SetActive(false);
+          RightCancelBetButton.transform.GetChild(2).gameObject.SetActive(true);
         }
       }
     }
@@ -1121,11 +1121,11 @@ public class UIManager : MonoBehaviour
 
     if (LeftCashoutButton.gameObject.activeInHierarchy)
     {
-      LeftCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("N2") + " PKR";
+      LeftCashoutButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[LeftBetCounter]).ToString("N2") + " PKR";
     }
     if (RightCashoutButton.gameObject.activeInHierarchy)
     {
-      RightCashoutButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("N2") + " PKR";
+      RightCashoutButton.transform.GetChild(1).GetComponent<TMP_Text>().text = "Cashout\n" + (displayedMult * socket.bets[RightBetCounter]).ToString("N2") + " PKR";
     }
 
     if (multiplierText.color.a <= 0.3f && multColorTween2 == null)
