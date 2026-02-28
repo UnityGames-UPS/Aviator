@@ -439,7 +439,7 @@ public class SocketIOManager : MonoBehaviour
     // Debug.Log("TICK: " + data);
     JObject obj = JObject.Parse(data);
     float mult = (float)obj["multiplier"];
-    // Debug.Log("TICK: mult:" + mult);
+    Debug.Log("TICK: mult:" + mult);
     uiManager.OnMultiplierUpdate(mult, tickInterval);
   }
 

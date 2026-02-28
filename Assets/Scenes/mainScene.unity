@@ -14244,7 +14244,7 @@ MonoBehaviour:
   playerCountManager: {fileID: 1631631166}
   JSManager: {fileID: 284092192}
   TestSocketURI: https://devrealtime.dingdinghouse.com/
-  testToken: d09a28e247484841a2f15ece302444f6
+  testToken: 28d10d3caa6e472193d473feadc154cc
   bets: []
   tickInterval: 0
   takeOffDuration: 0
@@ -27477,7 +27477,7 @@ MonoBehaviour:
   crashYoffset: 166.7947
   slowCrashDuration: 2
   fastCrashDuration: 1.1
-  takeoffDurationSeconds: 7
+  takeoffDurationSeconds: 12
   takeoffHeightTimeExponent: 2
   takeoffEndMultiplier: 2
   debugToggle: 0
@@ -31793,7 +31793,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 427642316}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.48027676
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
