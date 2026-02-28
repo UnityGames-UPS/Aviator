@@ -157,7 +157,7 @@ MonoBehaviour:
   detailsButton: {fileID: 7470981594038911644}
   BlueColor: {r: 0, g: 0.630435, b: 1, a: 1}
   PurpleColor: {r: 0.4435482, g: 0, b: 1, a: 1}
-  PinkColor: {r: 1, g: 0, b: 0.927536, a: 1}
+  PinkColor: {r: 0.78431374, g: 0.003921569, b: 0.7294118, a: 1}
 --- !u!114 &4816196659450684367
 MonoBehaviour:
   m_ObjectHideFlags: 0
