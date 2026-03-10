@@ -173,7 +173,7 @@ public class GridUIController : MonoBehaviour
     float referencePreferred = 680f;
 
     float targetDeviceHeight = 3049f;   // Replace with actual Debug.Log value
-    float targetPreferred = 850f;
+    float targetPreferred = 900f;
 
     float slope = (targetPreferred - referencePreferred) /
                   (targetDeviceHeight - referenceHeight);
