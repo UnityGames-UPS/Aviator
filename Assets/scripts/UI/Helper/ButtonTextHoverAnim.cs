@@ -27,7 +27,7 @@ public class ButtonTextHoverAnim : MonoBehaviour, IPointerEnterHandler, IPointer
   {
     if (buttonText == null) return;
     if (button.interactable == false) return;
-
+    originalColor = buttonText.color;
     buttonText.DOColor(Color.red, 0.5f).SetEase(Ease.OutCubic);
   }
 
@@ -35,7 +35,8 @@ public class ButtonTextHoverAnim : MonoBehaviour, IPointerEnterHandler, IPointer
   {
     if (buttonText == null) return;
     
-    buttonText.DOColor(originalColor, 0.5f).SetEase(Ease.OutCubic);
+    buttonText.DOColor(Color.white, 0.5f).SetEase(Ease.OutCubic);
+    originalColor = Color.white;
   }
 
   public void OnPointerExit(PointerEventData eventData)

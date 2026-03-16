@@ -127,6 +127,7 @@ public class UIManager : MonoBehaviour
   //0: Bet Button
   //1: Auto Bet Button
   [SerializeField] private Button[] LeftTopBarButtons;
+  [SerializeField] private TMP_Text[] LeftTopBarTexts;
   [SerializeField] private GameObject LeftAutoBetPanel;
   [SerializeField] private Button LeftAutoBetToggleButton;
   [SerializeField] private Button LeftAutoCashOutToggleButton;
@@ -143,6 +144,7 @@ public class UIManager : MonoBehaviour
   //0: Bet Button
   //1: Auto Bet Button
   [SerializeField] private Button[] RightTopBarButtons;
+  [SerializeField] private TMP_Text[] RightTopBarTexts;
   [SerializeField] private GameObject RightAutoBetPanel;
   [SerializeField] private Button RightAutoBetToggleButton;
   [SerializeField] private Button RightAutoCashOutToggleButton;
@@ -174,6 +176,7 @@ public class UIManager : MonoBehaviour
   //3. Loading panel
   [SerializeField] private GameObject[] InfoUIPanels;
   [SerializeField] private Button[] InfoUIButtons;
+  [SerializeField] private TMP_Text[] InfoUITexts;
   [SerializeField] private ScrollViewportRaycastGate[] infoScrollGates;
   //0: Player Panel
   //1: Date&Time Panel
@@ -1505,11 +1508,15 @@ public class UIManager : MonoBehaviour
     {
       if (isLeft)
       {
+        LeftTopBarTexts[1].color = Color.white;
+        LeftTopBarTexts[0].color = Color.grey;
         LeftAutoBetPanel?.SetActive(false);
         gridController.CheckAndFixLeftAutoBet(false);
       }
       else
       {
+        RightTopBarTexts[1].color = Color.white;
+        RightTopBarTexts[0].color = Color.grey;
         RightAutoBetPanel?.SetActive(false);
         gridController.CheckAndFixRightAutoBet(false);
       }
@@ -1518,11 +1525,15 @@ public class UIManager : MonoBehaviour
     {
       if (isLeft)
       {
+        LeftTopBarTexts[0].color = Color.white;
+        LeftTopBarTexts[1].color = Color.grey;
         LeftAutoBetPanel?.SetActive(true);
         gridController.CheckAndFixLeftAutoBet(true);
       }
       else
       {
+        RightTopBarTexts[0].color = Color.white;
+        RightTopBarTexts[1].color = Color.grey;
         RightAutoBetPanel?.SetActive(true);
         gridController.CheckAndFixRightAutoBet(true);
       }
@@ -1569,6 +1580,18 @@ public class UIManager : MonoBehaviour
     foreach (GameObject p in InfoUIPanels)
     {
       p.SetActive(false);
+    }
+
+    for (int i=0;i<3;i++)
+    {
+      if(index==i)
+      {
+        InfoUITexts[i].color = Color.white;
+      }
+      else
+      {
+        InfoUITexts[i].color = Color.grey;
+      }
     }
 
     if (index == 1)
