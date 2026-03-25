@@ -42,6 +42,8 @@ public class GridUIController : MonoBehaviour
   [SerializeField]
   private RectTransform widthSource;
   [SerializeField]
+  private LayoutElement widthSource_LE;
+  [SerializeField]
   private CurveManager curveManager;
   [SerializeField]
   private float minItemWidth = 250f;
@@ -109,8 +111,12 @@ public class GridUIController : MonoBehaviour
     {
       // LeftAutobet_transform.SetParent(LeftMainBet_transform);
       // LeftAutobet_transform.SetSiblingIndex(LeftMainBet_transform.childCount - 2);
-      grid.cellSize = new Vector2(grid.cellSize.x, 320);
-      itemHeight = 320;
+      grid.cellSize = new Vector2(grid.cellSize.x, 340);
+      itemHeight = 340;
+      if(BetPanel_RT.transform.GetComponent<LayoutElement>().preferredHeight == 1200)
+      {
+        BetPanel_RT.transform.GetComponent<LayoutElement>().preferredHeight = 1120;
+      }
       // LeftAutobet_transform.anchorMin = new Vector2(0.5f, 0f);
       // LeftAutobet_transform.anchorMax = new Vector2(0.5f, 0f);
 
@@ -126,8 +132,12 @@ public class GridUIController : MonoBehaviour
       // LeftAutobet_transform.SetParent(LeftInBet_transform);
       if (!RightAutobetOptions.activeSelf)
       {
-        grid.cellSize = new Vector2(grid.cellSize.x, 280);
-        itemHeight = 280;
+        grid.cellSize = new Vector2(grid.cellSize.x, 300);
+        itemHeight = 300;
+        if(BetPanel_RT.transform.GetComponent<LayoutElement>().preferredHeight == 1120)
+        {
+          BetPanel_RT.transform.GetComponent<LayoutElement>().preferredHeight = 1200;
+        }
       }
     }
   }
@@ -138,8 +148,12 @@ public class GridUIController : MonoBehaviour
     {
       // RightAutobet_transform.SetParent(RightMainBet_transform);
       // RightAutobet_transform.SetSiblingIndex(RightMainBet_transform.childCount - 2);
-      grid.cellSize = new Vector2(grid.cellSize.x, 320);
-      itemHeight = 320;
+      grid.cellSize = new Vector2(grid.cellSize.x, 340);
+      itemHeight = 340;
+      if(BetPanel_RT.transform.GetComponent<LayoutElement>().preferredHeight == 1200)
+      {
+        BetPanel_RT.transform.GetComponent<LayoutElement>().preferredHeight = 1120;
+      }
       // RightAutobet_transform.anchorMin = new Vector2(0.5f, 0f);
       // RightAutobet_transform.anchorMax = new Vector2(0.5f, 0f);
 
@@ -155,8 +169,12 @@ public class GridUIController : MonoBehaviour
       // RightAutobet_transform.SetParent(RightInBet_transform);
       if (!LeftAutobetOptions.activeSelf)
       {
-        grid.cellSize = new Vector2(grid.cellSize.x, 280);
-        itemHeight = 280;
+        grid.cellSize = new Vector2(grid.cellSize.x, 300);
+        itemHeight = 300;
+        if(BetPanel_RT.transform.GetComponent<LayoutElement>().preferredHeight == 1120)
+        {
+          BetPanel_RT.transform.GetComponent<LayoutElement>().preferredHeight = 1200;
+        }
       }
     }
   }
@@ -169,26 +187,25 @@ public class GridUIController : MonoBehaviour
   }
   void UpdatePreferredHeight()
   {
-    float referenceHeight = 2340f;
-    float referencePreferred = 680f;
+    // Desktop cap — game area fixed on desktop
+    // if (Screen.width > 1400f)
+    // {
+    //     MainParent_LE.preferredHeight = 635f;
+    //     MainParent_LE.flexibleHeight = 0f;
+    // }
+    // else
+    // {
+    //     // Let Unity fill remaining space automatically
+    //     MainParent_LE.preferredHeight = -1f;
+    //     MainParent_LE.flexibleHeight = 1f;
+    // }
 
-    float targetDeviceHeight = 3049f;   // Replace with actual Debug.Log value
-    float targetPreferred = 950f;
+    // LayoutRebuilder.ForceRebuildLayoutImmediate(
+    //     MainParent_LE.GetComponent<RectTransform>()
+    // );
 
-    float slope = (targetPreferred - referencePreferred) /
-                  (targetDeviceHeight - referenceHeight);
-
-    float newPreferredHeight =
-        referencePreferred +
-        (Screen.height - referenceHeight) * slope;
-
-    MainParent_LE.preferredHeight = newPreferredHeight;
-
-    LayoutRebuilder.ForceRebuildLayoutImmediate(
-        MainParent_LE.GetComponent<RectTransform>()
-    );
+    // lastScreenHeight = Screen.height;
   }
-
   void GamePlayPanelMove()
   {
     float width = widthSource.rect.width;
@@ -237,12 +254,19 @@ public class GridUIController : MonoBehaviour
     // Debug.Log(widthForBetPanel);
     if (widthForBetPanel < minWidthSourceWidth)
     {
-      BetPanel_RT.SetParent(widthSource);
+      if(BetPanel_RT.parent != widthSource)
+      {
+        float betPanelHeight = BetPanel_RT.rect.height;
+        widthSource.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,(widthSource.rect.height+betPanelHeight)-260);
+        BetPanel_RT.SetParent(widthSource); 
+      }
     }
     else
     {
       BetPanel_RT.SetParent(MainParent_RT);
       BetPanel_RT.SetAsFirstSibling();
+      
+      widthSource.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,990);
     }
 
     LayoutRebuilder.MarkLayoutForRebuild(rect);
